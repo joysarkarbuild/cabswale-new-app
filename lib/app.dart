@@ -1,6 +1,9 @@
 import 'package:cabswalle/modules/splash/bloc/splash_bloc.dart';
-import 'package:cabswalle/modules/splash/screen/splash_view.dart';
+import 'package:cabswalle/routes/app_pages.dart';
 import 'package:flutter/material.dart';
+import 'package:cabswalle/l10n/l10n.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MyApp extends StatelessWidget {
@@ -13,14 +16,22 @@ class MyApp extends StatelessWidget {
           create: (BuildContext context) => SplashBloc(),
         ),
       ],
-      child: MaterialApp(
+      child: MaterialApp.router(
+        routerConfig: router,
         debugShowCheckedModeBanner: false,
         title: 'Cabswale',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const SplashScreen(),
+        supportedLocales: L10n.all,
+        locale: const Locale('en'),
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+        ],
       ),
     );
   }
