@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "883870552558",
+    "project_id": "cabswale-dev",
+    "storage_bucket": "cabswale-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:883870552558:android:a7ea58407c232021743eff",
+        "android_client_info": {
+          "package_name": "com.app.cabswalle"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqsrpSZZ98SmKJHFeTvzF_5sbBOyR21Ok"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

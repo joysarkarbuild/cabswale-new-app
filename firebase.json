@@ -1,0 +1,1 @@
+{"flutter":{"platforms":{"android":{"default":{"projectId":"cabswale-dev","appId":"1:883870552558:android:a7ea58407c232021743eff","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"cabswale-dev","configurations":{"android":"1:883870552558:android:a7ea58407c232021743eff","ios":"1:883870552558:ios:2ea7432fd0e973db743eff"}}}}}}
