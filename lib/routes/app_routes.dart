@@ -1,23 +1,27 @@
 abstract class Routes {
-  Routes._();
   static const home = _Paths.home;
   static const splash = _Paths.splash;
+  static const login = _Paths.login;
+  Routes._();
 }
 
 abstract class _Paths {
-  _Paths._();
   static const home = '/home';
   static const splash = '/';
+  static const login = '/login';
+  _Paths._();
 }
 
 abstract class _Names {
-  _Names._();
   static const home = 'home';
   static const splash = 'splash';
+  static const login = 'login';
+  _Names._();
 }
 
 abstract class Names {
-  Names._();
   static const home = _Names.home;
   static const splash = _Names.splash;
+  static const login = _Names.login;
+  Names._();
 }

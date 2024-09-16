@@ -2,9 +2,10 @@ import 'package:bloc/bloc.dart';
 import 'package:cabswalle/modules/splash/bloc/splash_event.dart';
 import 'package:cabswalle/modules/splash/bloc/splash_state.dart';
 import 'package:cabswalle/modules/splash/data/models/app_data_model.dart';
-import 'package:cabswalle/modules/splash/data/repository/app_data_repository.dart'; // Import the model
+import 'package:cabswalle/modules/splash/data/repository/app_data_repository.dart';
+import 'package:url_launcher/url_launcher.dart'; // Import the model
 
-int appVersion = 27; // Assuming this is the global app version
+int appVersion = 27; // Always need to change when we pushing new version
 
 class SplashBloc extends Bloc<SplashEvent, SplashState> {
   SplashBloc() : super(SplashInitial()) {
@@ -30,6 +31,13 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
           playStoreUrl: appData.playStoreUrl,
           appStoreUrl: appData.appStoreUrl,
         ));
+        final Uri url = Uri.parse(
+            "https://play.google.com/store/apps/details?id=com.app.cabswalle");
+        if (await canLaunchUrl(url)) {
+          await launchUrl(url);
+        } else {
+          emit(SplashError('Something wrong in url'));
+        }
       }
     } catch (e) {
       emit(SplashError('Error checking app version: ${e.toString()}'));
