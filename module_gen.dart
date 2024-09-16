@@ -2,6 +2,7 @@ import 'dart:io';
 
 void main(List<String> arguments) {
   if (arguments.isEmpty) {
+    // ignore: avoid_print
     print('Please provide a route name.');
     exit(1);
   }
@@ -17,7 +18,7 @@ void main(List<String> arguments) {
 
   addRouteToAppRoutes(routeName, path);
   addRouteToAppPages(routeName, className);
-
+  // ignore: avoid_print
   print('Route $routeName has been added successfully.');
 }
 
@@ -35,8 +36,10 @@ void createModuleFolders(String moduleName) {
     final directory = Directory(dir);
     if (!directory.existsSync()) {
       directory.createSync(recursive: true);
+      // ignore: avoid_print
       print('Created directory: $dir');
     } else {
+      // ignore: avoid_print
       print('Directory already exists: $dir');
     }
   }
@@ -70,6 +73,7 @@ class ${moduleName[0].toUpperCase()}${moduleName.substring(1)}Screen extends Sta
   }
 }
 ''');
+    // ignore: avoid_print
     print('Created screen file: ${moduleName}_view.dart');
   }
 }
@@ -95,6 +99,7 @@ class ${classNamePrefix}Bloc extends Bloc<${classNamePrefix}Event, ${classNamePr
   }
 }
 ''');
+    // ignore: avoid_print
     print('Created bloc file: ${moduleName}_bloc.dart');
   }
 
@@ -109,6 +114,7 @@ sealed class ${classNamePrefix}Event extends Equatable {
   List<Object> get props => [];
 }
 ''');
+    // ignore: avoid_print
     print('Created event file: ${moduleName}_event.dart');
   }
 
@@ -125,6 +131,7 @@ sealed class ${classNamePrefix}State extends Equatable {
 
 final class ${classNamePrefix}Initial extends ${classNamePrefix}State {}
 ''');
+    // ignore: avoid_print
     print('Created state file: ${moduleName}_state.dart');
   }
 }
@@ -133,6 +140,7 @@ void addRouteToAppRoutes(String routeName, String path) {
   final routesFile = File('lib/routes/app_routes.dart');
 
   if (!routesFile.existsSync()) {
+    // ignore: avoid_print
     print('app_routes.dart file not found.');
     exit(1);
   }
@@ -174,6 +182,7 @@ void addRouteToAppPages(String routeName, String className) {
   final pagesFile = File('lib/routes/app_pages.dart');
 
   if (!pagesFile.existsSync()) {
+    // ignore: avoid_print
     print('app_pages.dart file not found.');
     exit(1);
   }

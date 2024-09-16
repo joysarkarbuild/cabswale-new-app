@@ -2,6 +2,7 @@ import 'dart:io';
 
 void main(List<String> arguments) {
   if (arguments.isEmpty) {
+    // ignore: avoid_print
     print('Please provide a route name to revert.');
     exit(1);
   }
@@ -11,7 +12,7 @@ void main(List<String> arguments) {
   removeRouteFromAppRoutes(routeName);
   removeRouteFromAppPages(routeName);
   removeModuleFolder(routeName);
-
+  // ignore: avoid_print
   print('Reverted route $routeName successfully.');
 }
 
@@ -19,6 +20,7 @@ void removeRouteFromAppRoutes(String routeName) {
   final routesFile = File('lib/routes/app_routes.dart');
 
   if (!routesFile.existsSync()) {
+    // ignore: avoid_print
     print('app_routes.dart file not found.');
     exit(1);
   }
@@ -44,6 +46,7 @@ void removeRouteFromAppRoutes(String routeName) {
   );
 
   routesFile.writeAsStringSync(content);
+  // ignore: avoid_print
   print('Removed route entries from app_routes.dart.');
 }
 
@@ -51,6 +54,7 @@ void removeRouteFromAppPages(String routeName) {
   final pagesFile = File('lib/routes/app_pages.dart');
 
   if (!pagesFile.existsSync()) {
+    // ignore: avoid_print
     print('app_pages.dart file not found.');
     exit(1);
   }
@@ -70,6 +74,7 @@ void removeRouteFromAppPages(String routeName) {
   );
 
   pagesFile.writeAsStringSync(content);
+  // ignore: avoid_print
   print('Removed route entries from app_pages.dart.');
 }
 
@@ -78,8 +83,10 @@ void removeModuleFolder(String moduleName) {
 
   if (moduleDir.existsSync()) {
     moduleDir.deleteSync(recursive: true);
+    // ignore: avoid_print
     print('Deleted module folder: lib/modules/$moduleName');
   } else {
+    // ignore: avoid_print
     print('Module folder lib/modules/$moduleName does not exist.');
   }
 }

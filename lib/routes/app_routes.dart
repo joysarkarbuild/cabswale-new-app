@@ -1,4 +1,5 @@
 abstract class Routes {
+  static const otp = _Paths.otp;
   static const home = _Paths.home;
   static const splash = _Paths.splash;
   static const login = _Paths.login;
@@ -6,6 +7,7 @@ abstract class Routes {
 }
 
 abstract class _Paths {
+  static const otp = '/otp';
   static const home = '/home';
   static const splash = '/';
   static const login = '/login';
@@ -13,6 +15,7 @@ abstract class _Paths {
 }
 
 abstract class _Names {
+  static const otp = 'otp';
   static const home = 'home';
   static const splash = 'splash';
   static const login = 'login';
@@ -20,6 +23,7 @@ abstract class _Names {
 }
 
 abstract class Names {
+  static const otp = _Names.otp;
   static const home = _Names.home;
   static const splash = _Names.splash;
   static const login = _Names.login;
