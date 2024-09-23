@@ -1,3 +1,9 @@
+import 'package:cabswalle/modules/profile/screen/profile_view.dart';
+import 'package:cabswalle/modules/deals/screen/deals_view.dart';
+import 'package:cabswalle/modules/community/screen/community_view.dart';
+import 'package:cabswalle/modules/location/screen/location_view.dart';
+import 'package:cabswalle/modules/home/screen/home_view.dart';
+import 'package:cabswalle/modules/navbar/screen/navbar_view.dart';
 import 'package:cabswalle/modules/otp/screen/otp_view.dart';
 import 'package:cabswalle/modules/login/screen/login_view.dart';
 import 'package:cabswalle/modules/splash/screen/splash_view.dart';
@@ -9,11 +15,42 @@ final router = GoRouter(
   initialLocation: '/',
   routes: [
     GoRoute(
+      name: Names.profile,
+      path: Routes.profile,
+      builder: (context, state) => const ProfileScreen(),
+    ),
+    GoRoute(
+      name: Names.deals,
+      path: Routes.deals,
+      builder: (context, state) => const DealsScreen(),
+    ),
+    GoRoute(
+      name: Names.community,
+      path: Routes.community,
+      builder: (context, state) => const CommunityScreen(),
+    ),
+    GoRoute(
+      name: Names.location,
+      path: Routes.location,
+      builder: (context, state) => const LocationScreen(),
+    ),
+    GoRoute(
+      name: Names.home,
+      path: Routes.home,
+      builder: (context, state) => const HomeScreen(),
+    ),
+    GoRoute(
+      name: Names.navbar,
+      path: Routes.navbar,
+      builder: (context, state) => NavbarScreen(),
+    ),
+    GoRoute(
       name: Names.otp,
       path: Routes.otp,
-      builder: (context, state) => const OtpScreen(),
+      builder: (context, state) => OtpScreen(
+        phoneNo: state.extra as String,
+      ),
     ),
-
     GoRoute(
       name: Names.splash,
       path: Routes.splash,

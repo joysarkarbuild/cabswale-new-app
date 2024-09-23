@@ -1,15 +1,60 @@
 import 'package:cabswalle/constants/assets.dart';
 import 'package:cabswalle/core/app_colors.dart';
 import 'package:cabswalle/core/screen_responsive.dart';
+import 'package:cabswalle/modules/login/data/login_data_pepository.dart';
 import 'package:cabswalle/routes/app_routes.dart';
+import 'package:cabswalle/services/loading_overlay_service.dart';
+import 'package:cabswalle/services/snackbar_service.dart';
 import 'package:cabswalle/widgets/my_text_form_field.dart';
 import 'package:cabswalle/widgets/submit_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController _phoneNoController = TextEditingController();
+  final _otplessRepository = OtplessRepository();
+
+  void onHeadlessResult(dynamic result) {
+    if (result['statusCode'] == 200) {
+      LoadingOverlay().hide();
+      switch (result['responseType'] as String) {
+        case 'INITIATE':
+          {
+            context.goNamed(Names.otp, extra: _phoneNoController.text.trim());
+          }
+          break;
+        default:
+          {
+            SnackbarUtils.showErrorSnackBar(message: "Something Went Wrong!");
+          }
+          break;
+      }
+    } else {
+      LoadingOverlay().hide();
+      SnackbarUtils.showErrorSnackBar(message: "Something Went Wrong!");
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _otplessRepository.setHeadlessCallback(onHeadlessResult);
+  }
+
+  void sendLoginRequest() {
+    final phoneNo = _phoneNoController.text.trim();
+    LoadingOverlay().show(context);
+    _otplessRepository.sendOtp(
+        phoneNo: phoneNo, onHeadlessResult: onHeadlessResult);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +75,7 @@ class LoginScreen extends StatelessWidget {
               ),
               Form(
                 child: MyTextFormField(
-                  // textEditingController: _phoneNoController,
+                  textEditingController: _phoneNoController,
                   label: AppLocalizations.of(context)!.enterphoneNo,
                   keyboardType: TextInputType.phone,
                   prefixicon: Container(
@@ -59,7 +104,7 @@ class LoginScreen extends StatelessWidget {
               ),
               SubmitButton(
                   onTap: () {
-                    context.push(Routes.otp);
+                    sendLoginRequest();
                   },
                   isAtBottom: true,
                   lable: AppLocalizations.of(context)!.login)

@@ -1,5 +1,7 @@
+import 'package:cabswalle/modules/navbar/bloc/navbar_bloc.dart';
 import 'package:cabswalle/modules/splash/bloc/splash_bloc.dart';
 import 'package:cabswalle/routes/app_pages.dart';
+import 'package:cabswalle/services/snackbar_service.dart';
 import 'package:flutter/material.dart';
 import 'package:cabswalle/l10n/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -16,8 +18,12 @@ class MyApp extends StatelessWidget {
         BlocProvider<SplashBloc>(
           create: (BuildContext context) => SplashBloc(),
         ),
+        BlocProvider(
+          create: (context) => NavbarBloc(),
+        ),
       ],
       child: MaterialApp.router(
+        scaffoldMessengerKey: SnackbarUtils.snackbarKey,
         routerConfig: router,
         debugShowCheckedModeBanner: false,
         title: 'Cabswale',

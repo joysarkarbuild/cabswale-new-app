@@ -1,13 +1,137 @@
 import 'package:cabswalle/core/app_colors.dart';
 import 'package:cabswalle/core/app_text_styles.dart';
+import 'package:cabswalle/modules/login/data/login_data_pepository.dart';
 import 'package:cabswalle/modules/login/screen/login_view.dart';
+import 'package:cabswalle/routes/app_routes.dart';
+import 'package:cabswalle/services/loading_overlay_service.dart';
+import 'package:cabswalle/services/snackbar_service.dart';
 import 'package:cabswalle/widgets/submit_button.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pinput/pinput.dart';
+import 'dart:async';
 
-class OtpScreen extends StatelessWidget {
-  const OtpScreen({super.key});
+class OtpScreen extends StatefulWidget {
+  final String phoneNo;
+
+  const OtpScreen({super.key, required this.phoneNo});
+
+  @override
+  State<OtpScreen> createState() => _OtpScreenState();
+}
+
+class _OtpScreenState extends State<OtpScreen> {
+  final TextEditingController _otpController = TextEditingController();
+  final OtplessRepository _otplessRepository =
+      OtplessRepository(); // Initialize OtplessRepository
+
+  int _timerValue = 30; // Timer countdown value
+  bool _canResendOtp = false;
+  Timer? _timer;
+
+  @override
+  void initState() {
+    super.initState();
+    startTimer();
+    _otplessRepository.setHeadlessCallback(onHeadlessResult); // Set callback
+  }
+
+  @override
+  void dispose() {
+    _otpController.dispose();
+    _timer?.cancel(); // Dispose the timer
+    super.dispose();
+  }
+
+  void startTimer() {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (_timerValue > 0) {
+        setState(() {
+          _timerValue--;
+        });
+      } else {
+        setState(() {
+          _canResendOtp = true; // Enable resend OTP button after countdown
+          _timer?.cancel();
+        });
+      }
+    });
+  }
+
+  void resendOtp() async {
+    LoadingOverlay().show(context);
+    final phoneNo = widget.phoneNo.trim();
+    // Call resend OTP API
+    setState(() {
+      _timerValue = 30; // Reset timer
+      _canResendOtp = false; // Disable resend button
+    });
+    startTimer();
+
+    // Resend OTP using the repository
+    _otplessRepository.sendOtp(
+        onHeadlessResult: onHeadlessResultResend, phoneNo: phoneNo);
+  }
+
+  void onHeadlessResultResend(dynamic result) {
+    if (result['statusCode'] == 200) {
+      LoadingOverlay().hide();
+      switch (result['responseType'] as String) {
+        case 'INITIATE':
+          {
+            SnackbarUtils.showSuccessSnackBar(
+                message: "OTP Sent Successfully!");
+          }
+          break;
+        default:
+          {
+            SnackbarUtils.showErrorSnackBar(message: "Something Went Wrong!");
+          }
+          break;
+      }
+    } else {
+      LoadingOverlay().hide();
+      SnackbarUtils.showErrorSnackBar(message: "Something Went Wrong!");
+    }
+  }
+
+  void onHeadlessResult(dynamic result) {
+    if (result['statusCode'] == 200) {
+      LoadingOverlay().hide();
+      switch (result['responseType'] as String) {
+        case 'VERIFY':
+          {
+            context.push(Routes.navbar); // Navigate to the next screen
+          }
+          break;
+        default:
+          break;
+      }
+    } else {
+      LoadingOverlay().hide();
+      SnackbarUtils.showErrorSnackBar(message: "Incorrect OTP!");
+    }
+  }
+
+  void verifyOtp() {
+    LoadingOverlay().show(context);
+    final otp = _otpController.text.trim();
+    final phoneNo = widget.phoneNo.trim();
+
+    if (otp.length == 6) {
+      // Call OTP verification logic from the repository
+      _otplessRepository.verifyOtp(
+        phoneNo: phoneNo,
+        otp: otp,
+        onHeadlessResult: onHeadlessResult,
+      );
+    } else {
+      LoadingOverlay().hide();
+      SnackbarUtils.showErrorSnackBar(message: "Invalid OTP!");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,53 +147,66 @@ class OtpScreen extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
+              // Dynamic phone number display
               Text(
-                "${AppLocalizations.of(context)!.otpverification} 9064983473", //need to chane here
-                // 'We have sent verification code to $phoneNo',
+                "${AppLocalizations.of(context)!.otpverification} +91-${widget.phoneNo}",
                 style: AppTextStyles.style15w500(),
               ),
               const SizedBox(
                 height: 15,
               ),
+              // OTP input using Pinput
               Pinput(
                 length: 6,
+                controller: _otpController,
                 defaultPinTheme: PinTheme(
-                    height: 50,
-                    width: 50,
-                    decoration: BoxDecoration(
-                        border: Border.all(color: AppColors.myBlack45),
-                        borderRadius: BorderRadius.circular(5))),
+                  height: 50,
+                  width: 50,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: AppColors.myBlack45),
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                ),
               ),
               const SizedBox(
                 height: 15,
               ),
               RichText(
                 text: TextSpan(
-                    text: AppLocalizations.of(context)!.didntgetCode,
-                    style: AppTextStyles.style16w600(),
-                    children: [
-                      // if (auth.timerValue > 0)
+                  text: AppLocalizations.of(context)!.didntgetCode,
+                  style: AppTextStyles.style13w600(),
+                  children: [
+                    if (_timerValue > 0)
                       TextSpan(
-                          text:
-                              " ${AppLocalizations.of(context)!.resendOTP} in 30 sec",
-                          style: const TextStyle(
-                              color: AppColors.myprimaryColor, fontSize: 16)),
-                      // if (auth.timerValue == 0)
-
-                      // TextSpan(
-                      //     text: " ${AppLocalizations.of(context)!.sendOTP}",
-                      //     style: const TextStyle(
-                      //         color: AppColors.myprimaryColor, fontSize: 16),
-                      //     recognizer: TapGestureRecognizer()..onTap = () {})
-                    ]),
+                        text:
+                            " ${AppLocalizations.of(context)!.resendOTP} in $_timerValue seconds",
+                        style: const TextStyle(
+                          color: AppColors.myprimaryColor,
+                          fontSize: 14,
+                        ),
+                      ),
+                    if (_canResendOtp)
+                      TextSpan(
+                        text: " ${AppLocalizations.of(context)!.resendOTP}",
+                        style: const TextStyle(
+                          color: AppColors.myprimaryColor,
+                          fontSize: 16,
+                        ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = resendOtp, // Handle OTP resend
+                      ),
+                  ],
+                ),
               ),
               const SizedBox(
                 height: 20,
               ),
+              // Submit button to verify OTP
               SubmitButton(
-                  onTap: () {},
-                  isAtBottom: true,
-                  lable: AppLocalizations.of(context)!.verifyotp)
+                onTap: verifyOtp,
+                isAtBottom: true,
+                lable: AppLocalizations.of(context)!.verifyotp,
+              ),
             ],
           ),
         ),

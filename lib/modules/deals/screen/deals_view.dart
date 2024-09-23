@@ -1,0 +1,17 @@
+import 'package:flutter/material.dart';
+
+class DealsScreen extends StatelessWidget {
+  const DealsScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Deals Screen'),
+      ),
+      body: const Center(
+        child: Text('Welcome to deals screen!'),
+      ),
+    );
+  }
+}
