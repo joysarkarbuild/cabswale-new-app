@@ -52,7 +52,11 @@ class NavbarScreen extends StatelessWidget {
                 'icon': Assets.iconsDeal,
                 'label': 'Deals',
               },
-              {'icon': Assets.iconsProfile, 'label': 'Profile'},
+              {
+                'icon': Assets.iconsProfile,
+                'label': 'Profile',
+                "iconSize": 18.0
+              },
             ].map((item) {
               return BottomNavBarItem(
                 iconSize: item["iconSize"] ?? 20,
@@ -64,10 +68,12 @@ class NavbarScreen extends StatelessWidget {
                 activeIcon: SvgPicture.asset(
                   item['icon']!.toString(),
                   height: 20,
-                  colorFilter: const ColorFilter.mode(
-                    AppColors.myprimaryColor,
-                    BlendMode.srcIn,
-                  ),
+                  colorFilter: item['icon']!.toString().contains("community")
+                      ? null
+                      : const ColorFilter.mode(
+                          AppColors.myprimaryColor,
+                          BlendMode.srcIn,
+                        ),
                 ),
                 label: item['label'].toString(),
               );

@@ -106,6 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   onTap: () {
                     sendLoginRequest();
                   },
+                  borderRadius: 5,
                   isAtBottom: true,
                   lable: AppLocalizations.of(context)!.login)
             ],

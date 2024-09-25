@@ -1,3 +1,7 @@
+import 'package:cabswalle/modules/addlead/screen/addlead_view.dart';
+import 'package:cabswalle/modules/filterleads/screen/filterleads_view.dart';
+import 'package:cabswalle/modules/cityPreferences/screen/city_preferences_view.dart';
+import 'package:cabswalle/modules/myleads/screen/myleads_view.dart';
 import 'package:cabswalle/modules/profile/screen/profile_view.dart';
 import 'package:cabswalle/modules/deals/screen/deals_view.dart';
 import 'package:cabswalle/modules/community/screen/community_view.dart';
@@ -14,6 +18,28 @@ import 'package:go_router/go_router.dart';
 final router = GoRouter(
   initialLocation: '/',
   routes: [
+    GoRoute(
+      name: Names.myleads,
+      path: Routes.myleads,
+      builder: (context, state) => const MyLeadsScreen(),
+    ),
+    GoRoute(
+      name: Names.addlead,
+      path: Routes.addlead,
+      builder: (context, state) => const AddLeadScreen(),
+    ),
+    GoRoute(
+      name: Names.filterleads,
+      path: Routes.filterleads,
+      builder: (context, state) => const FilterLeadsScreen(
+        city: "Kolkata",
+      ),
+    ),
+    GoRoute(
+      name: Names.cityPreferences,
+      path: Routes.cityPreferences,
+      builder: (context, state) => const CityPreferencesScreen(),
+    ),
     GoRoute(
       name: Names.profile,
       path: Routes.profile,

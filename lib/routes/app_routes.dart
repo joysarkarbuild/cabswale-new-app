@@ -1,4 +1,8 @@
 abstract class Routes {
+  static const myleads = _Paths.myleads;
+  static const addlead = _Paths.addlead;
+  static const filterleads = _Paths.filterleads;
+  static const cityPreferences = _Paths.cityPreferences;
   static const verifyOtp = _Paths.verifyOtp;
   static const profile = _Paths.profile;
   static const deals = _Paths.deals;
@@ -14,6 +18,10 @@ abstract class Routes {
 }
 
 abstract class _Paths {
+  static const myleads = '/myleads';
+  static const addlead = '/addlead';
+  static const filterleads = '/filterleads';
+  static const cityPreferences = '/cityPreferences';
   static const verifyOtp = '/verifyOtp';
   static const profile = '/profile';
   static const deals = '/deals';
@@ -29,6 +37,10 @@ abstract class _Paths {
 }
 
 abstract class _Names {
+  static const myleads = 'myleads';
+  static const addlead = 'addlead';
+  static const filterleads = 'filterleads';
+  static const cityPreferences = 'cityPreferences';
   static const verifyOtp = 'verifyOtp';
   static const profile = 'profile';
   static const deals = 'deals';
@@ -44,6 +56,10 @@ abstract class _Names {
 }
 
 abstract class Names {
+  static const myleads = _Names.myleads;
+  static const addlead = _Names.addlead;
+  static const filterleads = _Names.filterleads;
+  static const cityPreferences = _Names.cityPreferences;
   static const verifyOtp = _Names.verifyOtp;
   static const profile = _Names.profile;
   static const deals = _Names.deals;

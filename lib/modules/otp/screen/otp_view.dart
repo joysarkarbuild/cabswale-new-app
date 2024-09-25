@@ -205,6 +205,7 @@ class _OtpScreenState extends State<OtpScreen> {
               SubmitButton(
                 onTap: verifyOtp,
                 isAtBottom: true,
+                borderRadius: 5,
                 lable: AppLocalizations.of(context)!.verifyotp,
               ),
             ],
