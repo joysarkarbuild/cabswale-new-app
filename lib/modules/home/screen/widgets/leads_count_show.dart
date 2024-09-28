@@ -48,7 +48,7 @@ class ShowLeadCounts extends StatelessWidget {
                     child: Text(
                       "Today's Leads",
                       style:
-                          AppTextStyles.style15w700(color: AppColors.myWhite),
+                          AppTextStyles.style14w700(color: AppColors.myWhite),
                     ),
                   ),
                   Padding(
@@ -94,7 +94,7 @@ class ShowLeadCounts extends StatelessWidget {
                     child: Text(
                       "Week's Leads",
                       style:
-                          AppTextStyles.style15w700(color: AppColors.myWhite),
+                          AppTextStyles.style14w700(color: AppColors.myWhite),
                     ),
                   ),
                   Padding(

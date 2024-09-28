@@ -26,9 +26,21 @@ class Assets {
   /// assets/icons/community.svg
   static const String iconsCommunity = "assets/icons/community.svg";
 
+  /// Assets for iconsConnections
+  /// assets/icons/connections.svg
+  static const String iconsConnections = "assets/icons/connections.svg";
+
   /// Assets for iconsDeal
   /// assets/icons/deal.svg
   static const String iconsDeal = "assets/icons/deal.svg";
+
+  /// Assets for iconsDriversList
+  /// assets/icons/drivers-list.svg
+  static const String iconsDriversList = "assets/icons/drivers-list.svg";
+
+  /// Assets for iconsEmergency
+  /// assets/icons/emergency.svg
+  static const String iconsEmergency = "assets/icons/emergency.svg";
 
   /// Assets for iconsExchange
   /// assets/icons/exchange.svg
@@ -42,6 +54,10 @@ class Assets {
   /// assets/icons/home.svg
   static const String iconsHome = "assets/icons/home.svg";
 
+  /// Assets for iconsLoan
+  /// assets/icons/loan.svg
+  static const String iconsLoan = "assets/icons/loan.svg";
+
   /// Assets for iconsLocation
   /// assets/icons/location.svg
   static const String iconsLocation = "assets/icons/location.svg";
@@ -50,9 +66,29 @@ class Assets {
   /// assets/icons/myleads.svg
   static const String iconsMyleads = "assets/icons/myleads.svg";
 
+  /// Assets for iconsNearby
+  /// assets/icons/nearby.svg
+  static const String iconsNearby = "assets/icons/nearby.svg";
+
+  /// Assets for iconsOffer
+  /// assets/icons/offer.svg
+  static const String iconsOffer = "assets/icons/offer.svg";
+
+  /// Assets for iconsPartner
+  /// assets/icons/partner.svg
+  static const String iconsPartner = "assets/icons/partner.svg";
+
+  /// Assets for iconsProblem
+  /// assets/icons/problem.svg
+  static const String iconsProblem = "assets/icons/problem.svg";
+
   /// Assets for iconsProfile
   /// assets/icons/profile.svg
   static const String iconsProfile = "assets/icons/profile.svg";
+
+  /// Assets for iconsReferAndEarn
+  /// assets/icons/refer_and_earn.svg
+  static const String iconsReferAndEarn = "assets/icons/refer_and_earn.svg";
 
   /// Assets for iconsSwap
   /// assets/icons/swap.svg
@@ -61,6 +97,22 @@ class Assets {
   /// Assets for iconsTodaysLeads
   /// assets/icons/todays_leads.svg
   static const String iconsTodaysLeads = "assets/icons/todays_leads.svg";
+
+  /// Assets for iconsTopLocations
+  /// assets/icons/top_locations.svg
+  static const String iconsTopLocations = "assets/icons/top_locations.svg";
+
+  /// Assets for iconsVerifyAccount
+  /// assets/icons/verify_account.svg
+  static const String iconsVerifyAccount = "assets/icons/verify_account.svg";
+
+  /// Assets for iconsVideos
+  /// assets/icons/videos.svg
+  static const String iconsVideos = "assets/icons/videos.svg";
+
+  /// Assets for iconsWallet
+  /// assets/icons/wallet.svg
+  static const String iconsWallet = "assets/icons/wallet.svg";
 
   /// Assets for iconsWeeksLeads
   /// assets/icons/weeks_leads.svg

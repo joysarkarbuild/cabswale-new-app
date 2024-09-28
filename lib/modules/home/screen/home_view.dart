@@ -36,7 +36,7 @@ class HomeScreen extends StatelessWidget {
                     },
                     lable: AppLocalizations.of(context)!.myLeads,
                     height: 46,
-                    width: context.screenWidth * 0.452,
+                    width: context.screenWidth * 0.45,
                     icon: SvgPicture.asset(
                       Assets.iconsMyleads,
                       height: 20,
@@ -49,7 +49,7 @@ class HomeScreen extends StatelessWidget {
                     },
                     lable: AppLocalizations.of(context)!.addLeads,
                     height: 46,
-                    width: context.screenWidth * 0.452,
+                    width: context.screenWidth * 0.45,
                     icon: const Icon(
                       Icons.add,
                       color: Colors.white,
@@ -118,7 +118,7 @@ class HomeScreen extends StatelessWidget {
                     lable: "5 Locations Alerts",
                     height: 42,
                     labelsize: 15,
-                    width: context.screenWidth * 0.452,
+                    width: context.screenWidth * 0.45,
                     borderRadius: 2,
                   ),
                   SubmitButton(
@@ -128,7 +128,7 @@ class HomeScreen extends StatelessWidget {
                     lable: "Your Location Duties",
                     labelsize: 15,
                     height: 42,
-                    width: context.screenWidth * 0.452,
+                    width: context.screenWidth * 0.45,
                     borderRadius: 2,
                   )
                 ],
@@ -216,7 +216,7 @@ class HomeScreen extends StatelessWidget {
                           onTap: () {},
                           child: SizedBox(
                             height: 50,
-                            width: MediaQuery.of(context).size.width * 0.296,
+                            width: MediaQuery.of(context).size.width * 0.29,
                             child: ShowImage(
                                 boxFit: BoxFit.contain,
                                 imagelink: TextData.leadTypeData[lead]
