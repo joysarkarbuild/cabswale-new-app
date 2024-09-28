@@ -6,6 +6,10 @@ class Assets {
   /// assets/animations/update.json
   static const String animationsUpdate = "assets/animations/update.json";
 
+  /// Assets for iconsAddLeads
+  /// assets/icons/add_leads.svg
+  static const String iconsAddLeads = "assets/icons/add_leads.svg";
+
   /// Assets for iconsAvailable
   /// assets/icons/available.svg
   static const String iconsAvailable = "assets/icons/available.svg";
@@ -13,6 +17,10 @@ class Assets {
   /// Assets for iconsAvailableFilled
   /// assets/icons/available-filled.svg
   static const String iconsAvailableFilled = "assets/icons/available-filled.svg";
+
+  /// Assets for iconsCalls
+  /// assets/icons/calls.svg
+  static const String iconsCalls = "assets/icons/calls.svg";
 
   /// Assets for iconsCommission
   /// assets/icons/commission.svg
@@ -33,6 +41,10 @@ class Assets {
   /// Assets for iconsDeal
   /// assets/icons/deal.svg
   static const String iconsDeal = "assets/icons/deal.svg";
+
+  /// Assets for iconsDealMain
+  /// assets/icons/deal_main.svg
+  static const String iconsDealMain = "assets/icons/deal_main.svg";
 
   /// Assets for iconsDriversList
   /// assets/icons/drivers-list.svg
@@ -61,6 +73,10 @@ class Assets {
   /// Assets for iconsLocation
   /// assets/icons/location.svg
   static const String iconsLocation = "assets/icons/location.svg";
+
+  /// Assets for iconsMyLead
+  /// assets/icons/my_lead.svg
+  static const String iconsMyLead = "assets/icons/my_lead.svg";
 
   /// Assets for iconsMyleads
   /// assets/icons/myleads.svg
