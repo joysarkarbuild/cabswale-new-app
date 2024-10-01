@@ -1,20 +1,33 @@
+import 'package:dio/dio.dart';
 import 'package:cabswalle/modules/splash/data/models/app_data_model.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AppDataRepository {
-  final FirebaseFirestore _firestore;
+  final Dio _dio;
 
-  AppDataRepository({FirebaseFirestore? firestore})
-      : _firestore = firestore ?? FirebaseFirestore.instance;
+  AppDataRepository({Dio? dio}) : _dio = dio ?? Dio();
 
   Future<AppDataModel> fetchAppVersion() async {
     try {
-      DocumentSnapshot documentSnapshot =
-          await _firestore.collection('settings').doc('app').get();
-      return AppDataModel.fromJson(
-          documentSnapshot.data() as Map<String, dynamic>);
+      final response = await _dio.get(
+        'https://us-central1-cabswale-dev.cloudfunctions.net/settings-getSettingsDoc',
+        queryParameters: {
+          'docId': "app",
+        },
+      );
+
+      if (response.statusCode == 200) {
+        print("app data res ${response.data}");
+        return AppDataModel.fromJson(response.data as Map<String, dynamic>);
+      } else {
+        throw Exception(
+            'Failed to fetch app data. Status code: ${response.statusCode}');
+      }
+    } on DioException catch (dioError) {
+      // Handle Dio-specific exceptions
+      throw Exception('Error fetching app data: ${dioError.message}');
     } catch (e) {
-      throw Exception('Error fetching app data: $e');
+      // Handle any other errors
+      throw Exception('Unexpected error fetching app data: $e');
     }
   }
 }

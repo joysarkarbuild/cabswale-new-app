@@ -2,6 +2,7 @@ import 'package:cabswalle/core/app_colors.dart';
 import 'package:cabswalle/core/app_text_styles.dart';
 import 'package:cabswalle/modules/login/data/login_data_pepository.dart';
 import 'package:cabswalle/modules/login/screen/login_view.dart';
+import 'package:cabswalle/modules/otp/data/otp_data_repo.dart';
 import 'package:cabswalle/routes/app_routes.dart';
 import 'package:cabswalle/services/loading_overlay_service.dart';
 import 'package:cabswalle/services/snackbar_service.dart';
@@ -77,7 +78,6 @@ class _OtpScreenState extends State<OtpScreen> {
 
   void onHeadlessResultResend(dynamic result) {
     if (result['statusCode'] == 200) {
-      LoadingOverlay().hide();
       switch (result['responseType'] as String) {
         case 'INITIATE':
           {
@@ -97,13 +97,29 @@ class _OtpScreenState extends State<OtpScreen> {
     }
   }
 
-  void onHeadlessResult(dynamic result) {
+  void onHeadlessResult(dynamic result) async {
     if (result['statusCode'] == 200) {
-      LoadingOverlay().hide();
       switch (result['responseType'] as String) {
         case 'VERIFY':
+          {}
+        case 'ONETAP':
           {
-            context.push(Routes.navbar); // Navigate to the next screen
+            try {
+              var response = await OtpDataRepo.auth(
+                  idToken: result["response"]["idToken"],
+                  authId: result["response"]["userId"]);
+              LoadingOverlay().hide();
+              if (response["status"]) {
+                print("server res $response");
+                gotoNavbar();
+              } else {
+                SnackbarUtils.showErrorSnackBar(
+                    message: "Something went wrong!");
+              }
+            } catch (e) {
+              LoadingOverlay().hide();
+              SnackbarUtils.showErrorSnackBar(message: e.toString());
+            } // Navigate to the next screen
           }
           break;
         default:
@@ -113,6 +129,10 @@ class _OtpScreenState extends State<OtpScreen> {
       LoadingOverlay().hide();
       SnackbarUtils.showErrorSnackBar(message: "Incorrect OTP!");
     }
+  }
+
+  void gotoNavbar() {
+    context.goNamed(Names.navbar);
   }
 
   void verifyOtp() {

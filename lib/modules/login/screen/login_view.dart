@@ -31,6 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
             context.goNamed(Names.otp, extra: _phoneNoController.text.trim());
           }
           break;
+
         default:
           {
             SnackbarUtils.showErrorSnackBar(message: "Something Went Wrong!");
