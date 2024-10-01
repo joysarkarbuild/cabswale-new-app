@@ -1,30 +1,45 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 class AppDataModel {
+  final String id;
   final String appStoreUrl;
-  final int appVersion;
-  final DateTime createdAt;
-  final bool forceUpdate;
   final String playStoreUrl;
   final String policy;
+  final int appVersion;
+  final int iosVersion;
+  final bool forceUpdate;
 
   AppDataModel({
+    required this.id,
     required this.appStoreUrl,
-    required this.appVersion,
-    required this.createdAt,
-    required this.forceUpdate,
     required this.playStoreUrl,
     required this.policy,
+    required this.appVersion,
+    required this.iosVersion,
+    required this.forceUpdate,
   });
 
-  factory AppDataModel.fromJson(Map<String, dynamic> data) {
+  // Factory constructor to create an instance from JSON
+  factory AppDataModel.fromJson(Map<String, dynamic> json) {
     return AppDataModel(
-      appStoreUrl: data['appStoreUrl'] as String? ?? '',
-      appVersion: data['appVersion'] as int? ?? 0,
-      createdAt: (data['createdAt'] as Timestamp).toDate(),
-      forceUpdate: data['forceUpdate'] as bool? ?? false,
-      playStoreUrl: data['playStoreUrl'] as String? ?? '',
-      policy: data['policy'] as String? ?? '',
+      id: json['_id'] ?? '',
+      appStoreUrl: json['appStoreUrl'] ?? '',
+      playStoreUrl: json['playStoreUrl'] ?? '',
+      policy: json['policy'] ?? '',
+      appVersion: json['appVersion'] ?? 0,
+      iosVersion: json['iosVersion'] ?? 0,
+      forceUpdate: json['forceUpdate'] ?? false,
     );
+  }
+
+  // Method to convert the instance to JSON
+  Map<String, dynamic> toJson() {
+    return {
+      '_id': id,
+      'appStoreUrl': appStoreUrl,
+      'playStoreUrl': playStoreUrl,
+      'policy': policy,
+      'appVersion': appVersion,
+      'iosVersion': iosVersion,
+      'forceUpdate': forceUpdate,
+    };
   }
 }

@@ -8,16 +8,19 @@ class AppDataRepository {
 
   Future<AppDataModel> fetchAppVersion() async {
     try {
-      final response = await _dio.get(
-        'https://us-central1-cabswale-dev.cloudfunctions.net/settings-getSettingsDoc',
-        queryParameters: {
-          'docId': "app",
-        },
-      );
+      final response = await _dio.post(
+          'https://us-central1-cabswale-dev.cloudfunctions.net/settings-getSettingsDoc',
+          queryParameters: {
+            'docId': "app",
+          },
+          data: {
+            'docId': "app",
+          });
 
       if (response.statusCode == 200) {
         print("app data res ${response.data}");
-        return AppDataModel.fromJson(response.data as Map<String, dynamic>);
+        return AppDataModel.fromJson(
+            response.data["data"] as Map<String, dynamic>);
       } else {
         throw Exception(
             'Failed to fetch app data. Status code: ${response.statusCode}');

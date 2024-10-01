@@ -5,7 +5,7 @@ import 'package:cabswalle/modules/splash/data/models/app_data_model.dart';
 import 'package:cabswalle/modules/splash/data/repository/app_data_repository.dart';
 import 'package:url_launcher/url_launcher.dart'; // Import the model
 
-int appVersion = 27; // Always need to change when we pushing new version
+int appVersion = 28; // Always need to change when we pushing new version $$
 
 class SplashBloc extends Bloc<SplashEvent, SplashState> {
   SplashBloc() : super(SplashInitial()) {
