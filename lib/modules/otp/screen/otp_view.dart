@@ -110,7 +110,6 @@ class _OtpScreenState extends State<OtpScreen> {
                   authId: result["response"]["userId"]);
               LoadingOverlay().hide();
               if (response["status"]) {
-                print("server res $response");
                 gotoNavbar();
               } else {
                 SnackbarUtils.showErrorSnackBar(

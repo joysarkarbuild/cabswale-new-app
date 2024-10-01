@@ -1,4 +1,7 @@
 abstract class Routes {
+  static const extraBenifits = _Paths.extraBenifits;
+  static const productDetails = _Paths.productDetails;
+  static const wallet = _Paths.wallet;
   static const myleads = _Paths.myleads;
   static const addlead = _Paths.addlead;
   static const filterleads = _Paths.filterleads;
@@ -18,6 +21,9 @@ abstract class Routes {
 }
 
 abstract class _Paths {
+  static const extraBenifits = '/extraBenifits';
+  static const productDetails = '/productDetails';
+  static const wallet = '/wallet';
   static const myleads = '/myleads';
   static const addlead = '/addlead';
   static const filterleads = '/filterleads';
@@ -37,6 +43,9 @@ abstract class _Paths {
 }
 
 abstract class _Names {
+  static const extraBenifits = 'extraBenifits';
+  static const productDetails = 'productDetails';
+  static const wallet = 'wallet';
   static const myleads = 'myleads';
   static const addlead = 'addlead';
   static const filterleads = 'filterleads';
@@ -56,6 +65,9 @@ abstract class _Names {
 }
 
 abstract class Names {
+  static const extraBenifits = _Names.extraBenifits;
+  static const productDetails = _Names.productDetails;
+  static const wallet = _Names.wallet;
   static const myleads = _Names.myleads;
   static const addlead = _Names.addlead;
   static const filterleads = _Names.filterleads;

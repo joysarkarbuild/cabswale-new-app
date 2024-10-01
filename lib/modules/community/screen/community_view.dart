@@ -1,7 +1,9 @@
 import 'package:cabswalle/constants/assets.dart';
 import 'package:cabswalle/core/app_colors.dart';
+import 'package:cabswalle/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class CommunityScreen extends StatelessWidget {
@@ -15,13 +17,17 @@ class CommunityScreen extends StatelessWidget {
       {
         "label": "Wallet",
         "icon": Assets.iconsWallet,
-        "onTap": () {},
+        "onTap": () {
+          context.pushNamed(Names.wallet);
+        },
         "key": "wallet"
       },
       {
         "label": "Extra Benefits",
         "icon": Assets.iconsOffer,
-        "onTap": () {},
+        "onTap": () {
+          context.pushNamed(Names.extraBenifits);
+        },
         "key": "extraIncome"
       },
       {
@@ -181,7 +187,7 @@ class CommunityScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           SvgPicture.asset(
-                            "assets/community_icons/problem.svg",
+                            Assets.iconsProblem,
                             height: 40,
                           ),
                           const Padding(

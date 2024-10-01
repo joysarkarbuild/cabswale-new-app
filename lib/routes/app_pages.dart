@@ -1,3 +1,6 @@
+import 'package:cabswalle/modules/extraBenifits/screen/extra_benifits_view.dart';
+import 'package:cabswalle/modules/productDetails/screen/product_details_view.dart';
+import 'package:cabswalle/modules/wallet/screen/wallet_view.dart';
 import 'package:cabswalle/modules/addlead/screen/addlead_view.dart';
 import 'package:cabswalle/modules/filterleads/screen/filterleads_view.dart';
 import 'package:cabswalle/modules/cityPreferences/screen/city_preferences_view.dart';
@@ -18,6 +21,21 @@ import 'package:go_router/go_router.dart';
 final router = GoRouter(
   initialLocation: '/',
   routes: [
+    GoRoute(
+      name: Names.extraBenifits,
+      path: Routes.extraBenifits,
+      builder: (context, state) => const ExtraBenifitsScreen(),
+    ),
+    GoRoute(
+      name: Names.productDetails,
+      path: Routes.productDetails,
+      builder: (context, state) => const ProductDetailsScreen(),
+    ),
+    GoRoute(
+      name: Names.wallet,
+      path: Routes.wallet,
+      builder: (context, state) => const WalletScreen(),
+    ),
     GoRoute(
       name: Names.myleads,
       path: Routes.myleads,
@@ -80,7 +98,7 @@ final router = GoRouter(
     GoRoute(
       name: Names.splash,
       path: Routes.splash,
-      builder: (context, state) => const SplashScreen(),
+      builder: (context, state) => NavbarScreen(),
     ),
     GoRoute(
       name: Names.login,
