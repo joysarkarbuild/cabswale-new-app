@@ -1,3 +1,14 @@
+import 'package:cabswalle/modules/verifyAccount/screen/verifyAccount_view.dart';
+import 'package:cabswalle/modules/emergency/screen/emergency_view.dart';
+import 'package:cabswalle/modules/topLocations/screen/topLocations_view.dart';
+import 'package:cabswalle/modules/referAndEarn/screen/referAndEarn_view.dart';
+import 'package:cabswalle/modules/videosFromRealDrivers/screen/videosFromRealDrivers_view.dart';
+import 'package:cabswalle/modules/partnerWithUs/screen/partner_with_us_view.dart';
+import 'package:cabswalle/modules/reportProblem/screen/report_problem_view.dart';
+import 'package:cabswalle/modules/nearbyPlace/screen/nearby_place_view.dart';
+import 'package:cabswalle/modules/nearbyDriver/screen/nearby_driver_view.dart';
+import 'package:cabswalle/modules/nearby/screen/nearby_view.dart';
+import 'package:cabswalle/modules/loan/screen/loan_view.dart';
 import 'package:cabswalle/modules/extraBenifits/screen/extra_benifits_view.dart';
 import 'package:cabswalle/modules/productDetails/screen/product_details_view.dart';
 import 'package:cabswalle/modules/wallet/screen/wallet_view.dart';
@@ -13,7 +24,6 @@ import 'package:cabswalle/modules/home/screen/home_view.dart';
 import 'package:cabswalle/modules/navbar/screen/navbar_view.dart';
 import 'package:cabswalle/modules/otp/screen/otp_view.dart';
 import 'package:cabswalle/modules/login/screen/login_view.dart';
-import 'package:cabswalle/modules/splash/screen/splash_view.dart';
 import 'package:cabswalle/routes/app_routes.dart';
 import 'package:go_router/go_router.dart';
 
@@ -21,6 +31,68 @@ import 'package:go_router/go_router.dart';
 final router = GoRouter(
   initialLocation: '/',
   routes: [
+    GoRoute(
+      name: Names.verifyAccount,
+      path: Routes.verifyAccount,
+      builder: (context, state) => const VerifyAccountScreen(),
+    ),
+
+    GoRoute(
+      name: Names.emergency,
+      path: Routes.emergency,
+      builder: (context, state) => const EmergencyScreen(),
+    ),
+
+    GoRoute(
+      name: Names.topLocations,
+      path: Routes.topLocations,
+      builder: (context, state) => const TopLocationsScreen(),
+    ),
+
+    GoRoute(
+      name: Names.referAndEarn,
+      path: Routes.referAndEarn,
+      builder: (context, state) => const ReferAndEarnScreen(),
+    ),
+
+    GoRoute(
+      name: Names.videosFromRealDrivers,
+      path: Routes.videosFromRealDrivers,
+      builder: (context, state) => const VideosFromRealDriversScreen(),
+    ),
+
+    GoRoute(
+      name: Names.partnerWithUs,
+      path: Routes.partnerWithUs,
+      builder: (context, state) => const PartnerWithUsScreen(),
+    ),
+    GoRoute(
+      name: Names.reportProblem,
+      path: Routes.reportProblem,
+      builder: (context, state) => const ReportProblemScreen(),
+    ),
+    GoRoute(
+      name: Names.nearbyPlace,
+      path: Routes.nearbyPlace,
+      builder: (context, state) => NearbyPlaceScreen(
+        typeOfPlace: state.extra as String,
+      ),
+    ),
+    GoRoute(
+      name: Names.nearbyDriver,
+      path: Routes.nearbyDriver,
+      builder: (context, state) => const NearbyDriverScreen(),
+    ),
+    GoRoute(
+      name: Names.nearby,
+      path: Routes.nearby,
+      builder: (context, state) => const NearbyScreen(),
+    ),
+    GoRoute(
+      name: Names.loan,
+      path: Routes.loan,
+      builder: (context, state) => const LoanScreen(),
+    ),
     GoRoute(
       name: Names.extraBenifits,
       path: Routes.extraBenifits,

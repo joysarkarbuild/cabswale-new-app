@@ -1,4 +1,3 @@
-// Import this to use Timerimport 'package:cabswalle/core/app_colors.dart';
 import 'package:cabswalle/core/app_colors.dart';
 import 'package:cabswalle/dummy/dummy_data.dart';
 import 'package:cabswalle/widgets/common_widget_componants.dart';

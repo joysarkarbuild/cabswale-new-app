@@ -33,7 +33,9 @@ class CommunityScreen extends StatelessWidget {
       {
         "label": "Loan",
         "icon": Assets.iconsLoan,
-        "onTap": () {},
+        "onTap": () {
+          context.pushNamed(Names.loan);
+        },
         "key": "loan"
       },
       {
@@ -45,13 +47,17 @@ class CommunityScreen extends StatelessWidget {
       {
         "label": "Nearby",
         "icon": Assets.iconsNearby,
-        "onTap": () {},
+        "onTap": () {
+          context.pushNamed(Names.nearby);
+        },
         "key": "nearby"
       },
       {
         "label": "Verify Account",
         "icon": Assets.iconsVerifyAccount,
-        "onTap": () {},
+        "onTap": () {
+          context.pushNamed(Names.verifyAccount);
+        },
         "key": "profile"
       },
       {
@@ -63,32 +69,42 @@ class CommunityScreen extends StatelessWidget {
       {
         "label": "Top Locations",
         "icon": Assets.iconsTopLocations,
-        "onTap": () {},
+        "onTap": () {
+          context.pushNamed(Names.topLocations);
+        },
         "key": "topLocations"
       },
       {
         "label": "Emergency Numbers",
         "icon": Assets.iconsEmergency,
         "key": "emergency",
-        "onTap": () {},
+        "onTap": () {
+          context.pushNamed(Names.emergency);
+        },
       },
       {
         "label": "Refer & Earn",
         "icon": Assets.iconsReferAndEarn,
         "key": "emergency",
-        "onTap": () {},
+        "onTap": () {
+          context.pushNamed(Names.referAndEarn);
+        },
       },
       {
         "label": "Videos From Real Drivers",
         "icon": Assets.iconsVideos,
         "key": "videos",
-        "onTap": () {},
+        "onTap": () {
+          context.pushNamed(Names.videosFromRealDrivers);
+        },
       },
       {
         "label": "Partner With Us",
         "icon": Assets.iconsPartner,
         "key": "partner",
-        "onTap": () {},
+        "onTap": () {
+          context.pushNamed(Names.partnerWithUs);
+        },
       },
     ];
 
@@ -137,7 +153,7 @@ class CommunityScreen extends StatelessWidget {
                                       style: TextStyle(fontSize: 16),
                                     ),
                                     SvgPicture.asset(
-                                      "assets/icons/cabswale_coin.svg",
+                                      Assets.iconsCabsCoin,
                                       height: 15,
                                     ),
                                     const Text(
@@ -168,7 +184,9 @@ class CommunityScreen extends StatelessWidget {
             ),
             SliverToBoxAdapter(
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  context.pushNamed(Names.reportProblem);
+                },
                 child: Container(
                   height: 110,
                   padding: const EdgeInsets.symmetric(

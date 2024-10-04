@@ -1,4 +1,15 @@
 abstract class Routes {
+  static const verifyAccount = _Paths.verifyAccount;
+  static const emergency = _Paths.emergency;
+  static const topLocations = _Paths.topLocations;
+  static const referAndEarn = _Paths.referAndEarn;
+  static const videosFromRealDrivers = _Paths.videosFromRealDrivers;
+  static const partnerWithUs = _Paths.partnerWithUs;
+  static const reportProblem = _Paths.reportProblem;
+  static const nearbyPlace = _Paths.nearbyPlace;
+  static const nearbyDriver = _Paths.nearbyDriver;
+  static const nearby = _Paths.nearby;
+  static const loan = _Paths.loan;
   static const extraBenifits = _Paths.extraBenifits;
   static const productDetails = _Paths.productDetails;
   static const wallet = _Paths.wallet;
@@ -21,6 +32,17 @@ abstract class Routes {
 }
 
 abstract class _Paths {
+  static const verifyAccount = '/verifyAccount';
+  static const emergency = '/emergency';
+  static const topLocations = '/topLocations';
+  static const referAndEarn = '/referAndEarn';
+  static const videosFromRealDrivers = '/videosFromRealDrivers';
+  static const partnerWithUs = '/partnerWithUs';
+  static const reportProblem = '/reportProblem';
+  static const nearbyPlace = '/nearbyPlace';
+  static const nearbyDriver = '/nearbyDriver';
+  static const nearby = '/nearby';
+  static const loan = '/loan';
   static const extraBenifits = '/extraBenifits';
   static const productDetails = '/productDetails';
   static const wallet = '/wallet';
@@ -43,6 +65,17 @@ abstract class _Paths {
 }
 
 abstract class _Names {
+  static const verifyAccount = 'verifyAccount';
+  static const emergency = 'emergency';
+  static const topLocations = 'topLocations';
+  static const referAndEarn = 'referAndEarn';
+  static const videosFromRealDrivers = 'videosFromRealDrivers';
+  static const partnerWithUs = 'partnerWithUs';
+  static const reportProblem = 'reportProblem';
+  static const nearbyPlace = 'nearbyPlace';
+  static const nearbyDriver = 'nearbyDriver';
+  static const nearby = 'nearby';
+  static const loan = 'loan';
   static const extraBenifits = 'extraBenifits';
   static const productDetails = 'productDetails';
   static const wallet = 'wallet';
@@ -65,6 +98,17 @@ abstract class _Names {
 }
 
 abstract class Names {
+  static const verifyAccount = _Names.verifyAccount;
+  static const emergency = _Names.emergency;
+  static const topLocations = _Names.topLocations;
+  static const referAndEarn = _Names.referAndEarn;
+  static const videosFromRealDrivers = _Names.videosFromRealDrivers;
+  static const partnerWithUs = _Names.partnerWithUs;
+  static const reportProblem = _Names.reportProblem;
+  static const nearbyPlace = _Names.nearbyPlace;
+  static const nearbyDriver = _Names.nearbyDriver;
+  static const nearby = _Names.nearby;
+  static const loan = _Names.loan;
   static const extraBenifits = _Names.extraBenifits;
   static const productDetails = _Names.productDetails;
   static const wallet = _Names.wallet;

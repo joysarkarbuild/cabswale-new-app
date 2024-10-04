@@ -1,4 +1,4 @@
-import 'package:cabswalle/modules/extraBenifits/data/partner_model.dart';
+import 'package:cabswalle/modules/extraBenifits/data/models/partner_model.dart';
 import 'package:cabswalle/services/calculation_util.dart';
 import 'package:cabswalle/widgets/earn_money_card.dart';
 import 'package:flutter/material.dart';

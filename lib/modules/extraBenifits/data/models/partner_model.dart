@@ -171,7 +171,8 @@ List<Partner> dummyPartner = [
     maxScans: 5,
     partnerDetails: PartnerDetails(
       active: true,
-      coverPic: 'https://example.com/images/cover1.jpg',
+      coverPic:
+          'https://t4.ftcdn.net/jpg/04/95/28/65/360_F_495286577_rpsT2Shmr6g81hOhGXALhxWOfx1vOQBa.jpg',
       createdAt: DateTime.now(),
       desc: 'Partner 1 Description',
       media: [
@@ -196,7 +197,8 @@ List<Partner> dummyPartner = [
     maxScans: 3,
     partnerDetails: PartnerDetails(
       active: false,
-      coverPic: 'https://example.com/images/cover2.jpg',
+      coverPic:
+          'https://t4.ftcdn.net/jpg/04/95/28/65/360_F_495286577_rpsT2Shmr6g81hOhGXALhxWOfx1vOQBa.jpg',
       createdAt: DateTime.now(),
       desc: 'Partner 2 Description',
       media: [
@@ -220,7 +222,8 @@ List<Partner> dummyPartner = [
     maxScans: 8,
     partnerDetails: PartnerDetails(
       active: true,
-      coverPic: 'https://example.com/images/cover3.jpg',
+      coverPic:
+          'https://t4.ftcdn.net/jpg/04/95/28/65/360_F_495286577_rpsT2Shmr6g81hOhGXALhxWOfx1vOQBa.jpg',
       createdAt: DateTime.now(),
       desc: 'Partner 3 Description',
       media: [

@@ -40,9 +40,6 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_bloc: ^8.1.6
   bloc: ^8.1.4
-  firebase_core: ^3.4.1
-  firebase_storage: ^12.3.0
-  cloud_firestore: ^5.4.1
   equatable: ^2.0.5
   lottie: ^3.1.2
   url_launcher: ^6.3.0
@@ -54,6 +51,7 @@ dependencies:
   dotted_border: ^2.1.0
   cached_network_image: ^3.4.1
   dio: ^5.7.0
+  fluttertoast: ^8.2.8
 
 dev_dependencies:
   flutter_test:

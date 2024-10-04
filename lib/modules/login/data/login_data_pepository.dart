@@ -4,7 +4,7 @@ class OtplessRepository {
   final _otplessFlutterPlugin = Otpless();
 
   OtplessRepository() {
-    _otplessFlutterPlugin.initHeadless("RRJSEIIBRV49G0ZVO0UQ");
+    _otplessFlutterPlugin.initHeadless("LJH15KV4GEXZ6SSZ92B3");
   }
 
   void setHeadlessCallback(Function(dynamic) onHeadlessResult) {

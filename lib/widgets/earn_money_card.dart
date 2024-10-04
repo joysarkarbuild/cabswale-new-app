@@ -1,4 +1,4 @@
-import 'package:cabswalle/modules/extraBenifits/data/partner_model.dart';
+import 'package:cabswalle/modules/extraBenifits/data/models/partner_model.dart';
 import 'package:cabswalle/widgets/common_image_view.dart';
 import 'package:flutter/material.dart';
 

@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:cabswalle/constants/assets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -28,7 +29,7 @@ class CommonImageView extends StatelessWidget {
     this.height,
     this.width,
     this.fit = BoxFit.cover,
-    this.placeHolder = 'assets/images/image_not_found.png',
+    this.placeHolder = Assets.imagesDefaultImage,
   });
 
   @override

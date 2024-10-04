@@ -1,11 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 class ProductModel {
   bool active;
   String id;
   List<String> categories;
   String coverPic;
-  Timestamp createdAt;
   String desc;
   double discountedPrice;
   double maxRedeemableWalletAmount;
@@ -18,7 +15,6 @@ class ProductModel {
     required this.active,
     required this.categories,
     required this.coverPic,
-    required this.createdAt,
     required this.desc,
     required this.discountedPrice,
     required this.maxRedeemableWalletAmount,
@@ -35,7 +31,6 @@ class ProductModel {
       active: json['active'] as bool,
       categories: List<String>.from(json['categories']),
       coverPic: json['coverPic'] as String,
-      createdAt: json['createdAt'] as Timestamp,
       desc: json['desc'] as String,
       discountedPrice: json['discountedPrice'].toDouble(),
       maxRedeemableWalletAmount: json['maxRedeemableWalletAmount'].toDouble(),
@@ -54,7 +49,6 @@ class ProductModel {
       'active': active,
       'categories': categories,
       'coverPic': coverPic,
-      'createdAt': createdAt,
       'desc': desc,
       'discountedPrice': discountedPrice,
       'maxRedeemableWalletAmount': maxRedeemableWalletAmount,
@@ -100,7 +94,6 @@ List<ProductModel> dummyProducts = [
     active: true,
     categories: ["Electronics", "Smartphone"],
     coverPic: "https://via.placeholder.com/150/0000FF/808080?text=Smartphone",
-    createdAt: Timestamp.now(),
     desc: "Latest smartphone with cutting-edge technology.",
     discountedPrice: 699.99,
     maxRedeemableWalletAmount: 50.0,
@@ -124,7 +117,6 @@ List<ProductModel> dummyProducts = [
     active: true,
     categories: ["Appliances", "Kitchen"],
     coverPic: "https://via.placeholder.com/150/FF0000/FFFFFF?text=Blender",
-    createdAt: Timestamp.now(),
     desc: "High-power kitchen blender for smoothies and more.",
     discountedPrice: 49.99,
     maxRedeemableWalletAmount: 10.0,
@@ -143,7 +135,6 @@ List<ProductModel> dummyProducts = [
     active: true,
     categories: ["Fashion", "Men's Wear"],
     coverPic: "https://via.placeholder.com/150/FFFF00/000000?text=T-shirt",
-    createdAt: Timestamp.now(),
     desc: "Comfortable and stylish t-shirt for casual wear.",
     discountedPrice: 19.99,
     maxRedeemableWalletAmount: 5.0,
