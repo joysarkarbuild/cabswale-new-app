@@ -24,7 +24,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
 
       // Compare the versions
       if (appVersion >= appData.appVersion) {
-        emit(AppVersionMatched());
+        emit(AppVersionMatched(privacyUrl: appData.policy));
       } else {
         emit(AppVersionOutdated(
           forceUpdate: appData.forceUpdate,

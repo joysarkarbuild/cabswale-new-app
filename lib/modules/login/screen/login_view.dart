@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:cabswalle/constants/assets.dart';
 import 'package:cabswalle/core/app_colors.dart';
 import 'package:cabswalle/core/screen_responsive.dart';
 import 'package:cabswalle/modules/login/data/login_data_pepository.dart';
 import 'package:cabswalle/routes/app_routes.dart';
 import 'package:cabswalle/services/loading_overlay_service.dart';
+import 'package:cabswalle/services/logger_service.dart';
 import 'package:cabswalle/services/snackbar_service.dart';
 import 'package:cabswalle/widgets/my_text_form_field.dart';
 import 'package:cabswalle/widgets/submit_button.dart';
@@ -31,6 +34,14 @@ class _LoginScreenState extends State<LoginScreen> {
             context.goNamed(Names.otp, extra: _phoneNoController.text.trim());
           }
           break;
+
+        case 'OTP_AUTO_READ':
+          {
+            if (Platform.isAndroid) {
+              var otp = result['response']['otp'] as String;
+              LoggerService.logInfo("Otp res $otp");
+            }
+          }
 
         default:
           {

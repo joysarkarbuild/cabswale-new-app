@@ -1,3 +1,5 @@
+import 'package:cabswalle/modules/myprofile/screen/myprofile_view.dart';
+import 'package:cabswalle/modules/splash/screen/splash_view.dart';
 import 'package:cabswalle/modules/verifyAccount/screen/verifyAccount_view.dart';
 import 'package:cabswalle/modules/emergency/screen/emergency_view.dart';
 import 'package:cabswalle/modules/topLocations/screen/topLocations_view.dart';
@@ -25,42 +27,45 @@ import 'package:cabswalle/modules/navbar/screen/navbar_view.dart';
 import 'package:cabswalle/modules/otp/screen/otp_view.dart';
 import 'package:cabswalle/modules/login/screen/login_view.dart';
 import 'package:cabswalle/routes/app_routes.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 // GoRouter configuration
 final router = GoRouter(
   initialLocation: '/',
+  navigatorKey:
+      GlobalNavigation.instance.navigatorKey, // Use the global key here
   routes: [
+    GoRoute(
+      name: Names.myprofile,
+      path: Routes.myprofile,
+      builder: (context, state) => const MyprofileScreen(),
+    ),
     GoRoute(
       name: Names.verifyAccount,
       path: Routes.verifyAccount,
       builder: (context, state) => const VerifyAccountScreen(),
     ),
-
     GoRoute(
       name: Names.emergency,
       path: Routes.emergency,
       builder: (context, state) => const EmergencyScreen(),
     ),
-
     GoRoute(
       name: Names.topLocations,
       path: Routes.topLocations,
       builder: (context, state) => const TopLocationsScreen(),
     ),
-
     GoRoute(
       name: Names.referAndEarn,
       path: Routes.referAndEarn,
       builder: (context, state) => const ReferAndEarnScreen(),
     ),
-
     GoRoute(
       name: Names.videosFromRealDrivers,
       path: Routes.videosFromRealDrivers,
       builder: (context, state) => const VideosFromRealDriversScreen(),
     ),
-
     GoRoute(
       name: Names.partnerWithUs,
       path: Routes.partnerWithUs,
@@ -170,7 +175,7 @@ final router = GoRouter(
     GoRoute(
       name: Names.splash,
       path: Routes.splash,
-      builder: (context, state) => NavbarScreen(),
+      builder: (context, state) => const SplashScreen(),
     ),
     GoRoute(
       name: Names.login,
@@ -179,3 +184,10 @@ final router = GoRouter(
     ),
   ],
 );
+
+class GlobalNavigation {
+  static final GlobalNavigation instance = GlobalNavigation._internal();
+  GlobalNavigation._internal();
+
+  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+}

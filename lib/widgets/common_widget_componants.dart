@@ -3,6 +3,7 @@ collection on some widget components
 */
 
 import 'dart:io';
+import 'package:cabswalle/constants/assets.dart';
 import 'package:cabswalle/core/app_colors.dart';
 import 'package:cabswalle/core/app_text_styles.dart';
 import 'package:cabswalle/widgets/show_image.dart';
@@ -492,7 +493,7 @@ class AppLogo extends StatelessWidget {
               height: height,
               width: height,
               child: const ShowImage(
-                imagelink: 'assets/icons/app-logo.png',
+                imagelink: Assets.imagesCabIcon,
                 boxFit: BoxFit.contain,
               ),
             ),

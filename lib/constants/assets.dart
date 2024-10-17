@@ -10,6 +10,10 @@ class Assets {
   /// assets/icons/add_leads.svg
   static const String iconsAddLeads = "assets/icons/add_leads.svg";
 
+  /// Assets for iconsAlerts
+  /// assets/icons/alerts.svg
+  static const String iconsAlerts = "assets/icons/alerts.svg";
+
   /// Assets for iconsAvailable
   /// assets/icons/available.svg
   static const String iconsAvailable = "assets/icons/available.svg";
@@ -58,6 +62,10 @@ class Assets {
   /// assets/icons/deal_main.svg
   static const String iconsDealMain = "assets/icons/deal_main.svg";
 
+  /// Assets for iconsDelete
+  /// assets/icons/delete.svg
+  static const String iconsDelete = "assets/icons/delete.svg";
+
   /// Assets for iconsDriversList
   /// assets/icons/drivers-list.svg
   static const String iconsDriversList = "assets/icons/drivers-list.svg";
@@ -65,6 +73,10 @@ class Assets {
   /// Assets for iconsDrop
   /// assets/icons/drop.svg
   static const String iconsDrop = "assets/icons/drop.svg";
+
+  /// Assets for iconsEdit
+  /// assets/icons/edit.svg
+  static const String iconsEdit = "assets/icons/edit.svg";
 
   /// Assets for iconsEmergency
   /// assets/icons/emergency.svg
@@ -86,6 +98,10 @@ class Assets {
   /// assets/icons/home.svg
   static const String iconsHome = "assets/icons/home.svg";
 
+  /// Assets for iconsLanguage
+  /// assets/icons/language.svg
+  static const String iconsLanguage = "assets/icons/language.svg";
+
   /// Assets for iconsLoan
   /// assets/icons/loan.svg
   static const String iconsLoan = "assets/icons/loan.svg";
@@ -93,6 +109,14 @@ class Assets {
   /// Assets for iconsLocation
   /// assets/icons/location.svg
   static const String iconsLocation = "assets/icons/location.svg";
+
+  /// Assets for iconsLogout
+  /// assets/icons/logout.svg
+  static const String iconsLogout = "assets/icons/logout.svg";
+
+  /// Assets for iconsMembership
+  /// assets/icons/membership.svg
+  static const String iconsMembership = "assets/icons/membership.svg";
 
   /// Assets for iconsMyLead
   /// assets/icons/my_lead.svg
@@ -138,6 +162,10 @@ class Assets {
   /// assets/icons/routes.svg
   static const String iconsRoutes = "assets/icons/routes.svg";
 
+  /// Assets for iconsSettings
+  /// assets/icons/settings.svg
+  static const String iconsSettings = "assets/icons/settings.svg";
+
   /// Assets for iconsStore
   /// assets/icons/store.svg
   static const String iconsStore = "assets/icons/store.svg";
@@ -145,6 +173,10 @@ class Assets {
   /// Assets for iconsSwap
   /// assets/icons/swap.svg
   static const String iconsSwap = "assets/icons/swap.svg";
+
+  /// Assets for iconsTermsAndConditions
+  /// assets/icons/terms_and_conditions.svg
+  static const String iconsTermsAndConditions = "assets/icons/terms_and_conditions.svg";
 
   /// Assets for iconsTodaysLeads
   /// assets/icons/todays_leads.svg
@@ -157,6 +189,10 @@ class Assets {
   /// Assets for iconsTowing
   /// assets/icons/towing.svg
   static const String iconsTowing = "assets/icons/towing.svg";
+
+  /// Assets for iconsTransactions
+  /// assets/icons/transactions.svg
+  static const String iconsTransactions = "assets/icons/transactions.svg";
 
   /// Assets for iconsVerifyAccount
   /// assets/icons/verify_account.svg

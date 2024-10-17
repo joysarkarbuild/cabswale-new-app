@@ -1,4 +1,5 @@
 import 'package:cabswalle/core/app_colors.dart';
+import 'package:cabswalle/core/app_text_styles.dart';
 import 'package:cabswalle/widgets/submit_button.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -29,12 +30,9 @@ class _VerifyAccountScreenState extends State<VerifyAccountScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           "Edit Profile",
-          style: TextStyle(
-            fontSize: 20,
-            color: AppColors.myprimaryColor,
-          ),
+          style: AppTextStyles.style18w500(),
         ),
       ),
       body: Column(

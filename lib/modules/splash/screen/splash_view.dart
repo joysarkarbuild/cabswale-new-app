@@ -20,86 +20,83 @@ class SplashScreen extends StatelessWidget {
       backgroundColor: AppColors.myprimaryColor,
       body: SizedBox(
         width: context.screenWidth,
-        child: BlocListener<SplashBloc, SplashState>(
+        child: BlocConsumer<SplashBloc, SplashState>(
           listener: (context, state) {
             if (state is AppVersionMatched) {
-              context.go(Routes.login); // Navigate to the next screen
+              context.go(Routes.navbar); // Navigate to the next screen
             }
           },
-          child: BlocBuilder<SplashBloc, SplashState>(
-            builder: (context, state) {
-              if (state is SplashInitial) {
-                context.read<SplashBloc>().add(CheckAppVersionEvent());
-              }
+          builder: (context, state) {
+            if (state is SplashInitial) {
+              context.read<SplashBloc>().add(CheckAppVersionEvent());
+            }
 
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: context.screenHeight * 0.6,
-                    width: context.screenWidth * 0.6,
-                    child: Image.asset(Assets.imagesCabIcon),
-                  ),
-                  if (state is AppVersionOutdated)
-                    Column(
-                      children: [
-                        LottieBuilder.asset(Assets.animationsUpdate),
-                        const Text(
-                          "New update available!",
-                          style: TextStyle(
-                              fontSize: 26,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600),
-                        ),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        SizedBox(
-                          width: 200,
-                          child: ElevatedButton(
-                            onPressed: () async {
-                              final Uri url = Uri.parse(
-                                  "https://play.google.com/store/apps/details?id=com.app.cabswalle");
-                              if (await canLaunchUrl(url)) {
-                                await launchUrl(url);
-                              }
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.green,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(2),
-                              ),
-                              minimumSize: Size(
-                                  MediaQuery.of(context).size.width,
-                                  30), // Adjust the size as per your requirement
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 12,
-                                  vertical:
-                                      6), // Adjust the padding as per your requirement
-                            ),
-                            child: const Text('Update Now',
-                                style: TextStyle(color: Colors.white)),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            // initData(context);
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: context.screenHeight * 0.6,
+                  width: context.screenWidth * 0.6,
+                  child: Image.asset(Assets.imagesCabIcon),
+                ),
+                if (state is AppVersionOutdated)
+                  Column(
+                    children: [
+                      LottieBuilder.asset(Assets.animationsUpdate),
+                      const Text(
+                        "New update available!",
+                        style: TextStyle(
+                            fontSize: 26,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
+                      SizedBox(
+                        width: 200,
+                        child: ElevatedButton(
+                          onPressed: () async {
+                            final Uri url = Uri.parse(
+                                "https://play.google.com/store/apps/details?id=com.app.cabswalle");
+                            if (await canLaunchUrl(url)) {
+                              await launchUrl(url);
+                            }
                           },
-                          child: const Text(
-                            "I will do it later",
-                            style: TextStyle(color: Colors.amber),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.green,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(2),
+                            ),
+                            minimumSize: Size(MediaQuery.of(context).size.width,
+                                30), // Adjust the size as per your requirement
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12,
+                                vertical:
+                                    6), // Adjust the padding as per your requirement
                           ),
-                        )
-                      ],
-                    )
-                ],
-              );
-            },
-          ),
+                          child: const Text('Update Now',
+                              style: TextStyle(color: Colors.white)),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          // initData(context);
+                        },
+                        child: const Text(
+                          "I will do it later",
+                          style: TextStyle(color: Colors.amber),
+                        ),
+                      )
+                    ],
+                  )
+              ],
+            );
+          },
         ),
       ),
     );

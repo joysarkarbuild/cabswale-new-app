@@ -1,4 +1,5 @@
 import 'package:cabswalle/core/app_colors.dart';
+import 'package:cabswalle/modules/community/screen/community_view.dart';
 import 'package:flutter/material.dart';
 
 class SnackbarUtils {

@@ -124,7 +124,7 @@ class DealsScreen extends StatelessWidget {
                       const Text(
                         "Deals",
                         style: TextStyle(
-                            fontSize: 30, fontWeight: FontWeight.w700),
+                            fontSize: 28, fontWeight: FontWeight.w700),
                       )
                     ],
                   ),
@@ -157,7 +157,7 @@ class DealsScreen extends StatelessWidget {
                       const Text(
                         "Calls",
                         style: TextStyle(
-                            fontSize: 30, fontWeight: FontWeight.w700),
+                            fontSize: 28, fontWeight: FontWeight.w700),
                       )
                     ],
                   ),
@@ -190,7 +190,7 @@ class DealsScreen extends StatelessWidget {
                       const Text(
                         "My Leads",
                         style: TextStyle(
-                            fontSize: 30, fontWeight: FontWeight.w700),
+                            fontSize: 28, fontWeight: FontWeight.w700),
                       )
                     ],
                   ),
@@ -223,7 +223,7 @@ class DealsScreen extends StatelessWidget {
                       const Text(
                         "Add Leads",
                         style: TextStyle(
-                            fontSize: 30, fontWeight: FontWeight.w700),
+                            fontSize: 28, fontWeight: FontWeight.w700),
                       )
                     ],
                   ),

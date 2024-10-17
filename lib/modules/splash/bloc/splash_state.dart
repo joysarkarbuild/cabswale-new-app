@@ -15,7 +15,13 @@ final class SplashInitial extends SplashState {}
 final class SplashLoading extends SplashState {}
 
 // When the app version matches
-final class AppVersionMatched extends SplashState {}
+final class AppVersionMatched extends SplashState {
+  final String privacyUrl;
+
+  AppVersionMatched({required this.privacyUrl});
+  @override
+  List<Object?> get props => [privacyUrl];
+}
 
 // When the app version is outdated
 final class AppVersionOutdated extends SplashState {
