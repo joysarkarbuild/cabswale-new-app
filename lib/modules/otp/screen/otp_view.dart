@@ -5,6 +5,7 @@ import 'package:cabswalle/modules/login/screen/login_view.dart';
 import 'package:cabswalle/modules/otp/data/otp_data_repo.dart';
 import 'package:cabswalle/routes/app_routes.dart';
 import 'package:cabswalle/services/loading_overlay_service.dart';
+import 'package:cabswalle/services/logger_service.dart';
 import 'package:cabswalle/services/login_status_service.dart';
 import 'package:cabswalle/services/snackbar_service.dart';
 import 'package:cabswalle/widgets/submit_button.dart';
@@ -14,8 +15,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pinput/pinput.dart';
 import 'dart:async';
-
-import 'package:shared_preferences/shared_preferences.dart';
 
 class OtpScreen extends StatefulWidget {
   final String phoneNo;
@@ -114,6 +113,9 @@ class _OtpScreenState extends State<OtpScreen> {
               LoadingOverlay().hide();
               if (response["status"]) {
                 LoginManager().saveLoginStatus(true);
+                LoginManager().saveJwtToken(result["response"]["idToken"]);
+                LoginManager().saveUserId(response["userId"]);
+                LoggerService.logInfo("IsNew User : ${response["newUser"]}");
                 gotoNavbar();
               } else {
                 SnackbarUtils.showErrorSnackBar(

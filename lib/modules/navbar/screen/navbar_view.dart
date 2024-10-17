@@ -8,10 +8,13 @@ import 'package:cabswalle/modules/navbar/bloc/navbar_bloc.dart';
 import 'package:cabswalle/modules/navbar/bloc/navbar_event.dart';
 import 'package:cabswalle/modules/navbar/bloc/navbar_state.dart';
 import 'package:cabswalle/modules/profile/screen/profile_view.dart';
+import 'package:cabswalle/routes/app_routes.dart';
+import 'package:cabswalle/services/login_status_service.dart';
 import 'package:cabswalle/widgets/my_bottom_navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 
 class NavbarScreen extends StatelessWidget {
   NavbarScreen({super.key});
@@ -37,6 +40,11 @@ class NavbarScreen extends StatelessWidget {
             currentIndex: state.selectedIndex,
             showIndicator: false,
             onTap: (index) {
+              if (index > 0 && !LoginManager.isLogin) {
+                context.goNamed(Names.login);
+                LoginManager().clearLoginStatus();
+                return;
+              }
               context.read<NavbarBloc>().add(ChangeTab(index));
             },
             bottomNavBarItems: <Map<String, dynamic>>[

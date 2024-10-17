@@ -4,8 +4,6 @@ import 'package:cabswalle/modules/loan/bloc/loan_state.dart';
 
 class LoanBloc extends Bloc<LoanEvent, LoanState> {
   LoanBloc() : super(LoanInitial()) {
-    on<LoanEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+    on<LoanEvent>((event, emit) {});
   }
 }

@@ -189,7 +189,7 @@ const List<NearbyDriverModel> dummyDrivers = [
     id: '2',
     city: 'San Francisco',
     vehicles: [
-      const Vehicle(
+      Vehicle(
         brand: 'Tesla',
         images: ['https://example.com/image2.jpg'],
         modelYear: '2020',

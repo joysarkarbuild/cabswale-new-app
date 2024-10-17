@@ -4,8 +4,6 @@ import 'package:cabswalle/modules/nearby/bloc/nearby_state.dart';
 
 class NearbyBloc extends Bloc<NearbyEvent, NearbyState> {
   NearbyBloc() : super(NearbyInitial()) {
-    on<NearbyEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+    on<NearbyEvent>((event, emit) {});
   }
 }

@@ -4,8 +4,6 @@ import 'package:cabswalle/modules/extraBenifits/bloc/extra_benifits_state.dart';
 
 class ExtraBenifitsBloc extends Bloc<ExtraBenifitsEvent, ExtraBenifitsState> {
   ExtraBenifitsBloc() : super(ExtraBenifitsInitial()) {
-    on<ExtraBenifitsEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+    on<ExtraBenifitsEvent>((event, emit) {});
   }
 }
