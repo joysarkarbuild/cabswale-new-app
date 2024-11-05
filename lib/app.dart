@@ -1,3 +1,5 @@
+import 'package:cabswalle/modules/addlead/bloc/addlead_bloc.dart';
+import 'package:cabswalle/modules/myprofile/bloc/myprofile_bloc.dart';
 import 'package:cabswalle/modules/navbar/bloc/navbar_bloc.dart';
 import 'package:cabswalle/modules/splash/bloc/splash_bloc.dart';
 import 'package:cabswalle/routes/app_pages.dart';
@@ -20,6 +22,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => NavbarBloc(),
+        ),
+        BlocProvider(
+          create: (context) => MyprofileBloc(),
+        ),
+        BlocProvider(
+          create: (context) => AddleadBloc(),
         ),
       ],
       child: MaterialApp.router(

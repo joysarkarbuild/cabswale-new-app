@@ -6,3 +6,5 @@ sealed class MyprofileEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+final class MyProfileLoadEvent extends MyprofileEvent {}

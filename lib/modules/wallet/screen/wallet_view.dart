@@ -1,5 +1,4 @@
 import 'package:cabswalle/constants/assets.dart';
-import 'package:cabswalle/modules/community/screen/community_view.dart';
 import 'package:cabswalle/modules/wallet/data/models/product_model.dart';
 import 'package:cabswalle/routes/app_routes.dart';
 import 'package:cabswalle/widgets/common_image_view.dart';

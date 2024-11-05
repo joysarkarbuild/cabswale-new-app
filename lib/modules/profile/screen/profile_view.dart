@@ -1,7 +1,6 @@
 import 'package:cabswalle/constants/assets.dart';
 import 'package:cabswalle/core/app_text_styles.dart';
 import 'package:cabswalle/core/screen_responsive.dart';
-import 'package:cabswalle/modules/community/screen/community_view.dart';
 import 'package:cabswalle/modules/splash/bloc/splash_bloc.dart';
 import 'package:cabswalle/modules/splash/bloc/splash_state.dart';
 import 'package:cabswalle/routes/app_routes.dart';
@@ -10,7 +9,6 @@ import 'package:cabswalle/widgets/profile_option_card.dart';
 import 'package:cabswalle/widgets/submit_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -22,13 +20,23 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Joy Sarkar'),
           centerTitle: true,
           bottom: PreferredSize(
-              preferredSize: Size(context.screenWidth, 0),
-              child: Image.asset(
-                Assets.imagesVe,
-                height: 20,
+              preferredSize: Size(context.screenWidth, 30),
+              child: Column(
+                children: [
+                  Text(
+                    'Joy Sarkar',
+                    style: AppTextStyles.style22w600(),
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Image.asset(
+                    Assets.imagesVe,
+                    height: 20,
+                  ),
+                ],
               )),
         ),
         body: Padding(

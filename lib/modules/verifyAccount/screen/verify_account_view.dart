@@ -1,8 +1,10 @@
 import 'package:cabswalle/core/app_colors.dart';
 import 'package:cabswalle/core/app_text_styles.dart';
+import 'package:cabswalle/routes/app_routes.dart';
 import 'package:cabswalle/widgets/submit_button.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:go_router/go_router.dart';
 
 class VerifyAccountScreen extends StatefulWidget {
   const VerifyAccountScreen({super.key});
@@ -42,7 +44,9 @@ class _VerifyAccountScreenState extends State<VerifyAccountScreen> {
             child: VerificationOption(
               isVerified: snapshot["name"] != null &&
                   snapshot["name"].toString().isNotEmpty,
-              onTap: () {},
+              onTap: () {
+                context.pushNamed(Names.editNameCityAndProfilePicture);
+              },
               title: "Name, City & Profile Picture",
             ),
           ),

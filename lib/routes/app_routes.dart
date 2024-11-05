@@ -1,4 +1,6 @@
 abstract class Routes {
+  static const editNameCityAndProfilePicture =
+      _Paths.editNameCityAndProfilePicture;
   static const myprofile = _Paths.myprofile;
   static const verifyAccount = _Paths.verifyAccount;
   static const emergency = _Paths.emergency;
@@ -33,6 +35,7 @@ abstract class Routes {
 }
 
 abstract class _Paths {
+  static const editNameCityAndProfilePicture = '/editNameCityProfilePicture';
   static const myprofile = '/myprofile';
   static const verifyAccount = '/verifyAccount';
   static const emergency = '/emergency';
@@ -67,6 +70,7 @@ abstract class _Paths {
 }
 
 abstract class _Names {
+  static const editNameCityAndProfilePicture = 'editNameCityProfilePicture';
   static const myprofile = 'myprofile';
   static const verifyAccount = 'verifyAccount';
   static const emergency = 'emergency';
@@ -101,6 +105,8 @@ abstract class _Names {
 }
 
 abstract class Names {
+  static const editNameCityAndProfilePicture =
+      _Names.editNameCityAndProfilePicture;
   static const myprofile = _Names.myprofile;
   static const verifyAccount = _Names.verifyAccount;
   static const emergency = _Names.emergency;

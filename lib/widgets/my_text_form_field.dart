@@ -13,6 +13,7 @@ class MyTextFormField extends StatelessWidget {
       this.maxLenght,
       this.keyboardType = TextInputType.name,
       this.textInputAction = TextInputAction.done,
+      this.borderRadius,
       this.label = ''});
 
   final TextEditingController? textEditingController;
@@ -26,6 +27,7 @@ class MyTextFormField extends StatelessWidget {
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
   final bool readOnly;
+  final double? borderRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -51,8 +53,10 @@ class MyTextFormField extends StatelessWidget {
             decoration: InputDecoration(
                 contentPadding: EdgeInsets.symmetric(
                     horizontal: 15, vertical: maxLine > 1 ? 10 : 1),
-                border:
-                    const OutlineInputBorder(borderRadius: BorderRadius.zero),
+                border: OutlineInputBorder(
+                    borderRadius: borderRadius != null
+                        ? BorderRadius.all(Radius.circular(borderRadius!))
+                        : BorderRadius.zero),
                 hintText: hintText,
                 prefixIcon: prefixicon),
             maxLength: maxLenght,

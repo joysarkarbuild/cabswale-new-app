@@ -3,6 +3,7 @@ import 'package:cabswalle/modules/splash/bloc/splash_event.dart';
 import 'package:cabswalle/modules/splash/bloc/splash_state.dart';
 import 'package:cabswalle/modules/splash/data/models/app_data_model.dart';
 import 'package:cabswalle/modules/splash/data/repository/app_data_repository.dart';
+import 'package:cabswalle/services/logger_service.dart';
 import 'package:cabswalle/services/login_status_service.dart';
 import 'package:url_launcher/url_launcher.dart'; // Import the model
 
@@ -20,10 +21,13 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     emit(SplashLoading());
 
     try {
-      // Fetch the latest app version data from the repository
-      LoginManager().getAllData();
-      AppDataModel appData = await appDataRepository.fetchAppVersion();
+      //Get login status from local
 
+      LoginManager().getAllData();
+      // Fetch the latest app version data from the repository
+
+      AppDataModel appData = await appDataRepository.fetchAppVersion();
+      LoggerService.logInfo("App Version : ${appData.appVersion.toString()}");
       // Compare the versions
       if (appVersion >= appData.appVersion) {
         emit(AppVersionMatched(privacyUrl: appData.policy));

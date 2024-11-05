@@ -5,5 +5,8 @@ import 'package:cabswalle/modules/addlead/bloc/addlead_state.dart';
 class AddleadBloc extends Bloc<AddleadEvent, AddleadState> {
   AddleadBloc() : super(AddleadInitial()) {
     on<AddleadEvent>((event, emit) {});
+    on<ChangeLeadTypeEvent>((event, emit) {
+      emit(ChangeLeadType(leadType: event.leadType));
+    });
   }
 }

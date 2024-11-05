@@ -1,10 +1,11 @@
 import 'package:cabswalle/modules/myprofile/screen/myprofile_view.dart';
 import 'package:cabswalle/modules/splash/screen/splash_view.dart';
-import 'package:cabswalle/modules/verifyAccount/screen/verifyAccount_view.dart';
+import 'package:cabswalle/modules/verifyAccount/screen/edit_name_city_profile_image.dart';
+import 'package:cabswalle/modules/verifyAccount/screen/verify_account_view.dart';
 import 'package:cabswalle/modules/emergency/screen/emergency_view.dart';
-import 'package:cabswalle/modules/topLocations/screen/topLocations_view.dart';
-import 'package:cabswalle/modules/referAndEarn/screen/referAndEarn_view.dart';
-import 'package:cabswalle/modules/videosFromRealDrivers/screen/videosFromRealDrivers_view.dart';
+import 'package:cabswalle/modules/topLocations/screen/top_locations_view.dart';
+import 'package:cabswalle/modules/referAndEarn/screen/refer_and_earn_view.dart';
+import 'package:cabswalle/modules/videosFromRealDrivers/screen/videos_from_real_drivers_view.dart';
 import 'package:cabswalle/modules/partnerWithUs/screen/partner_with_us_view.dart';
 import 'package:cabswalle/modules/reportProblem/screen/report_problem_view.dart';
 import 'package:cabswalle/modules/nearbyPlace/screen/nearby_place_view.dart';
@@ -36,6 +37,11 @@ final router = GoRouter(
   navigatorKey:
       GlobalNavigation.instance.navigatorKey, // Use the global key here
   routes: [
+    GoRoute(
+      name: Names.editNameCityAndProfilePicture,
+      path: Routes.editNameCityAndProfilePicture,
+      builder: (context, state) => const EditNameCityAndProfileImage(),
+    ),
     GoRoute(
       name: Names.myprofile,
       path: Routes.myprofile,

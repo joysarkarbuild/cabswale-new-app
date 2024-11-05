@@ -1,10 +1,13 @@
 import 'package:cabswalle/constants/text_data.dart';
 import 'package:cabswalle/core/app_colors.dart';
 import 'package:cabswalle/core/app_text_styles.dart';
+import 'package:cabswalle/modules/addlead/bloc/addlead_bloc.dart';
+import 'package:cabswalle/modules/addlead/bloc/addlead_state.dart';
 import 'package:cabswalle/widgets/common_widget_componants.dart';
 import 'package:cabswalle/widgets/show_image.dart';
 import 'package:cabswalle/widgets/submit_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AddLeadScreen extends StatefulWidget {
@@ -153,20 +156,25 @@ class _AddLeadScreenState extends State<AddLeadScreen> {
               const SizedBox(
                 height: 2,
               ),
-              Wrap(
-                spacing: 10,
-                children: TextData.leadType.map((lead) {
-                  return GestureDetector(
-                      onTap: () {},
-                      child: SizedBox(
-                        height: 50,
-                        width: MediaQuery.of(context).size.width * 0.28,
-                        child: ShowImage(
-                          boxFit: BoxFit.contain,
-                          imagelink: TextData.leadTypeData[lead]['icon'],
-                        ),
-                      ));
-                }).toList(),
+              BlocBuilder<AddleadBloc, AddleadState>(
+                builder: (context, state) {
+                  return Wrap(
+                    spacing: 10,
+                    children: TextData.leadType.map((lead) {
+                      return GestureDetector(
+                          onTap: () {},
+                          child: SizedBox(
+                            height: 50,
+                            width: MediaQuery.of(context).size.width * 0.28,
+                            child: ShowImage(
+                              boxFit: BoxFit.contain,
+                              imagelink: TextData.leadTypeData[lead][
+                                  lead == "commission" ? 'iconfilled' : 'icon'],
+                            ),
+                          ));
+                    }).toList(),
+                  );
+                },
               ),
               const SizedBox(
                 height: 5,
@@ -183,19 +191,22 @@ class _AddLeadScreenState extends State<AddLeadScreen> {
                   border: Border.all(color: AppColors.myBlack45),
                   borderRadius: BorderRadius.circular(6),
                 ),
-                child: Column(
-                  children: [
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                        enabledBorder: InputBorder.none,
-                        errorBorder: InputBorder.none,
-                        disabledBorder: InputBorder.none,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      TextFormField(
+                        decoration: const InputDecoration(
+                          border: InputBorder.none,
+                          focusedBorder: InputBorder.none,
+                          enabledBorder: InputBorder.none,
+                          errorBorder: InputBorder.none,
+                          disabledBorder: InputBorder.none,
+                        ),
+                        maxLines: 5,
                       ),
-                      maxLines: 5,
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],

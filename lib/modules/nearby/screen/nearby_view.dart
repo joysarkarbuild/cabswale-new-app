@@ -1,5 +1,4 @@
 import 'package:cabswalle/constants/assets.dart';
-import 'package:cabswalle/modules/community/screen/community_view.dart';
 import 'package:cabswalle/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

@@ -8,3 +8,10 @@ sealed class AddleadState extends Equatable {
 }
 
 final class AddleadInitial extends AddleadState {}
+
+final class ChangeLeadType extends AddleadState {
+  final String leadType;
+  const ChangeLeadType({required this.leadType});
+  @override
+  List<Object> get props => [leadType];
+}

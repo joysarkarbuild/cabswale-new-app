@@ -23,6 +23,15 @@ class ApiService {
       ),
     );
 
+// Add an interceptor to set the token dynamically
+    _dio.interceptors.add(InterceptorsWrapper(
+      onRequest: (options, handler) {
+        // Set the latest token in headers before every request
+        options.headers["idToken"] = LoginManager.jwtToken;
+        return handler.next(options); // Continue with the request
+      },
+    ));
+
     _dio.interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) {
         LoggerService.logInfo("Request: ${options.method} ${options.uri}");
@@ -94,7 +103,7 @@ class ApiService {
   // Error handler
   void _handleError(DioException error) async {
     String errorMessage = 'An unexpected error occurred';
-
+    LoggerService.logError(error.toString());
     // Check for 401 Unauthorized
     if (error.response?.statusCode == 401) {
       LoggerService.logError("User dosen't authenticated");

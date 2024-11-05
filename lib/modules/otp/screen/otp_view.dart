@@ -110,14 +110,18 @@ class _OtpScreenState extends State<OtpScreen> {
               var response = await OtpDataRepo.auth(
                   idToken: result["response"]["idToken"],
                   authId: result["response"]["userId"]);
-              LoadingOverlay().hide();
+
               if (response["status"]) {
-                LoginManager().saveLoginStatus(true);
-                LoginManager().saveJwtToken(result["response"]["idToken"]);
-                LoginManager().saveUserId(response["userId"]);
+                await LoginManager().saveLoginStatus(true);
+                await LoginManager()
+                    .saveJwtToken(result["response"]["idToken"]);
+                await LoginManager().saveUserId(response["userId"]);
+                LoginManager().getAllData();
                 LoggerService.logInfo("IsNew User : ${response["newUser"]}");
+                LoadingOverlay().hide();
                 gotoNavbar();
               } else {
+                LoadingOverlay().hide();
                 SnackbarUtils.showErrorSnackBar(
                     message: "Something went wrong!");
               }
