@@ -9,6 +9,7 @@ import 'package:cabswalle/modules/myprofile/data/models/user_profile_data_model.
 import 'package:cabswalle/routes/app_routes.dart';
 import 'package:cabswalle/services/show_image_service.dart';
 import 'package:cabswalle/widgets/centre_loading.dart';
+import 'package:cabswalle/widgets/common_image_view.dart';
 import 'package:cabswalle/widgets/submit_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -58,25 +59,27 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                           Row(
                             children: [
                               InkWell(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            const ShowImageService(
-                                                imageUrl: ""),
-                                      ));
-                                },
-                                child: Container(
-                                  height: 70,
-                                  width: 70,
-                                  decoration: BoxDecoration(
-                                      image: const DecorationImage(
-                                          image: AssetImage(
-                                              Assets.imagesDefaultUser)),
-                                      borderRadius: BorderRadius.circular(35)),
-                                ),
-                              ),
+                                  onTap: () {
+                                    if (user.profileImage != null &&
+                                        user.profileImage!.isNotEmpty) {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                ShowImageService(
+                                                    imageUrl:
+                                                        user.profileImage!),
+                                          ));
+                                    }
+                                  },
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(35),
+                                    child: CommonImageView(
+                                      url: user.profileImage,
+                                      height: 70,
+                                      width: 70,
+                                    ),
+                                  )),
                               const SizedBox(
                                 width: 10,
                               ),

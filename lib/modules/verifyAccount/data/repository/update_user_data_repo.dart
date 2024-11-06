@@ -1,5 +1,7 @@
+import 'dart:io';
 import 'package:cabswalle/constants/url_constants.dart';
 import 'package:cabswalle/services/api_service.dart';
+import 'package:cabswalle/services/firebase_storage_service.dart';
 import 'package:cabswalle/services/login_status_service.dart';
 
 class UpdateUserDataRepo {
@@ -8,29 +10,59 @@ class UpdateUserDataRepo {
   UpdateUserDataRepo({ApiService? apiService})
       : _apiService = apiService ?? ApiService();
 
-  Future<bool> updateUserProfile(
+  Future<Map<String, dynamic>> updateUserProfile(
       {required String name,
       required String city,
-      required int exprience}) async {
+      required int exprience,
+      File? profilePic}) async {
     try {
       // Use the ApiService's post method to make the API call
-      final response = await _apiService.post(ApiUrls.updateUserDetails, data: {
-        'type': "profile",
-        "userId": LoginManager.userId,
-        "data": {
-          "name": name,
-          "city": city,
-          "exprience": exprience,
+      String profileImageUrl = "";
+      if (profilePic != null) {
+        profileImageUrl =
+            await FirebaseStorageService.uploadProfileImageToFirebase(
+                    profilePic) ??
+                "";
+      }
+      if (profileImageUrl.isNotEmpty) {
+        final response =
+            await _apiService.post(ApiUrls.updateUserDetails, data: {
+          'type': "profile",
+          "userId": LoginManager.userId,
+          "data": {
+            "name": name,
+            "city": city,
+            "experience": exprience,
+            "profileImage": profileImageUrl,
+          }
+        });
+        if (response != null &&
+            response.statusCode == 200 &&
+            response.data["status"]) {
+          return {"status": true, "profileImage": profileImageUrl};
+        } else {
+          throw Exception(
+              'Failed to update user profile. Status code: ${response?.statusCode} Error: ${response!.data["message"]}');
         }
-      });
-
-      if (response != null &&
-          response.statusCode == 200 &&
-          response.data["status"]) {
-        return true;
       } else {
-        throw Exception(
-            'Failed to update user profile. Status code: ${response?.statusCode} Error: ${response!.data["message"]}');
+        final response =
+            await _apiService.post(ApiUrls.updateUserDetails, data: {
+          'type': "profile",
+          "userId": LoginManager.userId,
+          "data": {
+            "name": name,
+            "city": city,
+            "experience": exprience,
+          }
+        });
+        if (response != null &&
+            response.statusCode == 200 &&
+            response.data["status"]) {
+          return {"status": true, "profileImage": ""};
+        } else {
+          throw Exception(
+              'Failed to update user profile. Status code: ${response?.statusCode} Error: ${response!.data["message"]}');
+        }
       }
     } catch (e) {
       // Handle any other errors

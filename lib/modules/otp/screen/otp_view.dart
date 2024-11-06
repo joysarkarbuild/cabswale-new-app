@@ -76,6 +76,7 @@ class _OtpScreenState extends State<OtpScreen> {
     // Resend OTP using the repository
     _otplessRepository.sendOtp(
         onHeadlessResult: onHeadlessResultResend, phoneNo: phoneNo);
+    LoadingOverlay().hide();
   }
 
   void onHeadlessResultResend(dynamic result) {

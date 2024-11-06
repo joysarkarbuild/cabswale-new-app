@@ -7,6 +7,11 @@ import 'package:cabswalle/modules/myprofile/data/repository/profile_data_repo.da
 class MyprofileBloc extends Bloc<MyprofileEvent, MyprofileState> {
   MyprofileBloc() : super(MyprofileInitial()) {
     on<MyProfileLoadEvent>(_onGetMyProfileData);
+    on<UpdateMyProfileEvent>(
+      (event, emit) {
+        emit(MyProfileLoaded(myProfile: event.myProfile));
+      },
+    );
   }
 
   Future<void> _onGetMyProfileData(
