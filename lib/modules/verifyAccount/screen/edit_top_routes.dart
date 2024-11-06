@@ -1,4 +1,3 @@
-import 'package:cabswalle/modules/community/screen/community_view.dart';
 import 'package:cabswalle/modules/myprofile/bloc/myprofile_bloc.dart';
 import 'package:cabswalle/modules/myprofile/bloc/myprofile_state.dart';
 import 'package:cabswalle/modules/verifyAccount/bloc/verify_account_bloc.dart';
