@@ -59,27 +59,34 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                           Row(
                             children: [
                               InkWell(
-                                  onTap: () {
-                                    if (user.profileImage != null &&
-                                        user.profileImage!.isNotEmpty) {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                ShowImageService(
-                                                    imageUrl:
-                                                        user.profileImage!),
-                                          ));
-                                    }
-                                  },
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(35),
-                                    child: CommonImageView(
-                                      url: user.profileImage,
-                                      height: 70,
-                                      width: 70,
-                                    ),
-                                  )),
+                                onTap: () {
+                                  if (user.profileImage != null &&
+                                      user.profileImage!.isNotEmpty) {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              ShowImageService(
+                                                  imageUrl: user.profileImage!),
+                                        ));
+                                  }
+                                },
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(35),
+                                  child: (user.profileImage != null &&
+                                          user.profileImage!.isNotEmpty)
+                                      ? CommonImageView(
+                                          url: user.profileImage,
+                                          height: 70,
+                                          width: 70,
+                                        )
+                                      : CommonImageView(
+                                          imagePath: Assets.imagesDefaultUser,
+                                          height: 70,
+                                          width: 70,
+                                        ),
+                                ),
+                              ),
                               const SizedBox(
                                 width: 10,
                               ),
