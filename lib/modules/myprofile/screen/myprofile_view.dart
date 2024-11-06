@@ -369,7 +369,7 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                       height: 8,
                     ),
                     if (user.routes != null && user.routes!.isNotEmpty)
-                      ...[1, 2, 3, 4].map((e) => Column(
+                      ...user.routes!.map((e) => Column(
                             children: [
                               Container(
                                 padding: const EdgeInsets.all(8),
@@ -385,8 +385,8 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                                       width: MediaQuery.of(context).size.width *
                                               0.5 -
                                           40,
-                                      child: const Text(
-                                        "Kolkata",
+                                      child: Text(
+                                        "${e["from"]}",
                                         style: TextStyle(
                                             fontSize: 20,
                                             fontWeight: FontWeight.w500,
@@ -398,8 +398,8 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                                       width: MediaQuery.of(context).size.width *
                                               0.5 -
                                           40,
-                                      child: const Text(
-                                        "Pune",
+                                      child: Text(
+                                        "${e["to"]}",
                                         textAlign: TextAlign.end,
                                         style: TextStyle(
                                             fontSize: 20,

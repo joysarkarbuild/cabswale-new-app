@@ -22,7 +22,7 @@ class ProfileScreen extends StatelessWidget {
         appBar: AppBar(
           centerTitle: true,
           bottom: PreferredSize(
-              preferredSize: Size(context.screenWidth, 30),
+              preferredSize: Size(context.screenWidth, 24),
               child: Column(
                 children: [
                   Text(
@@ -39,74 +39,83 @@ class ProfileScreen extends StatelessWidget {
                 ],
               )),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            children: [
-              ProfileOptionCard(
-                  icon: Assets.iconsProfile,
-                  onTap: () {
-                    context.pushNamed(Names.myprofile);
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              children: [
+                ProfileOptionCard(
+                    icon: Assets.iconsProfile,
+                    onTap: () {
+                      context.pushNamed(Names.myprofile);
+                    },
+                    title: AppLocalizations.of(context)!.profileInfo),
+                ProfileOptionCard(
+                    icon: Assets.iconsMembership,
+                    onTap: () {},
+                    title: "Cabswale Membership"),
+                ProfileOptionCard(
+                    icon: Assets.iconsTransactions,
+                    onTap: () {},
+                    title: "Wallet Transactions"),
+                ProfileOptionCard(
+                    icon: Assets.iconsAlerts, onTap: () {}, title: "My Alerts"),
+                ProfileOptionCard(
+                    icon: Assets.iconsLanguage,
+                    onTap: () {},
+                    title: "Change Language"),
+                ProfileOptionCard(
+                    icon: Assets.iconsSettings,
+                    onTap: () {},
+                    title: "Settings"),
+                BlocBuilder<SplashBloc, SplashState>(
+                  builder: (context, state) {
+                    return ProfileOptionCard(
+                        icon: Assets.iconsTermsAndConditions,
+                        onTap: () {
+                          if (state is AppVersionMatched) {
+                            launchUrl(Uri.parse(state.privacyUrl));
+                          }
+                        },
+                        title: "Terms and Policy");
                   },
-                  title: AppLocalizations.of(context)!.profileInfo),
-              ProfileOptionCard(
-                  icon: Assets.iconsMembership,
+                ),
+                ProfileOptionCard(
+                    icon: Assets.iconsLogout,
+                    onTap: () {
+                      showMyDialoge(
+                          context: context,
+                          onYes: () {},
+                          content: Text(
+                            AppLocalizations.of(context)!.wanttoLogout,
+                          ));
+                    },
+                    title: AppLocalizations.of(context)!.logout),
+                ProfileOptionCard(
+                    icon: Assets.iconsDelete,
+                    onTap: () {
+                      showMyDialoge(
+                          context: context,
+                          onYes: () {},
+                          content: Text(
+                            AppLocalizations.of(context)!.deleteWarning,
+                          ));
+                    },
+                    title: "Delete Account"),
+                SizedBox(
+                  height: 20,
+                ),
+                SubmitButton(
                   onTap: () {},
-                  title: "Cabswale Membership"),
-              ProfileOptionCard(
-                  icon: Assets.iconsTransactions,
-                  onTap: () {},
-                  title: "Wallet Transactions"),
-              ProfileOptionCard(
-                  icon: Assets.iconsAlerts, onTap: () {}, title: "My Alerts"),
-              ProfileOptionCard(
-                  icon: Assets.iconsLanguage,
-                  onTap: () {},
-                  title: "Change Language"),
-              ProfileOptionCard(
-                  icon: Assets.iconsSettings, onTap: () {}, title: "Settings"),
-              BlocBuilder<SplashBloc, SplashState>(
-                builder: (context, state) {
-                  return ProfileOptionCard(
-                      icon: Assets.iconsTermsAndConditions,
-                      onTap: () {
-                        if (state is AppVersionMatched) {
-                          launchUrl(Uri.parse(state.privacyUrl));
-                        }
-                      },
-                      title: "Terms and Policy");
-                },
-              ),
-              ProfileOptionCard(
-                  icon: Assets.iconsLogout,
-                  onTap: () {
-                    showMyDialoge(
-                        context: context,
-                        onYes: () {},
-                        content: Text(
-                          AppLocalizations.of(context)!.wanttoLogout,
-                        ));
-                  },
-                  title: AppLocalizations.of(context)!.logout),
-              ProfileOptionCard(
-                  icon: Assets.iconsDelete,
-                  onTap: () {
-                    showMyDialoge(
-                        context: context,
-                        onYes: () {},
-                        content: Text(
-                          AppLocalizations.of(context)!.deleteWarning,
-                        ));
-                  },
-                  title: "Delete Account"),
-              const Spacer(),
-              SubmitButton(
-                onTap: () {},
-                lable: "Call Cabswale",
-                height: 40,
-                borderRadius: 5,
-              )
-            ],
+                  lable: "Call Cabswale",
+                  height: 40,
+                  borderRadius: 5,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+              ],
+            ),
           ),
         ));
   }

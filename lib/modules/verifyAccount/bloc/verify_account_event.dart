@@ -35,3 +35,12 @@ final class UpdateProfileNameCityImageSubmitEvent extends VerifyAccountEvent {
   @override
   List<Object> get props => [name, city, exprience];
 }
+
+final class UpdateTopRoutesEvent extends VerifyAccountEvent {
+  final List topRoutes;
+  final BuildContext context;
+
+  const UpdateTopRoutesEvent({required this.topRoutes, required this.context});
+  @override
+  List<Object> get props => [topRoutes];
+}

@@ -1,6 +1,7 @@
 import 'package:cabswalle/modules/myprofile/screen/myprofile_view.dart';
 import 'package:cabswalle/modules/splash/screen/splash_view.dart';
 import 'package:cabswalle/modules/verifyAccount/screen/edit_name_city_profile_image.dart';
+import 'package:cabswalle/modules/verifyAccount/screen/edit_top_routes.dart';
 import 'package:cabswalle/modules/verifyAccount/screen/verify_account_view.dart';
 import 'package:cabswalle/modules/emergency/screen/emergency_view.dart';
 import 'package:cabswalle/modules/topLocations/screen/top_locations_view.dart';
@@ -37,6 +38,11 @@ final router = GoRouter(
   navigatorKey:
       GlobalNavigation.instance.navigatorKey, // Use the global key here
   routes: [
+    GoRoute(
+      name: Names.editTopRoutes,
+      path: Routes.editTopRoutes,
+      builder: (context, state) => const EditTopRoutes(),
+    ),
     GoRoute(
       name: Names.editNameCityAndProfilePicture,
       path: Routes.editNameCityAndProfilePicture,

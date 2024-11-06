@@ -1,3 +1,4 @@
+import 'package:cabswalle/core/app_colors.dart';
 import 'package:cabswalle/modules/addlead/bloc/addlead_bloc.dart';
 import 'package:cabswalle/modules/myprofile/bloc/myprofile_bloc.dart';
 import 'package:cabswalle/modules/navbar/bloc/navbar_bloc.dart';
@@ -40,8 +41,11 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Cabswale',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: AppColors.myBlue,
+          ),
           useMaterial3: true,
+          primaryColor: AppColors.myBlue,
         ),
         supportedLocales: L10n.all,
         locale: const Locale('en'),
