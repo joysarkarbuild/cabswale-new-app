@@ -1,5 +1,6 @@
 import 'package:cabswalle/core/app_colors.dart';
 import 'package:cabswalle/modules/addlead/bloc/addlead_bloc.dart';
+import 'package:cabswalle/modules/home/bloc/home_bloc.dart';
 import 'package:cabswalle/modules/myprofile/bloc/myprofile_bloc.dart';
 import 'package:cabswalle/modules/navbar/bloc/navbar_bloc.dart';
 import 'package:cabswalle/modules/splash/bloc/splash_bloc.dart';
@@ -33,6 +34,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => VerifyAccountBloc(context.read<MyprofileBloc>()),
+        ),
+        BlocProvider(
+          create: (context) => HomeBloc(),
         ),
       ],
       child: MaterialApp.router(

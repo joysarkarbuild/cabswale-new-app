@@ -32,6 +32,30 @@ class FirebaseStorageService {
     }
   }
 
+  static Future<String?> uploadVehicleImage(File file) async {
+    try {
+      // Compress the image to around 200 KB
+      final compressedFile = await _compressImage(file, 200 * 1024); // 200 KB
+
+      if (compressedFile == null) {
+        throw Exception("Image compression failed");
+      }
+
+      // Upload to Firebase Storage
+      final storageRef = FirebaseStorage.instance
+          .ref()
+          .child("vehicles/${LoginManager.userId}${path.basename(file.path)}");
+      final uploadTask = await storageRef.putFile(compressedFile);
+
+      // Get download URL
+      final downloadUrl = await uploadTask.ref.getDownloadURL();
+      return downloadUrl;
+    } catch (e) {
+      LoggerService.logError("Error uploading image: $e");
+      return null;
+    }
+  }
+
   static Future<File?> _compressImage(File file, int targetSizeInBytes) async {
     int quality = 90;
     File? compressedFile;

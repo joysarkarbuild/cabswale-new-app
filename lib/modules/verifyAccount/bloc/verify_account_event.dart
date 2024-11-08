@@ -44,3 +44,12 @@ final class UpdateTopRoutesEvent extends VerifyAccountEvent {
   @override
   List<Object> get props => [topRoutes];
 }
+
+final class UpdateVehiclesEvent extends VerifyAccountEvent {
+  final List vehicles;
+  final BuildContext context;
+
+  const UpdateVehiclesEvent({required this.vehicles, required this.context});
+  @override
+  List<Object> get props => [vehicles];
+}

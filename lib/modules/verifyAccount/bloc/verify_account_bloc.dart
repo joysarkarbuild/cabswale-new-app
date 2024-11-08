@@ -105,5 +105,37 @@ class VerifyAccountBloc extends Bloc<VerifyAccountEvent, VerifyAccountState> {
         }
       },
     );
+
+    on<UpdateVehiclesEvent>(
+      (event, emit) async {
+        emit(UpdateProfileLoading());
+        LoadingOverlay().show(event.context);
+        try {
+          bool status =
+              await updateUserDataRepo.updateVehicles(vehicles: event.vehicles);
+          if (status) {
+            LoggerService.logInfo("Complete");
+            emit(UpdateProfileCompleteState());
+            if (myprofileBloc.state is MyProfileLoaded) {
+              final currentProfile =
+                  (myprofileBloc.state as MyProfileLoaded).myProfile;
+              final updatedProfile =
+                  currentProfile.copyWith(vehicles: event.vehicles);
+              myprofileBloc
+                  .add(UpdateMyProfileEvent(myProfile: updatedProfile));
+            }
+            // ignore: use_build_context_synchronously
+            event.context.pop();
+          } else {
+            emit(UpdateProfileErrorState());
+          }
+
+          LoadingOverlay().hide();
+        } catch (e) {
+          LoadingOverlay().hide();
+          SnackbarUtils.showErrorSnackBar(message: e.toString());
+        }
+      },
+    );
   }
 }

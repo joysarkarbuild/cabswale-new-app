@@ -51,8 +51,11 @@ class VerifyAccountScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: VerificationOption(
-                    isVerified: false,
-                    onTap: () {},
+                    isVerified: state.myProfile.vehicles != null &&
+                        state.myProfile.vehicles!.isNotEmpty,
+                    onTap: () {
+                      context.pushNamed(Names.vehicles);
+                    },
                     title: "Vehicles",
                   ),
                 ),
@@ -77,7 +80,7 @@ class VerifyAccountScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 20,
                 ),
               ],
             );

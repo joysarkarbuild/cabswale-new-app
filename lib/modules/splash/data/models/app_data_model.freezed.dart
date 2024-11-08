@@ -20,6 +20,7 @@ AppDataModel _$AppDataModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AppDataModel {
+// ignore: invalid_annotation_target
   @JsonKey(name: '_id')
   String get id => throw _privateConstructorUsedError;
   String get appStoreUrl => throw _privateConstructorUsedError;
@@ -198,6 +199,7 @@ class _$AppDataModelImpl implements _AppDataModel {
   factory _$AppDataModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$AppDataModelImplFromJson(json);
 
+// ignore: invalid_annotation_target
   @override
   @JsonKey(name: '_id')
   final String id;
@@ -276,6 +278,7 @@ abstract class _AppDataModel implements AppDataModel {
   factory _AppDataModel.fromJson(Map<String, dynamic> json) =
       _$AppDataModelImpl.fromJson;
 
+// ignore: invalid_annotation_target
   @override
   @JsonKey(name: '_id')
   String get id;

@@ -21,7 +21,7 @@ class UserProfileDataModel with _$UserProfileDataModel {
     int? exchangeCount,
     int? availableCount,
     List<dynamic>? routes,
-    List<Vehicle>? vehicles,
+    List<dynamic>? vehicles,
     List<NotificationLocation>? notificationLocations,
     bool? getDutyAlerts,
     int? connectionCount,
@@ -29,16 +29,6 @@ class UserProfileDataModel with _$UserProfileDataModel {
 
   factory UserProfileDataModel.fromJson(Map<String, dynamic> json) =>
       _$UserProfileDataModelFromJson(json);
-}
-
-@freezed
-class Vehicle with _$Vehicle {
-  factory Vehicle({
-    String? registrationNo,
-  }) = _Vehicle;
-
-  factory Vehicle.fromJson(Map<String, dynamic> json) =>
-      _$VehicleFromJson(json);
 }
 
 @freezed

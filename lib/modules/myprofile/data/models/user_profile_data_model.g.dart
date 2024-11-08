@@ -24,9 +24,7 @@ _$UserProfileDataModelImpl _$$UserProfileDataModelImplFromJson(
       exchangeCount: (json['exchangeCount'] as num?)?.toInt(),
       availableCount: (json['availableCount'] as num?)?.toInt(),
       routes: json['routes'] as List<dynamic>?,
-      vehicles: (json['vehicles'] as List<dynamic>?)
-          ?.map((e) => Vehicle.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      vehicles: json['vehicles'] as List<dynamic>?,
       notificationLocations: (json['notificationLocations'] as List<dynamic>?)
           ?.map((e) => NotificationLocation.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -56,16 +54,6 @@ Map<String, dynamic> _$$UserProfileDataModelImplToJson(
       'notificationLocations': instance.notificationLocations,
       'getDutyAlerts': instance.getDutyAlerts,
       'connectionCount': instance.connectionCount,
-    };
-
-_$VehicleImpl _$$VehicleImplFromJson(Map<String, dynamic> json) =>
-    _$VehicleImpl(
-      registrationNo: json['registrationNo'] as String?,
-    );
-
-Map<String, dynamic> _$$VehicleImplToJson(_$VehicleImpl instance) =>
-    <String, dynamic>{
-      'registrationNo': instance.registrationNo,
     };
 
 _$NotificationLocationImpl _$$NotificationLocationImplFromJson(

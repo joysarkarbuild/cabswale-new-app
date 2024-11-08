@@ -35,7 +35,7 @@ mixin _$UserProfileDataModel {
   int? get exchangeCount => throw _privateConstructorUsedError;
   int? get availableCount => throw _privateConstructorUsedError;
   List<dynamic>? get routes => throw _privateConstructorUsedError;
-  List<Vehicle>? get vehicles => throw _privateConstructorUsedError;
+  List<dynamic>? get vehicles => throw _privateConstructorUsedError;
   List<NotificationLocation>? get notificationLocations =>
       throw _privateConstructorUsedError;
   bool? get getDutyAlerts => throw _privateConstructorUsedError;
@@ -73,7 +73,7 @@ abstract class $UserProfileDataModelCopyWith<$Res> {
       int? exchangeCount,
       int? availableCount,
       List<dynamic>? routes,
-      List<Vehicle>? vehicles,
+      List<dynamic>? vehicles,
       List<NotificationLocation>? notificationLocations,
       bool? getDutyAlerts,
       int? connectionCount});
@@ -179,7 +179,7 @@ class _$UserProfileDataModelCopyWithImpl<$Res,
       vehicles: freezed == vehicles
           ? _value.vehicles
           : vehicles // ignore: cast_nullable_to_non_nullable
-              as List<Vehicle>?,
+              as List<dynamic>?,
       notificationLocations: freezed == notificationLocations
           ? _value.notificationLocations
           : notificationLocations // ignore: cast_nullable_to_non_nullable
@@ -220,7 +220,7 @@ abstract class _$$UserProfileDataModelImplCopyWith<$Res>
       int? exchangeCount,
       int? availableCount,
       List<dynamic>? routes,
-      List<Vehicle>? vehicles,
+      List<dynamic>? vehicles,
       List<NotificationLocation>? notificationLocations,
       bool? getDutyAlerts,
       int? connectionCount});
@@ -323,7 +323,7 @@ class __$$UserProfileDataModelImplCopyWithImpl<$Res>
       vehicles: freezed == vehicles
           ? _value._vehicles
           : vehicles // ignore: cast_nullable_to_non_nullable
-              as List<Vehicle>?,
+              as List<dynamic>?,
       notificationLocations: freezed == notificationLocations
           ? _value._notificationLocations
           : notificationLocations // ignore: cast_nullable_to_non_nullable
@@ -359,7 +359,7 @@ class _$UserProfileDataModelImpl implements _UserProfileDataModel {
       this.exchangeCount,
       this.availableCount,
       final List<dynamic>? routes,
-      final List<Vehicle>? vehicles,
+      final List<dynamic>? vehicles,
       final List<NotificationLocation>? notificationLocations,
       this.getDutyAlerts,
       this.connectionCount})
@@ -408,9 +408,9 @@ class _$UserProfileDataModelImpl implements _UserProfileDataModel {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<Vehicle>? _vehicles;
+  final List<dynamic>? _vehicles;
   @override
-  List<Vehicle>? get vehicles {
+  List<dynamic>? get vehicles {
     final value = _vehicles;
     if (value == null) return null;
     if (_vehicles is EqualUnmodifiableListView) return _vehicles;
@@ -539,7 +539,7 @@ abstract class _UserProfileDataModel implements UserProfileDataModel {
       final int? exchangeCount,
       final int? availableCount,
       final List<dynamic>? routes,
-      final List<Vehicle>? vehicles,
+      final List<dynamic>? vehicles,
       final List<NotificationLocation>? notificationLocations,
       final bool? getDutyAlerts,
       final int? connectionCount}) = _$UserProfileDataModelImpl;
@@ -578,7 +578,7 @@ abstract class _UserProfileDataModel implements UserProfileDataModel {
   @override
   List<dynamic>? get routes;
   @override
-  List<Vehicle>? get vehicles;
+  List<dynamic>? get vehicles;
   @override
   List<NotificationLocation>? get notificationLocations;
   @override
@@ -592,152 +592,6 @@ abstract class _UserProfileDataModel implements UserProfileDataModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UserProfileDataModelImplCopyWith<_$UserProfileDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
-}
-
-Vehicle _$VehicleFromJson(Map<String, dynamic> json) {
-  return _Vehicle.fromJson(json);
-}
-
-/// @nodoc
-mixin _$Vehicle {
-  String? get registrationNo => throw _privateConstructorUsedError;
-
-  /// Serializes this Vehicle to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of Vehicle
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $VehicleCopyWith<Vehicle> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $VehicleCopyWith<$Res> {
-  factory $VehicleCopyWith(Vehicle value, $Res Function(Vehicle) then) =
-      _$VehicleCopyWithImpl<$Res, Vehicle>;
-  @useResult
-  $Res call({String? registrationNo});
-}
-
-/// @nodoc
-class _$VehicleCopyWithImpl<$Res, $Val extends Vehicle>
-    implements $VehicleCopyWith<$Res> {
-  _$VehicleCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of Vehicle
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? registrationNo = freezed,
-  }) {
-    return _then(_value.copyWith(
-      registrationNo: freezed == registrationNo
-          ? _value.registrationNo
-          : registrationNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$VehicleImplCopyWith<$Res> implements $VehicleCopyWith<$Res> {
-  factory _$$VehicleImplCopyWith(
-          _$VehicleImpl value, $Res Function(_$VehicleImpl) then) =
-      __$$VehicleImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String? registrationNo});
-}
-
-/// @nodoc
-class __$$VehicleImplCopyWithImpl<$Res>
-    extends _$VehicleCopyWithImpl<$Res, _$VehicleImpl>
-    implements _$$VehicleImplCopyWith<$Res> {
-  __$$VehicleImplCopyWithImpl(
-      _$VehicleImpl _value, $Res Function(_$VehicleImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of Vehicle
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? registrationNo = freezed,
-  }) {
-    return _then(_$VehicleImpl(
-      registrationNo: freezed == registrationNo
-          ? _value.registrationNo
-          : registrationNo // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$VehicleImpl implements _Vehicle {
-  _$VehicleImpl({this.registrationNo});
-
-  factory _$VehicleImpl.fromJson(Map<String, dynamic> json) =>
-      _$$VehicleImplFromJson(json);
-
-  @override
-  final String? registrationNo;
-
-  @override
-  String toString() {
-    return 'Vehicle(registrationNo: $registrationNo)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$VehicleImpl &&
-            (identical(other.registrationNo, registrationNo) ||
-                other.registrationNo == registrationNo));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, registrationNo);
-
-  /// Create a copy of Vehicle
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$VehicleImplCopyWith<_$VehicleImpl> get copyWith =>
-      __$$VehicleImplCopyWithImpl<_$VehicleImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$VehicleImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _Vehicle implements Vehicle {
-  factory _Vehicle({final String? registrationNo}) = _$VehicleImpl;
-
-  factory _Vehicle.fromJson(Map<String, dynamic> json) = _$VehicleImpl.fromJson;
-
-  @override
-  String? get registrationNo;
-
-  /// Create a copy of Vehicle
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$VehicleImplCopyWith<_$VehicleImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 NotificationLocation _$NotificationLocationFromJson(Map<String, dynamic> json) {
