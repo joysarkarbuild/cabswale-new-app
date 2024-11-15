@@ -10,6 +10,7 @@ import 'package:cabswalle/modules/home/bloc/home_state.dart';
 import 'package:cabswalle/modules/home/screen/widgets/leads_count_show.dart';
 import 'package:cabswalle/modules/home/screen/widgets/to_from_dots.dart';
 import 'package:cabswalle/routes/app_routes.dart';
+import 'package:cabswalle/services/login_status_service.dart';
 import 'package:cabswalle/widgets/centre_loading.dart';
 import 'package:cabswalle/widgets/lead_card.dart';
 import 'package:cabswalle/widgets/show_image.dart';
@@ -136,7 +137,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: [
                         SubmitButton(
                           onTap: () {
-                            context.pushNamed(Names.cityPreferences);
+                            if (LoginManager.isLogin) {
+                              context.pushNamed(Names.cityPreferences);
+                            } else {
+                              context.pushNamed(Names.login);
+                            }
                           },
                           lable: "5 Locations Alerts",
                           height: 42,
@@ -204,6 +209,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     Wrap(
                       crossAxisAlignment: WrapCrossAlignment.center,
+                      alignment: WrapAlignment.start,
                       spacing: 10,
                       runSpacing: 10,
                       children: [
@@ -227,7 +233,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   borderRadius: BorderRadius.circular(4)),
                               child: Center(
                                 child: Text(
-                                  "Delhi".toUpperCase(),
+                                  "  ${state.userProfile!.notificationLocations![i].location!}"
+                                      .toUpperCase(),
                                   style: AppTextStyles.style18w500(),
                                 ),
                               ),

@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:cabswalle/constants/url_constants.dart';
+import 'package:cabswalle/modules/myprofile/data/models/user_profile_data_model.dart';
 import 'package:cabswalle/services/api_service.dart';
 import 'package:cabswalle/services/firebase_storage_service.dart';
 import 'package:cabswalle/services/login_status_service.dart';
@@ -100,6 +101,57 @@ class UpdateUserDataRepo {
         "userId": LoginManager.userId,
         "data": {
           "vehicles": vehicles,
+        }
+      });
+      if (response != null &&
+          response.statusCode == 200 &&
+          response.data["status"]) {
+        return true;
+      } else {
+        throw Exception(
+            'Failed to update user profile. Status code: ${response?.statusCode} Error: ${response!.data["message"]}');
+      }
+    } catch (e) {
+      // Handle any other errors
+      throw Exception('Unexpected error fetching app data: $e');
+    }
+  }
+
+  Future<bool> updateNotificationLocations(
+      {required List<NotificationLocation> notificationLocations}) async {
+    try {
+      final response = await _apiService.post(ApiUrls.updateUserDetails, data: {
+        'type': "profile",
+        "userId": LoginManager.userId,
+        "data": {
+          "notificationLocations": [
+            ...notificationLocations.map(
+              (e) => e.toJson(),
+            )
+          ],
+        }
+      });
+      if (response != null &&
+          response.statusCode == 200 &&
+          response.data["status"]) {
+        return true;
+      } else {
+        throw Exception(
+            'Failed to update user profile. Status code: ${response?.statusCode} Error: ${response!.data["message"]}');
+      }
+    } catch (e) {
+      // Handle any other errors
+      throw Exception('Unexpected error fetching app data: $e');
+    }
+  }
+
+  Future<bool> updateGetDutyAlerts({required bool getDutyAlerts}) async {
+    try {
+      final response = await _apiService.post(ApiUrls.updateUserDetails, data: {
+        'type': "profile",
+        "userId": LoginManager.userId,
+        "data": {
+          "getDutyAlerts": getDutyAlerts,
         }
       });
       if (response != null &&
