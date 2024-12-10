@@ -6,8 +6,6 @@ part 'app_data_model.g.dart';
 @freezed
 class AppDataModel with _$AppDataModel {
   const factory AppDataModel({
-    // ignore: invalid_annotation_target
-    @JsonKey(name: '_id') required String id,
     @Default('') String appStoreUrl,
     required String playStoreUrl,
     required String policy,

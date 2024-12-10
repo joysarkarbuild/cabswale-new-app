@@ -2,6 +2,8 @@ import 'package:cabswalle/constants/assets.dart';
 import 'package:cabswalle/core/app_colors.dart';
 import 'package:cabswalle/modules/community/screen/community_view.dart';
 import 'package:cabswalle/modules/deals/screen/deals_view.dart';
+import 'package:cabswalle/modules/home/bloc/home_bloc.dart';
+import 'package:cabswalle/modules/home/bloc/home_event.dart';
 import 'package:cabswalle/modules/home/screen/home_view.dart';
 import 'package:cabswalle/modules/location/screen/location_view.dart';
 import 'package:cabswalle/modules/navbar/bloc/navbar_bloc.dart';
@@ -16,9 +18,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
-class NavbarScreen extends StatelessWidget {
-  NavbarScreen({super.key});
+class NavbarScreen extends StatefulWidget {
+  const NavbarScreen({super.key});
 
+  @override
+  State<NavbarScreen> createState() => _NavbarScreenState();
+}
+
+class _NavbarScreenState extends State<NavbarScreen> {
   final List<Widget> tabs = [
     const HomeScreen(),
     const LocationScreen(),
@@ -26,6 +33,11 @@ class NavbarScreen extends StatelessWidget {
     const DealsScreen(),
     const ProfileScreen(),
   ];
+  @override
+  void initState() {
+    context.read<HomeBloc>().add(FetchHomeDataEvent(context: context));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -8,7 +8,6 @@ part of 'app_data_model.dart';
 
 _$AppDataModelImpl _$$AppDataModelImplFromJson(Map<String, dynamic> json) =>
     _$AppDataModelImpl(
-      id: json['_id'] as String,
       appStoreUrl: json['appStoreUrl'] as String? ?? '',
       playStoreUrl: json['playStoreUrl'] as String,
       policy: json['policy'] as String,
@@ -19,7 +18,6 @@ _$AppDataModelImpl _$$AppDataModelImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$AppDataModelImplToJson(_$AppDataModelImpl instance) =>
     <String, dynamic>{
-      '_id': instance.id,
       'appStoreUrl': instance.appStoreUrl,
       'playStoreUrl': instance.playStoreUrl,
       'policy': instance.policy,

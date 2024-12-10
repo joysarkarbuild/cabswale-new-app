@@ -69,6 +69,9 @@ class ApiService {
   // POST request
   Future<Response?> post(String endpoint, {Map<String, dynamic>? data}) async {
     try {
+      if (data != null) {
+        LoggerService.logInfo("Data $data");
+      }
       final response = await _dio.post(endpoint, data: data);
       return response;
     } on DioException catch (e) {

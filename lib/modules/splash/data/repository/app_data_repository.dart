@@ -1,29 +1,22 @@
-import 'package:cabswalle/constants/url_constants.dart';
 import 'package:cabswalle/modules/splash/data/models/app_data_model.dart';
-import 'package:cabswalle/services/api_service.dart'; // Import your ApiService
+import 'package:cabswalle/services/firestore_service.dart'; // Import your ApiService
 
 class AppDataRepository {
-  final ApiService _apiService;
+  final FirestoreUtils _firestoreService;
 
-  AppDataRepository({ApiService? apiService})
-      : _apiService =
-            apiService ?? ApiService(); // Use ApiService instead of Dio
+  AppDataRepository({FirestoreUtils? apiService})
+      : _firestoreService =
+            apiService ?? FirestoreUtils(); // Use ApiService instead of Dio
 
   Future<AppDataModel> fetchAppVersion() async {
     try {
       // Use the ApiService's post method to make the API call
-      final response = await _apiService.post(ApiUrls.settings, data: {
-        'docId': "app",
-      });
+      final response = await _firestoreService.getDocument("settings", "app");
 
-      if (response != null &&
-          response.statusCode == 200 &&
-          response.data["status"]) {
-        return AppDataModel.fromJson(
-            response.data["data"] as Map<String, dynamic>);
+      if (response != null && response.exists) {
+        return AppDataModel.fromJson(response.data() as Map<String, dynamic>);
       } else {
-        throw Exception(
-            'Failed to fetch app data. Status code: ${response?.statusCode}');
+        throw Exception('Failed to fetch app data.');
       }
     } catch (e) {
       // Handle any other errors

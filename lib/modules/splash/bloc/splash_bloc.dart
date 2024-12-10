@@ -7,7 +7,7 @@ import 'package:cabswalle/services/logger_service.dart';
 import 'package:cabswalle/services/login_status_service.dart';
 import 'package:url_launcher/url_launcher.dart'; // Import the model
 
-int appVersion = 28; // Always need to change when we pushing new version $$
+int appVersion = 30; // Always need to change when we pushing new version $$
 
 class SplashBloc extends Bloc<SplashEvent, SplashState> {
   SplashBloc() : super(SplashInitial()) {
@@ -37,8 +37,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
           playStoreUrl: appData.playStoreUrl,
           appStoreUrl: appData.appStoreUrl,
         ));
-        final Uri url = Uri.parse(
-            "https://play.google.com/store/apps/details?id=com.app.cabswalle");
+        final Uri url = Uri.parse(appData.playStoreUrl);
         if (await canLaunchUrl(url)) {
           await launchUrl(url);
         } else {

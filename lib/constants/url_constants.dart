@@ -5,4 +5,5 @@ class ApiUrls {
   static const String auth = "$baseUrl/auth-auth";
   static const String settings = "$baseUrl/settings-getSettingsDoc";
   static const String updateUserDetails = "$baseUrl/users-updateUserDetails";
+  static const String addLead = "$baseUrl/leads-addLeadData";
 }

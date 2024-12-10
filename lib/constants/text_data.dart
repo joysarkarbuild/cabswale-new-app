@@ -17,7 +17,7 @@ class TextData {
     }
   };
 
-  static List leadType = [
+  static List<String> leadType = [
     'commission',
     'exchange',
     'available',

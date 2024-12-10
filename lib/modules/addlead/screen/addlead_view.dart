@@ -2,6 +2,7 @@ import 'package:cabswalle/constants/text_data.dart';
 import 'package:cabswalle/core/app_colors.dart';
 import 'package:cabswalle/core/app_text_styles.dart';
 import 'package:cabswalle/modules/addlead/bloc/addlead_bloc.dart';
+import 'package:cabswalle/modules/addlead/bloc/addlead_event.dart';
 import 'package:cabswalle/modules/addlead/bloc/addlead_state.dart';
 import 'package:cabswalle/widgets/common_widget_componants.dart';
 import 'package:cabswalle/widgets/show_image.dart';
@@ -10,16 +11,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class AddLeadScreen extends StatefulWidget {
+class AddLeadScreen extends StatelessWidget {
   const AddLeadScreen({super.key});
 
   @override
-  State<AddLeadScreen> createState() => _AddLeadScreenState();
-}
-
-class _AddLeadScreenState extends State<AddLeadScreen> {
-  @override
   Widget build(BuildContext context) {
+    context
+        .read<AddleadBloc>()
+        .add(ChangeLeadTypeEvent(leadType: "commission"));
+    TextEditingController pickupLocationController = TextEditingController();
+    TextEditingController dropLocationController = TextEditingController();
+    TextEditingController vehicleController = TextEditingController();
+    TextEditingController extraMessageController = TextEditingController();
     return Scaffold(
       appBar: myAppBar(
           context: context, title: AppLocalizations.of(context)!.addLeads),
@@ -49,6 +52,7 @@ class _AddLeadScreenState extends State<AddLeadScreen> {
                     toFromDots(),
                     Expanded(
                         child: TextFormField(
+                      controller: pickupLocationController,
                       decoration: const InputDecoration(
                         border: InputBorder.none,
                         focusedBorder: InputBorder.none,
@@ -89,6 +93,7 @@ class _AddLeadScreenState extends State<AddLeadScreen> {
                     toFromDots(postion: 2),
                     Expanded(
                         child: TextFormField(
+                      controller: dropLocationController,
                       decoration: const InputDecoration(
                         border: InputBorder.none,
                         focusedBorder: InputBorder.none,
@@ -127,6 +132,7 @@ class _AddLeadScreenState extends State<AddLeadScreen> {
                 child: Column(
                   children: [
                     TextFormField(
+                      controller: vehicleController,
                       decoration: const InputDecoration(
                         border: InputBorder.none,
                         focusedBorder: InputBorder.none,
@@ -158,22 +164,33 @@ class _AddLeadScreenState extends State<AddLeadScreen> {
               ),
               BlocBuilder<AddleadBloc, AddleadState>(
                 builder: (context, state) {
-                  return Wrap(
-                    spacing: 10,
-                    children: TextData.leadType.map((lead) {
-                      return GestureDetector(
-                          onTap: () {},
-                          child: SizedBox(
-                            height: 50,
-                            width: MediaQuery.of(context).size.width * 0.28,
-                            child: ShowImage(
-                              boxFit: BoxFit.contain,
-                              imagelink: TextData.leadTypeData[lead][
-                                  lead == "commission" ? 'iconfilled' : 'icon'],
-                            ),
-                          ));
-                    }).toList(),
-                  );
+                  if (state is ChangeLeadType) {
+                    return Wrap(
+                      spacing: 10,
+                      alignment: WrapAlignment.spaceBetween,
+                      children: TextData.leadType.map((lead) {
+                        return GestureDetector(
+                            onTap: () {
+                              context
+                                  .read<AddleadBloc>()
+                                  .add(ChangeLeadTypeEvent(leadType: lead));
+                            },
+                            child: SizedBox(
+                              height: 50,
+                              width: MediaQuery.of(context).size.width * 0.28,
+                              child: ShowImage(
+                                boxFit: BoxFit.contain,
+                                imagelink: TextData.leadTypeData[lead][
+                                    (state).leadType == lead
+                                        ? 'iconfilled'
+                                        : 'icon'],
+                              ),
+                            ));
+                      }).toList(),
+                    );
+                  } else {
+                    return SizedBox();
+                  }
                 },
               ),
               const SizedBox(
@@ -196,6 +213,7 @@ class _AddLeadScreenState extends State<AddLeadScreen> {
                   child: Column(
                     children: [
                       TextFormField(
+                        controller: extraMessageController,
                         decoration: const InputDecoration(
                           border: InputBorder.none,
                           focusedBorder: InputBorder.none,
@@ -217,7 +235,14 @@ class _AddLeadScreenState extends State<AddLeadScreen> {
 
           // tapable: canUpload(leads.processingLead),
           borderRadius: 6,
-          onTap: () {},
+          onTap: () {
+            context.read<AddleadBloc>().add(UploadLeadEvent(
+                context: context,
+                dropLocation: dropLocationController.text.trim(),
+                extraMessage: extraMessageController.text.trim(),
+                pickupLocation: pickupLocationController.text.trim(),
+                vehicle: vehicleController.text.trim()));
+          },
           isAtBottom: true,
           lable: AppLocalizations.of(context)!.addLeads),
     );

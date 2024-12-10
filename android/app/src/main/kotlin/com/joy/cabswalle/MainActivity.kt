@@ -1,4 +1,4 @@
-package com.app.cabswalle
+package com.joy.cabswalle
 
 import io.flutter.embedding.android.FlutterActivity
 

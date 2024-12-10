@@ -58,8 +58,7 @@ class SplashScreen extends StatelessWidget {
                         width: 200,
                         child: ElevatedButton(
                           onPressed: () async {
-                            final Uri url = Uri.parse(
-                                "https://play.google.com/store/apps/details?id=com.app.cabswalle");
+                            final Uri url = Uri.parse(state.playStoreUrl);
                             if (await canLaunchUrl(url)) {
                               await launchUrl(url);
                             }
@@ -83,15 +82,16 @@ class SplashScreen extends StatelessWidget {
                       const SizedBox(
                         height: 10,
                       ),
-                      TextButton(
-                        onPressed: () {
-                          // initData(context);
-                        },
-                        child: const Text(
-                          "I will do it later",
-                          style: TextStyle(color: Colors.amber),
-                        ),
-                      )
+                      if (!state.forceUpdate)
+                        TextButton(
+                          onPressed: () {
+                            context.go(Routes.navbar);
+                          },
+                          child: const Text(
+                            "I will do it later",
+                            style: TextStyle(color: Colors.amber),
+                          ),
+                        )
                     ],
                   )
               ],

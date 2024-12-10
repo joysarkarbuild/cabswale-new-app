@@ -20,9 +20,6 @@ AppDataModel _$AppDataModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AppDataModel {
-// ignore: invalid_annotation_target
-  @JsonKey(name: '_id')
-  String get id => throw _privateConstructorUsedError;
   String get appStoreUrl => throw _privateConstructorUsedError;
   String get playStoreUrl => throw _privateConstructorUsedError;
   String get policy => throw _privateConstructorUsedError;
@@ -47,8 +44,7 @@ abstract class $AppDataModelCopyWith<$Res> {
       _$AppDataModelCopyWithImpl<$Res, AppDataModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: '_id') String id,
-      String appStoreUrl,
+      {String appStoreUrl,
       String playStoreUrl,
       String policy,
       int appVersion,
@@ -71,7 +67,6 @@ class _$AppDataModelCopyWithImpl<$Res, $Val extends AppDataModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? appStoreUrl = null,
     Object? playStoreUrl = null,
     Object? policy = null,
@@ -80,10 +75,6 @@ class _$AppDataModelCopyWithImpl<$Res, $Val extends AppDataModel>
     Object? forceUpdate = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
       appStoreUrl: null == appStoreUrl
           ? _value.appStoreUrl
           : appStoreUrl // ignore: cast_nullable_to_non_nullable
@@ -121,8 +112,7 @@ abstract class _$$AppDataModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: '_id') String id,
-      String appStoreUrl,
+      {String appStoreUrl,
       String playStoreUrl,
       String policy,
       int appVersion,
@@ -143,7 +133,6 @@ class __$$AppDataModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? appStoreUrl = null,
     Object? playStoreUrl = null,
     Object? policy = null,
@@ -152,10 +141,6 @@ class __$$AppDataModelImplCopyWithImpl<$Res>
     Object? forceUpdate = null,
   }) {
     return _then(_$AppDataModelImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
       appStoreUrl: null == appStoreUrl
           ? _value.appStoreUrl
           : appStoreUrl // ignore: cast_nullable_to_non_nullable
@@ -188,8 +173,7 @@ class __$$AppDataModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AppDataModelImpl implements _AppDataModel {
   const _$AppDataModelImpl(
-      {@JsonKey(name: '_id') required this.id,
-      this.appStoreUrl = '',
+      {this.appStoreUrl = '',
       required this.playStoreUrl,
       required this.policy,
       this.appVersion = 0,
@@ -199,10 +183,6 @@ class _$AppDataModelImpl implements _AppDataModel {
   factory _$AppDataModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$AppDataModelImplFromJson(json);
 
-// ignore: invalid_annotation_target
-  @override
-  @JsonKey(name: '_id')
-  final String id;
   @override
   @JsonKey()
   final String appStoreUrl;
@@ -222,7 +202,7 @@ class _$AppDataModelImpl implements _AppDataModel {
 
   @override
   String toString() {
-    return 'AppDataModel(id: $id, appStoreUrl: $appStoreUrl, playStoreUrl: $playStoreUrl, policy: $policy, appVersion: $appVersion, iosVersion: $iosVersion, forceUpdate: $forceUpdate)';
+    return 'AppDataModel(appStoreUrl: $appStoreUrl, playStoreUrl: $playStoreUrl, policy: $policy, appVersion: $appVersion, iosVersion: $iosVersion, forceUpdate: $forceUpdate)';
   }
 
   @override
@@ -230,7 +210,6 @@ class _$AppDataModelImpl implements _AppDataModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AppDataModelImpl &&
-            (identical(other.id, id) || other.id == id) &&
             (identical(other.appStoreUrl, appStoreUrl) ||
                 other.appStoreUrl == appStoreUrl) &&
             (identical(other.playStoreUrl, playStoreUrl) ||
@@ -246,7 +225,7 @@ class _$AppDataModelImpl implements _AppDataModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, appStoreUrl, playStoreUrl,
+  int get hashCode => Object.hash(runtimeType, appStoreUrl, playStoreUrl,
       policy, appVersion, iosVersion, forceUpdate);
 
   /// Create a copy of AppDataModel
@@ -267,8 +246,7 @@ class _$AppDataModelImpl implements _AppDataModel {
 
 abstract class _AppDataModel implements AppDataModel {
   const factory _AppDataModel(
-      {@JsonKey(name: '_id') required final String id,
-      final String appStoreUrl,
+      {final String appStoreUrl,
       required final String playStoreUrl,
       required final String policy,
       final int appVersion,
@@ -278,10 +256,6 @@ abstract class _AppDataModel implements AppDataModel {
   factory _AppDataModel.fromJson(Map<String, dynamic> json) =
       _$AppDataModelImpl.fromJson;
 
-// ignore: invalid_annotation_target
-  @override
-  @JsonKey(name: '_id')
-  String get id;
   @override
   String get appStoreUrl;
   @override

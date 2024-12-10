@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:cabswalle/modules/community/screen/community_view.dart';
 import 'package:cabswalle/modules/home/bloc/home_event.dart';
 import 'package:cabswalle/modules/home/bloc/home_state.dart';
 import 'package:cabswalle/modules/myprofile/data/models/user_profile_data_model.dart';
