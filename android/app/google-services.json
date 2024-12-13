@@ -1,0 +1,178 @@
+{
+  "project_info": {
+    "project_number": "629712858302",
+    "project_id": "bwi-cabswalle",
+    "storage_bucket": "bwi-cabswalle.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:629712858302:android:afad270b35978c000282ef",
+        "android_client_info": {
+          "package_name": "com.app.cabswalle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "629712858302-0s5nabe2qqh0pkdg8lp06rsvb75du187.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.cabswalle",
+            "certificate_hash": "9aec54c236daa70a476703c1e54b33ba252a3b00"
+          }
+        },
+        {
+          "client_id": "629712858302-bvdkcj6jqbggbut19h6be2b2rh3q2450.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.cabswalle",
+            "certificate_hash": "e87ba2d7582d8579fe5156ab5edca6839969eecc"
+          }
+        },
+        {
+          "client_id": "629712858302-lga4fk7df8po32cqn5g8vvapj5kh0tb1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.cabswalle",
+            "certificate_hash": "0dc7f7fb4a9b06e6afacd62eba62af9a2c454503"
+          }
+        },
+        {
+          "client_id": "629712858302-2kod2maqnh9atgfcvvksdqatb869f0al.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCh8goXaY2KwobtOz3i8vc1hc4jFMxZi04"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "629712858302-2kod2maqnh9atgfcvvksdqatb869f0al.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "629712858302-np79mef3qv2urrdpl6qvc3sfs3aa85jr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.app.cabswalle"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:629712858302:android:4fab6854aa5b29f20282ef",
+        "android_client_info": {
+          "package_name": "com.bwi.cabswale_partner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "629712858302-2kod2maqnh9atgfcvvksdqatb869f0al.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCh8goXaY2KwobtOz3i8vc1hc4jFMxZi04"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "629712858302-2kod2maqnh9atgfcvvksdqatb869f0al.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "629712858302-np79mef3qv2urrdpl6qvc3sfs3aa85jr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.app.cabswalle"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:629712858302:android:469a4699eb777a190282ef",
+        "android_client_info": {
+          "package_name": "com.example.cabswale_partner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "629712858302-2kod2maqnh9atgfcvvksdqatb869f0al.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCh8goXaY2KwobtOz3i8vc1hc4jFMxZi04"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "629712858302-2kod2maqnh9atgfcvvksdqatb869f0al.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "629712858302-np79mef3qv2urrdpl6qvc3sfs3aa85jr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.app.cabswalle"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:629712858302:android:ef24b3bd8c18527d0282ef",
+        "android_client_info": {
+          "package_name": "com.joy.cabswalle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "629712858302-2kod2maqnh9atgfcvvksdqatb869f0al.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCh8goXaY2KwobtOz3i8vc1hc4jFMxZi04"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "629712858302-2kod2maqnh9atgfcvvksdqatb869f0al.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "629712858302-np79mef3qv2urrdpl6qvc3sfs3aa85jr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.app.cabswalle"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
