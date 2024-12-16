@@ -11,6 +11,7 @@ import 'package:cabswalle/modules/navbar/bloc/navbar_event.dart';
 import 'package:cabswalle/modules/navbar/bloc/navbar_state.dart';
 import 'package:cabswalle/modules/profile/screen/profile_view.dart';
 import 'package:cabswalle/routes/app_routes.dart';
+import 'package:cabswalle/services/location_service.dart';
 import 'package:cabswalle/services/login_manager.dart';
 import 'package:cabswalle/widgets/my_bottom_navbar.dart';
 import 'package:flutter/material.dart';
@@ -37,6 +38,12 @@ class _NavbarScreenState extends State<NavbarScreen> {
   void initState() {
     context.read<HomeBloc>().add(FetchHomeDataEvent());
     super.initState();
+    startLocationService();
+  }
+
+  void startLocationService() async {
+    final locationService = LocationService();
+    await locationService.initialize();
   }
 
   @override

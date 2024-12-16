@@ -1,3 +1,4 @@
+import 'package:cabswalle/models/driver_model.dart';
 import 'package:cabswalle/modules/home/data/models/count_data_model.dart';
 import 'package:cabswalle/modules/home/data/models/lead_data_model.dart';
 import 'package:cabswalle/modules/home/data/models/lead_fetch_result_data_model.dart';
@@ -21,6 +22,7 @@ final class HomeLoadedState extends HomeState {
   final String leadType;
   final bool leadLoading;
   final bool fetchingMore;
+  final DriverModel? userProfile;
 
   const HomeLoadedState(
       {required this.countData,
@@ -28,11 +30,19 @@ final class HomeLoadedState extends HomeState {
       required this.leadType,
       required this.searchText,
       required this.leadLoading,
-      required this.fetchingMore});
+      required this.fetchingMore,
+      required this.userProfile});
 
   @override
-  List<Object> get props =>
-      [countData, leads, leadType, searchText, leadLoading, fetchingMore];
+  List<Object> get props => [
+        countData,
+        leads,
+        leadType,
+        searchText,
+        leadLoading,
+        fetchingMore,
+        userProfile!,
+      ];
 }
 
 final class HomeErrorState extends HomeState {

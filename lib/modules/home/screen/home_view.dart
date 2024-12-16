@@ -3,13 +3,16 @@ import 'package:cabswalle/constants/text_data.dart';
 import 'package:cabswalle/core/app_colors.dart';
 import 'package:cabswalle/core/app_text_styles.dart';
 import 'package:cabswalle/core/screen_responsive.dart';
+import 'package:cabswalle/modules/filterleads/screen/filterleads_view.dart';
 import 'package:cabswalle/modules/home/bloc/home_bloc.dart';
 import 'package:cabswalle/modules/home/bloc/home_event.dart';
 import 'package:cabswalle/modules/home/bloc/home_state.dart';
 import 'package:cabswalle/modules/home/screen/widgets/home_shimmer.dart';
 import 'package:cabswalle/modules/home/screen/widgets/leads_count_show.dart';
+import 'package:cabswalle/modules/home/screen/widgets/membership_widget.dart';
 import 'package:cabswalle/modules/home/screen/widgets/to_from_dots.dart';
 import 'package:cabswalle/routes/app_routes.dart';
+import 'package:cabswalle/services/driver_service.dart';
 import 'package:cabswalle/services/logger_service.dart';
 import 'package:cabswalle/services/login_manager.dart';
 import 'package:cabswalle/widgets/lead_card.dart';
@@ -117,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 SubmitButton(
                                   onTap: () {
                                     if (LoginManager.isLogin) {
-                                      context.pushNamed(Names.myleads);
+                                      context.pushNamed(Names.location);
                                     } else {
                                       context.pushNamed(Names.login);
                                     }
@@ -221,7 +224,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                 SubmitButton(
                                   onTap: () {
                                     if (LoginManager.isLogin) {
-                                      context.pushNamed(Names.myleads);
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                FilterLeadsScreen(city: ""),
+                                          ));
                                     } else {
                                       context.pushNamed(Names.login);
                                     }
@@ -241,87 +249,71 @@ class _HomeScreenState extends State<HomeScreen> {
                               todaysLeadCount: state.countData.totalLeads,
                               weeksLeadCount: state.countData.totalSearches,
                             ),
-                            // const SizedBox(
-                            //   height: 14,
-                            // ),
-                            // DottedBorder(
-                            //   color: AppColors.myprimaryColor,
-                            //   dashPattern: const [4],
-                            //   strokeWidth: 1.5,
-                            //   radius: Radius.circular(5),
-                            //   borderType: BorderType.RRect,
-                            //   padding: const EdgeInsets.symmetric(
-                            //       horizontal: 10, vertical: 3),
-                            //   child: ClipRRect(
-                            //     borderRadius:
-                            //         const BorderRadius.all(Radius.circular(12)),
-                            //     child: SizedBox(
-                            //       height: 40,
-                            //       width: context.screenWidth,
-                            //       child: Row(
-                            //         mainAxisAlignment:
-                            //             MainAxisAlignment.spaceBetween,
-                            //         children: [
-                            //           Text(
-                            //             "Start Membership",
-                            //             style: AppTextStyles.style16w500(),
-                            //           ),
-                            //           SubmitButton(
-                            //             onTap: () {},
-                            //             lable: "Recharge Now",
-                            //             height: 28,
-                            //             width: 140,
-                            //             labelsize: 15,
-                            //             borderRadius: 4,
-                            //           )
-                            //         ],
-                            //       ),
-                            //     ),
-                            //   ),
-                            // ),
+                            MembershipWidget(
+                              isMembershipActive: DriverService
+                                  .instance.driverModel!.membership!.active,
+                              endDate: DriverService
+                                  .instance.driverModel!.membership!.endDate,
+                            ),
                             const SizedBox(
                               height: 10,
                             ),
-                            // Wrap(
-                            //   crossAxisAlignment: WrapCrossAlignment.center,
-                            //   alignment: WrapAlignment.start,
-                            //   spacing: 10,
-                            //   runSpacing: 10,
-                            //   children: [
-                            //     for (int i = 0;
-                            //         i <
-                            //             (state.userProfile != null
-                            //                 ? state.userProfile!
-                            //                     .notificationLocations!.length
-                            //                 : 0);
-                            //         i++)
-                            //       InkWell(
-                            //         onTap: () {},
-                            //         child: Container(
-                            //           width: MediaQuery.of(context).size.width * 0.5 -
-                            //               20,
-                            //           padding: const EdgeInsets.symmetric(
-                            //               horizontal: 12, vertical: 10),
-                            //           decoration: BoxDecoration(
-                            //               color: AppColors.colorList[i],
-                            //               border: Border.all(color: Colors.blue),
-                            //               borderRadius: BorderRadius.circular(4)),
-                            //           child: Center(
-                            //             child: Text(
-                            //               "  ${state.userProfile!.notificationLocations![i].location!}"
-                            //                   .toUpperCase(),
-                            //               style: AppTextStyles.style18w500(),
-                            //             ),
-                            //           ),
-                            //         ),
-                            //       )
-                            //   ],
-                            // ),
-                            // if (state.userProfile != null &&
-                            //     state.userProfile!.notificationLocations!.isNotEmpty)
-                            //   const SizedBox(
-                            //     height: 17,
-                            //   ),
+                            if (LoginManager.isLogin)
+                              Wrap(
+                                crossAxisAlignment: WrapCrossAlignment.center,
+                                alignment: WrapAlignment.start,
+                                spacing: 10,
+                                runSpacing: 10,
+                                children: [
+                                  for (int i = 0;
+                                      i <
+                                          (state.userProfile != null
+                                              ? state.userProfile!
+                                                  .notificationLocations!.length
+                                              : 0);
+                                      i++)
+                                    InkWell(
+                                      onTap: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  FilterLeadsScreen(
+                                                      city: state.userProfile!
+                                                              .notificationLocations![
+                                                          i]!),
+                                            ));
+                                      },
+                                      child: Container(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                    0.5 -
+                                                20,
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 12, vertical: 10),
+                                        decoration: BoxDecoration(
+                                            color: AppColors.colorList[i],
+                                            border:
+                                                Border.all(color: Colors.blue),
+                                            borderRadius:
+                                                BorderRadius.circular(4)),
+                                        child: Center(
+                                          child: Text(
+                                            "  ${state.userProfile!.notificationLocations![i]!}"
+                                                .toUpperCase(),
+                                            style: AppTextStyles.style18w500(),
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                ],
+                              ),
+                            if (state.userProfile != null &&
+                                state.userProfile!.notificationLocations!
+                                    .isNotEmpty)
+                              const SizedBox(
+                                height: 8,
+                              ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [

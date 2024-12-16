@@ -1,7 +1,9 @@
 import 'package:cabswalle/modules/home/data/models/lead_data_model.dart';
 import 'package:cabswalle/services/logger_service.dart';
+import 'package:cabswalle/services/snackbar_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:typesense/typesense.dart';
 
 class TypeSenseInstance {
@@ -162,7 +164,7 @@ class TypeSenseInstance {
       'query_by': 'fromTxt',
       'filter_by': 'status:!=pending',
       'sort_by': 'createdAt:desc',
-      'per_page': '20',
+      'per_page': '30',
       'page': page.toString(),
     };
     try {
@@ -186,54 +188,43 @@ class TypeSenseInstance {
       }
       return leadsList;
     } catch (e) {
-      debugPrint("error while searching leads");
-      debugPrint("Error : $e");
+      LoggerService.logError(e.toString());
+      SnackbarUtils.showErrorSnackBar(message: e.toString());
       return leadsList;
     }
   }
 
-  // Future<List<LeadsModel>> getMyLocationLeads(Position position, page) async {
-  //   List<LeadsModel> leadsList = [];
-  //   // FieldValue.serverTimestamp();
-  //   final searchPerameters = {
-  //     'q': "*",
-  //     'query_by': 'fromTxt',
-  //     'filter_by':
-  //         'location:(${position.latitude},${position.longitude},${100} km)&&status:!=pending',
-  //     'sort_by':
-  //         "createdAt:desc,location(${position.latitude},${position.latitude}):asc",
-  //     'per_page': '20',
-  //     'page': page.toString()
-  //   };
-  //   try {
-  //     final result = await client
-  //         .collection('bwi-cabswalle-leads')
-  //         .documents
-  //         .search(searchPerameters) as Map;
+  Future<List<LeadModel>> getMyLocationLeads(
+      Position position, int page) async {
+    LoggerService.logInfo(
+        'searhing for Position ${position.latitude} , ${position.longitude}... \nPage : $page');
+    List<LeadModel> leadsList = [];
+    final searchPerameters = {
+      'q': "*",
+      'query_by': 'fromTxt',
+      'filter_by':
+          'location:(${position.latitude},${position.longitude},${100} km)&&status:!=pending',
+      'sort_by':
+          "createdAt:desc,location(${position.latitude},${position.latitude}):asc",
+      'per_page': '20',
+      'page': page.toString()
+    };
+    try {
+      final result = await client
+          .collection('bwi-cabswalle-leads')
+          .documents
+          .search(searchPerameters) as Map;
 
-  //     // debugPrint("\n\nresult = ${result}\n\n");
-  //     var data = result;
-
-  //     for (var item in result['hits']) {
-  //       var elemenetfound = false;
-
-  //       for (var element in leadsList) {
-  //         if (element.id == item['document']['id']) {
-  //           elemenetfound = true;
-  //         }
-  //       }
-  //       if (!elemenetfound) {
-  //         leadsList.add(
-  //             LeadsModel.fromJson(item['document'], item['document']['id']));
-  //       }
-  //     }
-  //     return leadsList;
-  //   } catch (e) {
-  //     debugPrint("error while searching leads");
-  //     debugPrint("Error : $e");
-  //     return leadsList;
-  //   }
-  // }
+      for (var item in result['hits']) {
+        leadsList.add(LeadModel.fromJson(item['document']));
+      }
+      return leadsList;
+    } catch (e) {
+      LoggerService.logError(e.toString());
+      SnackbarUtils.showErrorSnackBar(message: e.toString());
+      return leadsList;
+    }
+  }
 
   // Future<List> getNearbyDrivers(
   //     {required double lat, required double long, required int raduis}) async {

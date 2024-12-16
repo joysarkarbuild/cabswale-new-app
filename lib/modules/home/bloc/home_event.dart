@@ -41,13 +41,10 @@ final class SearchLeads extends HomeEvent {
 }
 
 final class UpdateNotificationLocationsEvent extends HomeEvent {
-  final BuildContext context;
-  final List<NotificationLocation> notificationLocations;
-  const UpdateNotificationLocationsEvent(
-      {required this.context, required this.notificationLocations});
+  const UpdateNotificationLocationsEvent();
 
   @override
-  List<Object> get props => [notificationLocations];
+  List<Object> get props => [];
 }
 
 final class UpdateGetDutyAlertEvent extends HomeEvent {

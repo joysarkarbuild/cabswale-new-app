@@ -1,37 +1,50 @@
-import 'package:cabswalle/constants/url_constants.dart';
-import 'package:cabswalle/services/api_service.dart';
+import 'package:cabswalle/modules/home/data/models/lead_data_model.dart';
+import 'package:cabswalle/services/driver_service.dart';
+import 'package:cabswalle/services/firestore_service.dart';
+import 'package:cabswalle/services/logger_service.dart';
 
 class AddLeadDataRepository {
-  final ApiService _apiService;
+  final FirestoreUtils _firestoreUtils;
 
-  AddLeadDataRepository({ApiService? apiService})
-      : _apiService = apiService ?? ApiService();
+  AddLeadDataRepository({FirestoreUtils? firestoreUtils})
+      : _firestoreUtils = firestoreUtils ?? FirestoreUtils();
 
   Future<bool> addLead(
       {required String pickupLocation,
       required String dropLocation,
       required String vehicle,
       required String leadType,
-      required Map<String, dynamic> createdBy,
       required String extraMessage}) async {
-    var response = await _apiService.post(ApiUrls.addLead, data: {
-      "active": true,
-      "carType": vehicle,
-      "leadType": leadType,
-      "metadata": {"source": "user"},
-      "from": {"city": pickupLocation},
-      "to": {"city": dropLocation},
-      "status": "pending",
-      "verified": false,
-      "createdBy": createdBy,
-      "createdAt": DateTime.now().toIso8601String(),
-      "updatedAt": DateTime.now().toIso8601String(),
-    });
-    if (response != null &&
-        response.statusCode == 200 &&
-        response.data["status"]) {
+    try {
+      Map<String, dynamic> data = {
+        "active": true,
+        "at": DateTime.now(),
+        "carType": vehicle,
+        "createdAt": DateTime.now(),
+        "from": From(city: pickupLocation).toJson(),
+        "to": From(city: dropLocation).toJson(),
+        "message": extraMessage,
+        "leadType": leadType,
+        "metaData": {
+          'source': 'user',
+        },
+        "status":
+            (DriverService.instance.driverModel!.autoApproveLeads != null &&
+                    DriverService.instance.driverModel!.autoApproveLeads!)
+                ? "approved"
+                : "pending",
+        "createdBy": CreatedBy(
+                name: DriverService.instance.driverModel!.name!,
+                id: DriverService.instance.driverModel!.id,
+                phoneNo: DriverService.instance.driverModel!.phoneNo,
+                verified: DriverService.instance.driverModel!.verified)
+            .toJson(),
+      };
+
+      LoggerService.logInfo("${data}");
+      _firestoreUtils.addDocument("leads", data);
       return true;
-    } else {
+    } catch (e) {
       return false;
     }
   }

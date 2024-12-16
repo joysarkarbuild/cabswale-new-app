@@ -1,7 +1,9 @@
 import 'package:cabswalle/core/app_colors.dart';
 import 'package:cabswalle/modules/addlead/bloc/addlead_bloc.dart';
+import 'package:cabswalle/modules/filterleads/bloc/filterleads_bloc.dart';
 import 'package:cabswalle/modules/home/bloc/home_bloc.dart';
 import 'package:cabswalle/modules/login/bloc/login_bloc.dart';
+import 'package:cabswalle/modules/myleads/bloc/myleads_bloc.dart';
 import 'package:cabswalle/modules/myprofile/bloc/myprofile_bloc.dart';
 import 'package:cabswalle/modules/navbar/bloc/navbar_bloc.dart';
 import 'package:cabswalle/modules/splash/bloc/splash_bloc.dart';
@@ -44,6 +46,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => LoginBloc(),
+        ),
+        BlocProvider(
+          create: (context) => MyleadsBloc(),
+        ),
+        BlocProvider(
+          create: (context) => FilterleadsBloc(),
         ),
       ],
       child: MaterialApp.router(

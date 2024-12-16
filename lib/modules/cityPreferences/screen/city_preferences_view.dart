@@ -1,11 +1,13 @@
 import 'package:cabswalle/modules/home/bloc/home_bloc.dart';
 import 'package:cabswalle/modules/home/bloc/home_event.dart';
 import 'package:cabswalle/modules/home/bloc/home_state.dart';
-import 'package:cabswalle/modules/myprofile/data/models/user_profile_data_model.dart';
+import 'package:cabswalle/services/driver_service.dart';
+import 'package:cabswalle/services/loading_overlay_service.dart';
 import 'package:cabswalle/services/snackbar_service.dart';
 import 'package:cabswalle/widgets/submit_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class CityPreferencesScreen extends StatefulWidget {
   const CityPreferencesScreen({super.key});
@@ -38,10 +40,15 @@ class _CityPreferencesScreenState extends State<CityPreferencesScreen> {
                   builder: (context, state) {
                     if (state is HomeLoadedState) {
                       return Switch(
-                        value: false,
-                        onChanged: (val) {
-                          context.read<HomeBloc>().add(UpdateGetDutyAlertEvent(
-                              context: context, isActive: val));
+                        value: state.userProfile != null
+                            ? state.userProfile!.notificationAlert!
+                            : false,
+                        onChanged: (val) async {
+                          context
+                              .read<HomeBloc>()
+                              .add(UpdateNotificationLocationsEvent());
+                          await DriverService.instance
+                              .updateDriverField("notificationAlert", val);
                         },
                       );
                     } else {
@@ -60,8 +67,14 @@ class _CityPreferencesScreenState extends State<CityPreferencesScreen> {
           child: BlocBuilder<HomeBloc, HomeState>(
             builder: (context, state) {
               if (state is HomeLoadedState) {
-                for (int i = 0; i < 0; i++) {
-                  cityPreferences[i].text = "";
+                if (state.userProfile != null &&
+                    state.userProfile!.notificationLocations != null) {
+                  for (int i = 0;
+                      i < state.userProfile!.notificationLocations!.length;
+                      i++) {
+                    cityPreferences[i].text =
+                        state.userProfile!.notificationLocations![i];
+                  }
                 }
               }
               return Column(
@@ -98,11 +111,10 @@ class _CityPreferencesScreenState extends State<CityPreferencesScreen> {
                     onTap: () async {
                       // Do something with cityPreferences list when submit button is pressed
 
-                      List<NotificationLocation> notiLoc = [];
+                      List<String> notiLoc = [];
                       for (TextEditingController city in cityPreferences) {
                         if (city.text.isNotEmpty) {
-                          notiLoc.add(
-                              NotificationLocation(location: city.text.trim()));
+                          notiLoc.add(city.text.trim());
                         }
                       }
 
@@ -111,19 +123,24 @@ class _CityPreferencesScreenState extends State<CityPreferencesScreen> {
                             message: 'Add at least 1 location');
                         return;
                       } else {
-                        context.read<HomeBloc>().add(
-                            UpdateNotificationLocationsEvent(
-                                context: context,
-                                notificationLocations: notiLoc));
+                        LoadingOverlay().show(context);
+                        context
+                            .read<HomeBloc>()
+                            .add(UpdateNotificationLocationsEvent());
+                        await DriverService.instance.updateDriverField(
+                            "notificationLocations", notiLoc);
+                        LoadingOverlay().hide();
+                        // ignore: use_build_context_synchronously
+                        context.pop();
                       }
                     },
                     lable: "Submit",
                   ),
                   TextButton(
                     onPressed: () {
-                      context.read<HomeBloc>().add(
-                          UpdateNotificationLocationsEvent(
-                              context: context, notificationLocations: []));
+                      for (int i = 0; i < 5; i++) {
+                        cityPreferences[i].text = "";
+                      }
                     },
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.center,

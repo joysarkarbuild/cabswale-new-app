@@ -146,6 +146,14 @@ class Assets {
   /// assets/icons/pickup.svg
   static const String iconsPickup = "assets/icons/pickup.svg";
 
+  /// Assets for iconsPin
+  /// assets/icons/pin.svg
+  static const String iconsPin = "assets/icons/pin.svg";
+
+  /// Assets for iconsPinFilled
+  /// assets/icons/pin_filled.svg
+  static const String iconsPinFilled = "assets/icons/pin_filled.svg";
+
   /// Assets for iconsProblem
   /// assets/icons/problem.svg
   static const String iconsProblem = "assets/icons/problem.svg";
@@ -221,6 +229,10 @@ class Assets {
   /// Assets for imagesCabIcon
   /// assets/images/cab_icon.png
   static const String imagesCabIcon = "assets/images/cab_icon.png";
+
+  /// Assets for imagesDefaultCity
+  /// assets/images/defaultCity.png
+  static const String imagesDefaultCity = "assets/images/defaultCity.png";
 
   /// Assets for imagesDefaultImage
   /// assets/images/default_image.png

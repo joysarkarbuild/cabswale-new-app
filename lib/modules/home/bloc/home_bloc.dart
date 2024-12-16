@@ -5,6 +5,8 @@ import 'package:cabswalle/modules/home/data/models/count_data_model.dart';
 import 'package:cabswalle/modules/home/data/models/lead_data_model.dart';
 import 'package:cabswalle/modules/home/data/models/lead_fetch_result_data_model.dart';
 import 'package:cabswalle/modules/home/data/repository/home_data_repository.dart';
+import 'package:cabswalle/services/driver_service.dart';
+import 'package:cabswalle/services/login_manager.dart';
 import 'package:cabswalle/services/typesense_service.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
@@ -14,6 +16,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       (event, emit) async {
         try {
           emit(HomeLoadingState());
+          if (LoginManager.isLogin) {
+            await DriverService.instance.loadDriverModel();
+          }
+
           CountDataModel countData = await homeDataRepository.fetchCountData();
           LeadFetchResult leads =
               await homeDataRepository.fetchLeads(leadType: "Commission");
@@ -23,6 +29,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
               leadType: "commission",
               searchText: "",
               fetchingMore: false,
+              userProfile: DriverService.instance.driverModel,
               leadLoading: false));
         } catch (e) {
           emit(HomeErrorState(errorMessage: e.toString()));
@@ -37,6 +44,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
               leadType: event.leadType,
               leads: LeadFetchResult(leads: [], lastDoc: null),
               countData: event.countData,
+              userProfile: DriverService.instance.driverModel,
               searchText: "",
               fetchingMore: false,
               leadLoading: true));
@@ -49,6 +57,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
               countData: event.countData,
               searchText: "",
               fetchingMore: false,
+              userProfile: DriverService.instance.driverModel,
               leadLoading: false));
         } catch (e) {
           emit(HomeErrorState(errorMessage: e.toString()));
@@ -65,6 +74,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
               countData: event.countData,
               searchText: event.searcText,
               fetchingMore: false,
+              userProfile: DriverService.instance.driverModel,
               leadLoading: true));
           List<LeadModel> leads =
               await TypeSenseInstance().getSearchedLeadsTS(event.searcText, 1);
@@ -75,6 +85,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
               countData: event.countData,
               searchText: event.searcText,
               fetchingMore: false,
+              userProfile: DriverService.instance.driverModel,
               leadLoading: false));
         } catch (e) {
           emit(HomeErrorState(errorMessage: e.toString()));
@@ -91,6 +102,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
               countData: (state as HomeLoadedState).countData,
               searchText: (state as HomeLoadedState).searchText,
               fetchingMore: true,
+              userProfile: DriverService.instance.driverModel,
               leadLoading: false));
 
           LeadFetchResult leads = await homeDataRepository.fetchMoreLeads(
@@ -109,8 +121,22 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
               countData: (state as HomeLoadedState).countData,
               searchText: (state as HomeLoadedState).searchText,
               fetchingMore: false,
+              userProfile: DriverService.instance.driverModel,
               leadLoading: false));
         }
+      },
+    );
+
+    on<UpdateNotificationLocationsEvent>(
+      (event, emit) {
+        emit(HomeLoadedState(
+            leadType: (state as HomeLoadedState).leadType,
+            leads: (state as HomeLoadedState).leads,
+            countData: (state as HomeLoadedState).countData,
+            searchText: (state as HomeLoadedState).searchText,
+            fetchingMore: false,
+            userProfile: DriverService.instance.driverModel,
+            leadLoading: false));
       },
     );
   }
