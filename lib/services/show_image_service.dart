@@ -1,5 +1,6 @@
 import 'package:cabswalle/core/app_colors.dart';
 import 'package:cabswalle/core/app_text_styles.dart';
+import 'package:cabswalle/core/screen_responsive.dart';
 import 'package:flutter/material.dart';
 
 class ShowImageService extends StatelessWidget {
@@ -29,11 +30,14 @@ class ShowImageService extends StatelessWidget {
                 "No Image Available",
                 style: AppTextStyles.style17w600(color: Colors.white),
               )
-            : InteractiveViewer(
-                minScale: 0.5,
-                maxScale: 4.0,
-                boundaryMargin: const EdgeInsets.all(20.0),
-                child: Image.network(imageUrl),
+            : SizedBox(
+                height: context.screenHeight,
+                width: context.screenWidth,
+                child: InteractiveViewer(
+                  minScale: 0.5,
+                  maxScale: 4.0,
+                  child: Image.network(imageUrl),
+                ),
               ),
       ),
     );

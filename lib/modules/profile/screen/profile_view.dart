@@ -4,6 +4,9 @@ import 'package:cabswalle/core/screen_responsive.dart';
 import 'package:cabswalle/modules/splash/bloc/splash_bloc.dart';
 import 'package:cabswalle/modules/splash/bloc/splash_state.dart';
 import 'package:cabswalle/routes/app_routes.dart';
+import 'package:cabswalle/services/driver_service.dart';
+import 'package:cabswalle/services/loading_overlay_service.dart';
+import 'package:cabswalle/services/login_manager.dart';
 import 'package:cabswalle/widgets/common_widget_componants.dart';
 import 'package:cabswalle/widgets/profile_option_card.dart';
 import 'package:cabswalle/widgets/submit_button.dart';
@@ -22,11 +25,12 @@ class ProfileScreen extends StatelessWidget {
         appBar: AppBar(
           centerTitle: true,
           bottom: PreferredSize(
-              preferredSize: Size(context.screenWidth, 24),
+              preferredSize: Size(context.screenWidth, 6),
               child: Column(
                 children: [
                   Text(
-                    'Joy Sarkar',
+                    DriverService.instance.driverModel!.name ??
+                        "Cabswale Partner",
                     style: AppTextStyles.style22w600(),
                   ),
                   SizedBox(
@@ -35,6 +39,9 @@ class ProfileScreen extends StatelessWidget {
                   Image.asset(
                     Assets.imagesVe,
                     height: 20,
+                  ),
+                  SizedBox(
+                    height: 8,
                   ),
                 ],
               )),
@@ -85,7 +92,16 @@ class ProfileScreen extends StatelessWidget {
                     onTap: () {
                       showMyDialoge(
                           context: context,
-                          onYes: () {},
+                          onYes: () async {
+                            LoadingOverlay().show(context);
+                            LoginManager loginManager = LoginManager();
+                            await loginManager.logout();
+                            LoadingOverlay().hide();
+                            // ignore: use_build_context_synchronously
+                            context.pop();
+                            // ignore: use_build_context_synchronously
+                            context.goNamed(Names.login);
+                          },
                           content: Text(
                             AppLocalizations.of(context)!.wanttoLogout,
                           ));
@@ -96,7 +112,16 @@ class ProfileScreen extends StatelessWidget {
                     onTap: () {
                       showMyDialoge(
                           context: context,
-                          onYes: () {},
+                          onYes: () async {
+                            LoadingOverlay().show(context);
+                            LoginManager loginManager = LoginManager();
+                            await loginManager.deleteAccount();
+                            LoadingOverlay().hide();
+                            // ignore: use_build_context_synchronously
+                            context.pop();
+                            // ignore: use_build_context_synchronously
+                            context.goNamed(Names.login);
+                          },
                           content: Text(
                             AppLocalizations.of(context)!.deleteWarning,
                           ));
@@ -106,7 +131,9 @@ class ProfileScreen extends StatelessWidget {
                   height: 20,
                 ),
                 SubmitButton(
-                  onTap: () {},
+                  onTap: () {
+                    launchUrl(Uri.parse("tel:+919403890306"));
+                  },
                   lable: "Call Cabswale",
                   height: 40,
                   borderRadius: 5,

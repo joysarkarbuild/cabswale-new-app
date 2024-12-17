@@ -1,15 +1,14 @@
 import 'dart:io';
-import 'package:cabswalle/constants/url_constants.dart';
-import 'package:cabswalle/modules/myprofile/data/models/user_profile_data_model.dart';
-import 'package:cabswalle/services/api_service.dart';
+import 'package:cabswalle/services/driver_service.dart';
 import 'package:cabswalle/services/firebase_storage_service.dart';
+import 'package:cabswalle/services/firestore_service.dart';
 import 'package:cabswalle/services/login_manager.dart';
 
 class UpdateUserDataRepo {
-  final ApiService _apiService;
+  final FirestoreUtils _apiService;
 
-  UpdateUserDataRepo({ApiService? apiService})
-      : _apiService = apiService ?? ApiService();
+  UpdateUserDataRepo({FirestoreUtils? apiService})
+      : _apiService = apiService ?? FirestoreUtils();
 
   Future<Map<String, dynamic>> updateUserProfile(
       {required String name,
@@ -25,45 +24,25 @@ class UpdateUserDataRepo {
                     profilePic) ??
                 "";
       }
+
       if (profileImageUrl.isNotEmpty) {
-        final response =
-            await _apiService.post(ApiUrls.updateUserDetails, data: {
-          'type': "profile",
-          "userId": LoginManager.userId,
-          "data": {
-            "name": name,
-            "city": city,
-            "experience": exprience,
-            "profileImage": profileImageUrl,
-          }
+        await _apiService.updateDocument("drivers", LoginManager.userId!, {
+          "profile_image": profileImageUrl,
+          "name": name,
+          "city": city,
+          "experience": exprience,
         });
-        if (response != null &&
-            response.statusCode == 200 &&
-            response.data["status"]) {
-          return {"status": true, "profileImage": profileImageUrl};
-        } else {
-          throw Exception(
-              'Failed to update user profile. Status code: ${response?.statusCode} Error: ${response!.data["message"]}');
-        }
+        DriverService.instance.loadDriverModel();
+
+        return {"status": true, "profileImage": profileImageUrl};
       } else {
-        final response =
-            await _apiService.post(ApiUrls.updateUserDetails, data: {
-          'type': "profile",
-          "userId": LoginManager.userId,
-          "data": {
-            "name": name,
-            "city": city,
-            "experience": exprience,
-          }
+        await _apiService.updateDocument("drivers", LoginManager.userId!, {
+          "name": name,
+          "city": city,
+          "experience": exprience,
         });
-        if (response != null &&
-            response.statusCode == 200 &&
-            response.data["status"]) {
-          return {"status": true, "profileImage": ""};
-        } else {
-          throw Exception(
-              'Failed to update user profile. Status code: ${response?.statusCode} Error: ${response!.data["message"]}');
-        }
+        DriverService.instance.loadDriverModel();
+        return {"status": true, "profileImage": ""};
       }
     } catch (e) {
       // Handle any other errors
@@ -73,21 +52,11 @@ class UpdateUserDataRepo {
 
   Future<bool> updateTopRoutes({required List topRoutes}) async {
     try {
-      final response = await _apiService.post(ApiUrls.updateUserDetails, data: {
-        'type': "profile",
-        "userId": LoginManager.userId,
-        "data": {
-          "routes": topRoutes,
-        }
+      await _apiService.updateDocument("drivers", LoginManager.userId!, {
+        "routes": topRoutes,
       });
-      if (response != null &&
-          response.statusCode == 200 &&
-          response.data["status"]) {
-        return true;
-      } else {
-        throw Exception(
-            'Failed to update user profile. Status code: ${response?.statusCode} Error: ${response!.data["message"]}');
-      }
+
+      return true;
     } catch (e) {
       // Handle any other errors
       throw Exception('Unexpected error fetching app data: $e');
@@ -96,72 +65,10 @@ class UpdateUserDataRepo {
 
   Future<bool> updateVehicles({required List vehicles}) async {
     try {
-      final response = await _apiService.post(ApiUrls.updateUserDetails, data: {
-        'type': "profile",
-        "userId": LoginManager.userId,
-        "data": {
-          "vehicles": vehicles,
-        }
+      await _apiService.updateDocument("drivers", LoginManager.userId!, {
+        "vehicles": vehicles,
       });
-      if (response != null &&
-          response.statusCode == 200 &&
-          response.data["status"]) {
-        return true;
-      } else {
-        throw Exception(
-            'Failed to update user profile. Status code: ${response?.statusCode} Error: ${response!.data["message"]}');
-      }
-    } catch (e) {
-      // Handle any other errors
-      throw Exception('Unexpected error fetching app data: $e');
-    }
-  }
-
-  Future<bool> updateNotificationLocations(
-      {required List<NotificationLocation> notificationLocations}) async {
-    try {
-      final response = await _apiService.post(ApiUrls.updateUserDetails, data: {
-        'type': "profile",
-        "userId": LoginManager.userId,
-        "data": {
-          "notificationLocations": [
-            ...notificationLocations.map(
-              (e) => e.toJson(),
-            )
-          ],
-        }
-      });
-      if (response != null &&
-          response.statusCode == 200 &&
-          response.data["status"]) {
-        return true;
-      } else {
-        throw Exception(
-            'Failed to update user profile. Status code: ${response?.statusCode} Error: ${response!.data["message"]}');
-      }
-    } catch (e) {
-      // Handle any other errors
-      throw Exception('Unexpected error fetching app data: $e');
-    }
-  }
-
-  Future<bool> updateGetDutyAlerts({required bool getDutyAlerts}) async {
-    try {
-      final response = await _apiService.post(ApiUrls.updateUserDetails, data: {
-        'type': "profile",
-        "userId": LoginManager.userId,
-        "data": {
-          "getDutyAlerts": getDutyAlerts,
-        }
-      });
-      if (response != null &&
-          response.statusCode == 200 &&
-          response.data["status"]) {
-        return true;
-      } else {
-        throw Exception(
-            'Failed to update user profile. Status code: ${response?.statusCode} Error: ${response!.data["message"]}');
-      }
+      return true;
     } catch (e) {
       // Handle any other errors
       throw Exception('Unexpected error fetching app data: $e');

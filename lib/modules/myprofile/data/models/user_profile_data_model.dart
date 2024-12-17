@@ -11,7 +11,8 @@ class UserProfileDataModel with _$UserProfileDataModel {
     String? city,
     int? experience,
     String? profileUrl,
-    String? profileImage,
+    // ignore: invalid_annotation_target
+    @JsonKey(name: 'profile_image') String? profileImage,
     bool? isAadhaarVerified,
     bool? isDLVerified,
     bool? verified,
@@ -22,7 +23,6 @@ class UserProfileDataModel with _$UserProfileDataModel {
     int? availableCount,
     List<dynamic>? routes,
     List<dynamic>? vehicles,
-    List<NotificationLocation>? notificationLocations,
     bool? getDutyAlerts,
     int? connectionCount,
   }) = _UserProfileDataModel;

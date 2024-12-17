@@ -1,4 +1,5 @@
 import 'package:cabswalle/routes/app_routes.dart';
+import 'package:cabswalle/services/firestore_service.dart';
 import 'package:cabswalle/services/loading_overlay_service.dart';
 import 'package:cabswalle/services/snackbar_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -170,6 +171,13 @@ class LoginManager {
     await _auth.signOut();
     await _updateLoginState();
     LoggerService.logInfo("User logged out");
+  }
+
+  Future<void> deleteAccount() async {
+    FirestoreUtils firestoreUtils = FirestoreUtils();
+    await firestoreUtils
+        .updateDocument("drivers", userId ?? "", {"isDeleted": true});
+    await logout();
   }
 
   // Get all user data

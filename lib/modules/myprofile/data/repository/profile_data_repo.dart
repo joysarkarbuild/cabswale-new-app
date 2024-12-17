@@ -1,30 +1,37 @@
-import 'package:cabswalle/constants/url_constants.dart';
 import 'package:cabswalle/modules/myprofile/data/models/user_profile_data_model.dart';
-import 'package:cabswalle/services/api_service.dart';
-import 'package:cabswalle/services/login_manager.dart'; // Import your ApiService
+import 'package:cabswalle/services/firestore_service.dart';
+import 'package:cabswalle/services/login_manager.dart';
 
 class MyProfileDataRepo {
-  final ApiService _apiService;
+  final FirestoreUtils _apiService;
 
-  MyProfileDataRepo({ApiService? apiService})
+  MyProfileDataRepo({FirestoreUtils? apiService})
       : _apiService =
-            apiService ?? ApiService(); // Use ApiService instead of Dio
+            apiService ?? FirestoreUtils(); // Use ApiService instead of Dio
 
   Future<UserProfileDataModel> fetchMyProfileData() async {
     try {
       // Use the ApiService's post method to make the API call
-      final response = await _apiService.post(ApiUrls.userDetails, data: {
-        "userId": LoginManager.userId,
-        'type': "profile",
-      });
+      final response =
+          await _apiService.getDocument("drivers", LoginManager.userId!);
+      final analiticsData = await _apiService.getDocument(
+          "driverAnalytics", LoginManager.userId!);
+      if (response!.exists) {
+        UserProfileDataModel profile = UserProfileDataModel.fromJson(
+            response.data() as Map<String, dynamic>);
 
-      if (response != null &&
-          response.statusCode == 200 &&
-          response.data["status"]) {
-        return UserProfileDataModel.fromJson(
-            response.data["data"] as Map<String, dynamic>);
+        if (analiticsData!.exists) {
+          Map<String, dynamic> callData =
+              analiticsData.data() as Map<String, dynamic>;
+          UserProfileDataModel newProfile = profile.copyWith(
+              callDoneCount: callData["outgoingCalls"] ?? 0,
+              callReceivedCount: callData["incomingCalls"] ?? 0);
+          return newProfile;
+        }
+
+        return profile;
       } else {
-        throw Exception('${response!.data["message"]}');
+        throw Exception('No Data Available with the uderId');
       }
     } catch (e) {
       // Handle any other errors

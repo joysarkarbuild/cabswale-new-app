@@ -14,7 +14,7 @@ _$UserProfileDataModelImpl _$$UserProfileDataModelImplFromJson(
       city: json['city'] as String?,
       experience: (json['experience'] as num?)?.toInt(),
       profileUrl: json['profileUrl'] as String?,
-      profileImage: json['profileImage'] as String?,
+      profileImage: json['profile_image'] as String?,
       isAadhaarVerified: json['isAadhaarVerified'] as bool?,
       isDLVerified: json['isDLVerified'] as bool?,
       verified: json['verified'] as bool?,
@@ -25,9 +25,6 @@ _$UserProfileDataModelImpl _$$UserProfileDataModelImplFromJson(
       availableCount: (json['availableCount'] as num?)?.toInt(),
       routes: json['routes'] as List<dynamic>?,
       vehicles: json['vehicles'] as List<dynamic>?,
-      notificationLocations: (json['notificationLocations'] as List<dynamic>?)
-          ?.map((e) => NotificationLocation.fromJson(e as Map<String, dynamic>))
-          .toList(),
       getDutyAlerts: json['getDutyAlerts'] as bool?,
       connectionCount: (json['connectionCount'] as num?)?.toInt(),
     );
@@ -40,7 +37,7 @@ Map<String, dynamic> _$$UserProfileDataModelImplToJson(
       'city': instance.city,
       'experience': instance.experience,
       'profileUrl': instance.profileUrl,
-      'profileImage': instance.profileImage,
+      'profile_image': instance.profileImage,
       'isAadhaarVerified': instance.isAadhaarVerified,
       'isDLVerified': instance.isDLVerified,
       'verified': instance.verified,
@@ -51,7 +48,6 @@ Map<String, dynamic> _$$UserProfileDataModelImplToJson(
       'availableCount': instance.availableCount,
       'routes': instance.routes,
       'vehicles': instance.vehicles,
-      'notificationLocations': instance.notificationLocations,
       'getDutyAlerts': instance.getDutyAlerts,
       'connectionCount': instance.connectionCount,
     };

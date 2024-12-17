@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:cabswalle/modules/home/data/models/lead_data_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

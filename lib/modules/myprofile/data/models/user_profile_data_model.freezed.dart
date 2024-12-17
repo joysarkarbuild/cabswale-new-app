@@ -24,7 +24,9 @@ mixin _$UserProfileDataModel {
   String? get name => throw _privateConstructorUsedError;
   String? get city => throw _privateConstructorUsedError;
   int? get experience => throw _privateConstructorUsedError;
-  String? get profileUrl => throw _privateConstructorUsedError;
+  String? get profileUrl =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  @JsonKey(name: 'profile_image')
   String? get profileImage => throw _privateConstructorUsedError;
   bool? get isAadhaarVerified => throw _privateConstructorUsedError;
   bool? get isDLVerified => throw _privateConstructorUsedError;
@@ -36,8 +38,6 @@ mixin _$UserProfileDataModel {
   int? get availableCount => throw _privateConstructorUsedError;
   List<dynamic>? get routes => throw _privateConstructorUsedError;
   List<dynamic>? get vehicles => throw _privateConstructorUsedError;
-  List<NotificationLocation>? get notificationLocations =>
-      throw _privateConstructorUsedError;
   bool? get getDutyAlerts => throw _privateConstructorUsedError;
   int? get connectionCount => throw _privateConstructorUsedError;
 
@@ -63,7 +63,7 @@ abstract class $UserProfileDataModelCopyWith<$Res> {
       String? city,
       int? experience,
       String? profileUrl,
-      String? profileImage,
+      @JsonKey(name: 'profile_image') String? profileImage,
       bool? isAadhaarVerified,
       bool? isDLVerified,
       bool? verified,
@@ -74,7 +74,6 @@ abstract class $UserProfileDataModelCopyWith<$Res> {
       int? availableCount,
       List<dynamic>? routes,
       List<dynamic>? vehicles,
-      List<NotificationLocation>? notificationLocations,
       bool? getDutyAlerts,
       int? connectionCount});
 }
@@ -111,7 +110,6 @@ class _$UserProfileDataModelCopyWithImpl<$Res,
     Object? availableCount = freezed,
     Object? routes = freezed,
     Object? vehicles = freezed,
-    Object? notificationLocations = freezed,
     Object? getDutyAlerts = freezed,
     Object? connectionCount = freezed,
   }) {
@@ -180,10 +178,6 @@ class _$UserProfileDataModelCopyWithImpl<$Res,
           ? _value.vehicles
           : vehicles // ignore: cast_nullable_to_non_nullable
               as List<dynamic>?,
-      notificationLocations: freezed == notificationLocations
-          ? _value.notificationLocations
-          : notificationLocations // ignore: cast_nullable_to_non_nullable
-              as List<NotificationLocation>?,
       getDutyAlerts: freezed == getDutyAlerts
           ? _value.getDutyAlerts
           : getDutyAlerts // ignore: cast_nullable_to_non_nullable
@@ -210,7 +204,7 @@ abstract class _$$UserProfileDataModelImplCopyWith<$Res>
       String? city,
       int? experience,
       String? profileUrl,
-      String? profileImage,
+      @JsonKey(name: 'profile_image') String? profileImage,
       bool? isAadhaarVerified,
       bool? isDLVerified,
       bool? verified,
@@ -221,7 +215,6 @@ abstract class _$$UserProfileDataModelImplCopyWith<$Res>
       int? availableCount,
       List<dynamic>? routes,
       List<dynamic>? vehicles,
-      List<NotificationLocation>? notificationLocations,
       bool? getDutyAlerts,
       int? connectionCount});
 }
@@ -255,7 +248,6 @@ class __$$UserProfileDataModelImplCopyWithImpl<$Res>
     Object? availableCount = freezed,
     Object? routes = freezed,
     Object? vehicles = freezed,
-    Object? notificationLocations = freezed,
     Object? getDutyAlerts = freezed,
     Object? connectionCount = freezed,
   }) {
@@ -324,10 +316,6 @@ class __$$UserProfileDataModelImplCopyWithImpl<$Res>
           ? _value._vehicles
           : vehicles // ignore: cast_nullable_to_non_nullable
               as List<dynamic>?,
-      notificationLocations: freezed == notificationLocations
-          ? _value._notificationLocations
-          : notificationLocations // ignore: cast_nullable_to_non_nullable
-              as List<NotificationLocation>?,
       getDutyAlerts: freezed == getDutyAlerts
           ? _value.getDutyAlerts
           : getDutyAlerts // ignore: cast_nullable_to_non_nullable
@@ -349,7 +337,7 @@ class _$UserProfileDataModelImpl implements _UserProfileDataModel {
       this.city,
       this.experience,
       this.profileUrl,
-      this.profileImage,
+      @JsonKey(name: 'profile_image') this.profileImage,
       this.isAadhaarVerified,
       this.isDLVerified,
       this.verified,
@@ -360,12 +348,10 @@ class _$UserProfileDataModelImpl implements _UserProfileDataModel {
       this.availableCount,
       final List<dynamic>? routes,
       final List<dynamic>? vehicles,
-      final List<NotificationLocation>? notificationLocations,
       this.getDutyAlerts,
       this.connectionCount})
       : _routes = routes,
-        _vehicles = vehicles,
-        _notificationLocations = notificationLocations;
+        _vehicles = vehicles;
 
   factory _$UserProfileDataModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserProfileDataModelImplFromJson(json);
@@ -380,7 +366,9 @@ class _$UserProfileDataModelImpl implements _UserProfileDataModel {
   final int? experience;
   @override
   final String? profileUrl;
+// ignore: invalid_annotation_target
   @override
+  @JsonKey(name: 'profile_image')
   final String? profileImage;
   @override
   final bool? isAadhaarVerified;
@@ -418,17 +406,6 @@ class _$UserProfileDataModelImpl implements _UserProfileDataModel {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<NotificationLocation>? _notificationLocations;
-  @override
-  List<NotificationLocation>? get notificationLocations {
-    final value = _notificationLocations;
-    if (value == null) return null;
-    if (_notificationLocations is EqualUnmodifiableListView)
-      return _notificationLocations;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
   @override
   final bool? getDutyAlerts;
   @override
@@ -436,7 +413,7 @@ class _$UserProfileDataModelImpl implements _UserProfileDataModel {
 
   @override
   String toString() {
-    return 'UserProfileDataModel(id: $id, name: $name, city: $city, experience: $experience, profileUrl: $profileUrl, profileImage: $profileImage, isAadhaarVerified: $isAadhaarVerified, isDLVerified: $isDLVerified, verified: $verified, callReceivedCount: $callReceivedCount, callDoneCount: $callDoneCount, dutyCount: $dutyCount, exchangeCount: $exchangeCount, availableCount: $availableCount, routes: $routes, vehicles: $vehicles, notificationLocations: $notificationLocations, getDutyAlerts: $getDutyAlerts, connectionCount: $connectionCount)';
+    return 'UserProfileDataModel(id: $id, name: $name, city: $city, experience: $experience, profileUrl: $profileUrl, profileImage: $profileImage, isAadhaarVerified: $isAadhaarVerified, isDLVerified: $isDLVerified, verified: $verified, callReceivedCount: $callReceivedCount, callDoneCount: $callDoneCount, dutyCount: $dutyCount, exchangeCount: $exchangeCount, availableCount: $availableCount, routes: $routes, vehicles: $vehicles, getDutyAlerts: $getDutyAlerts, connectionCount: $connectionCount)';
   }
 
   @override
@@ -471,8 +448,6 @@ class _$UserProfileDataModelImpl implements _UserProfileDataModel {
                 other.availableCount == availableCount) &&
             const DeepCollectionEquality().equals(other._routes, _routes) &&
             const DeepCollectionEquality().equals(other._vehicles, _vehicles) &&
-            const DeepCollectionEquality()
-                .equals(other._notificationLocations, _notificationLocations) &&
             (identical(other.getDutyAlerts, getDutyAlerts) ||
                 other.getDutyAlerts == getDutyAlerts) &&
             (identical(other.connectionCount, connectionCount) ||
@@ -481,28 +456,26 @@ class _$UserProfileDataModelImpl implements _UserProfileDataModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hashAll([
-        runtimeType,
-        id,
-        name,
-        city,
-        experience,
-        profileUrl,
-        profileImage,
-        isAadhaarVerified,
-        isDLVerified,
-        verified,
-        callReceivedCount,
-        callDoneCount,
-        dutyCount,
-        exchangeCount,
-        availableCount,
-        const DeepCollectionEquality().hash(_routes),
-        const DeepCollectionEquality().hash(_vehicles),
-        const DeepCollectionEquality().hash(_notificationLocations),
-        getDutyAlerts,
-        connectionCount
-      ]);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      city,
+      experience,
+      profileUrl,
+      profileImage,
+      isAadhaarVerified,
+      isDLVerified,
+      verified,
+      callReceivedCount,
+      callDoneCount,
+      dutyCount,
+      exchangeCount,
+      availableCount,
+      const DeepCollectionEquality().hash(_routes),
+      const DeepCollectionEquality().hash(_vehicles),
+      getDutyAlerts,
+      connectionCount);
 
   /// Create a copy of UserProfileDataModel
   /// with the given fields replaced by the non-null parameter values.
@@ -529,7 +502,7 @@ abstract class _UserProfileDataModel implements UserProfileDataModel {
       final String? city,
       final int? experience,
       final String? profileUrl,
-      final String? profileImage,
+      @JsonKey(name: 'profile_image') final String? profileImage,
       final bool? isAadhaarVerified,
       final bool? isDLVerified,
       final bool? verified,
@@ -540,7 +513,6 @@ abstract class _UserProfileDataModel implements UserProfileDataModel {
       final int? availableCount,
       final List<dynamic>? routes,
       final List<dynamic>? vehicles,
-      final List<NotificationLocation>? notificationLocations,
       final bool? getDutyAlerts,
       final int? connectionCount}) = _$UserProfileDataModelImpl;
 
@@ -556,8 +528,9 @@ abstract class _UserProfileDataModel implements UserProfileDataModel {
   @override
   int? get experience;
   @override
-  String? get profileUrl;
+  String? get profileUrl; // ignore: invalid_annotation_target
   @override
+  @JsonKey(name: 'profile_image')
   String? get profileImage;
   @override
   bool? get isAadhaarVerified;
@@ -579,8 +552,6 @@ abstract class _UserProfileDataModel implements UserProfileDataModel {
   List<dynamic>? get routes;
   @override
   List<dynamic>? get vehicles;
-  @override
-  List<NotificationLocation>? get notificationLocations;
   @override
   bool? get getDutyAlerts;
   @override
