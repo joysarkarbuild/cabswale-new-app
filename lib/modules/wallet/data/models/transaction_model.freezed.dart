@@ -20,7 +20,8 @@ TransactionModel _$TransactionModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TransactionModel {
-  num get amount => throw _privateConstructorUsedError;
+  num get amount =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(fromJson: _timestampToDateTime, toJson: _dateTimeToTimestamp)
   DateTime get createdAt => throw _privateConstructorUsedError;
   String get docId => throw _privateConstructorUsedError;
@@ -175,6 +176,7 @@ class _$TransactionModelImpl implements _TransactionModel {
 
   @override
   final num amount;
+// ignore: invalid_annotation_target
   @override
   @JsonKey(fromJson: _timestampToDateTime, toJson: _dateTimeToTimestamp)
   final DateTime createdAt;
@@ -238,7 +240,7 @@ abstract class _TransactionModel implements TransactionModel {
       _$TransactionModelImpl.fromJson;
 
   @override
-  num get amount;
+  num get amount; // ignore: invalid_annotation_target
   @override
   @JsonKey(fromJson: _timestampToDateTime, toJson: _dateTimeToTimestamp)
   DateTime get createdAt;

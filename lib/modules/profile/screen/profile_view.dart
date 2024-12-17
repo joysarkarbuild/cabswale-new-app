@@ -37,7 +37,12 @@ class ProfileScreen extends StatelessWidget {
                     height: 8,
                   ),
                   Image.asset(
-                    Assets.imagesVe,
+                    (DriverService.instance.driverModel != null &&
+                            DriverService.instance.driverModel!.verified !=
+                                null &&
+                            DriverService.instance.driverModel!.verified!)
+                        ? Assets.imagesVe
+                        : Assets.imagesNv,
                     height: 20,
                   ),
                   SizedBox(

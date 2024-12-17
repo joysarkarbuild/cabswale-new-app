@@ -247,7 +247,7 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                                   style: AppTextStyles.style16w500(height: 1.5),
                                 ),
                                 Text(
-                                  "${user.dutyCount ?? 0}",
+                                  "${(user.leads != null && user.leads!["duties"] != null) ? user.leads!["duties"] : 0}",
                                   style: AppTextStyles.style18w600(height: 1.5),
                                 ),
                               ],
@@ -264,7 +264,7 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                                   style: AppTextStyles.style16w500(height: 1.5),
                                 ),
                                 Text(
-                                  "${user.exchangeCount ?? 0}",
+                                  "${(user.leads != null && user.leads!["exchange"] != null) ? user.leads!["exchange"] : 0}",
                                   style: AppTextStyles.style18w600(height: 1.5),
                                 ),
                               ],
@@ -281,7 +281,7 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                                   style: AppTextStyles.style16w500(height: 1.5),
                                 ),
                                 Text(
-                                  "${user.availableCount ?? 0}",
+                                  "${(user.leads != null && user.leads!["available"] != null) ? user.leads!["available"] : 0}",
                                   style: AppTextStyles.style18w600(height: 1.5),
                                 ),
                               ],

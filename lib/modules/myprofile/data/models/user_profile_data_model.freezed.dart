@@ -24,7 +24,8 @@ mixin _$UserProfileDataModel {
   String? get name => throw _privateConstructorUsedError;
   String? get city => throw _privateConstructorUsedError;
   int? get experience => throw _privateConstructorUsedError;
-  String? get profileUrl => throw _privateConstructorUsedError;
+  String? get profileUrl =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
   @JsonKey(name: 'profile_image')
   String? get profileImage => throw _privateConstructorUsedError;
   bool? get isAadhaarVerified => throw _privateConstructorUsedError;
@@ -32,9 +33,7 @@ mixin _$UserProfileDataModel {
   bool? get verified => throw _privateConstructorUsedError;
   int? get callReceivedCount => throw _privateConstructorUsedError;
   int? get callDoneCount => throw _privateConstructorUsedError;
-  int? get dutyCount => throw _privateConstructorUsedError;
-  int? get exchangeCount => throw _privateConstructorUsedError;
-  int? get availableCount => throw _privateConstructorUsedError;
+  Map<String, dynamic>? get leads => throw _privateConstructorUsedError;
   List<dynamic>? get routes => throw _privateConstructorUsedError;
   List<dynamic>? get vehicles => throw _privateConstructorUsedError;
   bool? get getDutyAlerts => throw _privateConstructorUsedError;
@@ -68,9 +67,7 @@ abstract class $UserProfileDataModelCopyWith<$Res> {
       bool? verified,
       int? callReceivedCount,
       int? callDoneCount,
-      int? dutyCount,
-      int? exchangeCount,
-      int? availableCount,
+      Map<String, dynamic>? leads,
       List<dynamic>? routes,
       List<dynamic>? vehicles,
       bool? getDutyAlerts,
@@ -104,9 +101,7 @@ class _$UserProfileDataModelCopyWithImpl<$Res,
     Object? verified = freezed,
     Object? callReceivedCount = freezed,
     Object? callDoneCount = freezed,
-    Object? dutyCount = freezed,
-    Object? exchangeCount = freezed,
-    Object? availableCount = freezed,
+    Object? leads = freezed,
     Object? routes = freezed,
     Object? vehicles = freezed,
     Object? getDutyAlerts = freezed,
@@ -157,18 +152,10 @@ class _$UserProfileDataModelCopyWithImpl<$Res,
           ? _value.callDoneCount
           : callDoneCount // ignore: cast_nullable_to_non_nullable
               as int?,
-      dutyCount: freezed == dutyCount
-          ? _value.dutyCount
-          : dutyCount // ignore: cast_nullable_to_non_nullable
-              as int?,
-      exchangeCount: freezed == exchangeCount
-          ? _value.exchangeCount
-          : exchangeCount // ignore: cast_nullable_to_non_nullable
-              as int?,
-      availableCount: freezed == availableCount
-          ? _value.availableCount
-          : availableCount // ignore: cast_nullable_to_non_nullable
-              as int?,
+      leads: freezed == leads
+          ? _value.leads
+          : leads // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
       routes: freezed == routes
           ? _value.routes
           : routes // ignore: cast_nullable_to_non_nullable
@@ -209,9 +196,7 @@ abstract class _$$UserProfileDataModelImplCopyWith<$Res>
       bool? verified,
       int? callReceivedCount,
       int? callDoneCount,
-      int? dutyCount,
-      int? exchangeCount,
-      int? availableCount,
+      Map<String, dynamic>? leads,
       List<dynamic>? routes,
       List<dynamic>? vehicles,
       bool? getDutyAlerts,
@@ -242,9 +227,7 @@ class __$$UserProfileDataModelImplCopyWithImpl<$Res>
     Object? verified = freezed,
     Object? callReceivedCount = freezed,
     Object? callDoneCount = freezed,
-    Object? dutyCount = freezed,
-    Object? exchangeCount = freezed,
-    Object? availableCount = freezed,
+    Object? leads = freezed,
     Object? routes = freezed,
     Object? vehicles = freezed,
     Object? getDutyAlerts = freezed,
@@ -295,18 +278,10 @@ class __$$UserProfileDataModelImplCopyWithImpl<$Res>
           ? _value.callDoneCount
           : callDoneCount // ignore: cast_nullable_to_non_nullable
               as int?,
-      dutyCount: freezed == dutyCount
-          ? _value.dutyCount
-          : dutyCount // ignore: cast_nullable_to_non_nullable
-              as int?,
-      exchangeCount: freezed == exchangeCount
-          ? _value.exchangeCount
-          : exchangeCount // ignore: cast_nullable_to_non_nullable
-              as int?,
-      availableCount: freezed == availableCount
-          ? _value.availableCount
-          : availableCount // ignore: cast_nullable_to_non_nullable
-              as int?,
+      leads: freezed == leads
+          ? _value._leads
+          : leads // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
       routes: freezed == routes
           ? _value._routes
           : routes // ignore: cast_nullable_to_non_nullable
@@ -342,14 +317,13 @@ class _$UserProfileDataModelImpl implements _UserProfileDataModel {
       this.verified,
       this.callReceivedCount,
       this.callDoneCount,
-      this.dutyCount,
-      this.exchangeCount,
-      this.availableCount,
+      final Map<String, dynamic>? leads,
       final List<dynamic>? routes,
       final List<dynamic>? vehicles,
       this.getDutyAlerts,
       this.connectionCount})
-      : _routes = routes,
+      : _leads = leads,
+        _routes = routes,
         _vehicles = vehicles;
 
   factory _$UserProfileDataModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -365,6 +339,7 @@ class _$UserProfileDataModelImpl implements _UserProfileDataModel {
   final int? experience;
   @override
   final String? profileUrl;
+// ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'profile_image')
   final String? profileImage;
@@ -378,12 +353,16 @@ class _$UserProfileDataModelImpl implements _UserProfileDataModel {
   final int? callReceivedCount;
   @override
   final int? callDoneCount;
+  final Map<String, dynamic>? _leads;
   @override
-  final int? dutyCount;
-  @override
-  final int? exchangeCount;
-  @override
-  final int? availableCount;
+  Map<String, dynamic>? get leads {
+    final value = _leads;
+    if (value == null) return null;
+    if (_leads is EqualUnmodifiableMapView) return _leads;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
+
   final List<dynamic>? _routes;
   @override
   List<dynamic>? get routes {
@@ -411,7 +390,7 @@ class _$UserProfileDataModelImpl implements _UserProfileDataModel {
 
   @override
   String toString() {
-    return 'UserProfileDataModel(id: $id, name: $name, city: $city, experience: $experience, profileUrl: $profileUrl, profileImage: $profileImage, isAadhaarVerified: $isAadhaarVerified, isDLVerified: $isDLVerified, verified: $verified, callReceivedCount: $callReceivedCount, callDoneCount: $callDoneCount, dutyCount: $dutyCount, exchangeCount: $exchangeCount, availableCount: $availableCount, routes: $routes, vehicles: $vehicles, getDutyAlerts: $getDutyAlerts, connectionCount: $connectionCount)';
+    return 'UserProfileDataModel(id: $id, name: $name, city: $city, experience: $experience, profileUrl: $profileUrl, profileImage: $profileImage, isAadhaarVerified: $isAadhaarVerified, isDLVerified: $isDLVerified, verified: $verified, callReceivedCount: $callReceivedCount, callDoneCount: $callDoneCount, leads: $leads, routes: $routes, vehicles: $vehicles, getDutyAlerts: $getDutyAlerts, connectionCount: $connectionCount)';
   }
 
   @override
@@ -438,12 +417,7 @@ class _$UserProfileDataModelImpl implements _UserProfileDataModel {
                 other.callReceivedCount == callReceivedCount) &&
             (identical(other.callDoneCount, callDoneCount) ||
                 other.callDoneCount == callDoneCount) &&
-            (identical(other.dutyCount, dutyCount) ||
-                other.dutyCount == dutyCount) &&
-            (identical(other.exchangeCount, exchangeCount) ||
-                other.exchangeCount == exchangeCount) &&
-            (identical(other.availableCount, availableCount) ||
-                other.availableCount == availableCount) &&
+            const DeepCollectionEquality().equals(other._leads, _leads) &&
             const DeepCollectionEquality().equals(other._routes, _routes) &&
             const DeepCollectionEquality().equals(other._vehicles, _vehicles) &&
             (identical(other.getDutyAlerts, getDutyAlerts) ||
@@ -467,9 +441,7 @@ class _$UserProfileDataModelImpl implements _UserProfileDataModel {
       verified,
       callReceivedCount,
       callDoneCount,
-      dutyCount,
-      exchangeCount,
-      availableCount,
+      const DeepCollectionEquality().hash(_leads),
       const DeepCollectionEquality().hash(_routes),
       const DeepCollectionEquality().hash(_vehicles),
       getDutyAlerts,
@@ -506,9 +478,7 @@ abstract class _UserProfileDataModel implements UserProfileDataModel {
       final bool? verified,
       final int? callReceivedCount,
       final int? callDoneCount,
-      final int? dutyCount,
-      final int? exchangeCount,
-      final int? availableCount,
+      final Map<String, dynamic>? leads,
       final List<dynamic>? routes,
       final List<dynamic>? vehicles,
       final bool? getDutyAlerts,
@@ -526,7 +496,7 @@ abstract class _UserProfileDataModel implements UserProfileDataModel {
   @override
   int? get experience;
   @override
-  String? get profileUrl;
+  String? get profileUrl; // ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'profile_image')
   String? get profileImage;
@@ -541,11 +511,7 @@ abstract class _UserProfileDataModel implements UserProfileDataModel {
   @override
   int? get callDoneCount;
   @override
-  int? get dutyCount;
-  @override
-  int? get exchangeCount;
-  @override
-  int? get availableCount;
+  Map<String, dynamic>? get leads;
   @override
   List<dynamic>? get routes;
   @override
