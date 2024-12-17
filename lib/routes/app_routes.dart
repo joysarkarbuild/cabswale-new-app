@@ -1,4 +1,7 @@
 abstract class Routes {
+  static const walletTransactions = _Paths.walletTransactions;
+  static const language = _Paths.language;
+  static const settings = _Paths.settings;
   static const vehicles = _Paths.vehicles;
   static const editTopRoutes = _Paths.editTopRoutes;
   static const editNameCityAndProfilePicture =
@@ -37,6 +40,9 @@ abstract class Routes {
 }
 
 abstract class _Paths {
+  static const walletTransactions = "/walletTransactions";
+  static const language = "/language";
+  static const settings = "/settings";
   static const vehicles = '/vehicles';
   static const editTopRoutes = '/editTopRoutes';
   static const editNameCityAndProfilePicture = '/editNameCityProfilePicture';
@@ -74,6 +80,9 @@ abstract class _Paths {
 }
 
 abstract class _Names {
+  static const walletTransactions = "walletTransactions";
+  static const language = "language";
+  static const settings = "settings";
   static const vehicles = 'vehicles';
   static const editTopRoutes = 'editTopRoutes';
   static const editNameCityAndProfilePicture = 'editNameCityProfilePicture';
@@ -111,6 +120,9 @@ abstract class _Names {
 }
 
 abstract class Names {
+  static const walletTransactions = _Names.walletTransactions;
+  static const language = _Names.language;
+  static const settings = _Names.settings;
   static const vehicles = _Names.vehicles;
   static const editTopRoutes = _Names.editTopRoutes;
   static const editNameCityAndProfilePicture =

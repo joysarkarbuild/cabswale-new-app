@@ -12,10 +12,13 @@ class LocationService {
 
   // Private fields
   Position? _currentPosition;
+  bool? _locationUpdateOn;
   Timer? _locationUpdateTimer;
 
   // Getter for current position
   Position? get currentPosition => _currentPosition;
+
+  bool? get locationUpdateOn => _locationUpdateOn;
 
   // Initialize the service
   Future<void> initialize() async {
@@ -41,12 +44,18 @@ class LocationService {
 
   // Fetches the current position
   Future<void> _updatePosition() async {
-    try {
-      _currentPosition = await Geolocator.getCurrentPosition();
-      LoggerService.logInfo("Updated position: $_currentPosition");
-    } catch (e) {
-      LoggerService.logInfo("Failed to get current position: $e");
+    if (_locationUpdateOn ?? true) {
+      try {
+        _currentPosition = await Geolocator.getCurrentPosition();
+        LoggerService.logInfo("Updated position: $_currentPosition");
+      } catch (e) {
+        LoggerService.logInfo("Failed to get current position: $e");
+      }
     }
+  }
+
+  void locationUpdateOnOff(bool val) {
+    _locationUpdateOn = val;
   }
 
   // Starts background location updates

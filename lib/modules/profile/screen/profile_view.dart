@@ -63,17 +63,23 @@ class ProfileScreen extends StatelessWidget {
                     title: "Cabswale Membership"),
                 ProfileOptionCard(
                     icon: Assets.iconsTransactions,
-                    onTap: () {},
+                    onTap: () {
+                      context.pushNamed(Names.walletTransactions);
+                    },
                     title: "Wallet Transactions"),
-                ProfileOptionCard(
-                    icon: Assets.iconsAlerts, onTap: () {}, title: "My Alerts"),
+                // ProfileOptionCard(
+                //     icon: Assets.iconsAlerts, onTap: () {}, title: "My Alerts"),
                 ProfileOptionCard(
                     icon: Assets.iconsLanguage,
-                    onTap: () {},
+                    onTap: () {
+                      context.pushNamed(Names.language);
+                    },
                     title: "Change Language"),
                 ProfileOptionCard(
                     icon: Assets.iconsSettings,
-                    onTap: () {},
+                    onTap: () {
+                      context.pushNamed(Names.settings);
+                    },
                     title: "Settings"),
                 BlocBuilder<SplashBloc, SplashState>(
                   builder: (context, state) {

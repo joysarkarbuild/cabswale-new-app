@@ -8,6 +8,7 @@ import 'package:cabswalle/modules/myprofile/bloc/myprofile_bloc.dart';
 import 'package:cabswalle/modules/navbar/bloc/navbar_bloc.dart';
 import 'package:cabswalle/modules/splash/bloc/splash_bloc.dart';
 import 'package:cabswalle/modules/verifyAccount/bloc/verify_account_bloc.dart';
+import 'package:cabswalle/modules/wallet/bloc/wallet_bloc.dart';
 import 'package:cabswalle/routes/app_pages.dart';
 import 'package:cabswalle/services/snackbar_service.dart';
 import 'package:flutter/material.dart';
@@ -52,6 +53,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => FilterleadsBloc(),
+        ),
+        BlocProvider(
+          create: (context) => WalletBloc(),
         ),
       ],
       child: MaterialApp.router(

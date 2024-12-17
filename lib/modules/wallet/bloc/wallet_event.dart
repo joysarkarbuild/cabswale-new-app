@@ -6,3 +6,7 @@ sealed class WalletEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+final class FetchWalletTransactions extends WalletEvent {}
+
+final class FetchWalletTransactionsMore extends WalletEvent {}

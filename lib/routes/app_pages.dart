@@ -1,4 +1,6 @@
+import 'package:cabswalle/modules/language/screen/language_screen.dart';
 import 'package:cabswalle/modules/myprofile/screen/myprofile_view.dart';
+import 'package:cabswalle/modules/setting/screen/setting_view.dart';
 import 'package:cabswalle/modules/splash/screen/splash_view.dart';
 import 'package:cabswalle/modules/verifyAccount/screen/edit_name_city_profile_image.dart';
 import 'package:cabswalle/modules/verifyAccount/screen/edit_top_routes.dart';
@@ -16,6 +18,7 @@ import 'package:cabswalle/modules/nearby/screen/nearby_view.dart';
 import 'package:cabswalle/modules/loan/screen/loan_view.dart';
 import 'package:cabswalle/modules/extraBenifits/screen/extra_benifits_view.dart';
 import 'package:cabswalle/modules/productDetails/screen/product_details_view.dart';
+import 'package:cabswalle/modules/wallet/screen/wallet_transactions.dart';
 import 'package:cabswalle/modules/wallet/screen/wallet_view.dart';
 import 'package:cabswalle/modules/addlead/screen/addlead_view.dart';
 import 'package:cabswalle/modules/filterleads/screen/filterleads_view.dart';
@@ -39,6 +42,21 @@ final router = GoRouter(
   navigatorKey:
       GlobalNavigation.instance.navigatorKey, // Use the global key here
   routes: [
+    GoRoute(
+      name: Names.walletTransactions,
+      path: Routes.walletTransactions,
+      builder: (context, state) => const WalletTransactionScreen(),
+    ),
+    GoRoute(
+      name: Names.language,
+      path: Routes.language,
+      builder: (context, state) => const LanguageScreen(),
+    ),
+    GoRoute(
+      name: Names.settings,
+      path: Routes.settings,
+      builder: (context, state) => const SettingScreen(),
+    ),
     GoRoute(
       name: Names.vehicles,
       path: Routes.vehicles,

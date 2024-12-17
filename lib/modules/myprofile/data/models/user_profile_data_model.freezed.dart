@@ -24,8 +24,7 @@ mixin _$UserProfileDataModel {
   String? get name => throw _privateConstructorUsedError;
   String? get city => throw _privateConstructorUsedError;
   int? get experience => throw _privateConstructorUsedError;
-  String? get profileUrl =>
-      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  String? get profileUrl => throw _privateConstructorUsedError;
   @JsonKey(name: 'profile_image')
   String? get profileImage => throw _privateConstructorUsedError;
   bool? get isAadhaarVerified => throw _privateConstructorUsedError;
@@ -366,7 +365,6 @@ class _$UserProfileDataModelImpl implements _UserProfileDataModel {
   final int? experience;
   @override
   final String? profileUrl;
-// ignore: invalid_annotation_target
   @override
   @JsonKey(name: 'profile_image')
   final String? profileImage;
@@ -528,7 +526,7 @@ abstract class _UserProfileDataModel implements UserProfileDataModel {
   @override
   int? get experience;
   @override
-  String? get profileUrl; // ignore: invalid_annotation_target
+  String? get profileUrl;
   @override
   @JsonKey(name: 'profile_image')
   String? get profileImage;
