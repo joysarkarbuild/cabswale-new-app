@@ -15,10 +15,10 @@ class AppColors {
   static const Color myYellow = Colors.yellow;
   static const Color myTranspsarent = Colors.transparent;
   static List<Color> colorList = [
-    Colors.red.withOpacity(0.3),
-    Colors.blue.withOpacity(0.3),
-    Colors.green.withOpacity(0.3),
-    Colors.purple.withOpacity(0.3),
-    Colors.amber.withOpacity(0.3)
+    Colors.red.withValues(alpha: 0.3),
+    Colors.blue.withValues(alpha: 0.3),
+    Colors.green.withValues(alpha: 0.3),
+    Colors.purple.withValues(alpha: 0.3),
+    Colors.amber.withValues(alpha: 0.3),
   ];
 }

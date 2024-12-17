@@ -33,7 +33,7 @@ class ReferAndEarnScreen extends StatelessWidget {
               decoration: BoxDecoration(
                   border: Border.all(color: Colors.blue, width: 2),
                   borderRadius: BorderRadius.circular(4),
-                  color: Colors.blue.withOpacity(0.3)),
+                  color: Colors.blue.withValues(alpha: 0.3)),
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
               child: const SelectableText(
                 "124567",

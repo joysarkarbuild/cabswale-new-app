@@ -35,7 +35,8 @@ class LoadingOverlay {
       builder: (context) => Stack(
         children: [
           Container(
-            color: Colors.black.withOpacity(0.5), // Optional background color
+            color: Colors.black
+                .withValues(alpha: 0.5), // Optional background color
             child: Center(
               child: Container(
                   height: 60,

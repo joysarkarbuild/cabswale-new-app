@@ -1,7 +1,6 @@
 import 'dart:ui';
 import 'package:cabswalle/app.dart';
 import 'package:cabswalle/firebase_options.dart';
-import 'package:cabswalle/services/location_service.dart';
 import 'package:cabswalle/services/typesense_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';

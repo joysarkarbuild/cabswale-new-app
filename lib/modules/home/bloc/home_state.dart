@@ -1,6 +1,5 @@
 import 'package:cabswalle/models/driver_model.dart';
 import 'package:cabswalle/modules/home/data/models/count_data_model.dart';
-import 'package:cabswalle/modules/home/data/models/lead_data_model.dart';
 import 'package:cabswalle/modules/home/data/models/lead_fetch_result_data_model.dart';
 import 'package:equatable/equatable.dart';
 

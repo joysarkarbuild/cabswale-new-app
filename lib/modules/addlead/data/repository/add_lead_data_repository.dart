@@ -41,7 +41,7 @@ class AddLeadDataRepository {
             .toJson(),
       };
 
-      LoggerService.logInfo("${data}");
+      LoggerService.logInfo("$data");
       _firestoreUtils.addDocument("leads", data);
       return true;
     } catch (e) {

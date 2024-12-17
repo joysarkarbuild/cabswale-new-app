@@ -19,7 +19,6 @@ import 'package:cabswalle/widgets/lead_card.dart';
 import 'package:cabswalle/widgets/lead_card_shimmer.dart';
 import 'package:cabswalle/widgets/show_image.dart';
 import 'package:cabswalle/widgets/submit_button.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -249,12 +248,14 @@ class _HomeScreenState extends State<HomeScreen> {
                               todaysLeadCount: state.countData.totalLeads,
                               weeksLeadCount: state.countData.totalSearches,
                             ),
-                            MembershipWidget(
-                              isMembershipActive: DriverService
-                                  .instance.driverModel!.membership!.active,
-                              endDate: DriverService
-                                  .instance.driverModel!.membership!.endDate,
-                            ),
+                            if (LoginManager.isLogin &&
+                                DriverService.instance.driverModel != null)
+                              MembershipWidget(
+                                isMembershipActive: DriverService
+                                    .instance.driverModel!.membership!.active,
+                                endDate: DriverService
+                                    .instance.driverModel!.membership!.endDate,
+                              ),
                             const SizedBox(
                               height: 10,
                             ),

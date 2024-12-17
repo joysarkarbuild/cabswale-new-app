@@ -55,7 +55,7 @@ class _EmergencyScreenState extends State<EmergencyScreen> {
                             left: 20, right: 20, top: 20, bottom: 10),
                         margin: const EdgeInsets.only(bottom: 10),
                         decoration: BoxDecoration(
-                            color: Colors.red.withOpacity(0.4),
+                            color: Colors.red.withValues(alpha: 0.4),
                             border: Border.all(color: Colors.blue),
                             borderRadius: BorderRadius.circular(4)),
                         child: Column(

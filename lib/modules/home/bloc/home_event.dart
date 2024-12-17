@@ -1,5 +1,4 @@
 import 'package:cabswalle/modules/home/data/models/count_data_model.dart';
-import 'package:cabswalle/modules/myprofile/data/models/user_profile_data_model.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 

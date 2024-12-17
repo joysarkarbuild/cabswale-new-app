@@ -1,6 +1,4 @@
 import 'dart:async';
-
-import 'package:cabswalle/app.dart';
 import 'package:cabswalle/constants/assets.dart';
 import 'package:cabswalle/modules/filterleads/bloc/filterleads_bloc.dart';
 import 'package:cabswalle/modules/filterleads/bloc/filterleads_event.dart';

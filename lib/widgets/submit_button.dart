@@ -88,7 +88,7 @@ class _SubmitButtonState extends State<SubmitButton> {
             decoration: BoxDecoration(
                 color: widget.tapable
                     ? widget.color
-                    : AppColors.myGrey.withOpacity(0.3),
+                    : AppColors.myGrey.withValues(alpha: 0.3),
                 border: Border.all(color: widget.borderColor),
                 borderRadius: BorderRadius.circular(
                     double.parse('${widget.borderRadius}')),

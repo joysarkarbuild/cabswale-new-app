@@ -49,9 +49,9 @@ class _ShimmerContainerState extends State<ShimmerContainer>
         borderRadius: widget.borderRadius ?? BorderRadius.circular(5),
         gradient: LinearGradient(
           colors: [
-            Colors.grey.withOpacity(0.5),
-            Colors.grey.withOpacity(0.1),
-            Colors.grey.withOpacity(0.5),
+            Colors.grey.withValues(alpha: 0.5),
+            Colors.grey.withValues(alpha: 0.1),
+            Colors.grey.withValues(alpha: 0.5),
           ],
           stops: [
             _animation.value - 1.0,

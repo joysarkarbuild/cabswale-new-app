@@ -55,8 +55,8 @@ PreferredSize myAppBar(
         if (subtitle != null)
           Text(
             subtitle,
-            style:
-                TextStyle(color: forgroundColor.withOpacity(0.8), fontSize: 15),
+            style: TextStyle(
+                color: forgroundColor.withValues(alpha: 0.8), fontSize: 15),
           )
       ]),
       centerTitle: centerTitle,
@@ -313,7 +313,7 @@ mySnackBar(context, message) {
       behavior: SnackBarBehavior.floating,
       clipBehavior: Clip.antiAlias,
       duration: const Duration(seconds: 1),
-      backgroundColor: AppColors.myprimaryColor.withOpacity(0.8),
+      backgroundColor: AppColors.myprimaryColor.withValues(alpha: 0.8),
       content: Text(message)));
 }
 

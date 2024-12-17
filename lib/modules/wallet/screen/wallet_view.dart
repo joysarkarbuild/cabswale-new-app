@@ -25,7 +25,7 @@ class WalletScreen extends StatelessWidget {
             height: 55,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
-              color: Colors.blue.withOpacity(0.3),
+              color: Colors.blue.withValues(alpha: 0.3),
               borderRadius: BorderRadius.circular(3),
               border: Border.all(color: Colors.blue),
             ),

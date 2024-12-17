@@ -23,7 +23,7 @@ class DealsScreen extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                     border: Border.all(color: Colors.blue),
-                    color: Colors.blue.withOpacity(0.1)),
+                    color: Colors.blue.withValues(alpha: 0.1)),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -107,7 +107,7 @@ class DealsScreen extends StatelessWidget {
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Colors.green.withOpacity(0.15),
+                      color: Colors.green.withValues(alpha: 0.15),
                       border: Border.all(
                         color: Colors.blue,
                       )),
@@ -140,7 +140,7 @@ class DealsScreen extends StatelessWidget {
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Colors.purple.withOpacity(0.15),
+                      color: Colors.purple.withValues(alpha: 0.15),
                       border: Border.all(
                         color: Colors.blue,
                       )),
@@ -173,7 +173,7 @@ class DealsScreen extends StatelessWidget {
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Colors.tealAccent.withOpacity(0.15),
+                      color: Colors.tealAccent.withValues(alpha: 0.15),
                       border: Border.all(
                         color: Colors.blue,
                       )),
@@ -206,7 +206,7 @@ class DealsScreen extends StatelessWidget {
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Colors.green.withOpacity(0.15),
+                      color: Colors.green.withValues(alpha: 0.15),
                       border: Border.all(
                         color: Colors.blue,
                       )),

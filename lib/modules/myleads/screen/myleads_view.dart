@@ -1,12 +1,10 @@
 import 'package:cabswalle/core/app_colors.dart';
 import 'package:cabswalle/core/app_text_styles.dart';
-import 'package:cabswalle/modules/home/data/models/lead_data_model.dart';
 import 'package:cabswalle/modules/myleads/bloc/myleads_bloc.dart';
 import 'package:cabswalle/modules/myleads/bloc/myleads_event.dart';
 import 'package:cabswalle/modules/myleads/bloc/myleads_state.dart';
 import 'package:cabswalle/routes/app_routes.dart';
 import 'package:cabswalle/widgets/common_widget_componants.dart';
-import 'package:cabswalle/widgets/lead_card.dart';
 import 'package:cabswalle/widgets/lead_card_shimmer.dart';
 import 'package:cabswalle/widgets/my_lead_card.dart';
 import 'package:cabswalle/widgets/submit_button.dart';
