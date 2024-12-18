@@ -6,6 +6,7 @@ import 'package:cabswalle/modules/login/bloc/login_bloc.dart';
 import 'package:cabswalle/modules/myleads/bloc/myleads_bloc.dart';
 import 'package:cabswalle/modules/myprofile/bloc/myprofile_bloc.dart';
 import 'package:cabswalle/modules/navbar/bloc/navbar_bloc.dart';
+import 'package:cabswalle/modules/services/bloc/services_bloc.dart';
 import 'package:cabswalle/modules/splash/bloc/splash_bloc.dart';
 import 'package:cabswalle/modules/verifyAccount/bloc/verify_account_bloc.dart';
 import 'package:cabswalle/modules/wallet/bloc/wallet_bloc.dart';
@@ -19,6 +20,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 int appVersion = 31; // Always need to change when we pushing new version $$
 int iosAppVersion = 2; // Always need to change when we pushing new version $$
+GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -56,6 +58,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => WalletBloc(),
+        ),
+        BlocProvider(
+          create: (context) => ServicesBloc(),
         ),
       ],
       child: MaterialApp.router(

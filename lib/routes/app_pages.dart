@@ -1,3 +1,5 @@
+import 'package:cabswalle/modules/insurance/insurance_screen1.dart';
+import 'package:cabswalle/modules/services/screen/services_view.dart';
 import 'package:cabswalle/modules/language/screen/language_screen.dart';
 import 'package:cabswalle/modules/myprofile/screen/myprofile_view.dart';
 import 'package:cabswalle/modules/setting/screen/setting_view.dart';
@@ -42,6 +44,16 @@ final router = GoRouter(
   navigatorKey:
       GlobalNavigation.instance.navigatorKey, // Use the global key here
   routes: [
+    GoRoute(
+      name: Names.carInsurance,
+      path: Routes.carInsurance,
+      builder: (context, state) => const InsuranceScreen1(),
+    ),
+    GoRoute(
+      name: Names.services,
+      path: Routes.services,
+      builder: (context, state) => const ServicesScreen(),
+    ),
     GoRoute(
       name: Names.walletTransactions,
       path: Routes.walletTransactions,

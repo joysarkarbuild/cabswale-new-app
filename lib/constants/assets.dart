@@ -30,6 +30,10 @@ class Assets {
   /// assets/icons/calls.svg
   static const String iconsCalls = "assets/icons/calls.svg";
 
+  /// Assets for iconsCarInsurance
+  /// assets/icons/car_insurance.svg
+  static const String iconsCarInsurance = "assets/icons/car_insurance.svg";
+
   /// Assets for iconsCarRepair
   /// assets/icons/car-repair.svg
   static const String iconsCarRepair = "assets/icons/car-repair.svg";
@@ -97,6 +101,10 @@ class Assets {
   /// Assets for iconsHome
   /// assets/icons/home.svg
   static const String iconsHome = "assets/icons/home.svg";
+
+  /// Assets for iconsJobSeeking
+  /// assets/icons/job-seeking.svg
+  static const String iconsJobSeeking = "assets/icons/job-seeking.svg";
 
   /// Assets for iconsLanguage
   /// assets/icons/language.svg
@@ -166,9 +174,21 @@ class Assets {
   /// assets/icons/refer_and_earn.svg
   static const String iconsReferAndEarn = "assets/icons/refer_and_earn.svg";
 
+  /// Assets for iconsRestaurant
+  /// assets/icons/restaurant.svg
+  static const String iconsRestaurant = "assets/icons/restaurant.svg";
+
   /// Assets for iconsRoutes
   /// assets/icons/routes.svg
   static const String iconsRoutes = "assets/icons/routes.svg";
+
+  /// Assets for iconsSelling
+  /// assets/icons/selling.svg
+  static const String iconsSelling = "assets/icons/selling.svg";
+
+  /// Assets for iconsService
+  /// assets/icons/service.svg
+  static const String iconsService = "assets/icons/service.svg";
 
   /// Assets for iconsSettings
   /// assets/icons/settings.svg

@@ -5,11 +5,11 @@ import 'package:cabswalle/modules/deals/screen/deals_view.dart';
 import 'package:cabswalle/modules/home/bloc/home_bloc.dart';
 import 'package:cabswalle/modules/home/bloc/home_event.dart';
 import 'package:cabswalle/modules/home/screen/home_view.dart';
-import 'package:cabswalle/modules/location/screen/location_view.dart';
 import 'package:cabswalle/modules/navbar/bloc/navbar_bloc.dart';
 import 'package:cabswalle/modules/navbar/bloc/navbar_event.dart';
 import 'package:cabswalle/modules/navbar/bloc/navbar_state.dart';
 import 'package:cabswalle/modules/profile/screen/profile_view.dart';
+import 'package:cabswalle/modules/services/screen/services_view.dart';
 import 'package:cabswalle/routes/app_routes.dart';
 import 'package:cabswalle/services/location_service.dart';
 import 'package:cabswalle/services/login_manager.dart';
@@ -29,7 +29,7 @@ class NavbarScreen extends StatefulWidget {
 class _NavbarScreenState extends State<NavbarScreen> {
   final List<Widget> tabs = [
     const HomeScreen(),
-    const LocationScreen(),
+    const ServicesScreen(),
     const CommunityScreen(),
     const DealsScreen(),
     const ProfileScreen(),
@@ -68,7 +68,7 @@ class _NavbarScreenState extends State<NavbarScreen> {
             },
             bottomNavBarItems: <Map<String, dynamic>>[
               {'icon': Assets.iconsHome, 'label': 'Home'},
-              {'icon': Assets.iconsLocation, 'label': 'Locations'},
+              {'icon': Assets.iconsService, 'label': 'Services'},
               {
                 'icon': Assets.iconsCommunity,
                 'label': 'Community',
