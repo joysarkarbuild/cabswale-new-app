@@ -76,6 +76,12 @@ class _FilterLeadsScreenState extends State<FilterLeadsScreen> {
               if (state is FilterLeadLoading) {
                 return CentreLoading();
               } else if (state is FilterLeadLoaded) {
+                if (state.leads.isEmpty) {
+                  return Center(
+                    child: Text(
+                        "No Leads from ${widget.city.isEmpty ? "your location" : widget.city} "),
+                  );
+                }
                 return ListView.builder(
                   itemCount: state.leads.length,
                   itemBuilder: (context, index) => Column(

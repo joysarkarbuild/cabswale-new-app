@@ -76,8 +76,8 @@ class _NavbarScreenState extends State<NavbarScreen> {
                 "iconSize": 40.0,
               },
               {
-                'icon': Assets.iconsDeal,
-                'label': 'Deals',
+                'icon': Assets.iconsCall,
+                'label': 'Calls',
               },
               {
                 'icon': Assets.iconsProfile,

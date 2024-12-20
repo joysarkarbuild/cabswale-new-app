@@ -1,4 +1,6 @@
+import 'package:cabswalle/modules/buySellCar/data/models/car_model.dart';
 import 'package:cabswalle/modules/home/data/models/lead_data_model.dart';
+import 'package:cabswalle/modules/jobs/data/models/job_model.dart';
 import 'package:cabswalle/services/logger_service.dart';
 import 'package:cabswalle/services/snackbar_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -283,56 +285,53 @@ class TypeSenseInstance {
   //   }
   // }
 
-  // Future<List<JobModel>> getSearchJobs(String search) async {
-  //   List<JobModel> jobList = [];
-  //   // FieldValue.serverTimestamp();
-  //   final searchPerameters = {
-  //     'q': search,
-  //     'query_by': 'location, details',
-  //     'per_page': "50"
-  //   };
+  Future<List<JobModel>> getSearchJobs(String search) async {
+    List<JobModel> jobList = [];
+    // FieldValue.serverTimestamp();
+    final searchPerameters = {
+      'q': search,
+      'query_by': 'location, details',
+      'per_page': "50"
+    };
 
-  //   try {
-  //     final result = await client
-  //         .collection('bwi-cabswalle-jobs')
-  //         .documents
-  //         .search(searchPerameters) as Map;
+    try {
+      final result = await client
+          .collection('bwi-cabswalle-jobs')
+          .documents
+          .search(searchPerameters) as Map;
 
-  //     for (var item in result['hits']) {
-  //       jobList.add(JobModel.fromJson(item['document']));
-  //     }
-  //     print(jobList);
-  //     return jobList;
-  //   } catch (e) {
-  //     debugPrint("error while searching leads");
-  //     debugPrint("Error : $e");
-  //     return jobList;
-  //   }
-  // }
+      for (var item in result['hits']) {
+        jobList.add(JobModel.fromJson(item['document']));
+      }
 
-  // Future<List<CarModel>> getSearchCars(String search) async {
-  //   List<CarModel> jobList = [];
-  //   // FieldValue.serverTimestamp();
-  //   final searchPerameters = {
-  //     'q': search,
-  //     'query_by': 'model, location, details',
-  //     'per_page': "50",
-  //   };
-  //   try {
-  //     final result = await client
-  //         .collection('bwi-cabswalle-carDeals')
-  //         .documents
-  //         .search(searchPerameters) as Map;
+      return jobList;
+    } catch (e) {
+      debugPrint("error while searching leads");
+      debugPrint("Error : $e");
+      return jobList;
+    }
+  }
 
-  //     for (var item in result['hits']) {
-  //       jobList.add(CarModel.fromMap(item['document']));
-  //     }
-  //     print("adas ${jobList}");
-  //     return jobList;
-  //   } catch (e) {
-  //     debugPrint("error while searching leads");
-  //     debugPrint("Error : $e");
-  //     return jobList;
-  //   }
-  // }
+  Future<List<CarModel>> getSearchCars(String search) async {
+    List<CarModel> jobList = [];
+    // FieldValue.serverTimestamp();
+    final searchPerameters = {
+      'q': search,
+      'query_by': 'model, location, details',
+      'per_page': "50",
+    };
+    try {
+      final result = await client
+          .collection('bwi-cabswalle-carDeals')
+          .documents
+          .search(searchPerameters) as Map;
+
+      for (var item in result['hits']) {
+        jobList.add(CarModel.fromMap(item['document']));
+      }
+      return jobList;
+    } catch (e) {
+      return jobList;
+    }
+  }
 }

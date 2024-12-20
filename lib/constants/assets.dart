@@ -26,6 +26,10 @@ class Assets {
   /// assets/icons/cabs_coin.svg
   static const String iconsCabsCoin = "assets/icons/cabs_coin.svg";
 
+  /// Assets for iconsCall
+  /// assets/icons/call.svg
+  static const String iconsCall = "assets/icons/call.svg";
+
   /// Assets for iconsCalls
   /// assets/icons/calls.svg
   static const String iconsCalls = "assets/icons/calls.svg";

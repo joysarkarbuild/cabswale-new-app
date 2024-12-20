@@ -7,6 +7,7 @@ import 'package:cabswalle/modules/splash/bloc/splash_bloc.dart';
 import 'package:cabswalle/modules/splash/bloc/splash_event.dart';
 import 'package:cabswalle/modules/splash/bloc/splash_state.dart';
 import 'package:cabswalle/routes/app_routes.dart';
+import 'package:cabswalle/services/banner_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -24,6 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+
     context.read<SplashBloc>().add(CheckAppVersionEvent());
   }
 

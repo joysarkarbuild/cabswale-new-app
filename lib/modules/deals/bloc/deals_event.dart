@@ -6,3 +6,5 @@ sealed class DealsEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+final class FetchDealsData extends DealsEvent {}

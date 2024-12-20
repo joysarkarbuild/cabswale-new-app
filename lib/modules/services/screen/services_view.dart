@@ -1,14 +1,17 @@
 import 'package:cabswalle/constants/assets.dart';
+import 'package:cabswalle/modules/buySellCar/buy_sell_car_screen.dart';
 import 'package:cabswalle/modules/insurance/insurance_screen1.dart';
+import 'package:cabswalle/modules/jobs/jobs_screen.dart';
+import 'package:cabswalle/modules/loan/screen/loan_screen.dart';
 import 'package:cabswalle/modules/services/bloc/services_bloc.dart';
 import 'package:cabswalle/modules/services/bloc/services_event.dart';
 import 'package:cabswalle/modules/services/bloc/services_state.dart';
-import 'package:cabswalle/routes/app_routes.dart';
+import 'package:cabswalle/widgets/banner_widget.dart';
 import 'package:cabswalle/widgets/centre_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ServicesScreen extends StatefulWidget {
   const ServicesScreen({super.key});
@@ -38,7 +41,13 @@ class _ServicesScreenState extends State<ServicesScreen> {
       {
         "label": "Loan",
         "icon": Assets.iconsLoan,
-        "onTap": () {},
+        "onTap": () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => LoanScreen(),
+              ));
+        },
         "key": "loan"
       },
       {
@@ -50,7 +59,13 @@ class _ServicesScreenState extends State<ServicesScreen> {
       {
         "label": "Jobs ",
         "icon": Assets.iconsJobSeeking,
-        "onTap": () {},
+        "onTap": () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => JobsScreen(),
+              ));
+        },
         "key": "jobs"
       },
       {
@@ -62,7 +77,13 @@ class _ServicesScreenState extends State<ServicesScreen> {
       {
         "label": "Buy/Sell Cars",
         "icon": Assets.iconsSelling,
-        "onTap": () {},
+        "onTap": () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => BuyAndSellCarScreen(),
+              ));
+        },
         "key": "buySellCar"
       },
     ];
@@ -121,8 +142,20 @@ class _ServicesScreenState extends State<ServicesScreen> {
                       ),
                     ),
                   ),
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: BannerImage(
+                        bannerId: "services",
+                        onTap: () async {
+                          launchUrl(Uri.parse("tel:+919403890306"));
+                        },
+                      ),
+                    ),
+                  ),
                   SliverPadding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding:
+                        const EdgeInsets.only(left: 16, right: 16, bottom: 16),
                     sliver: SliverGrid(
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,

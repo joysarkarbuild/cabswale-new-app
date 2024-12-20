@@ -2,7 +2,6 @@ import 'package:cabswalle/core/app_colors.dart';
 import 'package:cabswalle/core/app_text_styles.dart';
 import 'package:cabswalle/widgets/submit_button.dart';
 import 'package:flutter/material.dart';
-import 'package:dotted_border/dotted_border.dart';
 
 class MembershipWidget extends StatelessWidget {
   final bool isMembershipActive;
@@ -48,13 +47,11 @@ class MembershipWidget extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.only(top: 10),
-      child: DottedBorder(
-        color: AppColors.myprimaryColor,
-        dashPattern: const [4],
-        strokeWidth: 1.5,
-        radius: const Radius.circular(5),
-        borderType: BorderType.RRect,
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+        decoration: BoxDecoration(
+            border: Border.all(color: AppColors.myprimaryColor),
+            borderRadius: BorderRadius.circular(6)),
         child: ClipRRect(
           borderRadius: const BorderRadius.all(Radius.circular(12)),
           child: SizedBox(
@@ -77,8 +74,8 @@ class MembershipWidget extends StatelessWidget {
                     },
                     lable: "Recharge Now",
                     height: 28,
-                    width: 140,
-                    labelsize: 15,
+                    width: 130,
+                    labelsize: 13,
                     borderRadius: 4,
                   )
               ],

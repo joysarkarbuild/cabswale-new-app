@@ -3,6 +3,7 @@ import 'package:cabswalle/modules/insurance/insurance_screen2.dart';
 import 'package:cabswalle/modules/insurance/insurance_screen3.dart';
 import 'package:cabswalle/services/driver_service.dart';
 import 'package:cabswalle/services/snackbar_service.dart';
+import 'package:cabswalle/widgets/banner_widget.dart';
 import 'package:cabswalle/widgets/centre_loading.dart';
 import 'package:cabswalle/widgets/common_image_view.dart';
 import 'package:cabswalle/widgets/common_widget_componants.dart';
@@ -190,12 +191,12 @@ class _InsuranceScreen1State extends State<InsuranceScreen1> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      // BannerImage(
-                      //   bannerId: "insurance1",
-                      //   onTap: () {
-                      //     launchUrl(Uri.parse("tel:+919403890306"));
-                      //   },
-                      // ),
+                      BannerImage(
+                        bannerId: "insurance1",
+                        onTap: () {
+                          launchUrl(Uri.parse("tel:+919403890306"));
+                        },
+                      ),
                       Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 60, vertical: 8),
@@ -256,12 +257,12 @@ class _InsuranceScreen1State extends State<InsuranceScreen1> {
                             ),
                           ),
                         ),
-                      // BannerImage(
-                      //   bannerId: "insurance2",
-                      //   onTap: () {
-                      //     launchUrl(Uri.parse("tel:+919403890306"));
-                      //   },
-                      // ),
+                      BannerImage(
+                        bannerId: "insurance2",
+                        onTap: () {
+                          launchUrl(Uri.parse("tel:+919403890306"));
+                        },
+                      ),
                       if (uploadedFiles.isNotEmpty)
                         Padding(
                           padding: const EdgeInsets.symmetric(

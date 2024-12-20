@@ -1,3 +1,4 @@
+import 'package:cabswalle/widgets/centre_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -42,9 +43,7 @@ class _EmergencyScreenState extends State<EmergencyScreen> {
         centerTitle: true,
       ),
       body: isLoading
-          ? const Center(
-              child: CircularProgressIndicator(),
-            )
+          ? CentreLoading()
           : SingleChildScrollView(
               padding: const EdgeInsets.all(16),
               child: Column(

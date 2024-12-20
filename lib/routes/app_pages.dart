@@ -1,4 +1,5 @@
 import 'package:cabswalle/modules/insurance/insurance_screen1.dart';
+import 'package:cabswalle/modules/loan/screen/loan_screen.dart';
 import 'package:cabswalle/modules/services/screen/services_view.dart';
 import 'package:cabswalle/modules/language/screen/language_screen.dart';
 import 'package:cabswalle/modules/myprofile/screen/myprofile_view.dart';
@@ -17,7 +18,6 @@ import 'package:cabswalle/modules/reportProblem/screen/report_problem_view.dart'
 import 'package:cabswalle/modules/nearbyPlace/screen/nearby_place_view.dart';
 import 'package:cabswalle/modules/nearbyDriver/screen/nearby_driver_view.dart';
 import 'package:cabswalle/modules/nearby/screen/nearby_view.dart';
-import 'package:cabswalle/modules/loan/screen/loan_view.dart';
 import 'package:cabswalle/modules/extraBenifits/screen/extra_benifits_view.dart';
 import 'package:cabswalle/modules/productDetails/screen/product_details_view.dart';
 import 'package:cabswalle/modules/wallet/screen/wallet_transactions.dart';

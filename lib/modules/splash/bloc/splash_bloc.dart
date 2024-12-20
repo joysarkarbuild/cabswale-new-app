@@ -5,6 +5,7 @@ import 'package:cabswalle/modules/splash/bloc/splash_event.dart';
 import 'package:cabswalle/modules/splash/bloc/splash_state.dart';
 import 'package:cabswalle/modules/splash/data/models/app_data_model.dart';
 import 'package:cabswalle/modules/splash/data/repository/app_data_repository.dart';
+import 'package:cabswalle/services/banner_service.dart';
 import 'package:cabswalle/services/logger_service.dart';
 import 'package:cabswalle/services/login_manager.dart';
 import 'package:url_launcher/url_launcher.dart'; // Import the model
@@ -15,6 +16,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
   }
 
   final AppDataRepository appDataRepository = AppDataRepository();
+  final BannerService bannerService = BannerService();
   // Function to handle version checking
   Future<void> _onCheckAppVersion(
       CheckAppVersionEvent event, Emitter<SplashState> emit) async {
@@ -22,11 +24,12 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
 
     try {
       //Get login status from local
-
+      await bannerService.loadBannersData();
       LoginManager().getAllData();
       // Fetch the latest app version data from the repository
 
       AppDataModel appData = await appDataRepository.fetchAppVersion();
+
       LoggerService.logInfo("App Version : ${appData.appVersion.toString()}");
       // Compare the versions
       if (Platform.isAndroid) {

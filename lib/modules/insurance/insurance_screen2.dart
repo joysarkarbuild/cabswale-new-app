@@ -1,6 +1,7 @@
 import 'package:cabswalle/modules/insurance/insurance_screen1.dart';
 import 'package:cabswalle/services/driver_service.dart';
 import 'package:cabswalle/services/razor_pay_for_insurance.dart';
+import 'package:cabswalle/widgets/banner_widget.dart';
 import 'package:cabswalle/widgets/submit_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -30,12 +31,12 @@ class _InsuranceScreen2State extends State<InsuranceScreen2> {
         height: MediaQuery.of(context).size.height,
         child: Column(
           children: [
-            // BannerImage(
-            //   bannerId: "insurance3",
-            //   onTap: () {
-            //     launchUrl(Uri.parse("tel:+919403890306"));
-            //   },
-            // ),
+            BannerImage(
+              bannerId: "insurance3",
+              onTap: () {
+                launchUrl(Uri.parse("tel:+919403890306"));
+              },
+            ),
             SizedBox(
               height: 20,
             ),

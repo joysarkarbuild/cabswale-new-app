@@ -1,4 +1,5 @@
 import 'package:cabswalle/services/driver_service.dart';
+import 'package:cabswalle/widgets/banner_widget.dart';
 import 'package:cabswalle/widgets/submit_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -42,21 +43,21 @@ class _InsuranceScreen3State extends State<InsuranceScreen3> {
       ),
       body: Column(
         children: [
-          // BannerImage(
-          //   bannerId: "insurance4",
-          //   onTap: () {
-          //     launchUrl(Uri.parse("tel:+919403890306"));
-          //   },
-          // ),
+          BannerImage(
+            bannerId: "insurance4",
+            onTap: () {
+              launchUrl(Uri.parse("tel:+919403890306"));
+            },
+          ),
           SizedBox(
             height: 20,
           ),
-          // BannerImage(
-          //   bannerId: "insurance5",
-          //   onTap: () {
-          //     launchUrl(Uri.parse("tel:+919403890306"));
-          //   },
-          // ),
+          BannerImage(
+            bannerId: "insurance5",
+            onTap: () {
+              launchUrl(Uri.parse("tel:+919403890306"));
+            },
+          ),
           SizedBox(
             height: 20,
           ),
