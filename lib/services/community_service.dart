@@ -1,4 +1,3 @@
-import 'package:cabswalle/constants/assets.dart';
 import 'package:cabswalle/services/firestore_service.dart';
 
 class CommunityService {

@@ -3,13 +3,9 @@ import 'package:cabswalle/services/calculation_util.dart';
 import 'package:cabswalle/widgets/shimmer_container.dart';
 import 'package:cabswalle/widgets/submit_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class CallsCard extends StatelessWidget {
   const CallsCard({super.key, required this.call});
@@ -20,7 +16,6 @@ class CallsCard extends StatelessWidget {
     Timestamp tp = call["createdAt"];
     DateTime dt = tp.toDate();
     bool isIncoming = call["type"] == 'incoming';
-    var size = MediaQuery.of(context).size;
     return Container(
       padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
       margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
