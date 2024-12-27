@@ -1,3 +1,4 @@
+import 'package:cabswalle/constants/assets.dart';
 import 'package:cabswalle/widgets/submit_button.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -15,7 +16,7 @@ class ThankYouScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             LottieBuilder.asset(
-              "assets/icons/thankyou.json",
+              Assets.animationsThankyou,
               width: MediaQuery.of(context).size.width * 0.6,
             ),
             const Padding(

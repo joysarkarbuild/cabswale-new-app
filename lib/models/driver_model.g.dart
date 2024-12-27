@@ -8,25 +8,26 @@ part of 'driver_model.dart';
 
 _$DriverModelImpl _$$DriverModelImplFromJson(Map<String, dynamic> json) =>
     _$DriverModelImpl(
-      id: json['id'] as String?,
-      name: json['name'] as String?,
-      phoneNo: json['phoneNo'] as String?,
+      id: json['id'] as String? ?? '',
+      name: json['name'] as String? ?? '',
+      phoneNo: json['phoneNo'] as String? ?? '',
       createdAt: json['createdAt'],
-      deviceTokens: json['deviceTokens'] as List<dynamic>?,
-      conditionAccepted: json['conditionAccepted'] as bool?,
+      deviceTokens: json['deviceTokens'] as List<dynamic>? ?? const [],
+      conditionAccepted: json['conditionAccepted'] as bool? ?? false,
       kyc: json['kyc'] == null
           ? null
           : Kyc.fromJson(json['kyc'] as Map<String, dynamic>),
-      notificationPlace: json['notificationPlace'] as String?,
-      notificationAlert: json['notificationAlert'] as bool?,
-      notificationLocations: json['notificationLocations'] as List<dynamic>?,
-      autoApproveLeads: json['autoApproveLeads'] as bool?,
+      notificationPlace: json['notificationPlace'] as String? ?? '',
+      notificationAlert: json['notificationAlert'] as bool? ?? false,
+      notificationLocations:
+          json['notificationLocations'] as List<dynamic>? ?? const [],
+      autoApproveLeads: json['autoApproveLeads'] as bool? ?? false,
       lastAccess:
           const TimestampToDateTimeConverter().fromJson(json['lastAccess']),
-      verified: json['verified'] as bool?,
-      stage: (json['stage'] as num?)?.toInt(),
-      appVersion: (json['appVersion'] as num?)?.toInt(),
-      deviceList: json['deviceList'] as List<dynamic>?,
+      verified: json['verified'] as bool? ?? false,
+      stage: (json['stage'] as num?)?.toInt() ?? 0,
+      appVersion: (json['appVersion'] as num?)?.toInt() ?? 0,
+      deviceList: json['deviceList'] as List<dynamic>? ?? const [],
       refer: json['refer'] == null
           ? null
           : Refer.fromJson(json['refer'] as Map<String, dynamic>),
@@ -36,11 +37,11 @@ _$DriverModelImpl _$$DriverModelImplFromJson(Map<String, dynamic> json) =>
       wallet: json['wallet'] == null
           ? null
           : Wallet.fromJson(json['wallet'] as Map<String, dynamic>),
-      totalLeads: (json['totalLeads'] as num?)?.toInt(),
-      outGoingCalls: (json['outGoingCalls'] as num?)?.toInt(),
-      dealCount: (json['dealCount'] as num?)?.toInt(),
-      customOffer: json['customOffer'] as bool?,
-      sessionId: json['sessionId'] as String?,
+      totalLeads: (json['totalLeads'] as num?)?.toInt() ?? 0,
+      outGoingCalls: (json['outGoingCalls'] as num?)?.toInt() ?? 0,
+      dealCount: (json['dealCount'] as num?)?.toInt() ?? 0,
+      customOffer: json['customOffer'] as bool? ?? false,
+      sessionId: json['sessionId'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$DriverModelImplToJson(_$DriverModelImpl instance) =>
@@ -73,10 +74,10 @@ Map<String, dynamic> _$$DriverModelImplToJson(_$DriverModelImpl instance) =>
     };
 
 _$KycImpl _$$KycImplFromJson(Map<String, dynamic> json) => _$KycImpl(
-      verified: json['verified'] as bool?,
-      submitted: json['submitted'] as bool?,
-      address: json['address'] as String?,
-      vehicleNo: json['vehicleNo'] as String?,
+      verified: json['verified'] as bool? ?? false,
+      submitted: json['submitted'] as bool? ?? false,
+      address: json['address'] as String? ?? '',
+      vehicleNo: json['vehicleNo'] as String? ?? '',
       aadhaarPic: json['aadhaarPic'],
       licensePic: json['licensePic'],
     );
@@ -91,9 +92,9 @@ Map<String, dynamic> _$$KycImplToJson(_$KycImpl instance) => <String, dynamic>{
     };
 
 _$ReferImpl _$$ReferImplFromJson(Map<String, dynamic> json) => _$ReferImpl(
-      code: (json['code'] as num?)?.toInt(),
-      count: (json['count'] as num?)?.toInt(),
-      referBy: json['referBy'] as String?,
+      code: (json['code'] as num?)?.toInt() ?? 10000,
+      count: (json['count'] as num?)?.toInt() ?? 0,
+      referBy: json['referBy'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$ReferImplToJson(_$ReferImpl instance) =>

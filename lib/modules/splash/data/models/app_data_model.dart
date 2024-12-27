@@ -10,6 +10,7 @@ class AppDataModel with _$AppDataModel {
     required String playStoreUrl,
     required String policy,
     @Default(0) int appVersion,
+    @Default(false) bool useOtpless,
     @Default(0) int iosVersion,
     @Default(false) bool forceUpdate,
   }) = _AppDataModel;

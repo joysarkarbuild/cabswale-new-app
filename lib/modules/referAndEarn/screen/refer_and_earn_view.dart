@@ -1,14 +1,22 @@
+import 'package:cabswalle/services/driver_service.dart';
+import 'package:cabswalle/services/snackbar_service.dart';
+import 'package:cabswalle/widgets/banner_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class ReferAndEarnScreen extends StatelessWidget {
-  const ReferAndEarnScreen({super.key});
+class ReferScreen extends StatefulWidget {
+  const ReferScreen({super.key});
 
+  @override
+  State<ReferScreen> createState() => _ReferScreenState();
+}
+
+class _ReferScreenState extends State<ReferScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Refer & Earn"),
+        title: Text("Refer & Earn"),
         centerTitle: true,
       ),
       body: SizedBox(
@@ -18,6 +26,7 @@ class ReferAndEarnScreen extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
+            BannerImage(bannerId: "refer"),
             const SizedBox(
               height: 10,
             ),
@@ -29,26 +38,27 @@ class ReferAndEarnScreen extends StatelessWidget {
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.w900),
             ),
             Container(
-              margin: const EdgeInsets.only(top: 10),
+              margin: EdgeInsets.only(top: 10),
               decoration: BoxDecoration(
                   border: Border.all(color: Colors.blue, width: 2),
                   borderRadius: BorderRadius.circular(4),
                   color: Colors.blue.withValues(alpha: 0.3)),
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
-              child: const SelectableText(
-                "124567",
-                style: TextStyle(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 4),
+              child: SelectableText(
+                "${DriverService.instance.driverModel!.refer!.code}",
+                style: const TextStyle(
                     fontSize: 45,
                     letterSpacing: 6,
                     fontWeight: FontWeight.bold),
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 30,
             ),
             ElevatedButton(
               onPressed: () async {
-                String code = "124567";
+                String code =
+                    DriverService.instance.driverModel!.refer!.code.toString();
                 String message = '''Bhaisaheb,
 मैं कैब्सवाले ऐप से बहुत खुश हूं। कैब्सवाले ऐप हर भाई के लिए बहुत जरूरी है। आप भी आज ही डाउनलोड करो।
 https://play.google.com/store/apps/details?id=com.app.cabswalle
@@ -57,12 +67,14 @@ Code: $code''';
 
                 String whatsappUrl =
                     "whatsapp://send?text=${Uri.encodeComponent(message)}";
+                Uri url = Uri.parse(whatsappUrl);
 
                 // Check if the device can launch WhatsApp
-                if (await canLaunchUrl(Uri.parse(whatsappUrl))) {
-                  await launchUrl(Uri.parse(whatsappUrl));
+                if (await canLaunchUrl(url)) {
+                  await launchUrl(url);
                 } else {
-                  // If WhatsApp is not installed or cannot launch
+                  SnackbarUtils.showErrorSnackBar(
+                      message: "Whatsapp is not installed");
                 }
               },
               style: ElevatedButton.styleFrom(

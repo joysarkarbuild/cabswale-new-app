@@ -270,7 +270,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       i <
                                           (state.userProfile != null
                                               ? state.userProfile!
-                                                  .notificationLocations!.length
+                                                  .notificationLocations.length
                                               : 0);
                                       i++)
                                     InkWell(
@@ -281,7 +281,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                               builder: (context) =>
                                                   FilterLeadsScreen(
                                                       city: state.userProfile!
-                                                              .notificationLocations![
+                                                              .notificationLocations[
                                                           i]!),
                                             ));
                                       },
@@ -300,7 +300,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 BorderRadius.circular(4)),
                                         child: Center(
                                           child: Text(
-                                            "  ${state.userProfile!.notificationLocations![i]!}"
+                                            "  ${state.userProfile!.notificationLocations[i]!}"
                                                 .toUpperCase(),
                                             style: AppTextStyles.style18w500(),
                                           ),
@@ -310,7 +310,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 ],
                               ),
                             if (state.userProfile != null &&
-                                state.userProfile!.notificationLocations!
+                                state.userProfile!.notificationLocations
                                     .isNotEmpty)
                               const SizedBox(
                                 height: 8,

@@ -2,21 +2,38 @@ import 'package:cabswalle/constants/assets.dart';
 import 'package:cabswalle/constants/text_data.dart';
 import 'package:cabswalle/core/app_colors.dart';
 import 'package:cabswalle/core/app_text_styles.dart';
+import 'package:cabswalle/modules/deals/screen/deals_confirmation_screen.dart';
 import 'package:cabswalle/modules/home/data/models/lead_data_model.dart';
+import 'package:cabswalle/modules/membership/plans_screen.dart';
+import 'package:cabswalle/modules/reportScreen/data/models/fraud_model.dart';
+import 'package:cabswalle/modules/reportScreen/report_screen.dart';
+import 'package:cabswalle/routes/app_routes.dart';
 import 'package:cabswalle/services/calculation_util.dart';
+import 'package:cabswalle/services/driver_service.dart';
+import 'package:cabswalle/services/logger_service.dart';
+import 'package:cabswalle/services/login_manager.dart';
+import 'package:cabswalle/services/snackbar_service.dart';
 import 'package:cabswalle/widgets/show_image.dart';
 import 'package:cabswalle/widgets/submit_button.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flutter/material.dart';
 
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LeadsCard extends StatelessWidget {
   const LeadsCard({super.key, required this.lead});
 
   final LeadModel lead;
+  void sendWhatsAppMessage(String phoneNumber, String message) async {
+    String url = 'https://wa.me/$phoneNumber/?text=$message';
+    await launchUrl(Uri.parse(url));
+    LoggerService.logInfo("WhatsApp message sent");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -276,20 +293,59 @@ class LeadsCard extends StatelessWidget {
                           borderRadius: 2,
                           labelColor: AppColors.myWhite,
                           color: AppColors.myprimaryColor,
-                          onTap: () async {},
+                          onTap: () async {
+                            if (LoginManager.isLogin) {
+                              try {
+                                if (DriverService
+                                    .instance.driverModel!.membership!.active) {
+                                  await FirebaseFirestore.instance
+                                      .collection('whatsappMessage')
+                                      .add({
+                                    'createdAt': DateTime.now(),
+                                    'leadId': lead.id,
+                                    'receiver': {
+                                      'userId': lead.createdBy?.id ?? '',
+                                      'name': lead.createdBy?.name ?? '',
+                                      'phoneNo': lead.createdBy?.phoneNo ?? ''
+                                    },
+                                    'sender': {
+                                      'userId': DriverService
+                                          .instance.driverModel!.id,
+                                      'name': DriverService
+                                          .instance.driverModel!.name,
+                                      'phoneNo': DriverService
+                                          .instance.driverModel!.phoneNo
+                                    },
+                                  });
+                                  sendWhatsAppMessage(
+                                    '${lead.createdBy!.phoneNo}',
+                                    'Dear Sir \u{1F64F} \n\nMein aapki lead \u{1F697} mein interested hun, jo aapne cabswale app \u{1F4F1} par dali hai\n\nPickup: ${(lead.from!.city).toString()}\nDrop: ${(lead.to!.city).toString()}\nVehicle: ${lead.carType}\nMessage: ${lead.message}\n\nCabswale app download kariye\nhttps://play.google.com/store/apps/details?id=com.app.cabswalle',
+                                  );
+                                } else {
+                                  SnackbarUtils.showSuccessSnackBar(
+                                      message:
+                                          "Please Activate Your Membership First!");
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => PlansScreen(),
+                                      ));
+                                }
+                              } catch (e) {
+                                SnackbarUtils.showErrorSnackBar(
+                                    message: e.toString());
+                              }
+                            } else {
+                              context.pushNamed(Names.login);
+                            }
+                          },
                           height: 36,
                           labelsize: 16,
                           lable: 'Whatsapp',
                           icon: SvgPicture.asset(
                             Assets.iconsWhatsapp,
                             height: 18,
-                          )
-
-                          // Icon(
-                          //   isBooked ? Icons.check_circle : Icons.call_outlined,
-                          //   color: isBooked ? Colors.green : myWhite,
-                          // ),
-                          ),
+                          )),
                     ),
                     const SizedBox(
                       width: 2,
@@ -299,7 +355,50 @@ class LeadsCard extends StatelessWidget {
                         borderRadius: 2,
                         labelColor: AppColors.myWhite,
                         color: AppColors.myprimaryColor,
-                        onTap: () {},
+                        onTap: () async {
+                          if (LoginManager.isLogin) {
+                            try {
+                              if (DriverService
+                                  .instance.driverModel!.membership!.active) {
+                                await FirebaseFirestore.instance
+                                    .collection('calls')
+                                    .add({
+                                  'createdAt': DateTime.now(),
+                                  'leadId': lead.id,
+                                  'receiver': {
+                                    'userId': lead.createdBy?.id ?? '',
+                                    'name': lead.createdBy?.name ?? '',
+                                    'phoneNo': lead.createdBy?.phoneNo ?? ''
+                                  },
+                                  'sender': {
+                                    'userId':
+                                        DriverService.instance.driverModel!.id,
+                                    'name': DriverService
+                                        .instance.driverModel!.name,
+                                    'phoneNo': DriverService
+                                        .instance.driverModel!.phoneNo
+                                  },
+                                });
+                                launchUrl(Uri.parse(
+                                    "tel:${lead.createdBy!.phoneNo}"));
+                              } else {
+                                SnackbarUtils.showSuccessSnackBar(
+                                    message:
+                                        "Please Activate Your Membership First!");
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => PlansScreen(),
+                                    ));
+                              }
+                            } catch (e) {
+                              SnackbarUtils.showErrorSnackBar(
+                                  message: e.toString());
+                            }
+                          } else {
+                            context.pushNamed(Names.login);
+                          }
+                        },
                         height: 36,
                         labelsize: 16,
                         lable: AppLocalizations.of(context)!.callNow,
@@ -332,7 +431,21 @@ class LeadsCard extends StatelessWidget {
                               vertical:
                                   7.5), // Adjust the padding as per your requirement
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute<Null>(
+                              builder: (BuildContext context) {
+                                return ReportScreen(
+                                  fraud: FraudModel(
+                                      id: lead.createdBy!.id!,
+                                      leadId: lead.id ?? "",
+                                      name: lead.createdBy!.name ?? ""),
+                                );
+                              },
+                              fullscreenDialog: true,
+                            ),
+                          );
+                        },
                         child: const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -368,7 +481,16 @@ class LeadsCard extends StatelessWidget {
                                 vertical:
                                     6), // Adjust the padding as per your requirement
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute<Null>(
+                                builder: (BuildContext context) {
+                                  return const DealsConfirmationScreen();
+                                },
+                                fullscreenDialog: true,
+                              ),
+                            );
+                          },
                           child: const Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [

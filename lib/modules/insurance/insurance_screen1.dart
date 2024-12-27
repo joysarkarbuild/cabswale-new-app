@@ -42,7 +42,7 @@ class _InsuranceScreen1State extends State<InsuranceScreen1> {
     var data = await FirebaseFirestore.instance
         .collection("insuranceRequests")
         .where("phoneNo",
-            isEqualTo: DriverService.instance.driverModel!.phoneNo!)
+            isEqualTo: DriverService.instance.driverModel!.phoneNo)
         .get();
     insuranceMap = data.docs.isNotEmpty
         ? {"docId": data.docs[0].id, ...data.docs[0].data()}
@@ -278,7 +278,7 @@ class _InsuranceScreen1State extends State<InsuranceScreen1> {
                                       .collection("insuranceRequests")
                                       .doc()
                                       .set({
-                                    "name": currentUser.name!.isNotEmpty
+                                    "name": currentUser.name.isNotEmpty
                                         ? currentUser.name
                                         : "Cabswale Partner",
                                     "phoneNo": currentUser.phoneNo,

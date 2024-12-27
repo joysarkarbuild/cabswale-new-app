@@ -2,6 +2,10 @@
 class Assets {
   Assets._();
   
+  /// Assets for animationsThankyou
+  /// assets/animations/thankyou.json
+  static const String animationsThankyou = "assets/animations/thankyou.json";
+
   /// Assets for animationsUpdate
   /// assets/animations/update.json
   static const String animationsUpdate = "assets/animations/update.json";
@@ -249,6 +253,10 @@ class Assets {
   /// Assets for imagesAppLogo
   /// assets/images/app_logo.png
   static const String imagesAppLogo = "assets/images/app_logo.png";
+
+  /// Assets for imagesBestSeller
+  /// assets/images/best_seller.png
+  static const String imagesBestSeller = "assets/images/best_seller.png";
 
   /// Assets for imagesCabIcon
   /// assets/images/cab_icon.png

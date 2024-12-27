@@ -1,16 +1,20 @@
 import 'package:cabswalle/modules/insurance/insurance_screen1.dart';
 import 'package:cabswalle/modules/loan/screen/loan_screen.dart';
+import 'package:cabswalle/modules/loginOtpless/screen/login_view.dart';
+import 'package:cabswalle/modules/otpOtpLess/screen/otp_view.dart';
 import 'package:cabswalle/modules/services/screen/services_view.dart';
 import 'package:cabswalle/modules/language/screen/language_screen.dart';
 import 'package:cabswalle/modules/myprofile/screen/myprofile_view.dart';
 import 'package:cabswalle/modules/setting/screen/setting_view.dart';
+import 'package:cabswalle/modules/splash/bloc/splash_bloc.dart';
+import 'package:cabswalle/modules/splash/bloc/splash_state.dart';
 import 'package:cabswalle/modules/splash/screen/splash_view.dart';
+import 'package:cabswalle/modules/topLocations/top_locations_screen.dart';
 import 'package:cabswalle/modules/verifyAccount/screen/edit_name_city_profile_image.dart';
 import 'package:cabswalle/modules/verifyAccount/screen/edit_top_routes.dart';
 import 'package:cabswalle/modules/verifyAccount/screen/edit_vehicles.dart';
 import 'package:cabswalle/modules/verifyAccount/screen/verify_account_view.dart';
 import 'package:cabswalle/modules/emergency/screen/emergency_view.dart';
-import 'package:cabswalle/modules/topLocations/screen/top_locations_view.dart';
 import 'package:cabswalle/modules/referAndEarn/screen/refer_and_earn_view.dart';
 import 'package:cabswalle/modules/videosFromRealDrivers/screen/videos_from_real_drivers_view.dart';
 import 'package:cabswalle/modules/partnerWithUs/screen/partner_with_us_view.dart';
@@ -36,6 +40,7 @@ import 'package:cabswalle/modules/otp/screen/otp_view.dart';
 import 'package:cabswalle/modules/login/screen/login_view.dart';
 import 'package:cabswalle/routes/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 // GoRouter configuration
@@ -92,12 +97,14 @@ final router = GoRouter(
     GoRoute(
       name: Names.verifyAccount,
       path: Routes.verifyAccount,
-      builder: (context, state) => const VerifyAccountScreen(),
+      builder: (context, state) => const VerifyAccountScreen(
+        isFetchData: false,
+      ),
     ),
     GoRoute(
       name: Names.emergency,
       path: Routes.emergency,
-      builder: (context, state) => const EmergencyScreen(),
+      builder: (context, state) => const EmergencyNumbers(),
     ),
     GoRoute(
       name: Names.topLocations,
@@ -107,7 +114,7 @@ final router = GoRouter(
     GoRoute(
       name: Names.referAndEarn,
       path: Routes.referAndEarn,
-      builder: (context, state) => const ReferAndEarnScreen(),
+      builder: (context, state) => const ReferScreen(),
     ),
     GoRoute(
       name: Names.videosFromRealDrivers,
@@ -222,15 +229,31 @@ final router = GoRouter(
       ),
     ),
     GoRoute(
+      name: Names.otpOtpless,
+      path: Routes.otpOtpless,
+      builder: (context, state) => OtpScreenOtpless(
+        phoneNo: (state.extra as Map<String, dynamic>)["phoneNo"],
+        isSms: (state.extra as Map<String, dynamic>)["isSms"],
+      ),
+    ),
+    GoRoute(
       name: Names.splash,
       path: Routes.splash,
       builder: (context, state) => const SplashScreen(),
     ),
     GoRoute(
-      name: Names.login,
-      path: Routes.login,
-      builder: (context, state) => const LoginScreen(),
-    ),
+        name: Names.login,
+        path: Routes.login,
+        builder: (context, state) {
+          if (context.read<SplashBloc>().state is AppVersionMatched) {
+            if ((context.read<SplashBloc>().state as AppVersionMatched)
+                .appData
+                .useOtpless) {
+              return LoginScreenOtpless();
+            }
+          }
+          return LoginScreen();
+        }),
   ],
 );
 

@@ -1,24 +1,31 @@
 import 'package:cabswalle/core/app_colors.dart';
 import 'package:cabswalle/core/app_text_styles.dart';
 import 'package:cabswalle/modules/myprofile/bloc/myprofile_bloc.dart';
+import 'package:cabswalle/modules/myprofile/bloc/myprofile_event.dart';
 import 'package:cabswalle/modules/myprofile/bloc/myprofile_state.dart';
 import 'package:cabswalle/routes/app_routes.dart';
+import 'package:cabswalle/widgets/centre_loading.dart';
 import 'package:cabswalle/widgets/submit_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class VerifyAccountScreen extends StatelessWidget {
-  const VerifyAccountScreen({super.key});
+  const VerifyAccountScreen({super.key, required this.isFetchData});
+  final bool isFetchData;
 
   @override
   Widget build(BuildContext context) {
+    if (isFetchData) {
+      context.read<MyprofileBloc>().add(MyProfileLoadEvent());
+    }
     return Scaffold(
       appBar: AppBar(
         title: Text(
           "Edit Profile",
           style: AppTextStyles.style18w500(),
         ),
+        centerTitle: true,
       ),
       body: BlocBuilder<MyprofileBloc, MyprofileState>(
         builder: (context, state) {
@@ -85,7 +92,7 @@ class VerifyAccountScreen extends StatelessWidget {
               ],
             );
           } else {
-            return Text("Something went wrong");
+            return CentreLoading();
           }
         },
       ),

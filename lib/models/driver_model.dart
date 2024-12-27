@@ -7,30 +7,30 @@ part 'driver_model.g.dart';
 @freezed
 class DriverModel with _$DriverModel {
   const factory DriverModel({
-    String? id,
-    String? name,
-    String? phoneNo,
+    @Default('') String id,
+    @Default('') String name,
+    @Default('') String phoneNo,
     dynamic createdAt,
-    List? deviceTokens,
-    bool? conditionAccepted,
+    @Default([]) List deviceTokens,
+    @Default(false) bool conditionAccepted,
     Kyc? kyc,
-    String? notificationPlace,
-    bool? notificationAlert,
-    List? notificationLocations,
-    bool? autoApproveLeads,
+    @Default('') String notificationPlace,
+    @Default(false) bool notificationAlert,
+    @Default([]) List notificationLocations,
+    @Default(false) bool autoApproveLeads,
     @TimestampToDateTimeConverter() DateTime? lastAccess,
-    bool? verified,
-    int? stage,
-    int? appVersion,
-    List<dynamic>? deviceList,
+    @Default(false) bool verified,
+    @Default(0) int stage,
+    @Default(0) int appVersion,
+    @Default([]) List<dynamic> deviceList,
     Refer? refer,
     Membership? membership,
     Wallet? wallet,
-    int? totalLeads,
-    int? outGoingCalls,
-    int? dealCount,
-    bool? customOffer,
-    String? sessionId,
+    @Default(0) int totalLeads,
+    @Default(0) int outGoingCalls,
+    @Default(0) int dealCount,
+    @Default(false) bool customOffer,
+    @Default('') String sessionId,
   }) = _DriverModel;
 
   factory DriverModel.fromJson(Map<String, dynamic> json) =>
@@ -40,10 +40,10 @@ class DriverModel with _$DriverModel {
 @freezed
 class Kyc with _$Kyc {
   const factory Kyc({
-    bool? verified,
-    bool? submitted,
-    String? address,
-    String? vehicleNo,
+    @Default(false) bool verified,
+    @Default(false) bool submitted,
+    @Default('') String address,
+    @Default('') String vehicleNo,
     dynamic aadhaarPic,
     dynamic licensePic,
   }) = _Kyc;
@@ -54,9 +54,9 @@ class Kyc with _$Kyc {
 @freezed
 class Refer with _$Refer {
   const factory Refer({
-    int? code,
-    int? count,
-    String? referBy,
+    @Default(10000) int code,
+    @Default(0) int count,
+    @Default('') String referBy,
   }) = _Refer;
 
   factory Refer.fromJson(Map<String, dynamic> json) => _$ReferFromJson(json);

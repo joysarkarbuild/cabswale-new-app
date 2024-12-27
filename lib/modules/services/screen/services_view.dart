@@ -1,8 +1,10 @@
 import 'package:cabswalle/constants/assets.dart';
 import 'package:cabswalle/modules/buySellCar/buy_sell_car_screen.dart';
+import 'package:cabswalle/modules/earnMoney/earn_money_screen.dart';
 import 'package:cabswalle/modules/insurance/insurance_screen1.dart';
 import 'package:cabswalle/modules/jobs/jobs_screen.dart';
 import 'package:cabswalle/modules/loan/screen/loan_screen.dart';
+import 'package:cabswalle/modules/saveMoney/save_money_screen.dart';
 import 'package:cabswalle/modules/services/bloc/services_bloc.dart';
 import 'package:cabswalle/modules/services/bloc/services_event.dart';
 import 'package:cabswalle/modules/services/bloc/services_state.dart';
@@ -53,7 +55,13 @@ class _ServicesScreenState extends State<ServicesScreen> {
       {
         "label": "Car Services",
         "icon": Assets.iconsCarRepair,
-        "onTap": () {},
+        "onTap": () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => SaveMoneyScreen(),
+              ));
+        },
         "key": "services"
       },
       {
@@ -71,7 +79,13 @@ class _ServicesScreenState extends State<ServicesScreen> {
       {
         "label": "Restaurants",
         "icon": Assets.iconsRestaurant,
-        "onTap": () {},
+        "onTap": () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => EarnMoneyScreen(),
+              ));
+        },
         "key": "extraIncome"
       },
       {

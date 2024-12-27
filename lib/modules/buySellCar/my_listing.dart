@@ -88,7 +88,7 @@ class _MyListingScreenState extends State<MyListingScreen> {
         .collection('carDeals')
         .where('uid',
             isEqualTo: DriverService
-                .instance.driverModel!.id!) // Add the condition for UID
+                .instance.driverModel!.id) // Add the condition for UID
         .orderBy('createdAt', descending: true)
         .limit(5);
 

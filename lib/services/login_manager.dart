@@ -56,6 +56,45 @@ class LoginManager {
     }
   }
 
+  Future<void> verifyOtpUsingOtpLess({
+    required String token,
+    required BuildContext context,
+  }) async {
+    try {
+      LoggerService.logInfo("Verify firebase called");
+      await _auth.signInWithCustomToken(token);
+      LoggerService.logInfo("User logged in with OTP");
+      await _updateLoginState();
+      // ignore: use_build_context_synchronously
+      context.goNamed(Names.navbar);
+    } on FirebaseAuthException catch (e) {
+      LoggerService.logError("Error verifying OTP: ${e.message}");
+      String errorMessage;
+
+      // Handle specific Firebase exceptions
+      switch (e.code) {
+        case 'invalid-verification-code':
+          errorMessage = "The OTP you entered is invalid. Please try again.";
+          break;
+        case 'session-expired':
+          errorMessage =
+              "The verification session has expired. Please request a new OTP.";
+          break;
+        case 'too-many-requests':
+          errorMessage = "Too many attempts. Please try again later.";
+          break;
+        default:
+          errorMessage = "An unknown error occurred. Please try again.";
+      }
+
+      SnackbarUtils.showErrorSnackBar(message: errorMessage);
+    } catch (e) {
+      LoggerService.logError("Unexpected error verifying OTP: $e");
+      SnackbarUtils.showErrorSnackBar(
+          message: "An unexpected error occurred. Please try again.");
+    }
+  }
+
   Future<void> verifyOtp({
     required String verificationId,
     required String smsCode,

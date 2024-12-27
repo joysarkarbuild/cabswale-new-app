@@ -1,6 +1,7 @@
 import 'package:cabswalle/constants/assets.dart';
 import 'package:cabswalle/core/app_text_styles.dart';
 import 'package:cabswalle/core/screen_responsive.dart';
+import 'package:cabswalle/modules/membership/plans_screen.dart';
 import 'package:cabswalle/modules/splash/bloc/splash_bloc.dart';
 import 'package:cabswalle/modules/splash/bloc/splash_state.dart';
 import 'package:cabswalle/routes/app_routes.dart';
@@ -29,8 +30,9 @@ class ProfileScreen extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    DriverService.instance.driverModel!.name ??
-                        "Cabswale Partner",
+                    DriverService.instance.driverModel!.name.isNotEmpty
+                        ? DriverService.instance.driverModel!.name
+                        : "Cabswale Partner",
                     style: AppTextStyles.style22w600(),
                   ),
                   SizedBox(
@@ -38,9 +40,7 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   Image.asset(
                     (DriverService.instance.driverModel != null &&
-                            DriverService.instance.driverModel!.verified !=
-                                null &&
-                            DriverService.instance.driverModel!.verified!)
+                            DriverService.instance.driverModel!.verified)
                         ? Assets.imagesVe
                         : Assets.imagesNv,
                     height: 20,
@@ -64,7 +64,13 @@ class ProfileScreen extends StatelessWidget {
                     title: AppLocalizations.of(context)!.profileInfo),
                 ProfileOptionCard(
                     icon: Assets.iconsMembership,
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PlansScreen(),
+                          ));
+                    },
                     title: "Cabswale Membership"),
                 ProfileOptionCard(
                     icon: Assets.iconsTransactions,

@@ -152,7 +152,7 @@ class _CallHistoryScreenState extends State<CallHistoryScreen> {
               children: [
                 ..._callsService.allCallList.map((call) {
                   return CallsCard(call: call);
-                }).toList(),
+                }),
                 if (_callsService.fetchingMoreLeadsLoader)
                   const CallsCardShimmer(), // Show loader only at the end
               ],

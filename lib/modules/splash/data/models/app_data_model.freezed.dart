@@ -24,6 +24,7 @@ mixin _$AppDataModel {
   String get playStoreUrl => throw _privateConstructorUsedError;
   String get policy => throw _privateConstructorUsedError;
   int get appVersion => throw _privateConstructorUsedError;
+  bool get useOtpless => throw _privateConstructorUsedError;
   int get iosVersion => throw _privateConstructorUsedError;
   bool get forceUpdate => throw _privateConstructorUsedError;
 
@@ -48,6 +49,7 @@ abstract class $AppDataModelCopyWith<$Res> {
       String playStoreUrl,
       String policy,
       int appVersion,
+      bool useOtpless,
       int iosVersion,
       bool forceUpdate});
 }
@@ -71,6 +73,7 @@ class _$AppDataModelCopyWithImpl<$Res, $Val extends AppDataModel>
     Object? playStoreUrl = null,
     Object? policy = null,
     Object? appVersion = null,
+    Object? useOtpless = null,
     Object? iosVersion = null,
     Object? forceUpdate = null,
   }) {
@@ -91,6 +94,10 @@ class _$AppDataModelCopyWithImpl<$Res, $Val extends AppDataModel>
           ? _value.appVersion
           : appVersion // ignore: cast_nullable_to_non_nullable
               as int,
+      useOtpless: null == useOtpless
+          ? _value.useOtpless
+          : useOtpless // ignore: cast_nullable_to_non_nullable
+              as bool,
       iosVersion: null == iosVersion
           ? _value.iosVersion
           : iosVersion // ignore: cast_nullable_to_non_nullable
@@ -116,6 +123,7 @@ abstract class _$$AppDataModelImplCopyWith<$Res>
       String playStoreUrl,
       String policy,
       int appVersion,
+      bool useOtpless,
       int iosVersion,
       bool forceUpdate});
 }
@@ -137,6 +145,7 @@ class __$$AppDataModelImplCopyWithImpl<$Res>
     Object? playStoreUrl = null,
     Object? policy = null,
     Object? appVersion = null,
+    Object? useOtpless = null,
     Object? iosVersion = null,
     Object? forceUpdate = null,
   }) {
@@ -157,6 +166,10 @@ class __$$AppDataModelImplCopyWithImpl<$Res>
           ? _value.appVersion
           : appVersion // ignore: cast_nullable_to_non_nullable
               as int,
+      useOtpless: null == useOtpless
+          ? _value.useOtpless
+          : useOtpless // ignore: cast_nullable_to_non_nullable
+              as bool,
       iosVersion: null == iosVersion
           ? _value.iosVersion
           : iosVersion // ignore: cast_nullable_to_non_nullable
@@ -177,6 +190,7 @@ class _$AppDataModelImpl implements _AppDataModel {
       required this.playStoreUrl,
       required this.policy,
       this.appVersion = 0,
+      this.useOtpless = false,
       this.iosVersion = 0,
       this.forceUpdate = false});
 
@@ -195,6 +209,9 @@ class _$AppDataModelImpl implements _AppDataModel {
   final int appVersion;
   @override
   @JsonKey()
+  final bool useOtpless;
+  @override
+  @JsonKey()
   final int iosVersion;
   @override
   @JsonKey()
@@ -202,7 +219,7 @@ class _$AppDataModelImpl implements _AppDataModel {
 
   @override
   String toString() {
-    return 'AppDataModel(appStoreUrl: $appStoreUrl, playStoreUrl: $playStoreUrl, policy: $policy, appVersion: $appVersion, iosVersion: $iosVersion, forceUpdate: $forceUpdate)';
+    return 'AppDataModel(appStoreUrl: $appStoreUrl, playStoreUrl: $playStoreUrl, policy: $policy, appVersion: $appVersion, useOtpless: $useOtpless, iosVersion: $iosVersion, forceUpdate: $forceUpdate)';
   }
 
   @override
@@ -217,6 +234,8 @@ class _$AppDataModelImpl implements _AppDataModel {
             (identical(other.policy, policy) || other.policy == policy) &&
             (identical(other.appVersion, appVersion) ||
                 other.appVersion == appVersion) &&
+            (identical(other.useOtpless, useOtpless) ||
+                other.useOtpless == useOtpless) &&
             (identical(other.iosVersion, iosVersion) ||
                 other.iosVersion == iosVersion) &&
             (identical(other.forceUpdate, forceUpdate) ||
@@ -226,7 +245,7 @@ class _$AppDataModelImpl implements _AppDataModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, appStoreUrl, playStoreUrl,
-      policy, appVersion, iosVersion, forceUpdate);
+      policy, appVersion, useOtpless, iosVersion, forceUpdate);
 
   /// Create a copy of AppDataModel
   /// with the given fields replaced by the non-null parameter values.
@@ -250,6 +269,7 @@ abstract class _AppDataModel implements AppDataModel {
       required final String playStoreUrl,
       required final String policy,
       final int appVersion,
+      final bool useOtpless,
       final int iosVersion,
       final bool forceUpdate}) = _$AppDataModelImpl;
 
@@ -264,6 +284,8 @@ abstract class _AppDataModel implements AppDataModel {
   String get policy;
   @override
   int get appVersion;
+  @override
+  bool get useOtpless;
   @override
   int get iosVersion;
   @override

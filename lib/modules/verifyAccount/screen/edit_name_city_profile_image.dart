@@ -9,6 +9,7 @@ import 'package:cabswalle/modules/verifyAccount/bloc/verify_account_bloc.dart';
 import 'package:cabswalle/modules/verifyAccount/bloc/verify_account_event.dart';
 import 'package:cabswalle/modules/verifyAccount/bloc/verify_account_state.dart';
 import 'package:cabswalle/services/snackbar_service.dart';
+import 'package:cabswalle/widgets/centre_loading.dart';
 import 'package:cabswalle/widgets/common_image_view.dart';
 import 'package:cabswalle/widgets/my_text_form_field.dart';
 import 'package:cabswalle/widgets/submit_button.dart';
@@ -177,10 +178,7 @@ class EditNameCityAndProfileImage extends StatelessWidget {
               ],
             );
           } else {
-            return Text(
-              "Something went wrong!",
-              style: AppTextStyles.style18w500(),
-            );
+            return CentreLoading();
           }
         },
       ),

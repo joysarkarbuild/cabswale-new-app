@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
-sealed class TopLocationsEvent extends Equatable {
-  const TopLocationsEvent();
+sealed class OtpEvent extends Equatable {
+  const OtpEvent();
 
   @override
   List<Object> get props => [];

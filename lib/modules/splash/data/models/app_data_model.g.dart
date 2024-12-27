@@ -12,6 +12,7 @@ _$AppDataModelImpl _$$AppDataModelImplFromJson(Map<String, dynamic> json) =>
       playStoreUrl: json['playStoreUrl'] as String,
       policy: json['policy'] as String,
       appVersion: (json['appVersion'] as num?)?.toInt() ?? 0,
+      useOtpless: json['useOtpless'] as bool? ?? false,
       iosVersion: (json['iosVersion'] as num?)?.toInt() ?? 0,
       forceUpdate: json['forceUpdate'] as bool? ?? false,
     );
@@ -22,6 +23,7 @@ Map<String, dynamic> _$$AppDataModelImplToJson(_$AppDataModelImpl instance) =>
       'playStoreUrl': instance.playStoreUrl,
       'policy': instance.policy,
       'appVersion': instance.appVersion,
+      'useOtpless': instance.useOtpless,
       'iosVersion': instance.iosVersion,
       'forceUpdate': instance.forceUpdate,
     };

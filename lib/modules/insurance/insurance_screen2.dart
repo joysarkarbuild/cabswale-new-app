@@ -151,8 +151,7 @@ class _InsuranceScreen2State extends State<InsuranceScreen2> {
                       key: widget.paymentDetails["creds"]["key_id"],
                       // key: "rzp_test_WFDYMGr1LRBR2q",
                       name: widget.paymentDetails["name"],
-                      contact:
-                          DriverService.instance.driverModel!.phoneNo ?? "",
+                      contact: DriverService.instance.driverModel!.phoneNo,
                       email: widget.paymentDetails["email"],
                     );
                   },

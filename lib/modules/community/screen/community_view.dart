@@ -1,43 +1,35 @@
 import 'package:cabswalle/constants/assets.dart';
 import 'package:cabswalle/core/app_colors.dart';
-import 'package:cabswalle/routes/app_routes.dart';
+import 'package:cabswalle/modules/community/bloc/community_bloc.dart';
+import 'package:cabswalle/modules/community/bloc/community_event.dart';
+import 'package:cabswalle/modules/community/bloc/community_state.dart';
+import 'package:cabswalle/modules/emergency/screen/emergency_view.dart';
+import 'package:cabswalle/modules/nearby/screen/nearby_view.dart';
+import 'package:cabswalle/modules/partnerWithUs/screen/partner_with_us_view.dart';
+import 'package:cabswalle/modules/referAndEarn/screen/refer_and_earn_view.dart';
+import 'package:cabswalle/modules/reportProblem/screen/report_problem_view.dart';
+import 'package:cabswalle/modules/topLocations/top_locations_screen.dart';
+import 'package:cabswalle/modules/verifyAccount/screen/verify_account_view.dart';
+import 'package:cabswalle/modules/videosFromRealDrivers/screen/videos_from_real_drivers_view.dart';
+import 'package:cabswalle/widgets/centre_loading.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class CommunityScreen extends StatelessWidget {
+class CommunityScreen extends StatefulWidget {
   const CommunityScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    const double itemHeight = 114;
-    final double itemWidth = MediaQuery.of(context).size.width / 2;
-    final List<Map<String, dynamic>> options = [
-      {
-        "label": "Wallet",
-        "icon": Assets.iconsWallet,
-        "onTap": () {
-          context.pushNamed(Names.wallet);
-        },
-        "key": "wallet"
-      },
-      {
-        "label": "Extra Benefits",
-        "icon": Assets.iconsOffer,
-        "onTap": () {
-          context.pushNamed(Names.extraBenifits);
-        },
-        "key": "extraIncome"
-      },
-      {
-        "label": "Loan",
-        "icon": Assets.iconsLoan,
-        "onTap": () {
-          context.pushNamed(Names.loan);
-        },
-        "key": "loan"
-      },
+  State<CommunityScreen> createState() => _CommunityScreenState();
+}
+
+class _CommunityScreenState extends State<CommunityScreen> {
+  @override
+  void initState() {
+    context.read<CommunityBloc>().add(LoadServicesData());
+    super.initState();
+    options = [
       {
         "label": "Drivers List",
         "icon": Assets.iconsDriversList,
@@ -48,7 +40,11 @@ class CommunityScreen extends StatelessWidget {
         "label": "Nearby",
         "icon": Assets.iconsNearby,
         "onTap": () {
-          context.pushNamed(Names.nearby);
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => NearbyScreen(),
+              ));
         },
         "key": "nearby"
       },
@@ -56,7 +52,13 @@ class CommunityScreen extends StatelessWidget {
         "label": "Verify Account",
         "icon": Assets.iconsVerifyAccount,
         "onTap": () {
-          context.pushNamed(Names.verifyAccount);
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => VerifyAccountScreen(
+                  isFetchData: true,
+                ),
+              ));
         },
         "key": "profile"
       },
@@ -70,7 +72,11 @@ class CommunityScreen extends StatelessWidget {
         "label": "Top Locations",
         "icon": Assets.iconsTopLocations,
         "onTap": () {
-          context.pushNamed(Names.topLocations);
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => TopLocationsScreen(),
+              ));
         },
         "key": "topLocations"
       },
@@ -79,7 +85,11 @@ class CommunityScreen extends StatelessWidget {
         "icon": Assets.iconsEmergency,
         "key": "emergency",
         "onTap": () {
-          context.pushNamed(Names.emergency);
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => EmergencyNumbers(),
+              ));
         },
       },
       {
@@ -87,7 +97,11 @@ class CommunityScreen extends StatelessWidget {
         "icon": Assets.iconsReferAndEarn,
         "key": "emergency",
         "onTap": () {
-          context.pushNamed(Names.referAndEarn);
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ReferScreen(),
+              ));
         },
       },
       {
@@ -95,7 +109,11 @@ class CommunityScreen extends StatelessWidget {
         "icon": Assets.iconsVideos,
         "key": "videos",
         "onTap": () {
-          context.pushNamed(Names.videosFromRealDrivers);
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => VideosFromRealDriversScreen(),
+              ));
         },
       },
       {
@@ -103,12 +121,22 @@ class CommunityScreen extends StatelessWidget {
         "icon": Assets.iconsPartner,
         "key": "partner",
         "onTap": () {
-          context.pushNamed(Names.partnerWithUs);
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => PartnerWithUsScreen(),
+              ));
         },
       },
     ];
+  }
 
-    final List<Map<String, dynamic>> filteredOptions = options.toList();
+  List<Map<String, dynamic>> options = [];
+
+  @override
+  Widget build(BuildContext context) {
+    const double itemHeight = 114;
+    final double itemWidth = MediaQuery.of(context).size.width / 2;
 
     return Scaffold(
       body: SafeArea(
@@ -116,76 +144,107 @@ class CommunityScreen extends StatelessWidget {
           slivers: [
             SliverPadding(
               padding: const EdgeInsets.all(10.0),
-              sliver: SliverGrid(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  childAspectRatio: itemWidth / itemHeight,
-                  crossAxisSpacing: 14,
-                  mainAxisSpacing: 14,
-                ),
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                    final option = filteredOptions[index];
-                    return InkWell(
-                      onTap: option["onTap"],
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 5),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4),
-                          border: Border.all(color: Colors.blue),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            SvgPicture.asset(
-                              option["icon"],
-                              height: 40,
-                            ),
-                            if (option["key"] == "wallet")
-                              Padding(
-                                padding: const EdgeInsets.only(top: 5),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    const Text(
-                                      "Wallet (",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(fontSize: 16),
-                                    ),
-                                    SvgPicture.asset(
-                                      Assets.iconsCabsCoin,
-                                      height: 15,
-                                    ),
-                                    const Text(
-                                      "${200})",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(fontSize: 16),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            if (option["key"] != "wallet")
-                              Padding(
-                                padding: const EdgeInsets.only(top: 5),
-                                child: Text(
-                                  option["label"],
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(fontSize: 16),
-                                ),
-                              )
-                          ],
-                        ),
+              sliver: BlocBuilder<CommunityBloc, CommunityState>(
+                builder: (context, state) {
+                  if (state is CommunityLoading) {
+                    return SliverToBoxAdapter(child: CentreLoading());
+                  }
+                  if (state is CommunityError) {
+                    return SliverToBoxAdapter(
+                      child: Center(
+                        child: Text(state.message),
                       ),
                     );
-                  },
-                  childCount: filteredOptions.length,
-                ),
+                  }
+                  if (state is CommunityLoaded) {
+                    final optionsList = options
+                        .where(
+                            (option) => state.community[option["key"]] == true)
+                        .toList();
+                    return SliverGrid(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: itemWidth / itemHeight,
+                        crossAxisSpacing: 14,
+                        mainAxisSpacing: 14,
+                      ),
+                      delegate: SliverChildBuilderDelegate(
+                        (context, index) {
+                          final option = optionsList[index];
+                          return InkWell(
+                            onTap: option["onTap"],
+                            child: Container(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 5),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(4),
+                                border: Border.all(color: Colors.blue),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  SvgPicture.asset(
+                                    option["icon"],
+                                    height: 40,
+                                  ),
+                                  if (option["key"] == "wallet")
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 5),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          const Text(
+                                            "Wallet (",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(fontSize: 16),
+                                          ),
+                                          SvgPicture.asset(
+                                            Assets.iconsCabsCoin,
+                                            height: 15,
+                                          ),
+                                          const Text(
+                                            "${200})",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(fontSize: 16),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  if (option["key"] != "wallet")
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 5),
+                                      child: Text(
+                                        option["label"],
+                                        textAlign: TextAlign.center,
+                                        style: const TextStyle(fontSize: 16),
+                                      ),
+                                    )
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                        childCount: optionsList.length,
+                      ),
+                    );
+                  }
+                  return SliverToBoxAdapter(
+                    child: Center(
+                      child: Text("Something Went Wrong!"),
+                    ),
+                  );
+                },
               ),
             ),
             SliverToBoxAdapter(
               child: InkWell(
                 onTap: () {
-                  context.pushNamed(Names.reportProblem);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ReportProblemScreen(),
+                      ));
                 },
                 child: Container(
                   height: 110,

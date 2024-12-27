@@ -1,6 +1,9 @@
 import 'package:cabswalle/constants/assets.dart';
+import 'package:cabswalle/modules/community/bloc/community_bloc.dart';
+import 'package:cabswalle/modules/community/bloc/community_state.dart';
 import 'package:cabswalle/routes/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
@@ -41,7 +44,7 @@ class _NearbyScreenState extends State<NearbyScreen> {
         "key": "carRepair",
         "onTap": () {
           context.pushNamed(Names.nearbyPlace,
-              extra: "Car Repair Shops Pumps near me");
+              extra: "Car Repair Shops near me");
         },
       },
       {
@@ -77,7 +80,12 @@ class _NearbyScreenState extends State<NearbyScreen> {
   Widget build(BuildContext context) {
     const double itemHeight = 134;
     final double itemWidth = MediaQuery.of(context).size.width / 2;
-
+    final optionsList = options
+        .where((option) =>
+            (context.read<CommunityBloc>().state as CommunityLoaded)
+                .community[option["key"]] ==
+            true)
+        .toList();
     return Scaffold(
       appBar: AppBar(
         title: const Text("Nearby"),
@@ -92,7 +100,7 @@ class _NearbyScreenState extends State<NearbyScreen> {
           childAspectRatio: itemWidth / itemHeight,
           crossAxisSpacing: 14,
           mainAxisSpacing: 14,
-          children: options.map((e) {
+          children: optionsList.map((e) {
             return InkWell(
               onTap: e["onTap"],
               child: Container(
@@ -111,7 +119,7 @@ class _NearbyScreenState extends State<NearbyScreen> {
                     Padding(
                       padding: const EdgeInsets.only(top: 5),
                       child: Text(
-                        "${e["label"]} Near Me",
+                        "${e["label"]}",
                         textAlign: TextAlign.center,
                         style: const TextStyle(fontSize: 16),
                       ),

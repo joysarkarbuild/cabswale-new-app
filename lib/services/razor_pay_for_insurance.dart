@@ -39,11 +39,11 @@ class RazorpayInsuranceService {
       "payment": {
         "createdAt": DateTime.now(),
         "driver": {
-          "name": DriverService.instance.driverModel!.name!.isNotEmpty
+          "name": DriverService.instance.driverModel!.name.isNotEmpty
               ? DriverService.instance.driverModel!.name
               : "Cabswale Partner",
-          "phoneNo": DriverService.instance.driverModel!.phoneNo ?? "",
-          "uid": DriverService.instance.driverModel!.id ?? "",
+          "phoneNo": DriverService.instance.driverModel!.phoneNo,
+          "uid": DriverService.instance.driverModel!.id,
         },
         "mode": "razorpay",
         "screenshotUrl": "",

@@ -1,4 +1,5 @@
-import 'package:cabswalle/modules/extraBenifits/data/models/partner_model.dart';
+import 'package:cabswalle/models/partner_setails.dart';
+import 'package:cabswalle/modules/earnMoney/parner_details_screen.dart';
 import 'package:cabswalle/widgets/common_image_view.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,15 @@ class EarnMoneyCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => PartnerDetailsScreen(
+                partner: partner,
+              ),
+            ));
+      },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 5),
         child: SizedBox(

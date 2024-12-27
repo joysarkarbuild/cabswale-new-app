@@ -28,13 +28,11 @@ class AddLeadDataRepository {
         "metaData": {
           'source': 'user',
         },
-        "status":
-            (DriverService.instance.driverModel!.autoApproveLeads != null &&
-                    DriverService.instance.driverModel!.autoApproveLeads!)
-                ? "approved"
-                : "pending",
+        "status": (DriverService.instance.driverModel!.autoApproveLeads)
+            ? "approved"
+            : "pending",
         "createdBy": CreatedBy(
-                name: DriverService.instance.driverModel!.name!,
+                name: DriverService.instance.driverModel!.name,
                 id: DriverService.instance.driverModel!.id,
                 phoneNo: DriverService.instance.driverModel!.phoneNo,
                 verified: DriverService.instance.driverModel!.verified)

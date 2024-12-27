@@ -1,15 +1,29 @@
+import 'package:cabswalle/constants/assets.dart';
 import 'package:cabswalle/core/app_colors.dart';
+import 'package:cabswalle/modules/membership/plans_screen.dart';
+import 'package:cabswalle/routes/app_routes.dart';
 import 'package:cabswalle/services/calculation_util.dart';
+import 'package:cabswalle/services/driver_service.dart';
+import 'package:cabswalle/services/logger_service.dart';
+import 'package:cabswalle/services/login_manager.dart';
+import 'package:cabswalle/services/snackbar_service.dart';
 import 'package:cabswalle/widgets/shimmer_container.dart';
 import 'package:cabswalle/widgets/submit_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CallsCard extends StatelessWidget {
   const CallsCard({super.key, required this.call});
   final Map<String, dynamic> call;
+  void sendWhatsAppMessage(String phoneNumber, String message) async {
+    String url = 'https://wa.me/$phoneNumber/?text=$message';
+    await launchUrl(Uri.parse(url));
+    LoggerService.logInfo("WhatsApp message sent");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +34,9 @@ class CallsCard extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
       margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
       width: double.infinity,
-      decoration: BoxDecoration(border: Border.all(color: AppColors.myGrey)),
+      decoration: BoxDecoration(
+          border: Border.all(color: AppColors.myGrey),
+          borderRadius: BorderRadius.circular(4)),
       child: Column(
         children: [
           Row(
@@ -133,25 +149,6 @@ class CallsCard extends StatelessWidget {
                                                       fontWeight:
                                                           FontWeight.w400),
                                                 ),
-                                                // Text(
-                                                //   call["connections"] == 0 ||
-                                                //           call["connections"] ==
-                                                //               null
-                                                //       ? "No Connections"
-                                                //       : "${call["connections"]} Connections",
-                                                //   style: TextStyle(
-                                                //       color: Colors.black,
-                                                //       fontSize: 12,
-                                                //       fontWeight:
-                                                //           FontWeight.w400),
-                                                // ),
-                                                // Text(
-                                                //   "200 connectons",
-                                                //   style: TextStyle(
-                                                //       color: Colors.black,
-                                                //       fontSize: 16,
-                                                //       fontWeight: FontWeight.w400),
-                                                // ),
                                               ],
                                             ),
                                           ],
@@ -184,13 +181,6 @@ class CallsCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    // const SizedBox(
-                    //   height: 6,
-                    // ),
-                    // Text(
-                    //   call.phoneNo ?? '',
-                    //   style: textstyle17,
-                    // ),
                   ],
                 ),
               ),
@@ -224,7 +214,6 @@ class CallsCard extends StatelessWidget {
           const SizedBox(
             height: 9,
           ),
-
           SizedBox(
             width: MediaQuery.of(context).size.width - 40,
             child: Padding(
@@ -233,20 +222,106 @@ class CallsCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SubmitButton(
-                    onTap: () async {},
+                    onTap: () async {
+                      if (LoginManager.isLogin) {
+                        try {
+                          if (DriverService
+                              .instance.driverModel!.membership!.active) {
+                            await FirebaseFirestore.instance
+                                .collection('whatsappMessage')
+                                .add({
+                              'createdAt': DateTime.now(),
+                              'leadId': "",
+                              'receiver': {
+                                'userId': call['userId'] ?? '',
+                                'name': call['name'] ?? '',
+                                'phoneNo': call['phoneNo'] ?? ''
+                              },
+                              'sender': {
+                                'userId':
+                                    DriverService.instance.driverModel!.id,
+                                'name':
+                                    DriverService.instance.driverModel!.name,
+                                'phoneNo':
+                                    DriverService.instance.driverModel!.phoneNo
+                              },
+                            });
+                            sendWhatsAppMessage('${call['phoneNo']}', "");
+                          } else {
+                            SnackbarUtils.showSuccessSnackBar(
+                                message:
+                                    "Please Activate Your Membership First!");
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => PlansScreen(),
+                                ));
+                          }
+                        } catch (e) {
+                          SnackbarUtils.showErrorSnackBar(
+                              message: e.toString());
+                        }
+                      } else {
+                        context.pushNamed(Names.login);
+                      }
+                    },
                     height: 40,
                     width: MediaQuery.of(context).size.width * 0.43,
                     lable: "Whatsapp",
+                    borderRadius: 4,
                     icon: SvgPicture.asset(
-                      'assets/icons/whatsapp.svg',
+                      Assets.iconsWhatsapp,
                       height: 22,
                     ),
                   ),
                   SubmitButton(
-                    onTap: () async {},
+                    onTap: () async {
+                      if (LoginManager.isLogin) {
+                        try {
+                          if (DriverService
+                              .instance.driverModel!.membership!.active) {
+                            await FirebaseFirestore.instance
+                                .collection('calls')
+                                .add({
+                              'createdAt': DateTime.now(),
+                              'leadId': "",
+                              'receiver': {
+                                'userId': call['userId'] ?? '',
+                                'name': call['name'] ?? '',
+                                'phoneNo': call['phoneNo'] ?? ''
+                              },
+                              'sender': {
+                                'userId':
+                                    DriverService.instance.driverModel!.id,
+                                'name':
+                                    DriverService.instance.driverModel!.name,
+                                'phoneNo':
+                                    DriverService.instance.driverModel!.phoneNo
+                              },
+                            });
+                            launchUrl(Uri.parse("tel:${call['phoneNo']}"));
+                          } else {
+                            SnackbarUtils.showSuccessSnackBar(
+                                message:
+                                    "Please Activate Your Membership First!");
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => PlansScreen(),
+                                ));
+                          }
+                        } catch (e) {
+                          SnackbarUtils.showErrorSnackBar(
+                              message: e.toString());
+                        }
+                      } else {
+                        context.pushNamed(Names.login);
+                      }
+                    },
                     height: 40,
                     width: MediaQuery.of(context).size.width * 0.43,
                     lable: isIncoming ? 'Call Back' : 'Call Again',
+                    borderRadius: 4,
                     icon: Icon(
                       Icons.call,
                       color: Colors.green,
@@ -256,30 +331,6 @@ class CallsCard extends StatelessWidget {
               ),
             ),
           ),
-          // SubmitButton(
-          //   onTap: () {
-          //     FirebaseFirestore.instance
-          //         .collection('drivers')
-          //         .doc(FirebaseAuth.instance.currentUser!.uid)
-          //         .get()
-          //         .then((value) async {
-          //       if (value.exists &&
-          //           value.call()!.containsKey('membership') &&
-          //           value['membership']['active']) {
-          //         launchUrl(Uri.parse("tel:${call.phoneNo}"));
-          //       } else {
-          //         Navigator.of(context).push(new MaterialPageRoute<Null>(
-          //             builder: (BuildContext context) {
-          //               return new QRPayment();
-          //             },
-          //             fullscreenDialog: true));
-          //       }
-          //     });
-          //   },
-          //   lable: isIncoming ? 'Call Back' : 'Call Again',
-          //   height: 35,
-          //   // width: 150,
-          // )
         ],
       ),
     );

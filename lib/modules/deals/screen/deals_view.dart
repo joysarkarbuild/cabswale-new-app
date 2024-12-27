@@ -168,7 +168,7 @@ class DealsScreen extends StatelessWidget {
                                       fontWeight: FontWeight.w600),
                                 ),
                                 Text(
-                                  "${DriverService.instance.driverModel!.dealCount ?? 0}",
+                                  "${DriverService.instance.driverModel!.dealCount}",
                                   style: TextStyle(
                                       fontSize: 22,
                                       fontWeight: FontWeight.w400),
@@ -194,7 +194,7 @@ class DealsScreen extends StatelessWidget {
                                       fontWeight: FontWeight.w600),
                                 ),
                                 Text(
-                                  "${DriverService.instance.driverModel!.totalLeads ?? 0}",
+                                  "${DriverService.instance.driverModel!.totalLeads}",
                                   style: TextStyle(
                                       fontSize: 22,
                                       fontWeight: FontWeight.w400),

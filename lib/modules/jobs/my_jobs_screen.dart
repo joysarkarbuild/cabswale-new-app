@@ -82,7 +82,7 @@ class _MyJobsScreenState extends State<MyJobsScreen> {
         .collection('jobs')
         .where('uid',
             isEqualTo: DriverService
-                .instance.driverModel!.id!) // Add the condition for UID
+                .instance.driverModel!.id) // Add the condition for UID
         .orderBy('createdAt', descending: true)
         .limit(5);
 

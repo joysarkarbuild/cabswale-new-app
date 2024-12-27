@@ -29,8 +29,8 @@ class _AddJobScreenState extends State<AddJobScreen> {
         createdAt: DateTime.now(),
         details: _detailsController.text.trim(),
         location: _locationController.text.trim(),
-        phoneNo: DriverService.instance.driverModel!.phoneNo!,
-        uid: DriverService.instance.driverModel!.id!,
+        phoneNo: DriverService.instance.driverModel!.phoneNo,
+        uid: DriverService.instance.driverModel!.id,
         isVerified: false,
       );
 

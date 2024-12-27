@@ -1,4 +1,4 @@
-import 'package:cabswalle/models/dela_model.dart';
+import 'package:cabswalle/models/deal_model.dart';
 import 'package:cabswalle/modules/deals/screen/deal_confrim_screen.dart';
 import 'package:cabswalle/services/snackbar_service.dart';
 import 'package:cabswalle/widgets/banner_widget.dart';

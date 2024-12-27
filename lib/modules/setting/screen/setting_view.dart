@@ -59,7 +59,7 @@ class _SettingScreenState extends State<SettingScreen> {
                   child: FittedBox(
                     child: Switch(
                         value: DriverService
-                            .instance.driverModel!.notificationAlert!,
+                            .instance.driverModel!.notificationAlert,
                         onChanged: (bool value) async {
                           await DriverService.instance
                               .updateDriverField("notificationAlert", value);

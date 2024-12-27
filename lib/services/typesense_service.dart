@@ -254,36 +254,34 @@ class TypeSenseInstance {
   //   }
   // }
 
-  // Future<List> getPartner(
-  //     {required double lat,
-  //     required double long,
-  //     required int radius,
-  //     required int page,
-  //     required int perPage}) async {
-  //   var searchParameters = {
-  //     "q": '*',
-  //     "query_by": 'location',
-  //     "filter_by":
-  //         'address.coordinates:(${lat},${long},${radius} km)&&active:=true',
-  //     "sort_by": 'address.coordinates(${lat},${long}):asc',
-  //     "page": "$page",
-  //     "per_page": "$perPage"
-  //   };
+  Future<List> getPartner(
+      {required double lat,
+      required double long,
+      required int radius,
+      required int page,
+      required int perPage}) async {
+    var searchParameters = {
+      "q": '*',
+      "query_by": 'location',
+      "filter_by": 'address.coordinates:($lat,$long,$radius km)&&active:=true',
+      "sort_by": 'address.coordinates($lat,$long):asc',
+      "page": "$page",
+      "per_page": "$perPage"
+    };
+    LoggerService.logInfo("Fetching bwi-cabswalle-partnerBranches");
 
-  //   try {
-  //     final result = await client
-  //         .collection('bwi-cabswalle-partnerBranches')
-  //         .documents
-  //         .search(searchParameters) as Map;
-  //     print("Partners");
-  //     print(result);
-  //     return result['hits'];
-  //   } catch (e) {
-  //     debugPrint("error while getting verified drivers");
-  //     debugPrint("Error : $e");
-  //     return [];
-  //   }
-  // }
+    try {
+      final result = await client
+          .collection('bwi-cabswalle-partnerBranches')
+          .documents
+          .search(searchParameters) as Map;
+
+      return result['hits'];
+    } catch (e) {
+      SnackbarUtils.showErrorSnackBar(message: e.toString());
+      return [];
+    }
+  }
 
   Future<List<JobModel>> getSearchJobs(String search) async {
     List<JobModel> jobList = [];

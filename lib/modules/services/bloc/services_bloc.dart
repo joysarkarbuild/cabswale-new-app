@@ -21,7 +21,9 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
 
       emit(ServicesLoaded(
         community,
-        DriverService.instance.driverModel!.wallet!.amount.toInt(),
+        DriverService.instance.driverModel!.wallet != null
+            ? DriverService.instance.driverModel!.wallet!.amount.toInt()
+            : 0,
       ));
     } catch (e) {
       emit(ServicesError("Failed to load services: ${e.toString()}"));

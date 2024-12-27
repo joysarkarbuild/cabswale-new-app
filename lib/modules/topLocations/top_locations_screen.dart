@@ -1,4 +1,7 @@
 import 'package:cabswalle/constants/assets.dart';
+import 'package:cabswalle/modules/topLocations/topDropLocations/top_drop_location.dart';
+import 'package:cabswalle/modules/topLocations/topPickupLocation/top_pickup_location.dart';
+import 'package:cabswalle/modules/topLocations/topRoutes/top_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -18,19 +21,37 @@ class _TopLocationsScreenState extends State<TopLocationsScreen> {
       {
         "label": "Top Routes",
         "icon": Assets.iconsRoutes,
-        "onTap": () {},
+        "onTap": () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const TopRoutesScreen(),
+              ));
+        },
         "key": "routes"
       },
       {
         "label": "Top Pickup Locations",
         "icon": Assets.iconsPickup,
-        "onTap": () {},
+        "onTap": () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const TopPickupLocationScreen(),
+              ));
+        },
         "key": "pickup"
       },
       {
         "label": "Top Drop Locations",
         "icon": Assets.iconsDrop,
-        "onTap": () {},
+        "onTap": () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const TopDropLocationScreen(),
+              ));
+        },
         "key": "drop"
       },
     ];
@@ -42,13 +63,13 @@ class _TopLocationsScreenState extends State<TopLocationsScreen> {
     final double itemWidth = MediaQuery.of(context).size.width / 2;
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Top Locations"),
+        title: Text("Top Locations"),
         centerTitle: true,
       ),
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        padding: const EdgeInsets.all(18),
+        padding: EdgeInsets.all(18),
         child: GridView.count(
           crossAxisCount: 2,
           childAspectRatio: itemWidth / itemHeight,

@@ -41,7 +41,7 @@ class _CityPreferencesScreenState extends State<CityPreferencesScreen> {
                     if (state is HomeLoadedState) {
                       return Switch(
                         value: state.userProfile != null
-                            ? state.userProfile!.notificationAlert!
+                            ? state.userProfile!.notificationAlert
                             : false,
                         onChanged: (val) async {
                           context
@@ -67,13 +67,12 @@ class _CityPreferencesScreenState extends State<CityPreferencesScreen> {
           child: BlocBuilder<HomeBloc, HomeState>(
             builder: (context, state) {
               if (state is HomeLoadedState) {
-                if (state.userProfile != null &&
-                    state.userProfile!.notificationLocations != null) {
+                if (state.userProfile != null) {
                   for (int i = 0;
-                      i < state.userProfile!.notificationLocations!.length;
+                      i < state.userProfile!.notificationLocations.length;
                       i++) {
                     cityPreferences[i].text =
-                        state.userProfile!.notificationLocations![i];
+                        state.userProfile!.notificationLocations[i];
                   }
                 }
               }

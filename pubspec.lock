@@ -54,6 +54,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.11.0"
+  audio_session:
+    dependency: transitive
+    description:
+      name: audio_session
+      sha256: b2a26ba8b7efa1790d6460e82971fde3e398cfbe2295df9dea22f3499d2c12a7
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.23"
   bloc:
     dependency: "direct main"
     description:
@@ -279,7 +287,7 @@ packages:
     source: hosted
     version: "2.3.7"
   device_info_plus:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: device_info_plus
       sha256: a7fd703482b391a87d60b6061d04dfdeab07826b96f9abd8f5ed98068acc0074
@@ -672,6 +680,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.23"
+  flutter_sound:
+    dependency: "direct main"
+    description:
+      name: flutter_sound
+      sha256: "8d003f1aba1a09c970413fee2e742c9fbef434d6f2894e77236ddce4c7c86cd5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "9.17.8"
+  flutter_sound_platform_interface:
+    dependency: transitive
+    description:
+      name: flutter_sound_platform_interface
+      sha256: "17cc7c0095fec0ec08eae0bf6b26c1c4735d8401ce0468710f9ba873fb1f65d8"
+      url: "https://pub.dev"
+    source: hosted
+    version: "9.17.8"
+  flutter_sound_web:
+    dependency: transitive
+    description:
+      name: flutter_sound_web
+      sha256: edd41e486ea8f91851791832b857a2668f9abf9f13e11c947878ccea3d85c257
+      url: "https://pub.dev"
+    source: hosted
+    version: "9.17.8"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -778,6 +810,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.2"
+  glossy:
+    dependency: "direct main"
+    description:
+      name: glossy
+      sha256: e57a20a9883eecbb134a2495d602c75ed99f0bdf010ab09b6d56d680a6af8616
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.4"
   go_router:
     dependency: "direct main"
     description:
@@ -922,6 +962,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.9.0"
+  just_audio:
+    dependency: "direct main"
+    description:
+      name: just_audio
+      sha256: a49e7120b95600bd357f37a2bb04cd1e88252f7cdea8f3368803779b925b1049
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.9.42"
+  just_audio_platform_interface:
+    dependency: transitive
+    description:
+      name: just_audio_platform_interface
+      sha256: "0243828cce503c8366cc2090cefb2b3c871aa8ed2f520670d76fd47aa1ab2790"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.3.0"
+  just_audio_web:
+    dependency: transitive
+    description:
+      name: just_audio_web
+      sha256: "9a98035b8b24b40749507687520ec5ab404e291d2b0937823ff45d92cb18d448"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.4.13"
   leak_tracker:
     dependency: transitive
     description:
@@ -1034,6 +1098,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0"
+  otpless_flutter:
+    dependency: "direct main"
+    description:
+      name: otpless_flutter
+      sha256: c142ad3af377fdc337ab1cc1bad120565bffb477c22896b8625c4dbbe3323c09
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.2"
   package_config:
     dependency: transitive
     description:
@@ -1226,6 +1298,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.7"
+  recase:
+    dependency: transitive
+    description:
+      name: recase
+      sha256: e4eb4ec2dcdee52dcf99cb4ceabaffc631d7424ee55e56f280bc039737f89213
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.1.0"
   rxdart:
     dependency: transitive
     description:

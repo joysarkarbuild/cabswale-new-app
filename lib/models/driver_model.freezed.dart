@@ -20,32 +20,31 @@ DriverModel _$DriverModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$DriverModel {
-  String? get id => throw _privateConstructorUsedError;
-  String? get name => throw _privateConstructorUsedError;
-  String? get phoneNo => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get phoneNo => throw _privateConstructorUsedError;
   dynamic get createdAt => throw _privateConstructorUsedError;
-  List<dynamic>? get deviceTokens => throw _privateConstructorUsedError;
-  bool? get conditionAccepted => throw _privateConstructorUsedError;
+  List<dynamic> get deviceTokens => throw _privateConstructorUsedError;
+  bool get conditionAccepted => throw _privateConstructorUsedError;
   Kyc? get kyc => throw _privateConstructorUsedError;
-  String? get notificationPlace => throw _privateConstructorUsedError;
-  bool? get notificationAlert => throw _privateConstructorUsedError;
-  List<dynamic>? get notificationLocations =>
-      throw _privateConstructorUsedError;
-  bool? get autoApproveLeads => throw _privateConstructorUsedError;
+  String get notificationPlace => throw _privateConstructorUsedError;
+  bool get notificationAlert => throw _privateConstructorUsedError;
+  List<dynamic> get notificationLocations => throw _privateConstructorUsedError;
+  bool get autoApproveLeads => throw _privateConstructorUsedError;
   @TimestampToDateTimeConverter()
   DateTime? get lastAccess => throw _privateConstructorUsedError;
-  bool? get verified => throw _privateConstructorUsedError;
-  int? get stage => throw _privateConstructorUsedError;
-  int? get appVersion => throw _privateConstructorUsedError;
-  List<dynamic>? get deviceList => throw _privateConstructorUsedError;
+  bool get verified => throw _privateConstructorUsedError;
+  int get stage => throw _privateConstructorUsedError;
+  int get appVersion => throw _privateConstructorUsedError;
+  List<dynamic> get deviceList => throw _privateConstructorUsedError;
   Refer? get refer => throw _privateConstructorUsedError;
   Membership? get membership => throw _privateConstructorUsedError;
   Wallet? get wallet => throw _privateConstructorUsedError;
-  int? get totalLeads => throw _privateConstructorUsedError;
-  int? get outGoingCalls => throw _privateConstructorUsedError;
-  int? get dealCount => throw _privateConstructorUsedError;
-  bool? get customOffer => throw _privateConstructorUsedError;
-  String? get sessionId => throw _privateConstructorUsedError;
+  int get totalLeads => throw _privateConstructorUsedError;
+  int get outGoingCalls => throw _privateConstructorUsedError;
+  int get dealCount => throw _privateConstructorUsedError;
+  bool get customOffer => throw _privateConstructorUsedError;
+  String get sessionId => throw _privateConstructorUsedError;
 
   /// Serializes this DriverModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -64,30 +63,30 @@ abstract class $DriverModelCopyWith<$Res> {
       _$DriverModelCopyWithImpl<$Res, DriverModel>;
   @useResult
   $Res call(
-      {String? id,
-      String? name,
-      String? phoneNo,
+      {String id,
+      String name,
+      String phoneNo,
       dynamic createdAt,
-      List<dynamic>? deviceTokens,
-      bool? conditionAccepted,
+      List<dynamic> deviceTokens,
+      bool conditionAccepted,
       Kyc? kyc,
-      String? notificationPlace,
-      bool? notificationAlert,
-      List<dynamic>? notificationLocations,
-      bool? autoApproveLeads,
+      String notificationPlace,
+      bool notificationAlert,
+      List<dynamic> notificationLocations,
+      bool autoApproveLeads,
       @TimestampToDateTimeConverter() DateTime? lastAccess,
-      bool? verified,
-      int? stage,
-      int? appVersion,
-      List<dynamic>? deviceList,
+      bool verified,
+      int stage,
+      int appVersion,
+      List<dynamic> deviceList,
       Refer? refer,
       Membership? membership,
       Wallet? wallet,
-      int? totalLeads,
-      int? outGoingCalls,
-      int? dealCount,
-      bool? customOffer,
-      String? sessionId});
+      int totalLeads,
+      int outGoingCalls,
+      int dealCount,
+      bool customOffer,
+      String sessionId});
 
   $KycCopyWith<$Res>? get kyc;
   $ReferCopyWith<$Res>? get refer;
@@ -110,96 +109,96 @@ class _$DriverModelCopyWithImpl<$Res, $Val extends DriverModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? phoneNo = freezed,
+    Object? id = null,
+    Object? name = null,
+    Object? phoneNo = null,
     Object? createdAt = freezed,
-    Object? deviceTokens = freezed,
-    Object? conditionAccepted = freezed,
+    Object? deviceTokens = null,
+    Object? conditionAccepted = null,
     Object? kyc = freezed,
-    Object? notificationPlace = freezed,
-    Object? notificationAlert = freezed,
-    Object? notificationLocations = freezed,
-    Object? autoApproveLeads = freezed,
+    Object? notificationPlace = null,
+    Object? notificationAlert = null,
+    Object? notificationLocations = null,
+    Object? autoApproveLeads = null,
     Object? lastAccess = freezed,
-    Object? verified = freezed,
-    Object? stage = freezed,
-    Object? appVersion = freezed,
-    Object? deviceList = freezed,
+    Object? verified = null,
+    Object? stage = null,
+    Object? appVersion = null,
+    Object? deviceList = null,
     Object? refer = freezed,
     Object? membership = freezed,
     Object? wallet = freezed,
-    Object? totalLeads = freezed,
-    Object? outGoingCalls = freezed,
-    Object? dealCount = freezed,
-    Object? customOffer = freezed,
-    Object? sessionId = freezed,
+    Object? totalLeads = null,
+    Object? outGoingCalls = null,
+    Object? dealCount = null,
+    Object? customOffer = null,
+    Object? sessionId = null,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      name: freezed == name
+              as String,
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      phoneNo: freezed == phoneNo
+              as String,
+      phoneNo: null == phoneNo
           ? _value.phoneNo
           : phoneNo // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      deviceTokens: freezed == deviceTokens
+      deviceTokens: null == deviceTokens
           ? _value.deviceTokens
           : deviceTokens // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
-      conditionAccepted: freezed == conditionAccepted
+              as List<dynamic>,
+      conditionAccepted: null == conditionAccepted
           ? _value.conditionAccepted
           : conditionAccepted // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
       kyc: freezed == kyc
           ? _value.kyc
           : kyc // ignore: cast_nullable_to_non_nullable
               as Kyc?,
-      notificationPlace: freezed == notificationPlace
+      notificationPlace: null == notificationPlace
           ? _value.notificationPlace
           : notificationPlace // ignore: cast_nullable_to_non_nullable
-              as String?,
-      notificationAlert: freezed == notificationAlert
+              as String,
+      notificationAlert: null == notificationAlert
           ? _value.notificationAlert
           : notificationAlert // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      notificationLocations: freezed == notificationLocations
+              as bool,
+      notificationLocations: null == notificationLocations
           ? _value.notificationLocations
           : notificationLocations // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
-      autoApproveLeads: freezed == autoApproveLeads
+              as List<dynamic>,
+      autoApproveLeads: null == autoApproveLeads
           ? _value.autoApproveLeads
           : autoApproveLeads // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
       lastAccess: freezed == lastAccess
           ? _value.lastAccess
           : lastAccess // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      verified: freezed == verified
+      verified: null == verified
           ? _value.verified
           : verified // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      stage: freezed == stage
+              as bool,
+      stage: null == stage
           ? _value.stage
           : stage // ignore: cast_nullable_to_non_nullable
-              as int?,
-      appVersion: freezed == appVersion
+              as int,
+      appVersion: null == appVersion
           ? _value.appVersion
           : appVersion // ignore: cast_nullable_to_non_nullable
-              as int?,
-      deviceList: freezed == deviceList
+              as int,
+      deviceList: null == deviceList
           ? _value.deviceList
           : deviceList // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<dynamic>,
       refer: freezed == refer
           ? _value.refer
           : refer // ignore: cast_nullable_to_non_nullable
@@ -212,26 +211,26 @@ class _$DriverModelCopyWithImpl<$Res, $Val extends DriverModel>
           ? _value.wallet
           : wallet // ignore: cast_nullable_to_non_nullable
               as Wallet?,
-      totalLeads: freezed == totalLeads
+      totalLeads: null == totalLeads
           ? _value.totalLeads
           : totalLeads // ignore: cast_nullable_to_non_nullable
-              as int?,
-      outGoingCalls: freezed == outGoingCalls
+              as int,
+      outGoingCalls: null == outGoingCalls
           ? _value.outGoingCalls
           : outGoingCalls // ignore: cast_nullable_to_non_nullable
-              as int?,
-      dealCount: freezed == dealCount
+              as int,
+      dealCount: null == dealCount
           ? _value.dealCount
           : dealCount // ignore: cast_nullable_to_non_nullable
-              as int?,
-      customOffer: freezed == customOffer
+              as int,
+      customOffer: null == customOffer
           ? _value.customOffer
           : customOffer // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      sessionId: freezed == sessionId
+              as bool,
+      sessionId: null == sessionId
           ? _value.sessionId
           : sessionId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 
@@ -301,30 +300,30 @@ abstract class _$$DriverModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? id,
-      String? name,
-      String? phoneNo,
+      {String id,
+      String name,
+      String phoneNo,
       dynamic createdAt,
-      List<dynamic>? deviceTokens,
-      bool? conditionAccepted,
+      List<dynamic> deviceTokens,
+      bool conditionAccepted,
       Kyc? kyc,
-      String? notificationPlace,
-      bool? notificationAlert,
-      List<dynamic>? notificationLocations,
-      bool? autoApproveLeads,
+      String notificationPlace,
+      bool notificationAlert,
+      List<dynamic> notificationLocations,
+      bool autoApproveLeads,
       @TimestampToDateTimeConverter() DateTime? lastAccess,
-      bool? verified,
-      int? stage,
-      int? appVersion,
-      List<dynamic>? deviceList,
+      bool verified,
+      int stage,
+      int appVersion,
+      List<dynamic> deviceList,
       Refer? refer,
       Membership? membership,
       Wallet? wallet,
-      int? totalLeads,
-      int? outGoingCalls,
-      int? dealCount,
-      bool? customOffer,
-      String? sessionId});
+      int totalLeads,
+      int outGoingCalls,
+      int dealCount,
+      bool customOffer,
+      String sessionId});
 
   @override
   $KycCopyWith<$Res>? get kyc;
@@ -349,96 +348,96 @@ class __$$DriverModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? phoneNo = freezed,
+    Object? id = null,
+    Object? name = null,
+    Object? phoneNo = null,
     Object? createdAt = freezed,
-    Object? deviceTokens = freezed,
-    Object? conditionAccepted = freezed,
+    Object? deviceTokens = null,
+    Object? conditionAccepted = null,
     Object? kyc = freezed,
-    Object? notificationPlace = freezed,
-    Object? notificationAlert = freezed,
-    Object? notificationLocations = freezed,
-    Object? autoApproveLeads = freezed,
+    Object? notificationPlace = null,
+    Object? notificationAlert = null,
+    Object? notificationLocations = null,
+    Object? autoApproveLeads = null,
     Object? lastAccess = freezed,
-    Object? verified = freezed,
-    Object? stage = freezed,
-    Object? appVersion = freezed,
-    Object? deviceList = freezed,
+    Object? verified = null,
+    Object? stage = null,
+    Object? appVersion = null,
+    Object? deviceList = null,
     Object? refer = freezed,
     Object? membership = freezed,
     Object? wallet = freezed,
-    Object? totalLeads = freezed,
-    Object? outGoingCalls = freezed,
-    Object? dealCount = freezed,
-    Object? customOffer = freezed,
-    Object? sessionId = freezed,
+    Object? totalLeads = null,
+    Object? outGoingCalls = null,
+    Object? dealCount = null,
+    Object? customOffer = null,
+    Object? sessionId = null,
   }) {
     return _then(_$DriverModelImpl(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      name: freezed == name
+              as String,
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      phoneNo: freezed == phoneNo
+              as String,
+      phoneNo: null == phoneNo
           ? _value.phoneNo
           : phoneNo // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      deviceTokens: freezed == deviceTokens
+      deviceTokens: null == deviceTokens
           ? _value._deviceTokens
           : deviceTokens // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
-      conditionAccepted: freezed == conditionAccepted
+              as List<dynamic>,
+      conditionAccepted: null == conditionAccepted
           ? _value.conditionAccepted
           : conditionAccepted // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
       kyc: freezed == kyc
           ? _value.kyc
           : kyc // ignore: cast_nullable_to_non_nullable
               as Kyc?,
-      notificationPlace: freezed == notificationPlace
+      notificationPlace: null == notificationPlace
           ? _value.notificationPlace
           : notificationPlace // ignore: cast_nullable_to_non_nullable
-              as String?,
-      notificationAlert: freezed == notificationAlert
+              as String,
+      notificationAlert: null == notificationAlert
           ? _value.notificationAlert
           : notificationAlert // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      notificationLocations: freezed == notificationLocations
+              as bool,
+      notificationLocations: null == notificationLocations
           ? _value._notificationLocations
           : notificationLocations // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
-      autoApproveLeads: freezed == autoApproveLeads
+              as List<dynamic>,
+      autoApproveLeads: null == autoApproveLeads
           ? _value.autoApproveLeads
           : autoApproveLeads // ignore: cast_nullable_to_non_nullable
-              as bool?,
+              as bool,
       lastAccess: freezed == lastAccess
           ? _value.lastAccess
           : lastAccess // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      verified: freezed == verified
+      verified: null == verified
           ? _value.verified
           : verified // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      stage: freezed == stage
+              as bool,
+      stage: null == stage
           ? _value.stage
           : stage // ignore: cast_nullable_to_non_nullable
-              as int?,
-      appVersion: freezed == appVersion
+              as int,
+      appVersion: null == appVersion
           ? _value.appVersion
           : appVersion // ignore: cast_nullable_to_non_nullable
-              as int?,
-      deviceList: freezed == deviceList
+              as int,
+      deviceList: null == deviceList
           ? _value._deviceList
           : deviceList // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>?,
+              as List<dynamic>,
       refer: freezed == refer
           ? _value.refer
           : refer // ignore: cast_nullable_to_non_nullable
@@ -451,26 +450,26 @@ class __$$DriverModelImplCopyWithImpl<$Res>
           ? _value.wallet
           : wallet // ignore: cast_nullable_to_non_nullable
               as Wallet?,
-      totalLeads: freezed == totalLeads
+      totalLeads: null == totalLeads
           ? _value.totalLeads
           : totalLeads // ignore: cast_nullable_to_non_nullable
-              as int?,
-      outGoingCalls: freezed == outGoingCalls
+              as int,
+      outGoingCalls: null == outGoingCalls
           ? _value.outGoingCalls
           : outGoingCalls // ignore: cast_nullable_to_non_nullable
-              as int?,
-      dealCount: freezed == dealCount
+              as int,
+      dealCount: null == dealCount
           ? _value.dealCount
           : dealCount // ignore: cast_nullable_to_non_nullable
-              as int?,
-      customOffer: freezed == customOffer
+              as int,
+      customOffer: null == customOffer
           ? _value.customOffer
           : customOffer // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      sessionId: freezed == sessionId
+              as bool,
+      sessionId: null == sessionId
           ? _value.sessionId
           : sessionId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -479,30 +478,30 @@ class __$$DriverModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$DriverModelImpl implements _DriverModel {
   const _$DriverModelImpl(
-      {this.id,
-      this.name,
-      this.phoneNo,
+      {this.id = '',
+      this.name = '',
+      this.phoneNo = '',
       this.createdAt,
-      final List<dynamic>? deviceTokens,
-      this.conditionAccepted,
+      final List<dynamic> deviceTokens = const [],
+      this.conditionAccepted = false,
       this.kyc,
-      this.notificationPlace,
-      this.notificationAlert,
-      final List<dynamic>? notificationLocations,
-      this.autoApproveLeads,
+      this.notificationPlace = '',
+      this.notificationAlert = false,
+      final List<dynamic> notificationLocations = const [],
+      this.autoApproveLeads = false,
       @TimestampToDateTimeConverter() this.lastAccess,
-      this.verified,
-      this.stage,
-      this.appVersion,
-      final List<dynamic>? deviceList,
+      this.verified = false,
+      this.stage = 0,
+      this.appVersion = 0,
+      final List<dynamic> deviceList = const [],
       this.refer,
       this.membership,
       this.wallet,
-      this.totalLeads,
-      this.outGoingCalls,
-      this.dealCount,
-      this.customOffer,
-      this.sessionId})
+      this.totalLeads = 0,
+      this.outGoingCalls = 0,
+      this.dealCount = 0,
+      this.customOffer = false,
+      this.sessionId = ''})
       : _deviceTokens = deviceTokens,
         _notificationLocations = notificationLocations,
         _deviceList = deviceList;
@@ -511,61 +510,68 @@ class _$DriverModelImpl implements _DriverModel {
       _$$DriverModelImplFromJson(json);
 
   @override
-  final String? id;
+  @JsonKey()
+  final String id;
   @override
-  final String? name;
+  @JsonKey()
+  final String name;
   @override
-  final String? phoneNo;
+  @JsonKey()
+  final String phoneNo;
   @override
   final dynamic createdAt;
-  final List<dynamic>? _deviceTokens;
+  final List<dynamic> _deviceTokens;
   @override
-  List<dynamic>? get deviceTokens {
-    final value = _deviceTokens;
-    if (value == null) return null;
+  @JsonKey()
+  List<dynamic> get deviceTokens {
     if (_deviceTokens is EqualUnmodifiableListView) return _deviceTokens;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_deviceTokens);
   }
 
   @override
-  final bool? conditionAccepted;
+  @JsonKey()
+  final bool conditionAccepted;
   @override
   final Kyc? kyc;
   @override
-  final String? notificationPlace;
+  @JsonKey()
+  final String notificationPlace;
   @override
-  final bool? notificationAlert;
-  final List<dynamic>? _notificationLocations;
+  @JsonKey()
+  final bool notificationAlert;
+  final List<dynamic> _notificationLocations;
   @override
-  List<dynamic>? get notificationLocations {
-    final value = _notificationLocations;
-    if (value == null) return null;
+  @JsonKey()
+  List<dynamic> get notificationLocations {
     if (_notificationLocations is EqualUnmodifiableListView)
       return _notificationLocations;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_notificationLocations);
   }
 
   @override
-  final bool? autoApproveLeads;
+  @JsonKey()
+  final bool autoApproveLeads;
   @override
   @TimestampToDateTimeConverter()
   final DateTime? lastAccess;
   @override
-  final bool? verified;
+  @JsonKey()
+  final bool verified;
   @override
-  final int? stage;
+  @JsonKey()
+  final int stage;
   @override
-  final int? appVersion;
-  final List<dynamic>? _deviceList;
+  @JsonKey()
+  final int appVersion;
+  final List<dynamic> _deviceList;
   @override
-  List<dynamic>? get deviceList {
-    final value = _deviceList;
-    if (value == null) return null;
+  @JsonKey()
+  List<dynamic> get deviceList {
     if (_deviceList is EqualUnmodifiableListView) return _deviceList;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_deviceList);
   }
 
   @override
@@ -575,15 +581,20 @@ class _$DriverModelImpl implements _DriverModel {
   @override
   final Wallet? wallet;
   @override
-  final int? totalLeads;
+  @JsonKey()
+  final int totalLeads;
   @override
-  final int? outGoingCalls;
+  @JsonKey()
+  final int outGoingCalls;
   @override
-  final int? dealCount;
+  @JsonKey()
+  final int dealCount;
   @override
-  final bool? customOffer;
+  @JsonKey()
+  final bool customOffer;
   @override
-  final String? sessionId;
+  @JsonKey()
+  final String sessionId;
 
   @override
   String toString() {
@@ -685,67 +696,67 @@ class _$DriverModelImpl implements _DriverModel {
 
 abstract class _DriverModel implements DriverModel {
   const factory _DriverModel(
-      {final String? id,
-      final String? name,
-      final String? phoneNo,
+      {final String id,
+      final String name,
+      final String phoneNo,
       final dynamic createdAt,
-      final List<dynamic>? deviceTokens,
-      final bool? conditionAccepted,
+      final List<dynamic> deviceTokens,
+      final bool conditionAccepted,
       final Kyc? kyc,
-      final String? notificationPlace,
-      final bool? notificationAlert,
-      final List<dynamic>? notificationLocations,
-      final bool? autoApproveLeads,
+      final String notificationPlace,
+      final bool notificationAlert,
+      final List<dynamic> notificationLocations,
+      final bool autoApproveLeads,
       @TimestampToDateTimeConverter() final DateTime? lastAccess,
-      final bool? verified,
-      final int? stage,
-      final int? appVersion,
-      final List<dynamic>? deviceList,
+      final bool verified,
+      final int stage,
+      final int appVersion,
+      final List<dynamic> deviceList,
       final Refer? refer,
       final Membership? membership,
       final Wallet? wallet,
-      final int? totalLeads,
-      final int? outGoingCalls,
-      final int? dealCount,
-      final bool? customOffer,
-      final String? sessionId}) = _$DriverModelImpl;
+      final int totalLeads,
+      final int outGoingCalls,
+      final int dealCount,
+      final bool customOffer,
+      final String sessionId}) = _$DriverModelImpl;
 
   factory _DriverModel.fromJson(Map<String, dynamic> json) =
       _$DriverModelImpl.fromJson;
 
   @override
-  String? get id;
+  String get id;
   @override
-  String? get name;
+  String get name;
   @override
-  String? get phoneNo;
+  String get phoneNo;
   @override
   dynamic get createdAt;
   @override
-  List<dynamic>? get deviceTokens;
+  List<dynamic> get deviceTokens;
   @override
-  bool? get conditionAccepted;
+  bool get conditionAccepted;
   @override
   Kyc? get kyc;
   @override
-  String? get notificationPlace;
+  String get notificationPlace;
   @override
-  bool? get notificationAlert;
+  bool get notificationAlert;
   @override
-  List<dynamic>? get notificationLocations;
+  List<dynamic> get notificationLocations;
   @override
-  bool? get autoApproveLeads;
+  bool get autoApproveLeads;
   @override
   @TimestampToDateTimeConverter()
   DateTime? get lastAccess;
   @override
-  bool? get verified;
+  bool get verified;
   @override
-  int? get stage;
+  int get stage;
   @override
-  int? get appVersion;
+  int get appVersion;
   @override
-  List<dynamic>? get deviceList;
+  List<dynamic> get deviceList;
   @override
   Refer? get refer;
   @override
@@ -753,15 +764,15 @@ abstract class _DriverModel implements DriverModel {
   @override
   Wallet? get wallet;
   @override
-  int? get totalLeads;
+  int get totalLeads;
   @override
-  int? get outGoingCalls;
+  int get outGoingCalls;
   @override
-  int? get dealCount;
+  int get dealCount;
   @override
-  bool? get customOffer;
+  bool get customOffer;
   @override
-  String? get sessionId;
+  String get sessionId;
 
   /// Create a copy of DriverModel
   /// with the given fields replaced by the non-null parameter values.
@@ -777,10 +788,10 @@ Kyc _$KycFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Kyc {
-  bool? get verified => throw _privateConstructorUsedError;
-  bool? get submitted => throw _privateConstructorUsedError;
-  String? get address => throw _privateConstructorUsedError;
-  String? get vehicleNo => throw _privateConstructorUsedError;
+  bool get verified => throw _privateConstructorUsedError;
+  bool get submitted => throw _privateConstructorUsedError;
+  String get address => throw _privateConstructorUsedError;
+  String get vehicleNo => throw _privateConstructorUsedError;
   dynamic get aadhaarPic => throw _privateConstructorUsedError;
   dynamic get licensePic => throw _privateConstructorUsedError;
 
@@ -799,10 +810,10 @@ abstract class $KycCopyWith<$Res> {
       _$KycCopyWithImpl<$Res, Kyc>;
   @useResult
   $Res call(
-      {bool? verified,
-      bool? submitted,
-      String? address,
-      String? vehicleNo,
+      {bool verified,
+      bool submitted,
+      String address,
+      String vehicleNo,
       dynamic aadhaarPic,
       dynamic licensePic});
 }
@@ -821,30 +832,30 @@ class _$KycCopyWithImpl<$Res, $Val extends Kyc> implements $KycCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? verified = freezed,
-    Object? submitted = freezed,
-    Object? address = freezed,
-    Object? vehicleNo = freezed,
+    Object? verified = null,
+    Object? submitted = null,
+    Object? address = null,
+    Object? vehicleNo = null,
     Object? aadhaarPic = freezed,
     Object? licensePic = freezed,
   }) {
     return _then(_value.copyWith(
-      verified: freezed == verified
+      verified: null == verified
           ? _value.verified
           : verified // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      submitted: freezed == submitted
+              as bool,
+      submitted: null == submitted
           ? _value.submitted
           : submitted // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      address: freezed == address
+              as bool,
+      address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
-              as String?,
-      vehicleNo: freezed == vehicleNo
+              as String,
+      vehicleNo: null == vehicleNo
           ? _value.vehicleNo
           : vehicleNo // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       aadhaarPic: freezed == aadhaarPic
           ? _value.aadhaarPic
           : aadhaarPic // ignore: cast_nullable_to_non_nullable
@@ -864,10 +875,10 @@ abstract class _$$KycImplCopyWith<$Res> implements $KycCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {bool? verified,
-      bool? submitted,
-      String? address,
-      String? vehicleNo,
+      {bool verified,
+      bool submitted,
+      String address,
+      String vehicleNo,
       dynamic aadhaarPic,
       dynamic licensePic});
 }
@@ -883,30 +894,30 @@ class __$$KycImplCopyWithImpl<$Res> extends _$KycCopyWithImpl<$Res, _$KycImpl>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? verified = freezed,
-    Object? submitted = freezed,
-    Object? address = freezed,
-    Object? vehicleNo = freezed,
+    Object? verified = null,
+    Object? submitted = null,
+    Object? address = null,
+    Object? vehicleNo = null,
     Object? aadhaarPic = freezed,
     Object? licensePic = freezed,
   }) {
     return _then(_$KycImpl(
-      verified: freezed == verified
+      verified: null == verified
           ? _value.verified
           : verified // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      submitted: freezed == submitted
+              as bool,
+      submitted: null == submitted
           ? _value.submitted
           : submitted // ignore: cast_nullable_to_non_nullable
-              as bool?,
-      address: freezed == address
+              as bool,
+      address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
-              as String?,
-      vehicleNo: freezed == vehicleNo
+              as String,
+      vehicleNo: null == vehicleNo
           ? _value.vehicleNo
           : vehicleNo // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       aadhaarPic: freezed == aadhaarPic
           ? _value.aadhaarPic
           : aadhaarPic // ignore: cast_nullable_to_non_nullable
@@ -923,10 +934,10 @@ class __$$KycImplCopyWithImpl<$Res> extends _$KycCopyWithImpl<$Res, _$KycImpl>
 @JsonSerializable()
 class _$KycImpl implements _Kyc {
   const _$KycImpl(
-      {this.verified,
-      this.submitted,
-      this.address,
-      this.vehicleNo,
+      {this.verified = false,
+      this.submitted = false,
+      this.address = '',
+      this.vehicleNo = '',
       this.aadhaarPic,
       this.licensePic});
 
@@ -934,13 +945,17 @@ class _$KycImpl implements _Kyc {
       _$$KycImplFromJson(json);
 
   @override
-  final bool? verified;
+  @JsonKey()
+  final bool verified;
   @override
-  final bool? submitted;
+  @JsonKey()
+  final bool submitted;
   @override
-  final String? address;
+  @JsonKey()
+  final String address;
   @override
-  final String? vehicleNo;
+  @JsonKey()
+  final String vehicleNo;
   @override
   final dynamic aadhaarPic;
   @override
@@ -998,23 +1013,23 @@ class _$KycImpl implements _Kyc {
 
 abstract class _Kyc implements Kyc {
   const factory _Kyc(
-      {final bool? verified,
-      final bool? submitted,
-      final String? address,
-      final String? vehicleNo,
+      {final bool verified,
+      final bool submitted,
+      final String address,
+      final String vehicleNo,
       final dynamic aadhaarPic,
       final dynamic licensePic}) = _$KycImpl;
 
   factory _Kyc.fromJson(Map<String, dynamic> json) = _$KycImpl.fromJson;
 
   @override
-  bool? get verified;
+  bool get verified;
   @override
-  bool? get submitted;
+  bool get submitted;
   @override
-  String? get address;
+  String get address;
   @override
-  String? get vehicleNo;
+  String get vehicleNo;
   @override
   dynamic get aadhaarPic;
   @override
@@ -1034,9 +1049,9 @@ Refer _$ReferFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Refer {
-  int? get code => throw _privateConstructorUsedError;
-  int? get count => throw _privateConstructorUsedError;
-  String? get referBy => throw _privateConstructorUsedError;
+  int get code => throw _privateConstructorUsedError;
+  int get count => throw _privateConstructorUsedError;
+  String get referBy => throw _privateConstructorUsedError;
 
   /// Serializes this Refer to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1052,7 +1067,7 @@ abstract class $ReferCopyWith<$Res> {
   factory $ReferCopyWith(Refer value, $Res Function(Refer) then) =
       _$ReferCopyWithImpl<$Res, Refer>;
   @useResult
-  $Res call({int? code, int? count, String? referBy});
+  $Res call({int code, int count, String referBy});
 }
 
 /// @nodoc
@@ -1070,23 +1085,23 @@ class _$ReferCopyWithImpl<$Res, $Val extends Refer>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? code = freezed,
-    Object? count = freezed,
-    Object? referBy = freezed,
+    Object? code = null,
+    Object? count = null,
+    Object? referBy = null,
   }) {
     return _then(_value.copyWith(
-      code: freezed == code
+      code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as int?,
-      count: freezed == count
+              as int,
+      count: null == count
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
-              as int?,
-      referBy: freezed == referBy
+              as int,
+      referBy: null == referBy
           ? _value.referBy
           : referBy // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 }
@@ -1098,7 +1113,7 @@ abstract class _$$ReferImplCopyWith<$Res> implements $ReferCopyWith<$Res> {
       __$$ReferImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? code, int? count, String? referBy});
+  $Res call({int code, int count, String referBy});
 }
 
 /// @nodoc
@@ -1114,23 +1129,23 @@ class __$$ReferImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? code = freezed,
-    Object? count = freezed,
-    Object? referBy = freezed,
+    Object? code = null,
+    Object? count = null,
+    Object? referBy = null,
   }) {
     return _then(_$ReferImpl(
-      code: freezed == code
+      code: null == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as int?,
-      count: freezed == count
+              as int,
+      count: null == count
           ? _value.count
           : count // ignore: cast_nullable_to_non_nullable
-              as int?,
-      referBy: freezed == referBy
+              as int,
+      referBy: null == referBy
           ? _value.referBy
           : referBy // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -1138,17 +1153,20 @@ class __$$ReferImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ReferImpl implements _Refer {
-  const _$ReferImpl({this.code, this.count, this.referBy});
+  const _$ReferImpl({this.code = 10000, this.count = 0, this.referBy = ''});
 
   factory _$ReferImpl.fromJson(Map<String, dynamic> json) =>
       _$$ReferImplFromJson(json);
 
   @override
-  final int? code;
+  @JsonKey()
+  final int code;
   @override
-  final int? count;
+  @JsonKey()
+  final int count;
   @override
-  final String? referBy;
+  @JsonKey()
+  final String referBy;
 
   @override
   String toString() {
@@ -1187,16 +1205,16 @@ class _$ReferImpl implements _Refer {
 
 abstract class _Refer implements Refer {
   const factory _Refer(
-      {final int? code, final int? count, final String? referBy}) = _$ReferImpl;
+      {final int code, final int count, final String referBy}) = _$ReferImpl;
 
   factory _Refer.fromJson(Map<String, dynamic> json) = _$ReferImpl.fromJson;
 
   @override
-  int? get code;
+  int get code;
   @override
-  int? get count;
+  int get count;
   @override
-  String? get referBy;
+  String get referBy;
 
   /// Create a copy of Refer
   /// with the given fields replaced by the non-null parameter values.
