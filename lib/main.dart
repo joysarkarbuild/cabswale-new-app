@@ -1,6 +1,8 @@
 import 'dart:ui';
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:cabswalle/app.dart';
 import 'package:cabswalle/firebase_options.dart';
+import 'package:cabswalle/notification/firebase_messaging_service.dart';
 import 'package:cabswalle/services/typesense_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
@@ -26,6 +28,22 @@ void main() async {
     FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
     return true;
   };
+
+  await AwesomeNotifications().initialize(
+    'resource://drawable/ic_launcher', // App icon resource
+    [
+      NotificationChannel(
+        channelKey: 'cabswale_lead',
+        channelName: 'Leads Notification',
+        channelDescription: 'Channel for Leads notification',
+        importance: NotificationImportance.High,
+        playSound: true,
+        soundSource: 'resource://raw/cabswale', // Custom sound resource
+      ),
+    ],
+  );
+
+  await FirebaseService.initialize();
   await TypeSenseInstance().getKeys();
   runApp(const MyApp());
 }

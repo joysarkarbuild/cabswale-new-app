@@ -35,7 +35,7 @@ class _NearbyScreenState extends State<NearbyScreen> {
         "key": "petrolCng",
         "onTap": () {
           context.pushNamed(Names.nearbyPlace,
-              extra: "Petrol/CNG Pumps near me");
+              extra: "Petrol/CNG Pumps Near me");
         },
       },
       {
@@ -52,7 +52,7 @@ class _NearbyScreenState extends State<NearbyScreen> {
         "icon": Assets.iconsTowing,
         "key": "towing",
         "onTap": () {
-          context.pushNamed(Names.nearbyPlace, extra: "Towing Service near me");
+          context.pushNamed(Names.nearbyPlace, extra: "Towing Service Near me");
         },
       },
       {
@@ -61,7 +61,7 @@ class _NearbyScreenState extends State<NearbyScreen> {
         "key": "autoparts",
         "onTap": () {
           context.pushNamed(Names.nearbyPlace,
-              extra: "Auto Part Stores near me");
+              extra: "Auto Part Stores Near me");
         },
       },
       {
@@ -70,7 +70,7 @@ class _NearbyScreenState extends State<NearbyScreen> {
         "key": "service",
         "onTap": () {
           context.pushNamed(Names.nearbyPlace,
-              extra: "Service Stations near me");
+              extra: "Service Stations Near me");
         },
       },
     ];

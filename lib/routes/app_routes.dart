@@ -1,4 +1,5 @@
 abstract class Routes {
+  static const driverList = _Paths.driverList;
   static const carInsurance = _Paths.carInsurance;
   static const services = _Paths.services;
   static const walletTransactions = _Paths.walletTransactions;
@@ -43,6 +44,7 @@ abstract class Routes {
 }
 
 abstract class _Paths {
+  static const driverList = '/driverList';
   static const carInsurance = "/carInsurance";
   static const services = '/services';
   static const walletTransactions = "/walletTransactions";
@@ -85,6 +87,7 @@ abstract class _Paths {
 }
 
 abstract class _Names {
+  static const driverList = 'driverList';
   static const carInsurance = "carInsurance";
   static const services = 'services';
   static const walletTransactions = "walletTransactions";
@@ -127,6 +130,7 @@ abstract class _Names {
 }
 
 abstract class Names {
+  static const driverList = _Names.driverList;
   static const carInsurance = _Names.carInsurance;
   static const services = _Names.services;
   static const walletTransactions = _Names.walletTransactions;

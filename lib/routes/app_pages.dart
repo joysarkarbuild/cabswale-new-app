@@ -1,3 +1,4 @@
+import 'package:cabswalle/modules/driverList/screen/driver_list_view.dart';
 import 'package:cabswalle/modules/insurance/insurance_screen1.dart';
 import 'package:cabswalle/modules/loan/screen/loan_screen.dart';
 import 'package:cabswalle/modules/loginOtpless/screen/login_view.dart';
@@ -50,6 +51,11 @@ final router = GoRouter(
       GlobalNavigation.instance.navigatorKey, // Use the global key here
   routes: [
     GoRoute(
+      name: Names.driverList,
+      path: Routes.driverList,
+      builder: (context, state) => const DriverListScreen(),
+    ),
+    GoRoute(
       name: Names.carInsurance,
       path: Routes.carInsurance,
       builder: (context, state) => const InsuranceScreen1(),
@@ -92,7 +98,9 @@ final router = GoRouter(
     GoRoute(
       name: Names.myprofile,
       path: Routes.myprofile,
-      builder: (context, state) => const MyprofileScreen(),
+      builder: (context, state) => const MyprofileScreen(
+        userId: "",
+      ),
     ),
     GoRoute(
       name: Names.verifyAccount,

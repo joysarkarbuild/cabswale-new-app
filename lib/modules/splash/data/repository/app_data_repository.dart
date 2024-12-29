@@ -1,5 +1,5 @@
 import 'package:cabswalle/modules/splash/data/models/app_data_model.dart';
-import 'package:cabswalle/services/firestore_service.dart'; // Import your ApiService
+import 'package:cabswalle/services/firestore_service.dart';
 
 class AppDataRepository {
   final FirestoreUtils _firestoreService;

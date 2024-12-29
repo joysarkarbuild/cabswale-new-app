@@ -5,6 +5,7 @@ import 'package:cabswalle/core/app_text_styles.dart';
 import 'package:cabswalle/modules/deals/screen/deals_confirmation_screen.dart';
 import 'package:cabswalle/modules/home/data/models/lead_data_model.dart';
 import 'package:cabswalle/modules/membership/plans_screen.dart';
+import 'package:cabswalle/modules/myprofile/screen/myprofile_view.dart';
 import 'package:cabswalle/modules/reportScreen/data/models/fraud_model.dart';
 import 'package:cabswalle/modules/reportScreen/report_screen.dart';
 import 'package:cabswalle/routes/app_routes.dart';
@@ -110,111 +111,124 @@ class LeadsCard extends StatelessWidget {
             ],
           ),
 
-          Row(
-            children: [
-              Container(
-                height: 44,
-                width: 44,
-                decoration: BoxDecoration(
-                    image: lead.createdBy!.profileImage == null ||
-                            lead.createdBy!.profileImage!.isEmpty
-                        ? const DecorationImage(
-                            image: AssetImage(Assets.imagesDefaultUser))
-                        : DecorationImage(
-                            image: NetworkImage(
-                              "${lead.createdBy!.profileImage}",
-                            ),
-                            fit: BoxFit.cover),
-                    borderRadius: BorderRadius.circular(22)),
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width - 116,
-                child: Stack(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                Container(
-                                  constraints: BoxConstraints(
-                                      maxWidth:
-                                          MediaQuery.of(context).size.width -
-                                              191),
-                                  child: Text(
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    lead.createdBy!.name!.isEmpty
-                                        ? "Cabswale partner"
-                                        : "${lead.createdBy?.name!}",
-                                    style: const TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ),
-                                lead.createdBy!.fraud ?? false
-                                    ? Padding(
-                                        padding: const EdgeInsets.only(left: 4),
-                                        child: Image.asset(
-                                          Assets.imagesFr,
-                                          width: 70,
-                                        ))
-                                    : Padding(
-                                        padding: const EdgeInsets.only(left: 4),
-                                        child: Image.asset(
-                                          lead.createdBy!.verified ?? false
-                                              ? Assets.imagesVe
-                                              : Assets.imagesNv,
-                                          width: 70,
-                                        )),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 4,
-                            ),
-                            Text(
-                              lead.createdBy!.city == null ||
-                                      lead.createdBy!.city == ""
-                                  ? "India"
-                                  : lead.createdBy!.city!,
-                              style: const TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    Positioned(
-                      right: 0,
-                      top: -8,
-                      child: Container(
-                          height: 20,
-                          width: 60,
-                          margin: const EdgeInsets.only(top: 26),
-                          decoration: BoxDecoration(
-                              color: AppColors.myBlue,
-                              borderRadius: BorderRadius.circular(3)),
-                          child: const Center(
-                            child: Text(
-                              'View Profile',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 8),
-                            ),
-                          )),
-                    ),
-                  ],
+          InkWell(
+            splashColor: Colors.transparent,
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        MyprofileScreen(userId: lead.createdBy!.id ?? ""),
+                  ));
+            },
+            child: Row(
+              children: [
+                Container(
+                  height: 44,
+                  width: 44,
+                  decoration: BoxDecoration(
+                      image: lead.createdBy!.profileImage == null ||
+                              lead.createdBy!.profileImage!.isEmpty
+                          ? const DecorationImage(
+                              image: AssetImage(Assets.imagesDefaultUser))
+                          : DecorationImage(
+                              image: NetworkImage(
+                                "${lead.createdBy!.profileImage}",
+                              ),
+                              fit: BoxFit.cover),
+                      borderRadius: BorderRadius.circular(22)),
                 ),
-              ),
-            ],
+                const SizedBox(
+                  width: 10,
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width - 116,
+                  child: Stack(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Container(
+                                    constraints: BoxConstraints(
+                                        maxWidth:
+                                            MediaQuery.of(context).size.width -
+                                                191),
+                                    child: Text(
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      lead.createdBy!.name!.isEmpty
+                                          ? "Cabswale partner"
+                                          : "${lead.createdBy?.name!}",
+                                      style: const TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                  lead.createdBy!.fraud ?? false
+                                      ? Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 4),
+                                          child: Image.asset(
+                                            Assets.imagesFr,
+                                            width: 70,
+                                          ))
+                                      : Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 4),
+                                          child: Image.asset(
+                                            lead.createdBy!.verified ?? false
+                                                ? Assets.imagesVe
+                                                : Assets.imagesNv,
+                                            width: 70,
+                                          )),
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 4,
+                              ),
+                              Text(
+                                lead.createdBy!.city == null ||
+                                        lead.createdBy!.city == ""
+                                    ? "India"
+                                    : lead.createdBy!.city!,
+                                style: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Positioned(
+                        right: 0,
+                        top: -8,
+                        child: Container(
+                            height: 20,
+                            width: 60,
+                            margin: const EdgeInsets.only(top: 26),
+                            decoration: BoxDecoration(
+                                color: AppColors.myBlue,
+                                borderRadius: BorderRadius.circular(3)),
+                            child: const Center(
+                              child: Text(
+                                'View Profile',
+                                style:
+                                    TextStyle(color: Colors.white, fontSize: 8),
+                              ),
+                            )),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
 
           const Divider(

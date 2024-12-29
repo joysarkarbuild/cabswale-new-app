@@ -3,7 +3,10 @@ import 'package:cabswalle/modules/home/data/models/lead_data_model.dart';
 import 'package:cabswalle/modules/home/data/models/lead_fetch_result_data_model.dart';
 
 import 'package:cabswalle/services/firestore_service.dart';
+import 'package:cabswalle/services/logger_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:intl/intl.dart'; // Import your ApiService
 
 class HomeDataRepository {
@@ -27,6 +30,34 @@ class HomeDataRepository {
     } catch (e) {
       // Handle any other errors
       throw Exception('Unexpected error fetching app data: $e');
+    }
+  }
+
+  Future<void> uploadDeviceToken(List availbleTokens) async {
+    // Initialize the FirebaseMessaging instance
+    FirebaseMessaging messaging = FirebaseMessaging.instance;
+    // Request permission for notifications
+    NotificationSettings settings = await messaging.requestPermission(
+      alert: true,
+      badge: true,
+      sound: true,
+    );
+    // Check if permission is granted
+    if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+      // Permission granted, retrieve the device token
+      String? token = await messaging.getToken();
+      LoggerService.logInfo("Device Token : $token");
+      if (!availbleTokens.contains(token)) {
+        List tokens = [];
+        tokens.addAll(availbleTokens);
+        tokens.add(token);
+        await FirebaseFirestore.instance
+            .collection('drivers')
+            .doc(FirebaseAuth.instance.currentUser!.uid)
+            .update(
+          {'deviceTokens': tokens},
+        );
+      }
     }
   }
 

@@ -8,7 +8,12 @@ sealed class MyprofileEvent extends Equatable {
   List<Object> get props => [];
 }
 
-final class MyProfileLoadEvent extends MyprofileEvent {}
+final class MyProfileLoadEvent extends MyprofileEvent {
+  final String userId;
+  const MyProfileLoadEvent({required this.userId});
+  @override
+  List<Object> get props => [userId];
+}
 
 final class UpdateMyProfileEvent extends MyprofileEvent {
   final UserProfileDataModel myProfile;

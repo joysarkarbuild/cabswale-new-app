@@ -37,6 +37,7 @@ class OtplessRepository {
             'You have been blocked by the admin. Please contact the admin to resolve this issue.'),
       );
     } else {
+      await loginManager.setActive(phoneNo);
       Map<String, dynamic> arg = {
         "phone": phoneNo,
         "countryCode": "+91",

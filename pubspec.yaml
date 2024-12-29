@@ -74,6 +74,10 @@ dependencies:
   otpless_flutter: ^2.2.2
   glossy: ^0.0.4
   device_info_plus: ^10.1.2
+  awesome_notifications: ^0.10.0
+  firebase_messaging: ^15.1.6
+  awesome_notifications_core: ^0.10.0
+  awesome_notifications_fcm: ^0.10.0
 
 dev_dependencies:
   flutter_test:

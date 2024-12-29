@@ -1,6 +1,7 @@
 import 'package:cabswalle/modules/buySellCar/data/models/car_model.dart';
 import 'package:cabswalle/modules/home/data/models/lead_data_model.dart';
 import 'package:cabswalle/modules/jobs/data/models/job_model.dart';
+import 'package:cabswalle/modules/nearbyPlace/data/models/nearby_place_model.dart';
 import 'package:cabswalle/services/logger_service.dart';
 import 'package:cabswalle/services/snackbar_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -66,7 +67,7 @@ class TypeSenseInstance {
   }
 
   Future<List> getVerifiedDrivers(type, page) async {
-    Map<String, dynamic> searchPerameters = {};
+    var searchPerameters;
     if (type == 'verified') {
       searchPerameters = {
         'q': "*",
@@ -94,6 +95,7 @@ class TypeSenseInstance {
           .collection('bwi-cabswalle-drivers')
           .documents
           .search(searchPerameters) as Map;
+
       return result['hits'];
     } catch (e) {
       debugPrint("error while getting verified drivers");
@@ -121,41 +123,35 @@ class TypeSenseInstance {
     }
   }
 
-  // Future<List<NearbyPlace>> getNearbyPlace(String collectionName, int page,
-  //     double lat, double long, int radius, String searchText) async {
-  //   var query = {
-  //     'q': searchText.isEmpty ? "*" : searchText,
-  //     'query_by': "name,address",
-  //     "filter_by": "location:($lat,$long,${radius}km)",
-  //     "sort_by": "location($lat,$long):asc",
-  //     'page': page.toString(),
-  //     'per_page': 150.toString(),
-  //   };
+  Future<List<NearbyPlace>> getNearbyPlace(String collectionName, int page,
+      double lat, double long, int radius, String searchText) async {
+    var query = {
+      'q': searchText.isEmpty ? "*" : searchText,
+      'query_by': "name,address",
+      "filter_by": "location:($lat,$long,${radius}km)",
+      "sort_by": "location($lat,$long):asc",
+      'page': page.toString(),
+      'per_page': 150.toString(),
+    };
 
-  //   debugPrint("Query: $query");
+    try {
+      final result = await client
+          .collection(collectionName)
+          .documents
+          .search(query) as Map;
 
-  //   try {
-  //     final result = await client
-  //         .collection(collectionName)
-  //         .documents
-  //         .search(query) as Map;
+      debugPrint("Result: $result");
 
-  //     debugPrint("Result: $result");
+      List<NearbyPlace> nearbyList = [];
+      for (var item in result['hits']) {
+        nearbyList.add(NearbyPlace.fromJson(item));
+      }
 
-  //     List<NearbyPlace> nearbyList = [];
-  //     for (var item in result['hits']) {
-  //       // Assuming the NearbyPlace has a fromJson factory constructor
-  //       nearbyList.add(NearbyPlace.fromJson(item));
-  //     }
-
-  //     print(result);
-  //     return nearbyList;
-  //   } catch (e) {
-  //     debugPrint("Error while searching nearby place");
-  //     debugPrint("Error: $e");
-  //     return [];
-  //   }
-  // }
+      return nearbyList;
+    } catch (e) {
+      return [];
+    }
+  }
 
   Future<List<LeadModel>> getSearchedLeadsTS(String search, int page) async {
     LoggerService.logInfo('searhing for $search... \nPage : $page');
@@ -228,31 +224,28 @@ class TypeSenseInstance {
     }
   }
 
-  // Future<List> getNearbyDrivers(
-  //     {required double lat, required double long, required int raduis}) async {
-  //   var searchParameters = {
-  //     'q': '*',
-  //     'query_by': 'name',
-  //     "filter_by":
-  //         "currentLocation:($lat,$long, $raduis km)&&locationUpdatedAt:>${DateTime.now().millisecondsSinceEpoch}",
-  //     "sort_by": "currentLocation($lat,$long):asc"
-  //   };
+  Future<List> getNearbyDrivers(
+      {required double lat, required double long, required int raduis}) async {
+    LoggerService.logInfo("Fetching Nearby Druver");
+    var searchParameters = {
+      'q': '*',
+      'query_by': 'name',
+      "filter_by":
+          "currentLocation:($lat,$long, $raduis km)&&locationUpdatedAt:>${DateTime.now().millisecondsSinceEpoch}",
+      "sort_by": "currentLocation($lat,$long):asc"
+    };
 
-  //   print("current time:    ${DateTime.now().millisecond}");
-  //   try {
-  //     final result = await client
-  //         .collection('bwi-cabswalle-drivers')
-  //         .documents
-  //         .search(searchParameters) as Map;
-  //     print("resulttttttttttttttttttttttttttttttttttttttttttt");
-  //     print(result);
-  //     return result['hits'];
-  //   } catch (e) {
-  //     debugPrint("error while getting verified drivers");
-  //     debugPrint("Error : $e");
-  //     return [];
-  //   }
-  // }
+    try {
+      final result = await client
+          .collection('bwi-cabswalle-drivers')
+          .documents
+          .search(searchParameters) as Map;
+      return result['hits'];
+    } catch (e) {
+      SnackbarUtils.showErrorSnackBar(message: e.toString());
+      return [];
+    }
+  }
 
   Future<List> getPartner(
       {required double lat,

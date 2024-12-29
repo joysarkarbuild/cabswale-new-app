@@ -18,6 +18,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           emit(HomeLoadingState());
           if (LoginManager.isLogin) {
             await DriverService.instance.loadDriverModel();
+            await homeDataRepository.uploadDeviceToken(
+                DriverService.instance.driverModel!.deviceTokens);
           }
 
           CountDataModel countData = await homeDataRepository.fetchCountData();

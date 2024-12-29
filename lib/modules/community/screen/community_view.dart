@@ -3,6 +3,7 @@ import 'package:cabswalle/core/app_colors.dart';
 import 'package:cabswalle/modules/community/bloc/community_bloc.dart';
 import 'package:cabswalle/modules/community/bloc/community_event.dart';
 import 'package:cabswalle/modules/community/bloc/community_state.dart';
+import 'package:cabswalle/modules/driverList/screen/driver_list_view.dart';
 import 'package:cabswalle/modules/emergency/screen/emergency_view.dart';
 import 'package:cabswalle/modules/nearby/screen/nearby_view.dart';
 import 'package:cabswalle/modules/partnerWithUs/screen/partner_with_us_view.dart';
@@ -33,7 +34,13 @@ class _CommunityScreenState extends State<CommunityScreen> {
       {
         "label": "Drivers List",
         "icon": Assets.iconsDriversList,
-        "onTap": () {},
+        "onTap": () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DriverListScreen(),
+              ));
+        },
         "key": "driversList"
       },
       {
@@ -61,12 +68,6 @@ class _CommunityScreenState extends State<CommunityScreen> {
               ));
         },
         "key": "profile"
-      },
-      {
-        "label": "Connections",
-        "icon": Assets.iconsConnections,
-        "onTap": () {},
-        "key": "connections"
       },
       {
         "label": "Top Locations",

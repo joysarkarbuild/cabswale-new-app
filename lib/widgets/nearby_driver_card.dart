@@ -1,5 +1,6 @@
 import 'package:cabswalle/constants/assets.dart';
 import 'package:cabswalle/core/app_colors.dart';
+import 'package:cabswalle/modules/myprofile/screen/myprofile_view.dart';
 import 'package:cabswalle/modules/nearbyDriver/data/models/nearby_driver_model.dart';
 import 'package:cabswalle/widgets/common_image_view.dart';
 import 'package:cabswalle/widgets/submit_button.dart';
@@ -27,11 +28,18 @@ class NearbyDriversCard extends StatelessWidget {
           margin: const EdgeInsets.symmetric(vertical: 5),
           decoration: BoxDecoration(
             border: Border.all(color: AppColors.myBlack45),
+            borderRadius: BorderRadius.circular(6),
           ),
           child: Column(
             children: [
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              MyprofileScreen(userId: verifiedDriver.id)));
+                },
                 child: Row(
                   children: [
                     DriverProfileImage(verifiedDriver: verifiedDriver),

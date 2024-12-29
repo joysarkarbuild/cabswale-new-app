@@ -11,8 +11,6 @@ class NearbyDriverModel {
   final int experience;
   final bool fraud;
   final bool verified;
-  final List<Vehicle> vehicles;
-  final List<Route> topRoutes;
   final List<dynamic>? currentLocation;
   final double? distance;
   final String? locationUpdatedAt;
@@ -23,8 +21,6 @@ class NearbyDriverModel {
     required this.id,
     this.displayPic,
     required this.city,
-    required this.vehicles,
-    required this.topRoutes,
     this.fraud = false,
     this.verified = false,
     this.connections,
@@ -37,28 +33,14 @@ class NearbyDriverModel {
   factory NearbyDriverModel.fromJson(Map<String, dynamic> json) {
     return NearbyDriverModel(
       name: json['name'] ?? 'Not Available',
-      phoneNo: json['phoneNo'],
-      id: json['id'],
-      displayPic: json['profile_image'],
-      city: json['city'],
-      experience: json['experience'],
-      vehicles: json.containsKey('vehicles')
-          ? List<Vehicle>.from(
-              json['vehicles']['allVehicles'].map(
-                (e) => Vehicle.fromJson(e),
-              ),
-            )
-          : [],
-      topRoutes: json.containsKey('routes')
-          ? List<Route>.from(
-              json['routes']['allRoutes'].map(
-                (e) => Route.fromJson(e),
-              ),
-            )
-          : [],
+      phoneNo: json['phoneNo'] ?? "",
+      id: json['id'] ?? "",
+      displayPic: json['profile_image'] ?? "",
+      city: json['city'] ?? "",
+      experience: json['experience'] ?? 0,
       connections: json['connections'] ?? 0,
-      fraud: json["fraud"],
-      verified: json["verified"],
+      fraud: json["fraud"] ?? false,
+      verified: json["verified"] ?? false,
       locationUpdatedAt: json["locationUpdatedAt"] != null
           ? timeAgo(json["locationUpdatedAt"])
           : "Location not available",
@@ -163,42 +145,3 @@ String timeAgo(int unixTimestamp) {
   }
   return "Location updated $hoursAgo mins ago";
 }
-
-const List<NearbyDriverModel> dummyDrivers = [
-  NearbyDriverModel(
-    name: 'John Doe',
-    phoneNo: '+123456789',
-    id: '1',
-    city: 'New York',
-    vehicles: [
-      Vehicle(
-        brand: 'Toyota',
-        images: ['https://example.com/image1.jpg'],
-        modelYear: '2019',
-      ),
-    ],
-    topRoutes: [
-      Route(from: 'New York', to: 'Los Angeles'),
-    ],
-    experience: 5,
-    verified: true,
-  ),
-  NearbyDriverModel(
-    name: 'Jane Smith',
-    phoneNo: '+987654321',
-    id: '2',
-    city: 'San Francisco',
-    vehicles: [
-      Vehicle(
-        brand: 'Tesla',
-        images: ['https://example.com/image2.jpg'],
-        modelYear: '2020',
-      ),
-    ],
-    topRoutes: [
-      Route(from: 'San Francisco', to: 'Las Vegas'),
-    ],
-    experience: 3,
-    verified: false,
-  ),
-];

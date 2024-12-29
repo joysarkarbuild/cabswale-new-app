@@ -17,7 +17,7 @@ class VerifyAccountScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (isFetchData) {
-      context.read<MyprofileBloc>().add(MyProfileLoadEvent());
+      context.read<MyprofileBloc>().add(MyProfileLoadEvent(userId: ""));
     }
     return Scaffold(
       appBar: AppBar(

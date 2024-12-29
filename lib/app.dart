@@ -2,12 +2,14 @@ import 'package:cabswalle/core/app_colors.dart';
 import 'package:cabswalle/modules/addlead/bloc/addlead_bloc.dart';
 import 'package:cabswalle/modules/community/bloc/community_bloc.dart';
 import 'package:cabswalle/modules/deals/bloc/deals_bloc.dart';
+import 'package:cabswalle/modules/driverList/bloc/driver_list_bloc.dart';
 import 'package:cabswalle/modules/filterleads/bloc/filterleads_bloc.dart';
 import 'package:cabswalle/modules/home/bloc/home_bloc.dart';
 import 'package:cabswalle/modules/login/bloc/login_bloc.dart';
 import 'package:cabswalle/modules/myleads/bloc/myleads_bloc.dart';
 import 'package:cabswalle/modules/myprofile/bloc/myprofile_bloc.dart';
 import 'package:cabswalle/modules/navbar/bloc/navbar_bloc.dart';
+import 'package:cabswalle/modules/nearbyDriver/bloc/nearby_driver_bloc.dart';
 import 'package:cabswalle/modules/services/bloc/services_bloc.dart';
 import 'package:cabswalle/modules/splash/bloc/splash_bloc.dart';
 import 'package:cabswalle/modules/topLocations/topPickupLocation/bloc/top_pickup_location_bloc.dart';
@@ -83,6 +85,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => TopPickupLocationBloc(),
+        ),
+        BlocProvider(
+          create: (context) => NearbyDriverBloc(),
+        ),
+        BlocProvider(
+          create: (context) => DriverListBloc(),
         ),
       ],
       child: MaterialApp.router(

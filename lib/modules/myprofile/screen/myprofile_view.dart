@@ -16,7 +16,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class MyprofileScreen extends StatefulWidget {
-  const MyprofileScreen({super.key});
+  const MyprofileScreen({super.key, required this.userId});
+  final String userId;
 
   @override
   State<MyprofileScreen> createState() => _MyprofileScreenState();
@@ -26,7 +27,9 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<MyprofileBloc>().add(MyProfileLoadEvent());
+    context
+        .read<MyprofileBloc>()
+        .add(MyProfileLoadEvent(userId: widget.userId));
   }
 
   @override
@@ -34,9 +37,10 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            'My Profile',
+            widget.userId.isEmpty ? 'My Profile' : "Cabswale Partner",
             style: AppTextStyles.style18w500(),
           ),
+          centerTitle: true,
         ),
         body: SingleChildScrollView(
           padding: const EdgeInsets.all(18),
@@ -142,19 +146,20 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                               ),
                             ],
                           ),
-                          Positioned(
-                              right: 10,
-                              top: 19,
-                              child: SubmitButton(
-                                height: 20,
-                                width: 70,
-                                onTap: () {
-                                  context.pushNamed(Names.verifyAccount);
-                                },
-                                lable: "Edit",
-                                borderRadius: 3,
-                                labelsize: 12,
-                              )),
+                          if (widget.userId.isEmpty)
+                            Positioned(
+                                right: 10,
+                                top: 19,
+                                child: SubmitButton(
+                                  height: 20,
+                                  width: 70,
+                                  onTap: () {
+                                    context.pushNamed(Names.verifyAccount);
+                                  },
+                                  lable: "Edit",
+                                  borderRadius: 3,
+                                  labelsize: 12,
+                                )),
                         ],
                       ),
                     ),
