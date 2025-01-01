@@ -22,9 +22,10 @@ class LanguageScreen extends StatelessWidget {
         padding: const EdgeInsets.only(left: 14, right: 14),
         child: ListView.builder(
             shrinkWrap: true,
-            itemCount: TextData.dummyLang.length,
+            itemCount: TextData.languageList.length,
             itemBuilder: (ctx, index) {
-              bool isSelected = "English" == TextData.dummyLang[index]["name"];
+              bool isSelected =
+                  "English" == TextData.languageList[index]["name"];
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: MyListTile(
@@ -32,10 +33,10 @@ class LanguageScreen extends StatelessWidget {
                   borderColor:
                       isSelected ? AppColors.myprimaryColor : AppColors.myGrey,
                   borderRadius: BorderRadius.circular(12),
-                  title: TextData.dummyLang[index]['style'],
+                  title: TextData.languageList[index]['style'],
                   titleStyle: AppTextStyles.style18w600(),
                   subtitle: Text(
-                    TextData.dummyLang[index]['name'],
+                    TextData.languageList[index]['name'],
                     style: AppTextStyles.style15w600(),
                   ),
                   // leadingHeight: 20,

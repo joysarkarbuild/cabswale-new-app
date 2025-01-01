@@ -67,7 +67,7 @@ class TypeSenseInstance {
   }
 
   Future<List> getVerifiedDrivers(type, page) async {
-    var searchPerameters;
+    Map<String, String> searchPerameters = {};
     if (type == 'verified') {
       searchPerameters = {
         'q': "*",
@@ -104,7 +104,7 @@ class TypeSenseInstance {
     }
   }
 
-  Future<List> getSearch(query) async {
+  Future<List> getSearch(String query) async {
     var searchPerameters = {
       'q': query,
       'query_by': 'name, city, phoneNo',

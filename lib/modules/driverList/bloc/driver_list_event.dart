@@ -14,3 +14,11 @@ final class FetchDrivers extends DriverListEvent {
   @override
   List<Object> get props => [type];
 }
+
+final class GetSearchedDriver extends DriverListEvent {
+  final String query;
+
+  const GetSearchedDriver({required this.query});
+  @override
+  List<Object> get props => [query];
+}

@@ -20,5 +20,18 @@ class DriverListBloc extends Bloc<DriverListEvent, DriverListState> {
         emit(DriverLoaded(drivers: drivers));
       },
     );
+
+    on<GetSearchedDriver>(
+      (event, emit) async {
+        emit(DriverLoading());
+        List data = await typeSenseInstance.getSearch(event.query);
+        List<NearbyDriverModel> drivers = data
+            .map(
+              (e) => NearbyDriverModel.fromJson(e["document"]),
+            )
+            .toList();
+        emit(DriverLoaded(drivers: drivers));
+      },
+    );
   }
 }

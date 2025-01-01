@@ -1,9 +1,9 @@
 abstract class Routes {
+  static const language = _Paths.language;
   static const driverList = _Paths.driverList;
   static const carInsurance = _Paths.carInsurance;
   static const services = _Paths.services;
   static const walletTransactions = _Paths.walletTransactions;
-  static const language = _Paths.language;
   static const settings = _Paths.settings;
   static const vehicles = _Paths.vehicles;
   static const editTopRoutes = _Paths.editTopRoutes;
@@ -44,11 +44,11 @@ abstract class Routes {
 }
 
 abstract class _Paths {
+  static const language = '/language';
   static const driverList = '/driverList';
   static const carInsurance = "/carInsurance";
   static const services = '/services';
   static const walletTransactions = "/walletTransactions";
-  static const language = "/language";
   static const settings = "/settings";
   static const vehicles = '/vehicles';
   static const editTopRoutes = '/editTopRoutes';
@@ -87,11 +87,11 @@ abstract class _Paths {
 }
 
 abstract class _Names {
+  static const language = 'language';
   static const driverList = 'driverList';
   static const carInsurance = "carInsurance";
   static const services = 'services';
   static const walletTransactions = "walletTransactions";
-  static const language = "language";
   static const settings = "settings";
   static const vehicles = 'vehicles';
   static const editTopRoutes = 'editTopRoutes';
@@ -130,11 +130,11 @@ abstract class _Names {
 }
 
 abstract class Names {
+  static const language = _Names.language;
   static const driverList = _Names.driverList;
   static const carInsurance = _Names.carInsurance;
   static const services = _Names.services;
   static const walletTransactions = _Names.walletTransactions;
-  static const language = _Names.language;
   static const settings = _Names.settings;
   static const vehicles = _Names.vehicles;
   static const editTopRoutes = _Names.editTopRoutes;

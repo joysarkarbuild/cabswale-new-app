@@ -1,6 +1,5 @@
 import 'package:cabswalle/core/app_colors.dart';
 import 'package:cabswalle/core/app_text_styles.dart';
-import 'package:cabswalle/core/screen_responsive.dart';
 import 'package:cabswalle/modules/driverList/bloc/driver_list_bloc.dart';
 import 'package:cabswalle/modules/driverList/bloc/driver_list_event.dart';
 import 'package:cabswalle/modules/driverList/bloc/driver_list_state.dart';
@@ -149,6 +148,10 @@ class _DriverListScreenState extends State<DriverListScreen> {
                     } else {
                       finalVal = value;
                     }
+
+                    context
+                        .read<DriverListBloc>()
+                        .add(GetSearchedDriver(query: finalVal));
                   },
                 ),
               ),
@@ -194,9 +197,7 @@ class _DriverListScreenState extends State<DriverListScreen> {
                   return CentreLoading();
                 }
                 if (state is DriverLoaded) {
-                  return SizedBox(
-                    width: context.screenWidth,
-                    height: context.screenHeight - 265,
+                  return Expanded(
                     child: ListView.builder(
                       itemCount: state.drivers.length,
                       itemBuilder: (context, index) => Padding(

@@ -92,6 +92,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => DriverListBloc(),
         ),
+        // BlocProvider(
+        //   create: (context) => LanguageBloc(),
+        // ),
       ],
       child: MaterialApp.router(
         scaffoldMessengerKey: SnackbarUtils.snackbarKey,

@@ -23,7 +23,7 @@ class TextData {
     'available',
   ];
 
-  static List dummyLang = [
+  static List languageList = [
     {
       'icon': 'assets/images/hi.png',
       'code': 'hi',

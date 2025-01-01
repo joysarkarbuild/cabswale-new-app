@@ -6,6 +6,7 @@ import 'package:cabswalle/modules/splash/bloc/splash_state.dart';
 import 'package:cabswalle/modules/splash/data/models/app_data_model.dart';
 import 'package:cabswalle/modules/splash/data/repository/app_data_repository.dart';
 import 'package:cabswalle/services/banner_service.dart';
+import 'package:cabswalle/services/button_clicker_service.dart';
 import 'package:cabswalle/services/logger_service.dart';
 import 'package:cabswalle/services/login_manager.dart';
 import 'package:url_launcher/url_launcher.dart'; // Import the model
@@ -25,6 +26,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     try {
       //Get login status from local
       await bannerService.loadBannersData();
+      await ButtonClickTracker.uploadAllClickCounts();
       LoginManager().getAllData();
       // Fetch the latest app version data from the repository
 

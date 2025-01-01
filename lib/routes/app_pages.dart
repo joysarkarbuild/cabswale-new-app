@@ -1,10 +1,10 @@
+import 'package:cabswalle/modules/language/screen/language_view.dart';
 import 'package:cabswalle/modules/driverList/screen/driver_list_view.dart';
 import 'package:cabswalle/modules/insurance/insurance_screen1.dart';
 import 'package:cabswalle/modules/loan/screen/loan_screen.dart';
 import 'package:cabswalle/modules/loginOtpless/screen/login_view.dart';
 import 'package:cabswalle/modules/otpOtpLess/screen/otp_view.dart';
 import 'package:cabswalle/modules/services/screen/services_view.dart';
-import 'package:cabswalle/modules/language/screen/language_screen.dart';
 import 'package:cabswalle/modules/myprofile/screen/myprofile_view.dart';
 import 'package:cabswalle/modules/setting/screen/setting_view.dart';
 import 'package:cabswalle/modules/splash/bloc/splash_bloc.dart';
@@ -51,6 +51,11 @@ final router = GoRouter(
       GlobalNavigation.instance.navigatorKey, // Use the global key here
   routes: [
     GoRoute(
+      name: Names.language,
+      path: Routes.language,
+      builder: (context, state) => const LanguageScreen(),
+    ),
+    GoRoute(
       name: Names.driverList,
       path: Routes.driverList,
       builder: (context, state) => const DriverListScreen(),
@@ -69,11 +74,6 @@ final router = GoRouter(
       name: Names.walletTransactions,
       path: Routes.walletTransactions,
       builder: (context, state) => const WalletTransactionScreen(),
-    ),
-    GoRoute(
-      name: Names.language,
-      path: Routes.language,
-      builder: (context, state) => const LanguageScreen(),
     ),
     GoRoute(
       name: Names.settings,
