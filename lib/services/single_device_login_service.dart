@@ -19,6 +19,9 @@ class SingleLoginService {
       final prefs = await SharedPreferences.getInstance();
       String sessionId = DateTime.now().millisecondsSinceEpoch.toString();
       prefs.setString('sessionId', sessionId);
+      if (DriverService.instance.driverModel == null) {
+        await DriverService.instance.loadDriverModel();
+      }
       await DriverService.instance.updateDriverField("sessionId", sessionId);
     } catch (e) {
       SnackbarUtils.showErrorSnackBar(message: e.toString());

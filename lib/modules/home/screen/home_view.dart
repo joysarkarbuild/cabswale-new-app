@@ -10,12 +10,12 @@ import 'package:cabswalle/modules/home/bloc/home_state.dart';
 import 'package:cabswalle/modules/home/screen/widgets/home_shimmer.dart';
 import 'package:cabswalle/modules/home/screen/widgets/leads_count_show.dart';
 import 'package:cabswalle/modules/home/screen/widgets/membership_widget.dart';
+import 'package:cabswalle/modules/home/screen/widgets/session_checker.dart';
 import 'package:cabswalle/modules/home/screen/widgets/to_from_dots.dart';
 import 'package:cabswalle/routes/app_routes.dart';
 import 'package:cabswalle/services/driver_service.dart';
 import 'package:cabswalle/services/logger_service.dart';
 import 'package:cabswalle/services/login_manager.dart';
-import 'package:cabswalle/services/single_device_login_service.dart';
 import 'package:cabswalle/widgets/lead_card.dart';
 import 'package:cabswalle/widgets/lead_card_shimmer.dart';
 import 'package:cabswalle/widgets/show_image.dart';
@@ -63,39 +63,8 @@ class _HomeScreenState extends State<HomeScreen> {
         }
       }
     });
-    checkSession();
-  }
-
-  final SingleLoginService singleLoginService = SingleLoginService();
-
-  void checkSession() async {
-    LoggerService.logInfo("Check Session Called");
-    bool isSessionMatched = await singleLoginService.verifySession();
-    if (!isSessionMatched && LoginManager.isLogin) {
-      showModalBottomSheet<void>(
-          // ignore: use_build_context_synchronously
-          context: context,
-          builder: (BuildContext context) {
-            return Container(
-              height: context.screenHeight * 0.6,
-              width: context.screenWidth,
-              padding: EdgeInsets.all(16),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  SvgPicture.asset(
-                    Assets.iconsWarning,
-                    height: 100,
-                  ),
-                  ElevatedButton(
-                    child: const Text('Close BottomSheet'),
-                    onPressed: () => Navigator.pop(context),
-                  ),
-                ],
-              ),
-            );
-          });
+    if (LoginManager.isLogin) {
+      checkSession(context);
     }
   }
 

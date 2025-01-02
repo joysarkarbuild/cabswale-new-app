@@ -3,6 +3,7 @@ import 'package:cabswalle/core/app_colors.dart';
 import 'package:cabswalle/modules/myprofile/screen/myprofile_view.dart';
 import 'package:cabswalle/modules/nearbyDriver/data/models/nearby_driver_model.dart';
 import 'package:cabswalle/services/login_manager.dart';
+import 'package:cabswalle/widgets/common_image_view.dart';
 import 'package:cabswalle/widgets/submit_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -48,21 +49,24 @@ class VerifiedDriversCard extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Container(
-                      height: 44,
-                      width: 44,
-                      decoration: BoxDecoration(
-                          image: verifiedDriver.displayPic == null ||
-                                  verifiedDriver.displayPic == ""
-                              ? const DecorationImage(
-                                  image: AssetImage(
-                                      "assets/images/default_user.jpg"))
-                              : DecorationImage(
-                                  image: NetworkImage(
-                                      "${verifiedDriver.displayPic}"),
-                                  fit: BoxFit.cover),
-                          borderRadius: BorderRadius.circular(22)),
-                    ),
+                    (verifiedDriver.displayPic == null ||
+                            verifiedDriver.displayPic == "")
+                        ? Container(
+                            height: 44,
+                            width: 44,
+                            decoration: BoxDecoration(
+                                image: const DecorationImage(
+                                    image: AssetImage(
+                                        "assets/images/default_user.jpg")),
+                                borderRadius: BorderRadius.circular(22)))
+                        : ClipRRect(
+                            borderRadius: BorderRadius.circular(22),
+                            child: CommonImageView(
+                              height: 44,
+                              width: 44,
+                              url: verifiedDriver.displayPic,
+                            ),
+                          ),
                     const SizedBox(
                       width: 10,
                     ),
