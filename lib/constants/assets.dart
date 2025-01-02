@@ -242,6 +242,10 @@ class Assets {
   /// assets/icons/wallet.svg
   static const String iconsWallet = "assets/icons/wallet.svg";
 
+  /// Assets for iconsWarning
+  /// assets/icons/warning.svg
+  static const String iconsWarning = "assets/icons/warning.svg";
+
   /// Assets for iconsWeeksLeads
   /// assets/icons/weeks_leads.svg
   static const String iconsWeeksLeads = "assets/icons/weeks_leads.svg";

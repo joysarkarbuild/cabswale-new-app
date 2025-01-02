@@ -111,6 +111,7 @@ class _OtpScreenOtplessState extends State<OtpScreenOtpless> {
       await loginManager.verifyOtpUsingOtpLess(
           token: result["response"]["firebaseInfo"]["firebaseToken"].toString(),
           context: context);
+
       LoadingOverlay().hide();
     } else {
       LoadingOverlay().hide();

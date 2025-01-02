@@ -1,6 +1,7 @@
 import 'package:cabswalle/routes/app_routes.dart';
 import 'package:cabswalle/services/firestore_service.dart';
 import 'package:cabswalle/services/loading_overlay_service.dart';
+import 'package:cabswalle/services/single_device_login_service.dart';
 import 'package:cabswalle/services/snackbar_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -12,6 +13,7 @@ class LoginManager {
   static final LoginManager _instance = LoginManager._internal();
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  final SingleLoginService singleLoginService = SingleLoginService();
   LoginManager._internal();
 
   factory LoginManager() {
@@ -65,6 +67,7 @@ class LoginManager {
       await _auth.signInWithCustomToken(token);
       LoggerService.logInfo("User logged in with OTP");
       await _updateLoginState();
+      await singleLoginService.updateSessionId();
       // ignore: use_build_context_synchronously
       context.goNamed(Names.navbar);
     } on FirebaseAuthException catch (e) {
