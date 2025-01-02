@@ -1,6 +1,10 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:cabswalle/services/logger_service.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:geolocator/geolocator.dart';
+// ignore: depend_on_referenced_packages
+import 'package:http/http.dart' as http;
 
 class LocationService {
   // Singleton instance
@@ -47,9 +51,33 @@ class LocationService {
     if (_locationUpdateOn ?? true) {
       try {
         _currentPosition = await Geolocator.getCurrentPosition();
-        LoggerService.logInfo("Updated position: $_currentPosition");
+        await updateDriverLocation();
       } catch (e) {
         LoggerService.logInfo("Failed to get current position: $e");
+      }
+    }
+  }
+
+  Future<void> updateDriverLocation() async {
+    if (_currentPosition != null && FirebaseAuth.instance.currentUser != null) {
+      const apiUrl =
+          'https://us-central1-bwi-cabswalle.cloudfunctions.net/typesense-updateDriverLocation';
+      final response = await http.post(
+        Uri.parse(apiUrl),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(<String, dynamic>{
+          'driverId': FirebaseAuth.instance.currentUser!.uid,
+          'lat': _currentPosition!.latitude,
+          'long': _currentPosition!.longitude,
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        LoggerService.logInfo("Updated position: $_currentPosition");
+      } else {
+        LoggerService.logError("Location Update Failes");
       }
     }
   }
