@@ -3,9 +3,14 @@ import 'package:cabswalle/core/app_text_styles.dart';
 import 'package:cabswalle/modules/myprofile/bloc/myprofile_bloc.dart';
 import 'package:cabswalle/modules/myprofile/bloc/myprofile_event.dart';
 import 'package:cabswalle/modules/myprofile/bloc/myprofile_state.dart';
+import 'package:cabswalle/modules/verifyAccount/screen/edir_aadhar_license.dart';
 import 'package:cabswalle/routes/app_routes.dart';
+import 'package:cabswalle/services/driver_service.dart';
+import 'package:cabswalle/services/login_manager.dart';
+import 'package:cabswalle/services/snackbar_service.dart';
 import 'package:cabswalle/widgets/centre_loading.dart';
 import 'package:cabswalle/widgets/submit_button.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -50,8 +55,18 @@ class VerifyAccountScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: VerificationOption(
-                    isVerified: false,
-                    onTap: () {},
+                    isVerified: (state.myProfile.aadharCard != null &&
+                        state.myProfile.aadharCard!.id!.isNotEmpty &&
+                        state.myProfile.license != null &&
+                        state.myProfile.license!.id!.isNotEmpty),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => EditAadharAndLicense(),
+                        ),
+                      );
+                    },
                     title: "Aadhar & Licence",
                   ),
                 ),
@@ -81,9 +96,38 @@ class VerifyAccountScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: SubmitButton(
-                    onTap: () async {},
+                    onTap: () async {
+                      await FirebaseFirestore.instance
+                          .collection("verificationReqs")
+                          .doc(LoginManager.userId)
+                          .set({
+                        "completed": false,
+                        "createdAt": Timestamp.fromDate(DateTime.now()),
+                        "driverID": LoginManager.userId,
+                        "name": DriverService.instance.driverModel!.name,
+                        "phoneNo": DriverService.instance.driverModel!.phoneNo,
+                      }, SetOptions(merge: true));
+
+                      SnackbarUtils.showSuccessSnackBar(
+                          message: "Submitted for verification");
+
+                      // ignore: use_build_context_synchronously
+                      Navigator.pop(context);
+                    },
                     lable: "Submit for Verification",
                     borderRadius: 6,
+                    tapable: (state.myProfile.aadharCard != null &&
+                        state.myProfile.aadharCard!.id!.isNotEmpty &&
+                        state.myProfile.license != null &&
+                        state.myProfile.license!.id!.isNotEmpty &&
+                        state.myProfile.aadharCard != null &&
+                        state.myProfile.aadharCard!.id!.isNotEmpty &&
+                        state.myProfile.license != null &&
+                        state.myProfile.license!.id!.isNotEmpty &&
+                        state.myProfile.vehicles != null &&
+                        state.myProfile.vehicles!.isNotEmpty &&
+                        state.myProfile.routes != null &&
+                        state.myProfile.routes!.isNotEmpty),
                   ),
                 ),
                 const SizedBox(

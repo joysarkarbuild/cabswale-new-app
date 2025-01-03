@@ -25,6 +25,12 @@ _$UserProfileDataModelImpl _$$UserProfileDataModelImplFromJson(
       vehicles: json['vehicles'] as List<dynamic>?,
       getDutyAlerts: json['getDutyAlerts'] as bool?,
       connectionCount: (json['connectionCount'] as num?)?.toInt(),
+      aadharCard: json['aadharCard'] == null
+          ? null
+          : AadhaarCard.fromJson(json['aadharCard'] as Map<String, dynamic>),
+      license: json['license'] == null
+          ? null
+          : License.fromJson(json['license'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$UserProfileDataModelImplToJson(
@@ -46,6 +52,34 @@ Map<String, dynamic> _$$UserProfileDataModelImplToJson(
       'vehicles': instance.vehicles,
       'getDutyAlerts': instance.getDutyAlerts,
       'connectionCount': instance.connectionCount,
+      'aadharCard': instance.aadharCard,
+      'license': instance.license,
+    };
+
+_$AadhaarCardImpl _$$AadhaarCardImplFromJson(Map<String, dynamic> json) =>
+    _$AadhaarCardImpl(
+      id: json['id'] as String?,
+      images:
+          (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
+    );
+
+Map<String, dynamic> _$$AadhaarCardImplToJson(_$AadhaarCardImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'images': instance.images,
+    };
+
+_$LicenseImpl _$$LicenseImplFromJson(Map<String, dynamic> json) =>
+    _$LicenseImpl(
+      id: json['id'] as String?,
+      images:
+          (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
+    );
+
+Map<String, dynamic> _$$LicenseImplToJson(_$LicenseImpl instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'images': instance.images,
     };
 
 _$NotificationLocationImpl _$$NotificationLocationImplFromJson(

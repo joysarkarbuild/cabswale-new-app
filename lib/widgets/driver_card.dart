@@ -2,9 +2,12 @@ import 'package:cabswalle/constants/assets.dart';
 import 'package:cabswalle/core/app_colors.dart';
 import 'package:cabswalle/modules/myprofile/screen/myprofile_view.dart';
 import 'package:cabswalle/modules/nearbyDriver/data/models/nearby_driver_model.dart';
+import 'package:cabswalle/services/driver_service.dart';
 import 'package:cabswalle/services/login_manager.dart';
+import 'package:cabswalle/services/snackbar_service.dart';
 import 'package:cabswalle/widgets/common_image_view.dart';
 import 'package:cabswalle/widgets/submit_button.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -168,7 +171,32 @@ class VerifiedDriversCard extends StatelessWidget {
             children: [
               SubmitButton(
                 borderRadius: 3,
-                onTap: () {},
+                onTap: () async {
+                  try {
+                    await FirebaseFirestore.instance
+                        .collection('whatsappMessage')
+                        .add({
+                      'createdAt': DateTime.now(),
+                      'leadId': "",
+                      'receiver': {
+                        'userId': verifiedDriver.id,
+                        'name': verifiedDriver.name,
+                        'phoneNo': verifiedDriver.phoneNo,
+                      },
+                      'sender': {
+                        'userId': DriverService.instance.driverModel!.id,
+                        'name': DriverService.instance.driverModel!.name,
+                        'phoneNo': DriverService.instance.driverModel!.phoneNo
+                      },
+                    });
+                    sendWhatsAppMessage(
+                      verifiedDriver.phoneNo,
+                      "",
+                    );
+                  } catch (e) {
+                    SnackbarUtils.showErrorSnackBar(message: e.toString());
+                  }
+                },
                 height: 40,
                 width: 100,
                 lable: "",
@@ -180,7 +208,27 @@ class VerifiedDriversCard extends StatelessWidget {
               Expanded(
                 child: SubmitButton(
                   borderRadius: 3,
-                  onTap: () {},
+                  onTap: () async {
+                    try {
+                      await FirebaseFirestore.instance.collection('calls').add({
+                        'createdAt': DateTime.now(),
+                        'leadId': "",
+                        'receiver': {
+                          'userId': verifiedDriver.id,
+                          'name': verifiedDriver.name,
+                          'phoneNo': verifiedDriver.phoneNo,
+                        },
+                        'sender': {
+                          'userId': DriverService.instance.driverModel!.id,
+                          'name': DriverService.instance.driverModel!.name,
+                          'phoneNo': DriverService.instance.driverModel!.phoneNo
+                        },
+                      });
+                      launchUrl(Uri.parse("tel:${verifiedDriver.phoneNo}"));
+                    } catch (e) {
+                      SnackbarUtils.showErrorSnackBar(message: e.toString());
+                    }
+                  },
                   height: 40,
                   lable: LoginManager.isLogin ? "Call" : "Login",
                   icon: Icon(

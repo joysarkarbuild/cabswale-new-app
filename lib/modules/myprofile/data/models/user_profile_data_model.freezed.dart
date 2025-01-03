@@ -38,6 +38,8 @@ mixin _$UserProfileDataModel {
   List<dynamic>? get vehicles => throw _privateConstructorUsedError;
   bool? get getDutyAlerts => throw _privateConstructorUsedError;
   int? get connectionCount => throw _privateConstructorUsedError;
+  AadhaarCard? get aadharCard => throw _privateConstructorUsedError;
+  License? get license => throw _privateConstructorUsedError;
 
   /// Serializes this UserProfileDataModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -71,7 +73,12 @@ abstract class $UserProfileDataModelCopyWith<$Res> {
       List<dynamic>? routes,
       List<dynamic>? vehicles,
       bool? getDutyAlerts,
-      int? connectionCount});
+      int? connectionCount,
+      AadhaarCard? aadharCard,
+      License? license});
+
+  $AadhaarCardCopyWith<$Res>? get aadharCard;
+  $LicenseCopyWith<$Res>? get license;
 }
 
 /// @nodoc
@@ -106,6 +113,8 @@ class _$UserProfileDataModelCopyWithImpl<$Res,
     Object? vehicles = freezed,
     Object? getDutyAlerts = freezed,
     Object? connectionCount = freezed,
+    Object? aadharCard = freezed,
+    Object? license = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -172,7 +181,43 @@ class _$UserProfileDataModelCopyWithImpl<$Res,
           ? _value.connectionCount
           : connectionCount // ignore: cast_nullable_to_non_nullable
               as int?,
+      aadharCard: freezed == aadharCard
+          ? _value.aadharCard
+          : aadharCard // ignore: cast_nullable_to_non_nullable
+              as AadhaarCard?,
+      license: freezed == license
+          ? _value.license
+          : license // ignore: cast_nullable_to_non_nullable
+              as License?,
     ) as $Val);
+  }
+
+  /// Create a copy of UserProfileDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $AadhaarCardCopyWith<$Res>? get aadharCard {
+    if (_value.aadharCard == null) {
+      return null;
+    }
+
+    return $AadhaarCardCopyWith<$Res>(_value.aadharCard!, (value) {
+      return _then(_value.copyWith(aadharCard: value) as $Val);
+    });
+  }
+
+  /// Create a copy of UserProfileDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $LicenseCopyWith<$Res>? get license {
+    if (_value.license == null) {
+      return null;
+    }
+
+    return $LicenseCopyWith<$Res>(_value.license!, (value) {
+      return _then(_value.copyWith(license: value) as $Val);
+    });
   }
 }
 
@@ -200,7 +245,14 @@ abstract class _$$UserProfileDataModelImplCopyWith<$Res>
       List<dynamic>? routes,
       List<dynamic>? vehicles,
       bool? getDutyAlerts,
-      int? connectionCount});
+      int? connectionCount,
+      AadhaarCard? aadharCard,
+      License? license});
+
+  @override
+  $AadhaarCardCopyWith<$Res>? get aadharCard;
+  @override
+  $LicenseCopyWith<$Res>? get license;
 }
 
 /// @nodoc
@@ -232,6 +284,8 @@ class __$$UserProfileDataModelImplCopyWithImpl<$Res>
     Object? vehicles = freezed,
     Object? getDutyAlerts = freezed,
     Object? connectionCount = freezed,
+    Object? aadharCard = freezed,
+    Object? license = freezed,
   }) {
     return _then(_$UserProfileDataModelImpl(
       id: freezed == id
@@ -298,6 +352,14 @@ class __$$UserProfileDataModelImplCopyWithImpl<$Res>
           ? _value.connectionCount
           : connectionCount // ignore: cast_nullable_to_non_nullable
               as int?,
+      aadharCard: freezed == aadharCard
+          ? _value.aadharCard
+          : aadharCard // ignore: cast_nullable_to_non_nullable
+              as AadhaarCard?,
+      license: freezed == license
+          ? _value.license
+          : license // ignore: cast_nullable_to_non_nullable
+              as License?,
     ));
   }
 }
@@ -321,7 +383,9 @@ class _$UserProfileDataModelImpl implements _UserProfileDataModel {
       final List<dynamic>? routes,
       final List<dynamic>? vehicles,
       this.getDutyAlerts,
-      this.connectionCount})
+      this.connectionCount,
+      this.aadharCard,
+      this.license})
       : _leads = leads,
         _routes = routes,
         _vehicles = vehicles;
@@ -387,10 +451,14 @@ class _$UserProfileDataModelImpl implements _UserProfileDataModel {
   final bool? getDutyAlerts;
   @override
   final int? connectionCount;
+  @override
+  final AadhaarCard? aadharCard;
+  @override
+  final License? license;
 
   @override
   String toString() {
-    return 'UserProfileDataModel(id: $id, name: $name, city: $city, experience: $experience, profileUrl: $profileUrl, profileImage: $profileImage, isAadhaarVerified: $isAadhaarVerified, isDLVerified: $isDLVerified, verified: $verified, callReceivedCount: $callReceivedCount, callDoneCount: $callDoneCount, leads: $leads, routes: $routes, vehicles: $vehicles, getDutyAlerts: $getDutyAlerts, connectionCount: $connectionCount)';
+    return 'UserProfileDataModel(id: $id, name: $name, city: $city, experience: $experience, profileUrl: $profileUrl, profileImage: $profileImage, isAadhaarVerified: $isAadhaarVerified, isDLVerified: $isDLVerified, verified: $verified, callReceivedCount: $callReceivedCount, callDoneCount: $callDoneCount, leads: $leads, routes: $routes, vehicles: $vehicles, getDutyAlerts: $getDutyAlerts, connectionCount: $connectionCount, aadharCard: $aadharCard, license: $license)';
   }
 
   @override
@@ -423,7 +491,10 @@ class _$UserProfileDataModelImpl implements _UserProfileDataModel {
             (identical(other.getDutyAlerts, getDutyAlerts) ||
                 other.getDutyAlerts == getDutyAlerts) &&
             (identical(other.connectionCount, connectionCount) ||
-                other.connectionCount == connectionCount));
+                other.connectionCount == connectionCount) &&
+            (identical(other.aadharCard, aadharCard) ||
+                other.aadharCard == aadharCard) &&
+            (identical(other.license, license) || other.license == license));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -445,7 +516,9 @@ class _$UserProfileDataModelImpl implements _UserProfileDataModel {
       const DeepCollectionEquality().hash(_routes),
       const DeepCollectionEquality().hash(_vehicles),
       getDutyAlerts,
-      connectionCount);
+      connectionCount,
+      aadharCard,
+      license);
 
   /// Create a copy of UserProfileDataModel
   /// with the given fields replaced by the non-null parameter values.
@@ -482,7 +555,9 @@ abstract class _UserProfileDataModel implements UserProfileDataModel {
       final List<dynamic>? routes,
       final List<dynamic>? vehicles,
       final bool? getDutyAlerts,
-      final int? connectionCount}) = _$UserProfileDataModelImpl;
+      final int? connectionCount,
+      final AadhaarCard? aadharCard,
+      final License? license}) = _$UserProfileDataModelImpl;
 
   factory _UserProfileDataModel.fromJson(Map<String, dynamic> json) =
       _$UserProfileDataModelImpl.fromJson;
@@ -520,6 +595,10 @@ abstract class _UserProfileDataModel implements UserProfileDataModel {
   bool? get getDutyAlerts;
   @override
   int? get connectionCount;
+  @override
+  AadhaarCard? get aadharCard;
+  @override
+  License? get license;
 
   /// Create a copy of UserProfileDataModel
   /// with the given fields replaced by the non-null parameter values.
@@ -527,6 +606,350 @@ abstract class _UserProfileDataModel implements UserProfileDataModel {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UserProfileDataModelImplCopyWith<_$UserProfileDataModelImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+AadhaarCard _$AadhaarCardFromJson(Map<String, dynamic> json) {
+  return _AadhaarCard.fromJson(json);
+}
+
+/// @nodoc
+mixin _$AadhaarCard {
+  String? get id => throw _privateConstructorUsedError;
+  List<String>? get images => throw _privateConstructorUsedError;
+
+  /// Serializes this AadhaarCard to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of AadhaarCard
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $AadhaarCardCopyWith<AadhaarCard> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $AadhaarCardCopyWith<$Res> {
+  factory $AadhaarCardCopyWith(
+          AadhaarCard value, $Res Function(AadhaarCard) then) =
+      _$AadhaarCardCopyWithImpl<$Res, AadhaarCard>;
+  @useResult
+  $Res call({String? id, List<String>? images});
+}
+
+/// @nodoc
+class _$AadhaarCardCopyWithImpl<$Res, $Val extends AadhaarCard>
+    implements $AadhaarCardCopyWith<$Res> {
+  _$AadhaarCardCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of AadhaarCard
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? images = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      images: freezed == images
+          ? _value.images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$AadhaarCardImplCopyWith<$Res>
+    implements $AadhaarCardCopyWith<$Res> {
+  factory _$$AadhaarCardImplCopyWith(
+          _$AadhaarCardImpl value, $Res Function(_$AadhaarCardImpl) then) =
+      __$$AadhaarCardImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? id, List<String>? images});
+}
+
+/// @nodoc
+class __$$AadhaarCardImplCopyWithImpl<$Res>
+    extends _$AadhaarCardCopyWithImpl<$Res, _$AadhaarCardImpl>
+    implements _$$AadhaarCardImplCopyWith<$Res> {
+  __$$AadhaarCardImplCopyWithImpl(
+      _$AadhaarCardImpl _value, $Res Function(_$AadhaarCardImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AadhaarCard
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? images = freezed,
+  }) {
+    return _then(_$AadhaarCardImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      images: freezed == images
+          ? _value._images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$AadhaarCardImpl implements _AadhaarCard {
+  _$AadhaarCardImpl({this.id, final List<String>? images}) : _images = images;
+
+  factory _$AadhaarCardImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AadhaarCardImplFromJson(json);
+
+  @override
+  final String? id;
+  final List<String>? _images;
+  @override
+  List<String>? get images {
+    final value = _images;
+    if (value == null) return null;
+    if (_images is EqualUnmodifiableListView) return _images;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  String toString() {
+    return 'AadhaarCard(id: $id, images: $images)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AadhaarCardImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            const DeepCollectionEquality().equals(other._images, _images));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, id, const DeepCollectionEquality().hash(_images));
+
+  /// Create a copy of AadhaarCard
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AadhaarCardImplCopyWith<_$AadhaarCardImpl> get copyWith =>
+      __$$AadhaarCardImplCopyWithImpl<_$AadhaarCardImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AadhaarCardImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _AadhaarCard implements AadhaarCard {
+  factory _AadhaarCard({final String? id, final List<String>? images}) =
+      _$AadhaarCardImpl;
+
+  factory _AadhaarCard.fromJson(Map<String, dynamic> json) =
+      _$AadhaarCardImpl.fromJson;
+
+  @override
+  String? get id;
+  @override
+  List<String>? get images;
+
+  /// Create a copy of AadhaarCard
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AadhaarCardImplCopyWith<_$AadhaarCardImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+License _$LicenseFromJson(Map<String, dynamic> json) {
+  return _License.fromJson(json);
+}
+
+/// @nodoc
+mixin _$License {
+  String? get id => throw _privateConstructorUsedError;
+  List<String>? get images => throw _privateConstructorUsedError;
+
+  /// Serializes this License to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of License
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $LicenseCopyWith<License> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $LicenseCopyWith<$Res> {
+  factory $LicenseCopyWith(License value, $Res Function(License) then) =
+      _$LicenseCopyWithImpl<$Res, License>;
+  @useResult
+  $Res call({String? id, List<String>? images});
+}
+
+/// @nodoc
+class _$LicenseCopyWithImpl<$Res, $Val extends License>
+    implements $LicenseCopyWith<$Res> {
+  _$LicenseCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of License
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? images = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      images: freezed == images
+          ? _value.images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$LicenseImplCopyWith<$Res> implements $LicenseCopyWith<$Res> {
+  factory _$$LicenseImplCopyWith(
+          _$LicenseImpl value, $Res Function(_$LicenseImpl) then) =
+      __$$LicenseImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? id, List<String>? images});
+}
+
+/// @nodoc
+class __$$LicenseImplCopyWithImpl<$Res>
+    extends _$LicenseCopyWithImpl<$Res, _$LicenseImpl>
+    implements _$$LicenseImplCopyWith<$Res> {
+  __$$LicenseImplCopyWithImpl(
+      _$LicenseImpl _value, $Res Function(_$LicenseImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of License
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? images = freezed,
+  }) {
+    return _then(_$LicenseImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      images: freezed == images
+          ? _value._images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$LicenseImpl implements _License {
+  _$LicenseImpl({this.id, final List<String>? images}) : _images = images;
+
+  factory _$LicenseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LicenseImplFromJson(json);
+
+  @override
+  final String? id;
+  final List<String>? _images;
+  @override
+  List<String>? get images {
+    final value = _images;
+    if (value == null) return null;
+    if (_images is EqualUnmodifiableListView) return _images;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  String toString() {
+    return 'License(id: $id, images: $images)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LicenseImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            const DeepCollectionEquality().equals(other._images, _images));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, id, const DeepCollectionEquality().hash(_images));
+
+  /// Create a copy of License
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LicenseImplCopyWith<_$LicenseImpl> get copyWith =>
+      __$$LicenseImplCopyWithImpl<_$LicenseImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$LicenseImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _License implements License {
+  factory _License({final String? id, final List<String>? images}) =
+      _$LicenseImpl;
+
+  factory _License.fromJson(Map<String, dynamic> json) = _$LicenseImpl.fromJson;
+
+  @override
+  String? get id;
+  @override
+  List<String>? get images;
+
+  /// Create a copy of License
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$LicenseImplCopyWith<_$LicenseImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 NotificationLocation _$NotificationLocationFromJson(Map<String, dynamic> json) {

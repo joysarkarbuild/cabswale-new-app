@@ -23,10 +23,34 @@ class UserProfileDataModel with _$UserProfileDataModel {
     List<dynamic>? vehicles,
     bool? getDutyAlerts,
     int? connectionCount,
+    AadhaarCard? aadharCard,
+    License? license,
   }) = _UserProfileDataModel;
 
   factory UserProfileDataModel.fromJson(Map<String, dynamic> json) =>
       _$UserProfileDataModelFromJson(json);
+}
+
+@freezed
+class AadhaarCard with _$AadhaarCard {
+  factory AadhaarCard({
+    String? id,
+    List<String>? images,
+  }) = _AadhaarCard;
+
+  factory AadhaarCard.fromJson(Map<String, dynamic> json) =>
+      _$AadhaarCardFromJson(json);
+}
+
+@freezed
+class License with _$License {
+  factory License({
+    String? id,
+    List<String>? images,
+  }) = _License;
+
+  factory License.fromJson(Map<String, dynamic> json) =>
+      _$LicenseFromJson(json);
 }
 
 @freezed
