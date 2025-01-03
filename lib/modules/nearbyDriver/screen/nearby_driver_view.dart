@@ -40,9 +40,9 @@ class NearbyDriverScreen extends StatelessWidget {
                         right: 16,
                       ),
                       child: ListView.builder(
-                        itemCount: state.nearbyDrivers.length,
+                        itemCount: state.nearbyDrivers.length - 1,
                         itemBuilder: (context, index) {
-                          var driver = state.nearbyDrivers[index];
+                          var driver = state.nearbyDrivers[index + 1];
                           return Padding(
                             padding: const EdgeInsets.only(top: 16, bottom: 5),
                             child: NearbyDriversCard(

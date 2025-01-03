@@ -11,6 +11,7 @@ import 'package:cabswalle/modules/navbar/bloc/navbar_state.dart';
 import 'package:cabswalle/modules/profile/screen/profile_view.dart';
 import 'package:cabswalle/modules/services/screen/services_view.dart';
 import 'package:cabswalle/routes/app_routes.dart';
+import 'package:cabswalle/services/button_clicker_service.dart';
 import 'package:cabswalle/services/location_service.dart';
 import 'package:cabswalle/services/login_manager.dart';
 import 'package:cabswalle/widgets/my_bottom_navbar.dart';
@@ -59,6 +60,18 @@ class _NavbarScreenState extends State<NavbarScreen> {
             currentIndex: state.selectedIndex,
             showIndicator: false,
             onTap: (index) {
+              if (index == 1) {
+                ButtonClickTracker.incrementServiceTab();
+              }
+              if (index == 2) {
+                ButtonClickTracker.incrementCommunityTabClick();
+              }
+              if (index == 3) {
+                ButtonClickTracker.incrementCallsTabClick();
+              }
+              if (index == 4) {
+                ButtonClickTracker.incrementProfileTabClick();
+              }
               if (index > 0 && !LoginManager.isLogin) {
                 context.pushNamed(Names.login);
                 LoginManager().clearLoginStatus();

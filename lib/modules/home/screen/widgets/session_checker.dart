@@ -18,12 +18,14 @@ void checkSession(BuildContext context) async {
   if (!isSessionMatched && LoginManager.isLogin) {
     await Future.delayed(Duration(seconds: 2));
     showModalBottomSheet<void>(
-        // ignore: use_build_context_synchronously
-        context: context,
-        isDismissible: false,
-        enableDrag: false,
-        builder: (BuildContext context) {
-          return Container(
+      // ignore: use_build_context_synchronously
+      context: context,
+      isDismissible: false,
+      enableDrag: false,
+      builder: (BuildContext context) {
+        return PopScope(
+          canPop: false, // Prevent back button close
+          child: Container(
             height: context.screenHeight * 0.6,
             width: context.screenWidth,
             padding: EdgeInsets.all(16),
@@ -62,7 +64,9 @@ void checkSession(BuildContext context) async {
                 Spacer(),
               ],
             ),
-          );
-        });
+          ),
+        );
+      },
+    );
   }
 }

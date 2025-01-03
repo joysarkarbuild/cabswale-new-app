@@ -83,6 +83,7 @@ class _OtpScreenState extends State<OtpScreen> {
     await loginManager.verifyOtp(
         smsCode: _otpController.text.trim(),
         context: context,
+        phoneNo: "+91${widget.phoneNo}",
         verificationId: localVerificationId);
 
     LoadingOverlay().hide();

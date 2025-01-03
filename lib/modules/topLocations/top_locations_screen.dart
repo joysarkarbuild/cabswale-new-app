@@ -2,6 +2,7 @@ import 'package:cabswalle/constants/assets.dart';
 import 'package:cabswalle/modules/topLocations/topDropLocations/top_drop_location.dart';
 import 'package:cabswalle/modules/topLocations/topPickupLocation/top_pickup_location.dart';
 import 'package:cabswalle/modules/topLocations/topRoutes/top_routes.dart';
+import 'package:cabswalle/services/button_clicker_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -22,6 +23,7 @@ class _TopLocationsScreenState extends State<TopLocationsScreen> {
         "label": "Top Routes",
         "icon": Assets.iconsRoutes,
         "onTap": () {
+          ButtonClickTracker.incrementTopRoutesClick();
           Navigator.push(
               context,
               MaterialPageRoute(
@@ -34,6 +36,7 @@ class _TopLocationsScreenState extends State<TopLocationsScreen> {
         "label": "Top Pickup Locations",
         "icon": Assets.iconsPickup,
         "onTap": () {
+          ButtonClickTracker.incrementTopPickupLocationsClick();
           Navigator.push(
               context,
               MaterialPageRoute(
@@ -46,6 +49,7 @@ class _TopLocationsScreenState extends State<TopLocationsScreen> {
         "label": "Top Drop Locations",
         "icon": Assets.iconsDrop,
         "onTap": () {
+          ButtonClickTracker.incrementTopDropLocationsClick();
           Navigator.push(
               context,
               MaterialPageRoute(

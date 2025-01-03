@@ -13,6 +13,7 @@ import 'package:cabswalle/modules/home/screen/widgets/membership_widget.dart';
 import 'package:cabswalle/modules/home/screen/widgets/session_checker.dart';
 import 'package:cabswalle/modules/home/screen/widgets/to_from_dots.dart';
 import 'package:cabswalle/routes/app_routes.dart';
+import 'package:cabswalle/services/button_clicker_service.dart';
 import 'package:cabswalle/services/driver_service.dart';
 import 'package:cabswalle/services/logger_service.dart';
 import 'package:cabswalle/services/login_manager.dart';
@@ -47,7 +48,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-
     _scrollController.addListener(() {
       double maxScroll = _scrollController.position.maxScrollExtent;
       double currentScroll = _scrollController.position.pixels;
@@ -107,6 +107,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 SubmitButton(
                                   onTap: () {
                                     if (LoginManager.isLogin) {
+                                      ButtonClickTracker
+                                          .incrementMyLeadsClick();
                                       context.pushNamed(Names.myleads);
                                     } else {
                                       context.pushNamed(Names.login);
@@ -124,6 +126,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 SubmitButton(
                                   onTap: () {
                                     if (LoginManager.isLogin) {
+                                      ButtonClickTracker
+                                          .incrementLocationsTabClick();
                                       context.pushNamed(Names.location);
                                     } else {
                                       context.pushNamed(Names.login);
@@ -192,6 +196,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     .trim(),
                                                 countData: state.countData));
                                       },
+                                      onTap: () {
+                                        ButtonClickTracker
+                                            .incrementHomeScreenSearch();
+                                      },
                                       onChanged: (value) async {
                                         if (value.isEmpty) {
                                           context.read<HomeBloc>().add(
@@ -214,6 +222,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 SubmitButton(
                                   onTap: () {
                                     if (LoginManager.isLogin) {
+                                      ButtonClickTracker
+                                          .incrementGetDutyAlertsClick();
                                       context.pushNamed(Names.cityPreferences);
                                     } else {
                                       context.pushNamed(Names.login);
@@ -228,6 +238,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 SubmitButton(
                                   onTap: () {
                                     if (LoginManager.isLogin) {
+                                      ButtonClickTracker
+                                          .incrementYourLocationDuties();
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
@@ -258,6 +270,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               MembershipWidget(
                                 isMembershipActive: DriverService
                                     .instance.driverModel!.membership!.active,
+                                isHome: true,
                                 endDate: DriverService
                                     .instance.driverModel!.membership!.endDate,
                               ),
@@ -280,6 +293,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                       i++)
                                     InkWell(
                                       onTap: () {
+                                        ButtonClickTracker
+                                            .incrementHomePageLocationClick();
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
@@ -328,6 +343,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                   children: TextData.leadType.map((lead) {
                                     return GestureDetector(
                                         onTap: () {
+                                          if (lead == "exchange") {
+                                            ButtonClickTracker
+                                                .incrementExchangeClick();
+                                          }
+                                          if (lead == "available") {
+                                            ButtonClickTracker
+                                                .incrementAvailableClick();
+                                          }
                                           context.read<HomeBloc>().add(
                                               ChangeLeadType(
                                                   leadType: lead,

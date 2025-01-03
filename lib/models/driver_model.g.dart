@@ -106,12 +106,12 @@ Map<String, dynamic> _$$ReferImplToJson(_$ReferImpl instance) =>
 
 _$MembershipImpl _$$MembershipImplFromJson(Map<String, dynamic> json) =>
     _$MembershipImpl(
-      active: json['active'] as bool,
+      active: json['active'] as bool? ?? false,
       endDate: const TimestampToDateTimeConverter().fromJson(json['endDate']),
-      plan: json['plan'] as String,
+      plan: json['plan'] as String? ?? 'daily',
       startDate:
           const TimestampToDateTimeConverter().fromJson(json['startDate']),
-      trial: json['trial'] as bool,
+      trial: json['trial'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$MembershipImplToJson(_$MembershipImpl instance) =>
@@ -125,7 +125,7 @@ Map<String, dynamic> _$$MembershipImplToJson(_$MembershipImpl instance) =>
     };
 
 _$WalletImpl _$$WalletImplFromJson(Map<String, dynamic> json) => _$WalletImpl(
-      amount: json['amount'] as num,
+      amount: json['amount'] as num? ?? 0.0,
     );
 
 Map<String, dynamic> _$$WalletImplToJson(_$WalletImpl instance) =>

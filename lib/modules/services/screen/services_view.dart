@@ -8,6 +8,7 @@ import 'package:cabswalle/modules/saveMoney/save_money_screen.dart';
 import 'package:cabswalle/modules/services/bloc/services_bloc.dart';
 import 'package:cabswalle/modules/services/bloc/services_event.dart';
 import 'package:cabswalle/modules/services/bloc/services_state.dart';
+import 'package:cabswalle/services/button_clicker_service.dart';
 import 'package:cabswalle/widgets/banner_widget.dart';
 import 'package:cabswalle/widgets/centre_loading.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +33,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
         "label": "Car Insurance",
         "icon": Assets.iconsCarInsurance,
         "onTap": () {
+          ButtonClickTracker.incrementCarInsurance();
           Navigator.push(
               context,
               MaterialPageRoute(
@@ -44,6 +46,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
         "label": "Loan",
         "icon": Assets.iconsLoan,
         "onTap": () {
+          ButtonClickTracker.incrementLoan();
           Navigator.push(
               context,
               MaterialPageRoute(
@@ -56,6 +59,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
         "label": "Car Services",
         "icon": Assets.iconsCarRepair,
         "onTap": () {
+          ButtonClickTracker.incrementCarService();
           Navigator.push(
               context,
               MaterialPageRoute(
@@ -68,6 +72,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
         "label": "Jobs ",
         "icon": Assets.iconsJobSeeking,
         "onTap": () {
+          ButtonClickTracker.incrementJobs();
           Navigator.push(
               context,
               MaterialPageRoute(
@@ -80,6 +85,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
         "label": "Restaurants",
         "icon": Assets.iconsRestaurant,
         "onTap": () {
+          ButtonClickTracker.incrementRestaurants();
           Navigator.push(
               context,
               MaterialPageRoute(
@@ -92,6 +98,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
         "label": "Buy/Sell Cars",
         "icon": Assets.iconsSelling,
         "onTap": () {
+          ButtonClickTracker.incrementBuyAndSellCar();
           Navigator.push(
               context,
               MaterialPageRoute(

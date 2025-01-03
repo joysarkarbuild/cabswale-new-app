@@ -517,7 +517,7 @@ class LeadsCard extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                'Confrim Deal',
+                                'Confirm Deal',
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 12),
                               ),

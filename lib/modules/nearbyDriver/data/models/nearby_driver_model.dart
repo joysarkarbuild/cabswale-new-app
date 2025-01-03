@@ -1,3 +1,4 @@
+import 'package:cabswalle/services/location_service.dart';
 import 'package:flutter/foundation.dart';
 import 'dart:math' as math;
 
@@ -112,8 +113,8 @@ class Route {
 
 double calculateDistanceInMeters(double lat2, double lon2) {
   const double earthRadiusKm = 6371.0;
-  double lat1 = 77.34343;
-  double lon1 = 22.232323;
+  double lat1 = LocationService().currentPosition!.latitude;
+  double lon1 = LocationService().currentPosition!.longitude;
   double lat1Rad = lat1 * (math.pi / 180.0);
   double lon1Rad = lon1 * (math.pi / 180.0);
   double lat2Rad = lat2 * (math.pi / 180.0);

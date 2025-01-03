@@ -5,6 +5,8 @@ import 'package:cabswalle/modules/deals/bloc/deals_bloc.dart';
 import 'package:cabswalle/modules/driverList/bloc/driver_list_bloc.dart';
 import 'package:cabswalle/modules/filterleads/bloc/filterleads_bloc.dart';
 import 'package:cabswalle/modules/home/bloc/home_bloc.dart';
+import 'package:cabswalle/modules/language/bloc/language_bloc.dart';
+import 'package:cabswalle/modules/language/bloc/language_state.dart';
 import 'package:cabswalle/modules/login/bloc/login_bloc.dart';
 import 'package:cabswalle/modules/myleads/bloc/myleads_bloc.dart';
 import 'package:cabswalle/modules/myprofile/bloc/myprofile_bloc.dart';
@@ -92,30 +94,34 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => DriverListBloc(),
         ),
-        // BlocProvider(
-        //   create: (context) => LanguageBloc(),
-        // ),
-      ],
-      child: MaterialApp.router(
-        scaffoldMessengerKey: SnackbarUtils.snackbarKey,
-        routerConfig: router,
-        debugShowCheckedModeBanner: false,
-        title: 'Cabswale',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(
-            seedColor: AppColors.myBlue,
-          ),
-          useMaterial3: true,
-          primaryColor: AppColors.myBlue,
+        BlocProvider(
+          create: (context) => LanguageBloc(),
         ),
-        supportedLocales: L10n.all,
-        locale: const Locale('en'),
-        localizationsDelegates: const [
-          AppLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-        ],
+      ],
+      child: BlocBuilder<LanguageBloc, LanguageState>(
+        builder: (context, state) {
+          return MaterialApp.router(
+            scaffoldMessengerKey: SnackbarUtils.snackbarKey,
+            routerConfig: router,
+            debugShowCheckedModeBanner: false,
+            title: 'Cabswale',
+            theme: ThemeData(
+              colorScheme: ColorScheme.fromSeed(
+                seedColor: AppColors.myBlue,
+              ),
+              useMaterial3: true,
+              primaryColor: AppColors.myBlue,
+            ),
+            supportedLocales: L10n.all,
+            locale: Locale((state as LanguageInitial).local),
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+            ],
+          );
+        },
       ),
     );
   }

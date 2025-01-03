@@ -1,10 +1,12 @@
 import 'package:cabswalle/constants/assets.dart';
 import 'package:cabswalle/core/app_text_styles.dart';
 import 'package:cabswalle/core/screen_responsive.dart';
+import 'package:cabswalle/modules/home/screen/widgets/membership_widget.dart';
 import 'package:cabswalle/modules/membership/plans_screen.dart';
 import 'package:cabswalle/modules/splash/bloc/splash_bloc.dart';
 import 'package:cabswalle/modules/splash/bloc/splash_state.dart';
 import 'package:cabswalle/routes/app_routes.dart';
+import 'package:cabswalle/services/button_clicker_service.dart';
 import 'package:cabswalle/services/driver_service.dart';
 import 'package:cabswalle/services/loading_overlay_service.dart';
 import 'package:cabswalle/services/login_manager.dart';
@@ -26,7 +28,7 @@ class ProfileScreen extends StatelessWidget {
         appBar: AppBar(
           centerTitle: true,
           bottom: PreferredSize(
-              preferredSize: Size(context.screenWidth, 6),
+              preferredSize: Size(context.screenWidth, 16),
               child: Column(
                 children: [
                   Text(
@@ -36,7 +38,16 @@ class ProfileScreen extends StatelessWidget {
                     style: AppTextStyles.style22w600(),
                   ),
                   SizedBox(
-                    height: 8,
+                    height: 4,
+                  ),
+                  Text(
+                    DriverService.instance.driverModel!.phoneNo.isNotEmpty
+                        ? DriverService.instance.driverModel!.phoneNo
+                        : "No Number",
+                    style: AppTextStyles.style13w500(),
+                  ),
+                  SizedBox(
+                    height: 4,
                   ),
                   Image.asset(
                     (DriverService.instance.driverModel != null &&
@@ -53,18 +64,36 @@ class ProfileScreen extends StatelessWidget {
         ),
         body: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.only(left: 10, right: 10),
             child: Column(
               children: [
+                SizedBox(
+                  height: 4,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 4),
+                  child: MembershipWidget(
+                    isHome: false,
+                    isMembershipActive:
+                        DriverService.instance.driverModel!.membership!.active,
+                    endDate:
+                        DriverService.instance.driverModel!.membership!.endDate,
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
                 ProfileOptionCard(
                     icon: Assets.iconsProfile,
                     onTap: () {
+                      ButtonClickTracker.incrementMyProfileClick();
                       context.pushNamed(Names.myprofile);
                     },
                     title: AppLocalizations.of(context)!.profileInfo),
                 ProfileOptionCard(
                     icon: Assets.iconsMembership,
                     onTap: () {
+                      ButtonClickTracker.incrementCabswaleMembership();
                       Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -75,6 +104,7 @@ class ProfileScreen extends StatelessWidget {
                 ProfileOptionCard(
                     icon: Assets.iconsTransactions,
                     onTap: () {
+                      ButtonClickTracker.incrementWalletTransactions();
                       context.pushNamed(Names.walletTransactions);
                     },
                     title: "Wallet Transactions"),
@@ -83,12 +113,15 @@ class ProfileScreen extends StatelessWidget {
                 ProfileOptionCard(
                     icon: Assets.iconsLanguage,
                     onTap: () {
+                      ButtonClickTracker.incrementChangeLanguageClick();
                       context.pushNamed(Names.language);
                     },
                     title: "Change Language"),
                 ProfileOptionCard(
                     icon: Assets.iconsSettings,
                     onTap: () {
+                      ButtonClickTracker.incrementSettings();
+
                       context.pushNamed(Names.settings);
                     },
                     title: "Settings"),
@@ -97,6 +130,7 @@ class ProfileScreen extends StatelessWidget {
                     return ProfileOptionCard(
                         icon: Assets.iconsTermsAndConditions,
                         onTap: () {
+                          ButtonClickTracker.incrementTermsAndPolicy();
                           if (state is AppVersionMatched) {
                             launchUrl(Uri.parse(state.appData.policy));
                           }
@@ -107,6 +141,7 @@ class ProfileScreen extends StatelessWidget {
                 ProfileOptionCard(
                     icon: Assets.iconsLogout,
                     onTap: () {
+                      ButtonClickTracker.incrementLogout();
                       showMyDialoge(
                           context: context,
                           onYes: () async {
@@ -127,6 +162,7 @@ class ProfileScreen extends StatelessWidget {
                 ProfileOptionCard(
                     icon: Assets.iconsDelete,
                     onTap: () {
+                      ButtonClickTracker.incrementDeleteAccount();
                       showMyDialoge(
                           context: context,
                           onYes: () async {

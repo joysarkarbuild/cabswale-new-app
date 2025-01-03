@@ -65,11 +65,11 @@ class Refer with _$Refer {
 @freezed
 class Membership with _$Membership {
   const factory Membership({
-    required bool active,
+    @Default(false) bool active, // Default value for 'active'
     @TimestampToDateTimeConverter() DateTime? endDate,
-    required String plan,
+    @Default('daily') String plan, // Default value for 'plan'
     @TimestampToDateTimeConverter() DateTime? startDate,
-    required bool trial,
+    @Default(false) bool trial, // Default value for 'trial'
   }) = _Membership;
 
   factory Membership.fromJson(Map<String, dynamic> json) =>
@@ -79,7 +79,7 @@ class Membership with _$Membership {
 @freezed
 class Wallet with _$Wallet {
   const factory Wallet({
-    required num amount,
+    @Default(0.0) num amount, // Default value for 'amount'
   }) = _Wallet;
 
   factory Wallet.fromJson(Map<String, dynamic> json) => _$WalletFromJson(json);

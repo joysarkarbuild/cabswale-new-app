@@ -19,7 +19,7 @@ class ProfileOptionCard extends StatelessWidget {
     return InkWell(
       onTap: onTap, // InkWell accepts a VoidCallback?
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 22),
+        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 16),
         child: Row(
           children: [
             SvgPicture.asset(

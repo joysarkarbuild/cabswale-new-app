@@ -232,7 +232,8 @@ class TypeSenseInstance {
       'query_by': 'name',
       "filter_by":
           "currentLocation:($lat,$long, $raduis km)&&locationUpdatedAt:>${DateTime.now().millisecondsSinceEpoch}",
-      "sort_by": "currentLocation($lat,$long):asc"
+      "sort_by": "currentLocation($lat,$long):asc",
+      'per_page': '50',
     };
 
     try {

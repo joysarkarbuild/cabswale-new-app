@@ -58,16 +58,17 @@ class LoginManager {
     }
   }
 
-  Future<void> verifyOtpUsingOtpLess({
-    required String token,
-    required BuildContext context,
-  }) async {
+  Future<void> verifyOtpUsingOtpLess(
+      {required String token,
+      required BuildContext context,
+      required String phoneNo}) async {
     try {
       LoggerService.logInfo("Verify firebase called");
       await _auth.signInWithCustomToken(token);
       LoggerService.logInfo("User logged in with OTP");
       await _updateLoginState();
       await singleLoginService.updateSessionId();
+
       // ignore: use_build_context_synchronously
       context.goNamed(Names.navbar);
     } on FirebaseAuthException catch (e) {
@@ -102,6 +103,7 @@ class LoginManager {
     required String verificationId,
     required String smsCode,
     required BuildContext context,
+    required String phoneNo,
   }) async {
     try {
       final credential = PhoneAuthProvider.credential(
@@ -189,7 +191,7 @@ class LoginManager {
     await FirebaseFirestore.instance
         .collection('loginPhno')
         .doc(phoneNo)
-        .set({'active': true, 'phoneNo': phoneNo}, SetOptions(merge: true));
+        .set({'active': true}, SetOptions(merge: true));
     LoggerService.logInfo("Set Active : true");
   }
 

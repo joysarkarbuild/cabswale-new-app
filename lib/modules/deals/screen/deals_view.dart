@@ -5,6 +5,7 @@ import 'package:cabswalle/modules/deals/bloc/deals_state.dart';
 import 'package:cabswalle/modules/deals/screen/callls_screen.dart';
 import 'package:cabswalle/modules/deals/screen/deals_confirmation_screen.dart';
 import 'package:cabswalle/routes/app_routes.dart';
+import 'package:cabswalle/services/button_clicker_service.dart';
 import 'package:cabswalle/services/driver_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -215,6 +216,7 @@ class DealsScreen extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
+                  ButtonClickTracker.incrementDeals();
                   Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -254,6 +256,7 @@ class DealsScreen extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
+                  ButtonClickTracker.incrementCallsTabClick();
                   Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -293,6 +296,7 @@ class DealsScreen extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
+                  ButtonClickTracker.incrementMyLeadsClick();
                   context.pushNamed(Names.myleads);
                 },
                 child: Container(
@@ -328,6 +332,7 @@ class DealsScreen extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
+                  ButtonClickTracker.incrementAddLeadsClick();
                   context.pushNamed(Names.addlead);
                 },
                 child: Container(

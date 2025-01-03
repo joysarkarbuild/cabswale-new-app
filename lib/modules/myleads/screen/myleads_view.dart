@@ -4,6 +4,7 @@ import 'package:cabswalle/modules/myleads/bloc/myleads_bloc.dart';
 import 'package:cabswalle/modules/myleads/bloc/myleads_event.dart';
 import 'package:cabswalle/modules/myleads/bloc/myleads_state.dart';
 import 'package:cabswalle/routes/app_routes.dart';
+import 'package:cabswalle/services/button_clicker_service.dart';
 import 'package:cabswalle/widgets/common_widget_componants.dart';
 import 'package:cabswalle/widgets/lead_card_shimmer.dart';
 import 'package:cabswalle/widgets/my_lead_card.dart';
@@ -29,6 +30,7 @@ class MyLeadsScreen extends StatelessWidget {
         children: [
           SubmitButton(
             onTap: () async {
+              ButtonClickTracker.incrementAddLeadsClick();
               context.pushNamed(Names.addlead);
             },
             margin: 15,

@@ -12,6 +12,7 @@ import 'package:cabswalle/modules/reportProblem/screen/report_problem_view.dart'
 import 'package:cabswalle/modules/topLocations/top_locations_screen.dart';
 import 'package:cabswalle/modules/verifyAccount/screen/verify_account_view.dart';
 import 'package:cabswalle/modules/videosFromRealDrivers/screen/videos_from_real_drivers_view.dart';
+import 'package:cabswalle/services/button_clicker_service.dart';
 import 'package:cabswalle/widgets/centre_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,6 +36,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
         "label": "Drivers List",
         "icon": Assets.iconsDriversList,
         "onTap": () {
+          ButtonClickTracker.incrementDriverListClick();
           Navigator.push(
               context,
               MaterialPageRoute(
@@ -47,6 +49,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
         "label": "Nearby",
         "icon": Assets.iconsNearby,
         "onTap": () {
+          ButtonClickTracker.incrementNearbyClick();
           Navigator.push(
               context,
               MaterialPageRoute(
@@ -59,6 +62,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
         "label": "Verify Account",
         "icon": Assets.iconsVerifyAccount,
         "onTap": () {
+          ButtonClickTracker.incrementVerifyAccountClick();
           Navigator.push(
               context,
               MaterialPageRoute(
@@ -73,6 +77,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
         "label": "Top Locations",
         "icon": Assets.iconsTopLocations,
         "onTap": () {
+          ButtonClickTracker.incrementTopLocation();
           Navigator.push(
               context,
               MaterialPageRoute(
@@ -86,6 +91,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
         "icon": Assets.iconsEmergency,
         "key": "emergency",
         "onTap": () {
+          ButtonClickTracker.incrementEmergencyClick();
           Navigator.push(
               context,
               MaterialPageRoute(
@@ -96,7 +102,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
       {
         "label": "Refer & Earn",
         "icon": Assets.iconsReferAndEarn,
-        "key": "emergency",
+        "key": "refer",
         "onTap": () {
           Navigator.push(
               context,
@@ -110,6 +116,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
         "icon": Assets.iconsVideos,
         "key": "videos",
         "onTap": () {
+          ButtonClickTracker.incrementVideosFromRealDriversClick();
           Navigator.push(
               context,
               MaterialPageRoute(
@@ -122,6 +129,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
         "icon": Assets.iconsPartner,
         "key": "partner",
         "onTap": () {
+          ButtonClickTracker.incrementPartnerWithUs();
           Navigator.push(
               context,
               MaterialPageRoute(
@@ -241,6 +249,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
             SliverToBoxAdapter(
               child: InkWell(
                 onTap: () {
+                  ButtonClickTracker.incrementTellUsYourProblemsClick();
                   Navigator.push(
                       context,
                       MaterialPageRoute(

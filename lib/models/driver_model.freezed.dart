@@ -1230,10 +1230,12 @@ Membership _$MembershipFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Membership {
-  bool get active => throw _privateConstructorUsedError;
+  bool get active =>
+      throw _privateConstructorUsedError; // Default value for 'active'
   @TimestampToDateTimeConverter()
   DateTime? get endDate => throw _privateConstructorUsedError;
-  String get plan => throw _privateConstructorUsedError;
+  String get plan =>
+      throw _privateConstructorUsedError; // Default value for 'plan'
   @TimestampToDateTimeConverter()
   DateTime? get startDate => throw _privateConstructorUsedError;
   bool get trial => throw _privateConstructorUsedError;
@@ -1372,26 +1374,31 @@ class __$$MembershipImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$MembershipImpl implements _Membership {
   const _$MembershipImpl(
-      {required this.active,
+      {this.active = false,
       @TimestampToDateTimeConverter() this.endDate,
-      required this.plan,
+      this.plan = 'daily',
       @TimestampToDateTimeConverter() this.startDate,
-      required this.trial});
+      this.trial = false});
 
   factory _$MembershipImpl.fromJson(Map<String, dynamic> json) =>
       _$$MembershipImplFromJson(json);
 
   @override
+  @JsonKey()
   final bool active;
+// Default value for 'active'
   @override
   @TimestampToDateTimeConverter()
   final DateTime? endDate;
   @override
+  @JsonKey()
   final String plan;
+// Default value for 'plan'
   @override
   @TimestampToDateTimeConverter()
   final DateTime? startDate;
   @override
+  @JsonKey()
   final bool trial;
 
   @override
@@ -1435,22 +1442,22 @@ class _$MembershipImpl implements _Membership {
 
 abstract class _Membership implements Membership {
   const factory _Membership(
-      {required final bool active,
+      {final bool active,
       @TimestampToDateTimeConverter() final DateTime? endDate,
-      required final String plan,
+      final String plan,
       @TimestampToDateTimeConverter() final DateTime? startDate,
-      required final bool trial}) = _$MembershipImpl;
+      final bool trial}) = _$MembershipImpl;
 
   factory _Membership.fromJson(Map<String, dynamic> json) =
       _$MembershipImpl.fromJson;
 
   @override
-  bool get active;
+  bool get active; // Default value for 'active'
   @override
   @TimestampToDateTimeConverter()
   DateTime? get endDate;
   @override
-  String get plan;
+  String get plan; // Default value for 'plan'
   @override
   @TimestampToDateTimeConverter()
   DateTime? get startDate;
@@ -1553,12 +1560,13 @@ class __$$WalletImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$WalletImpl implements _Wallet {
-  const _$WalletImpl({required this.amount});
+  const _$WalletImpl({this.amount = 0.0});
 
   factory _$WalletImpl.fromJson(Map<String, dynamic> json) =>
       _$$WalletImplFromJson(json);
 
   @override
+  @JsonKey()
   final num amount;
 
   @override
@@ -1595,7 +1603,7 @@ class _$WalletImpl implements _Wallet {
 }
 
 abstract class _Wallet implements Wallet {
-  const factory _Wallet({required final num amount}) = _$WalletImpl;
+  const factory _Wallet({final num amount}) = _$WalletImpl;
 
   factory _Wallet.fromJson(Map<String, dynamic> json) = _$WalletImpl.fromJson;
 

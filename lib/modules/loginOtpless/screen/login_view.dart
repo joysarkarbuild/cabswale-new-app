@@ -6,6 +6,7 @@ import 'package:cabswalle/modules/loginOtpless/data/login_data_pepository.dart';
 import 'package:cabswalle/routes/app_routes.dart';
 import 'package:cabswalle/services/loading_overlay_service.dart';
 import 'package:cabswalle/services/logger_service.dart';
+import 'package:cabswalle/services/login_manager.dart';
 import 'package:cabswalle/services/snackbar_service.dart';
 import 'package:cabswalle/widgets/my_text_form_field.dart';
 import 'package:cabswalle/widgets/submit_button.dart';
@@ -24,6 +25,7 @@ class LoginScreenOtpless extends StatefulWidget {
 class _LoginScreenOtplessState extends State<LoginScreenOtpless> {
   final TextEditingController _phoneNoController = TextEditingController();
   final _otplessRepository = OtplessRepository();
+  LoginManager loginManager = LoginManager();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool isSms = false;
 
@@ -69,6 +71,7 @@ class _LoginScreenOtplessState extends State<LoginScreenOtpless> {
   void sendLoginRequest({required bool isSms}) {
     final phoneNo = _phoneNoController.text.trim();
     LoadingOverlay().show(context);
+    loginManager.setActive("+91$phoneNo");
     _otplessRepository.sendOtp(
         phoneNo: phoneNo,
         onHeadlessResult: onHeadlessResult,

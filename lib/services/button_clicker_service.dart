@@ -197,4 +197,84 @@ class ButtonClickTracker {
   static Future<void> incrementMyProfileClick() async {
     await incrementClickCount('MyProfile');
   }
+
+  static Future<void> incrementHomeScreenSearch() async {
+    await incrementClickCount('HomeSearch');
+  }
+
+  static Future<void> incrementYourLocationDuties() async {
+    await incrementClickCount('YourLocationDuties');
+  }
+
+  static Future<void> incrementServiceTab() async {
+    await incrementClickCount('ServiceTab');
+  }
+
+  static Future<void> incrementCarInsurance() async {
+    await incrementClickCount('CarInsurance');
+  }
+
+  static Future<void> incrementLoan() async {
+    await incrementClickCount('Loan');
+  }
+
+  static Future<void> incrementCarService() async {
+    await incrementClickCount('CarService');
+  }
+
+  static Future<void> incrementJobs() async {
+    await incrementClickCount('Jobs');
+  }
+
+  static Future<void> incrementRestaurants() async {
+    await incrementClickCount('Restaurants');
+  }
+
+  static Future<void> incrementBuyAndSellCar() async {
+    await incrementClickCount('BuyAndSellCar');
+  }
+
+  static Future<void> incrementNearbyClick() async {
+    await incrementClickCount('NearbyClick');
+  }
+
+  static Future<void> incrementTopLocation() async {
+    await incrementClickCount('TopLocation');
+  }
+
+  static Future<void> incrementPartnerWithUs() async {
+    await incrementClickCount('PartnerWithUs');
+  }
+
+  static Future<void> incrementDeals() async {
+    await incrementClickCount('PartnerWithUs');
+  }
+
+  static Future<void> incrementCabswaleMembership() async {
+    await incrementClickCount('CabswaleMembership');
+  }
+
+  static Future<void> incrementWalletTransactions() async {
+    await incrementClickCount('WalletTransactions');
+  }
+
+  static Future<void> incrementSettings() async {
+    await incrementClickCount('Settings');
+  }
+
+  static Future<void> incrementTermsAndPolicy() async {
+    await incrementClickCount('TermsAndPolicy');
+  }
+
+  static Future<void> incrementLogout() async {
+    await incrementClickCount('Logout');
+  }
+
+  static Future<void> incrementDeleteAccount() async {
+    await incrementClickCount('DeleteAccount');
+  }
+
+  static Future<void> incrementRechargeNow() async {
+    await incrementClickCount('RechargeNow');
+  }
 }

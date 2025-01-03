@@ -1,6 +1,7 @@
 import 'package:cabswalle/constants/assets.dart';
 import 'package:cabswalle/core/app_colors.dart';
 import 'package:cabswalle/modules/membership/plans_screen.dart';
+import 'package:cabswalle/modules/myprofile/screen/myprofile_view.dart';
 import 'package:cabswalle/routes/app_routes.dart';
 import 'package:cabswalle/services/calculation_util.dart';
 import 'package:cabswalle/services/driver_service.dart';
@@ -52,7 +53,14 @@ class CallsCard extends StatelessWidget {
                             SizedBox(
                               width: MediaQuery.of(context).size.width - 66,
                               child: InkWell(
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => MyprofileScreen(
+                                            userId: call["userId"]),
+                                      ));
+                                },
                                 child: Row(
                                   children: [
                                     Row(
@@ -164,20 +172,30 @@ class CallsCard extends StatelessWidget {
                         Positioned(
                           right: 0,
                           top: -6,
-                          child: Container(
-                              height: 20,
-                              width: 60,
-                              margin: EdgeInsets.only(top: 26),
-                              decoration: BoxDecoration(
-                                  color: AppColors.myBlue,
-                                  borderRadius: BorderRadius.circular(3)),
-                              child: Center(
-                                child: Text(
-                                  'View Profile',
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 8),
-                                ),
-                              )),
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        MyprofileScreen(userId: call["userId"]),
+                                  ));
+                            },
+                            child: Container(
+                                height: 20,
+                                width: 60,
+                                margin: EdgeInsets.only(top: 26),
+                                decoration: BoxDecoration(
+                                    color: AppColors.myBlue,
+                                    borderRadius: BorderRadius.circular(3)),
+                                child: Center(
+                                  child: Text(
+                                    'View Profile',
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 8),
+                                  ),
+                                )),
+                          ),
                         ),
                       ],
                     ),

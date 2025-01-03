@@ -31,8 +31,6 @@ class LoginDataRepository {
             'You have been blocked by the admin. Please contact the admin to resolve this issue.'),
       );
     } else {
-      await loginManager.setActive(phoneNo);
-
       // ignore: use_build_context_synchronously
       context.read<LoginBloc>().add(LoginClickEvent(
             // ignore: use_build_context_synchronously

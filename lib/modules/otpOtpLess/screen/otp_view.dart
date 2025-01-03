@@ -110,6 +110,7 @@ class _OtpScreenOtplessState extends State<OtpScreenOtpless> {
       LoggerService.logInfo(result["response"]["firebaseInfo"].toString());
       await loginManager.verifyOtpUsingOtpLess(
           token: result["response"]["firebaseInfo"]["firebaseToken"].toString(),
+          phoneNo: "+91${widget.phoneNo}",
           context: context);
 
       LoadingOverlay().hide();
